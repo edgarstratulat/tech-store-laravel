@@ -1,0 +1,159 @@
+<template>
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo e Links do Menu -->
+                <div class="flex items-center">
+                    <!-- Logo -->
+                    <a href="#" class="flex items-center">
+                        <span class="font-semibold text-gray-900 text-2xl"
+                            >Tech Shop</span
+                        >
+                    </a>
+
+                    <!-- Links do Menu (Desktop) -->
+                    <div
+                        class="hidden md:flex md:items-center md:space-x-6 ml-8"
+                    >
+                        <a
+                            href="#"
+                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            >Home</a
+                        >
+                        <a
+                            href="http://localhost:8000/computadores"
+                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            >Computadores</a
+                        >
+                        <a
+                            href="#"
+                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            >Promoções</a
+                        >
+                        <a
+                            href="#"
+                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            >Contactos</a
+                        >
+                    </div>
+                </div>
+
+                <!-- Barra de Pesquisa e Ícones (Desktop) -->
+                <div class="flex items-center space-x-6">
+                    <!-- Barra de Pesquisa -->
+                    <div class="hidden md:block">
+                        <div class="relative">
+                            <input
+                                type="text"
+                                placeholder="Pesquisar produtos..."
+                                class="w-64 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            />
+                            <button
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-gray-400"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ícones de Usuário e Carrinho -->
+                    <div class="flex items-center space-x-4">
+                        <a
+                            href="http://localhost:8000/register"
+                            class="p-2 text-gray-500 hover:text-gray-900 transition duration-300"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                />
+                            </svg>
+                        </a>
+
+                        <a
+                            href="#"
+                            class="p-2 text-gray-500 hover:text-gray-900 transition duration-300 relative"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                />
+                            </svg>
+                            <span
+                                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-2 rounded-full"
+                                >2</span
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div class="md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-2">
+                    <!-- Barra de Pesquisa (Mobile) -->
+                    <input
+                        type="text"
+                        placeholder="Pesquisar..."
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+
+                    <!-- Links do Menu (Mobile) -->
+                    <a
+                        href="#"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Home</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Computadores</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Promoções</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Contactos</a
+                    >
+                </div>
+            </div>
+        </div>
+    </nav>
+</template>
+
+<script>
+export default {
+    name: "Navbar",
+};
+</script>
