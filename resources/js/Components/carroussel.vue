@@ -7,7 +7,7 @@
         <div class="flex flex-wrap justify-center gap-8 px-4">
             <!-- Produto 1 -->
             <a
-                href="http://localhost:8000/computadores/1"
+                href="http://localhost:8000/produtos/1"
                 class="block bg-slate-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
                 <div class="w-80 h-96 flex flex-col">
@@ -23,7 +23,7 @@
             </a>
 
             <!-- Produto 2 -->
-            <a href="http://localhost:8000/computadores/2">
+            <a href="http://localhost:8000/produtos/2">
                 <div
                     class="bg-slate-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
@@ -42,7 +42,7 @@
 
             <!-- Produto 3 -->
             <a
-                href="http://localhost:8000/computadores/3"
+                href="http://localhost:8000/produtos/3"
                 class="block bg-slate-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
                 <div class="w-80 h-96 flex flex-col">

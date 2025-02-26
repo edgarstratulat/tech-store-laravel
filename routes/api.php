@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\ProductController;
 use App\Models\Produto;
 
 Route::get('/', function () {
     return Inertia::render('home');
 });
 
-Route::get('/produtos', [ComputerController::class, 'index']);
-Route::get('/produtos/{id}', [ComputerController::class, 'show']);
+Route::get('/produtos', [ProductController::class, 'index']);
+Route::get('/produtos/{id}', [ProductController::class, 'show']);
 
 Route::get('/produto/adicionar', function () {
     return Inertia::render('addProduto');

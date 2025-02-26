@@ -10,7 +10,7 @@
 <script>
 export default {
     props: {
-        produtos: {
+        produto: {
             type: Object,
             required: true,
         },

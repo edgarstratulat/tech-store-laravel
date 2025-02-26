@@ -6,7 +6,7 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ComputerController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
@@ -37,6 +37,6 @@ class ComputerController extends Controller
 
         Produto::create($validated);
 
-        return redirect()->route('computadores.index')->with('success', 'Computador adicionado com sucesso!');
+        return redirect()->route('produtos.index')->with('success', 'Computador adicionado com sucesso!');
     }
 }
