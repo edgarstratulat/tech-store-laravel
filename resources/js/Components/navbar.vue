@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <a href="#" class="flex items-center">
                         <span class="font-semibold text-gray-900 text-2xl"
-                            >Tech Shop</span
+                            >Tech Store</span
                         >
                     </a>
 

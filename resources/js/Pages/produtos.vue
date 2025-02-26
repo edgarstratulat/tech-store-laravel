@@ -1,6 +1,6 @@
 <template>
     <div class="p-4">
-        <h1 class="text-2xl font-bold mb-4">Lista de Computadores</h1>
+        <h1 class="text-2xl font-bold mb-4">Lista de Produtos</h1>
         <div>
             <ul>
                 <li v-for="prod in produtos" :key="prod.id">
