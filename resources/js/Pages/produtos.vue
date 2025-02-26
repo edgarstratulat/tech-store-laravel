@@ -3,9 +3,9 @@
         <h1 class="text-2xl font-bold mb-4">Lista de Computadores</h1>
         <div>
             <ul>
-                <li v-for="pc in computadores" :key="pc.id">
-                    <a :href="`http://localhost:8000/computadores/${pc.id}`">
-                        {{ pc.name }} - {{ pc.price }}€
+                <li v-for="prod in produtos" :key="prod.id">
+                    <a :href="`http://localhost:8000/produtos/${prod.id}`">
+                        {{ prod.name }} - {{ prod.price }}€
                     </a>
                 </li>
             </ul>
@@ -16,7 +16,7 @@
 <script>
 export default {
     props: {
-        computadores: {
+        produtos: {
             type: Array,
             required: true,
         },

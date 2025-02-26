@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Computador;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -10,38 +10,33 @@ class ComputerController extends Controller
 {
     public function index()
     {
-        $computadores = Computador::all(); 
+        $produtos = Produto::all(); 
 
-        return Inertia::render('computadores', [
-            'computadores' => $computadores,
+        return Inertia::render('produtos', [
+            'produtos' => $produtos,
         ]);
     }
 
     public function show($id)
     {
-        $computadores = Computador::find($id);
+        $produtos = Produto::find($id);
 
-        return Inertia::render('computador', [
-            'computador' => $computadores
+        return Inertia::render('produto', [
+            'produto' => $produtos
         ]);
     }
 
     public function store(Request $request)
     {
-        $computadores = Computador::create($request->all());
-        return response()->json($computadores, 201);
-    }
 
-    public function update(Request $request, $id)
-    {
-        $computadores = Computador::find($id);
-        $computadores->update($request->all());
-        return response()->json($computadores, 200);
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|double',
+            'desc' => 'nullable|string',
+        ]);
 
-    public function destroy($id)
-    {
-        Computador::destroy($id);
-        return response()->json(null, 204);
+        Produto::create($validated);
+
+        return redirect()->route('computadores.index')->with('success', 'Computador adicionado com sucesso!');
     }
 }
