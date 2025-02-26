@@ -26,17 +26,17 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
+    public function showProducts() {
+        return Inertia::render('addProduto');
+    }
 
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|double',
-            'desc' => 'nullable|string',
+    public function createProducts() {
+        Produto::create([
+            'name' => request('name'),
+            'price' => request('price'),
+            'desc' => request('desc')
         ]);
-
-        Produto::create($validated);
-
-        return redirect()->route('produtos.index')->with('success', 'Computador adicionado com sucesso!');
+    
+        return redirect('/produtos');
     }
 }

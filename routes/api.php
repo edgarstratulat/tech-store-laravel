@@ -12,16 +12,5 @@ Route::get('/', function () {
 Route::get('/produtos', [ProductController::class, 'index']);
 Route::get('/produtos/{id}', [ProductController::class, 'show']);
 
-Route::get('/produto/adicionar', function () {
-    return Inertia::render('addProduto');
-});
-
-Route::post('/produto/adicionar', function() {
-    Produto::create([
-        'name' => request('name'),
-        'price' => request('price'),
-        'desc' => request('desc')
-    ]);
-
-    return redirect('/produtos');
-});
+Route::get('/produto/adicionar', [ProductController::class, 'showProducts']);
+Route::post('/produto/adicionar', [ProductController::class, 'createProducts']);

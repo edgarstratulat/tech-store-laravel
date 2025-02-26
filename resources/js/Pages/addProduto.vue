@@ -18,8 +18,6 @@ function submit() {
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Adicionar Produtos
         </h1>
-
-        <p class="font-bold mb-6 text-gray-800 text-center">Tech Store</p>
         <form @submit.prevent="submit" class="space-y-4">
             <div>
                 <label
@@ -31,7 +29,7 @@ function submit() {
                 <input
                     id="name"
                     v-model="form.name"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>
 
@@ -45,7 +43,7 @@ function submit() {
                 <input
                     id="price"
                     v-model="form.price"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>
 
@@ -59,7 +57,7 @@ function submit() {
                 <input
                     id="desc"
                     v-model="form.desc"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>
 
@@ -69,6 +67,12 @@ function submit() {
             >
                 Adicionar Produto
             </button>
+
+            <a href="/">
+                <h1 class="font-bold mb-6 text-gray-800 text-center mt-5">
+                    Página Inicial
+                </h1>
+            </a>
         </form>
     </div>
 </template>
