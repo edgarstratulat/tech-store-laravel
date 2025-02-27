@@ -1,16 +1,16 @@
 <template>
     <div class="p-4">
         <h1 class="text-2xl font-bold mb-4">Detalhes do Produto</h1>
-        <p>Nome: {{ produto.name }}</p>
-        <p>Preço: {{ produto.price }}€</p>
-        <p>Detalhes do produto: {{ produto.desc }}</p>
+        <p>Nome: {{ DetalhesProduto.name }}</p>
+        <p>Preço: {{ DetalhesProduto.price }}€</p>
+        <p>Detalhes do produto: {{ DetalhesProduto.desc }}</p>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        produto: {
+        DetalhesProduto: {
             type: Object,
             required: true,
         },

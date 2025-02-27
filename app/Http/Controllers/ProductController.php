@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -10,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::all(); 
+        $produtos = Produto::all();
 
         return Inertia::render('produtos', [
             'produtos' => $produtos,
@@ -20,9 +21,11 @@ class ProductController extends Controller
     public function showProductsHome()
     {
         $produtos = Produto::all(); 
+        $users = User::all();
 
         return Inertia::render('home', [
             'produtos' => $produtos,
+            'utilizadores' => $users,
         ]);
     }
 
@@ -31,7 +34,7 @@ class ProductController extends Controller
         $produtos = Produto::find($id);
 
         return Inertia::render('detalhes-produto', [
-            'produto' => $produtos
+            'DetalhesProduto' => $produtos
         ]);
     }
 
