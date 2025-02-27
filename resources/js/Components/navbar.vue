@@ -72,7 +72,7 @@
                     <!-- Ícones de Usuário e Carrinho -->
                     <div class="flex items-center space-x-4">
                         <a
-                            href="#"
+                            href="http://localhost:8000/registo"
                             class="p-2 text-gray-500 hover:text-gray-900 transition duration-300"
                         >
                             <svg
