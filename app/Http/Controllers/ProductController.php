@@ -21,11 +21,9 @@ class ProductController extends Controller
     public function showProductsHome()
     {
         $produtos = Produto::all(); 
-        $users = User::all();
 
         return Inertia::render('home', [
             'produtos' => $produtos,
-            'utilizadores' => $users,
         ]);
     }
 
