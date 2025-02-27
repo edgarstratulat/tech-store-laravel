@@ -3,7 +3,7 @@
         <h1 class="text-2xl font-bold mb-4">Detalhes do Produto</h1>
         <p>Nome: {{ produto.name }}</p>
         <p>Preço: {{ produto.price }}€</p>
-        <p>Detalhes do produtos: {{ produto.desc }}</p>
+        <p>Detalhes do produto: {{ produto.desc }}</p>
     </div>
 </template>
 

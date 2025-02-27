@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-white shadow-lg">
+    <nav class="bg-slate-200 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <!-- Logo e Links do Menu -->

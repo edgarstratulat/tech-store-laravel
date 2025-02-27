@@ -1,5 +1,5 @@
-<template>
-    <div class="p-4">
+<template clas>
+    <div class="p-4 bg-gray-50">
         <h1 class="text-3xl text-center my-8 font-bold">Lista de Produtos</h1>
         <div>
             <ul>

@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
         $produtos = Produto::find($id);
 
-        return Inertia::render('produto', [
+        return Inertia::render('detalhes-produto', [
             'produto' => $produtos
         ]);
     }
@@ -41,13 +41,16 @@ class ProductController extends Controller
 
     public function createProducts(Request $request) {
         $createProductsValidation = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:2',
             'price' => 'numeric',
             'desc' => 'required|max:255'
         ]);
 
         Produto::create($createProductsValidation);
 
-        return redirect('/');
+        return Inertia::render('home', [
+            'produtos' => Produto::all()
+        ]);
+    
     }
 }
