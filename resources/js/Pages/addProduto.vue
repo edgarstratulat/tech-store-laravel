@@ -6,6 +6,7 @@ const form = reactive({
     name: null,
     price: null,
     desc: null,
+    image: null,
 });
 
 function submit() {
@@ -57,6 +58,21 @@ function submit() {
                 <input
                     id="desc"
                     v-model="form.desc"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
+                />
+            </div>
+            <div>
+                <label
+                    for="image"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Imagem do Produto:
+                </label>
+                <input
+                    id="image"
+                    input
+                    type="file"
+                    @input="form.image = $event.target.files[0]"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>

@@ -17,6 +17,15 @@ class ProductController extends Controller
         ]);
     }
 
+    public function showProductsHome()
+    {
+        $produtos = Produto::all(); 
+
+        return Inertia::render('home', [
+            'produtos' => $produtos,
+        ]);
+    }
+
     public function show($id)
     {
         $produtos = Produto::find($id);
@@ -30,13 +39,15 @@ class ProductController extends Controller
         return Inertia::render('addProduto');
     }
 
-    public function createProducts() {
-        Produto::create([
-            'name' => request('name'),
-            'price' => request('price'),
-            'desc' => request('desc')
+    public function createProducts(Request $request) {
+        $createProductsValidation = $request->validate([
+            'name' => 'required',
+            'price' => 'numeric',
+            'desc' => 'required|max:255'
         ]);
-    
-        return redirect('/produtos');
+
+        Produto::create($createProductsValidation);
+
+        return redirect('/');
     }
 }

@@ -44,10 +44,12 @@
                         <div class="relative">
                             <input
                                 type="text"
+                                name="search"
                                 placeholder="Pesquisar produtos..."
                                 class="w-64 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                             />
                             <button
+                                type="submit"
                                 class="absolute inset-y-0 right-0 pr-3 flex items-center"
                             >
                                 <svg

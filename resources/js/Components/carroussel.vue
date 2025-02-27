@@ -19,6 +19,7 @@
                     <h2 class="text-2xl mt-4 text-center text-gray-800">
                         PC Gaming
                     </h2>
+                    <p class="text-lg text-center text-gray-800">599€</p>
                 </div>
             </a>
 
@@ -36,6 +37,7 @@
                         <h2 class="text-2xl mt-4 text-center text-gray-800">
                             PC Gaming Ultra
                         </h2>
+                        <p class="text-lg text-center text-gray-800">799€</p>
                     </div>
                 </div>
             </a>
@@ -54,6 +56,7 @@
                     <h2 class="text-2xl mt-4 text-center text-gray-800">
                         PC Gaming Ultra Max
                     </h2>
+                    <p class="text-lg text-center text-gray-800">999€</p>
                 </div>
             </a>
         </div>
@@ -61,12 +64,5 @@
 </template>
 
 <script>
-export default {
-    props: {
-        computadores: {
-            type: Array,
-            required: true,
-        },
-    },
-};
+export default {};
 </script>
