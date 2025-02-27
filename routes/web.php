@@ -18,3 +18,6 @@ Route::get('/registo', [UserController::class, 'showPageRegister']);
 Route::post('/registo', [UserController::class, 'createUser']);
 
 Route::get('/login', [UserController::class, 'showPageLogin']);
+Route::post('/login', [UserController::class, 'userAuth']);
+
+Route::get('/logout', [UserController::class, 'userLogout']);
