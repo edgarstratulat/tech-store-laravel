@@ -53,7 +53,7 @@ class UserController extends Controller
 
     // Logout
 
-    public function userLogout(Request $request) {
+    public function userLogout() {
         Auth::logout();
         return Inertia::location('/login'); 
     }
