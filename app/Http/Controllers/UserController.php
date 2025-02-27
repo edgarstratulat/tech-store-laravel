@@ -9,7 +9,7 @@ use App\Models\User;
 class UserController extends Controller
 {
 
-    public function showPageUsers() {
+    public function showPageRegister() {
         return Inertia::render('addUser');
     }
 
@@ -28,4 +28,12 @@ class UserController extends Controller
             
         return Inertia::render('home');
     }
+
+
+    //Login
+
+    public function showPageLogin() {
+        return Inertia::render('loginUser');
+    }
+
 }

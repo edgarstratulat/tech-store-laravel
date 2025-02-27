@@ -14,5 +14,7 @@ Route::get('/produtos/{id}', [ProductController::class, 'show']);
 Route::get('/produto/adicionar', [ProductController::class, 'showProducts']);
 Route::post('/produto/adicionar', [ProductController::class, 'createProducts']);
 
-Route::get('/registo', [UserController::class, 'showPageUsers']);
+Route::get('/registo', [UserController::class, 'showPageRegister']);
 Route::post('/registo', [UserController::class, 'createUser']);
+
+Route::get('/login', [UserController::class, 'showPageLogin']);

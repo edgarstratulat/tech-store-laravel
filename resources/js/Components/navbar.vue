@@ -71,25 +71,77 @@
 
                     <!-- Ícones de Usuário e Carrinho -->
                     <div class="flex items-center space-x-4">
-                        <a
-                            href="http://localhost:8000/registo"
-                            class="p-2 text-gray-500 hover:text-gray-900 transition duration-300"
-                        >
-                            <svg
-                                class="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
+                        <!-- User Icon with Dropdown -->
+                        <div class="relative">
+                            <button
+                                @click="toggleDropdown"
+                                class="p-2 text-gray-500 hover:text-gray-900 transition duration-300"
                             >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                            </svg>
-                        </a>
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                    />
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <ul
+                                v-if="isDropdownOpen"
+                                class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                            >
+                                <a href="http://localhost:8000/login">
+                                    <li
+                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:bg-slate-100"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="w-5 h-5 text-slate-400"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span class="ml-2">Login</span>
 
+                                        <hr class="my-2 border-slate-200" />
+                                    </li>
+                                </a>
+                                <a href="http://localhost:8000/registo">
+                                    <li
+                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:bg-slate-100"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            class="w-5 h-5 text-slate-400"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span class="ml-2">Registo</span>
+
+                                        <hr class="my-2 border-slate-200" />
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+
+                        <!-- Cart Icon -->
                         <a
                             href="#"
                             class="p-2 text-gray-500 hover:text-gray-900 transition duration-300 relative"
@@ -123,7 +175,7 @@
                     <input
                         type="text"
                         placeholder="Pesquisar..."
-                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                     />
 
                     <!-- Links do Menu (Mobile) -->
@@ -161,5 +213,15 @@
 <script>
 export default {
     name: "Navbar",
+    data() {
+        return {
+            isDropdownOpen: false,
+        };
+    },
+    methods: {
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
+        },
+    },
 };
 </script>
