@@ -4,15 +4,17 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CreateProductController;
+use App\Http\Controllers\HomeController;
 
-//Product Controller
-Route::get('/', [ProductController::class, 'showProductsHome']);
+//Home Controller
+Route::get('/', [HomeController::class, 'showProductsHome', 'userLogged']);
 
 Route::get('/produtos', [ProductController::class, 'index']);
 Route::get('/produtos/{id}', [ProductController::class, 'show']);
 
-Route::middleware('auth')->get('/produto/adicionar', [ProductController::class, 'showProducts']);
-Route::middleware('auth')->post('/produto/adicionar', [ProductController::class, 'createProducts']);
+Route::middleware('auth')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
+Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::class, 'createProducts']);
 
 //User Controller
 Route::get('/registo', [UserController::class, 'showPageRegister']);

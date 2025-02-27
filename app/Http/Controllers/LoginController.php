@@ -24,10 +24,9 @@ class LoginController extends Controller
             return 'Dados Inválidos!';
         }
     }
-
-    // Logout
+    
     public function userLogout() {
         Auth::logout();
-        return Inertia::location('/login'); 
+        return Inertia::location('/'); 
     }
 }

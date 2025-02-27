@@ -26,4 +26,6 @@ class Authenticate
             return route('login');
         }
     }
+
+    
 }

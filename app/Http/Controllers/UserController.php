@@ -8,9 +8,6 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-
-    // Register
-
     public function showPageRegister() {
         return Inertia::render('addUser');
     }
