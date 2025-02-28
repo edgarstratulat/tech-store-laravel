@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center items-center bg-white p-4">
+    <div class="flex justify-center items-center zinc-100 p-4">
         <div class="w-full max-w-6xl">
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
@@ -44,7 +44,7 @@
                                     </span>
                                 </div>
                                 <button
-                                    class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-900 transition-colors duration-300"
+                                    class="bg-neutral-800 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300"
                                 >
                                     Adicionar
                                 </button>

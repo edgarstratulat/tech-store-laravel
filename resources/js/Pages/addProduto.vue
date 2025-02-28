@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { handleError, reactive } from "vue";
 import { router } from "@inertiajs/vue3";
 import Navbar from "../Components/navbar.vue";
 
@@ -10,9 +10,19 @@ const form = reactive({
     image: null,
 });
 
-function submit() {
-    router.post("/produto/adicionar", form);
-}
+const handleImageUpload = (event) => {
+    form.image = event.target.files[0];
+};
+
+const submit = () => {
+    const formData = new FormData();
+    formData.append("name", form.name);
+    formData.append("price", form.price);
+    formData.append("desc", form.desc);
+    formData.append("image", form.image);
+
+    router.post("/produto/adicionar", formData);
+};
 </script>
 
 <template>
@@ -75,7 +85,7 @@ function submit() {
                     id="image"
                     input
                     type="file"
-                    @input="form.image"
+                    @change="handleImageUpload"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>

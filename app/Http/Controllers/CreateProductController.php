@@ -13,14 +13,25 @@ class CreateProductController extends Controller
     }
 
     public function createProducts(Request $request) {
-        $createProductsValidation = $request->validate([
+        $request->validate([
             'name' => 'required|min:2',
             'price' => 'numeric',
             'desc' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Produto::create($createProductsValidation);
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+        }
+
+        Produto::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'desc' => $request->desc,
+            'image_path' => $imagePath
+        ]);
 
         return Inertia::location('/');
     

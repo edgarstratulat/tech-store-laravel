@@ -11,5 +11,5 @@ class Produto extends Model
     use HasFactory; 
 
     protected $table = 'Products';
-    protected $fillable = ['name', 'price', 'desc'];
+    protected $fillable = ['name', 'price', 'desc', 'image_path'];
 }

@@ -6,7 +6,7 @@
                 <div class="flex items-center">
                     <!-- Logo -->
                     <a href="http://localhost:8000/" class="flex items-center">
-                        <span class="font-semibold text-gray-900 text-2xl"
+                        <span class="font-semibold text-blue-600 text-2xl"
                             >Tech Store</span
                         >
                     </a>
@@ -17,22 +17,22 @@
                     >
                         <a
                             href="http://localhost:8000/"
-                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Home</a
                         >
                         <a
                             href="http://localhost:8000/produtos"
-                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Produtos</a
                         >
                         <a
                             href="#"
-                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Contactos</a
                         >
                         <a
                             href="http://localhost:8000/produto/adicionar"
-                            class="text-gray-500 hover:text-gray-900 transition duration-300"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Adicionar Produtos</a
                         >
                     </div>

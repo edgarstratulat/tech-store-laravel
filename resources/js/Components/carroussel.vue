@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-cyan-900 text-white py-16 drop-shadow-md sm:m-12 lg:m-12 mb-5 rounded-lg"
+        class="bg-cyan-900 text-white py-16 drop-shadow-md sm:m-12 lg:m-12 mb-5 rounded-lg zinc-100"
     >
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4 drop-shadow-md">BLACK FRIDAY</h2>
