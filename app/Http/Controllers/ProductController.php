@@ -11,7 +11,7 @@ class ProductController extends Controller
     {
         $produtos = Produto::all();
 
-        return Inertia::render('produtos', [
+        return Inertia::render('produtosPage', [
             'Produtos' => $produtos,
         ]);
     }

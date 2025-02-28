@@ -16,7 +16,7 @@
                         class="hidden md:flex md:items-center md:space-x-6 ml-8"
                     >
                         <a
-                            href="#"
+                            href="http://localhost:8000/"
                             class="text-gray-500 hover:text-gray-900 transition duration-300"
                             >Home</a
                         >

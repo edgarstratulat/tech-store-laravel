@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from "vue";
 import { router } from "@inertiajs/vue3";
+import Navbar from "../Components/navbar.vue";
 
 const form = reactive({
     name: null,
@@ -15,6 +16,7 @@ function submit() {
 </script>
 
 <template>
+    <Navbar />
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Adicionar Produtos
@@ -92,3 +94,11 @@ function submit() {
         </form>
     </div>
 </template>
+
+<script>
+export default {
+    components: {
+        Navbar,
+    },
+};
+</script>

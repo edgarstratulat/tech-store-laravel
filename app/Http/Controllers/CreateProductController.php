@@ -24,6 +24,8 @@ class CreateProductController extends Controller
         return Inertia::render('home', [
             'produtos' => Produto::all()
         ]);
+
+        return Inertia::location('/');
     
     }
 }
