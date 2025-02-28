@@ -1,5 +1,8 @@
 <template>
-    <div class="flex justify-center items-center min-h-screen bg-gray-50 p-4">
+    <h1 class="bg-gray-50 text-3xl text-center font-bold text-gray-800 p-12">
+        Lista de Produtos
+    </h1>
+    <div class="flex justify-center items-center bg-gray-50 p-4">
         <div class="w-full max-w-6xl">
             <!-- Container com largura máxima -->
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

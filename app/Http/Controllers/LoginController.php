@@ -19,7 +19,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return Inertia::location('/'); 
+            return Inertia::location('/');
         } else {
             return 'Dados Inválidos!';
         }

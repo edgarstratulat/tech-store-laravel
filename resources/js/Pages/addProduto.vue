@@ -74,7 +74,7 @@ function submit() {
                     id="image"
                     input
                     type="file"
-                    @input="form.image = $event.target.files[0]"
+                    @input="form.image"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>

@@ -1,9 +1,6 @@
 <template>
     <Navbar />
     <Carroussel />
-    <h1 class="bg-gray-50 text-3xl text-center font-bold text-gray-800 p-12">
-        Lista de Produtos
-    </h1>
     <Produtos :Produtos="Produtos" />
 </template>
 

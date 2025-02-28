@@ -8,7 +8,7 @@ use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\HomeController;
 
 //Home Controller
-Route::get('/', [HomeController::class, 'showProductsHome', 'userLogged']);
+Route::get('/', [HomeController::class, 'showProductsHome']);
 
 Route::get('/produtos', [ProductController::class, 'index']);
 Route::get('/produtos/{id}', [ProductController::class, 'show']);

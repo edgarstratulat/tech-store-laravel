@@ -16,16 +16,13 @@ class CreateProductController extends Controller
         $createProductsValidation = $request->validate([
             'name' => 'required|min:2',
             'price' => 'numeric',
-            'desc' => 'required|max:255'
+            'desc' => 'required|max:255',
         ]);
 
         Produto::create($createProductsValidation);
 
-        return Inertia::render('home', [
-            'produtos' => Produto::all()
-        ]);
-
         return Inertia::location('/');
     
     }
+
 }
