@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController;
 //Home Controller
 Route::get('/', [HomeController::class, 'showProductsHome']);
 
-Route::get('/produtos', [ProductController::class, 'index']);
+Route::get('/promocoes', [ProductController::class, 'index']);
 Route::get('/produtos/{id}', [ProductController::class, 'show']);
 
 Route::middleware('auth')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);

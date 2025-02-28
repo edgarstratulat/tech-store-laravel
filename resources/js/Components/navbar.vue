@@ -21,9 +21,9 @@
                             >Home</a
                         >
                         <a
-                            href="http://localhost:8000/produtos"
+                            href="http://localhost:8000/promocoes"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Produtos</a
+                            >Promoções</a
                         >
                         <a
                             href="#"
@@ -222,7 +222,7 @@
                     <a
                         href="#"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Produtos</a
+                        >Promoções</a
                     >
                     <a
                         href="#"
