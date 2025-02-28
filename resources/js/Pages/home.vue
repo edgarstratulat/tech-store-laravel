@@ -1,12 +1,9 @@
 <template>
-    <Navbar />
-    <Carroussel />
-    <h1
-        class="bg-white text-3xl text-center sm:text-center mb-12 font-bold text-gray-800"
-    >
-        Promoções
-    </h1>
-    <Produtos :Produtos="Produtos" />
+    <div class="bg-zinc-100">
+        <Navbar />
+        <Carroussel />
+        <Produtos :Produtos="Produtos" />
+    </div>
 </template>
 
 <script>

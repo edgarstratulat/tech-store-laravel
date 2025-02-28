@@ -1,5 +1,5 @@
 <template>
-    <nav class="#ffffff shadow-lg">
+    <nav class="bg-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <!-- Logo e Links do Menu -->
@@ -46,7 +46,7 @@
                                 type="text"
                                 name="search"
                                 placeholder="Pesquisar produtos..."
-                                class="w-64 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                                class="w-64 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                             />
                             <button
                                 type="submit"
@@ -69,13 +69,31 @@
                         </div>
                     </div>
 
-                    <!-- Ícones de Usuário e Carrinho -->
+                    <!-- Ícones lua -->
                     <div class="flex items-center space-x-4">
+                        <a
+                            href="#"
+                            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300 relative"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                                />
+                            </svg>
+                        </a>
                         <!-- User Icon with Dropdown -->
                         <div class="relative">
                             <button
                                 @click="toggleDropdown"
-                                class="p-2 text-gray-500 hover:text-gray-900 transition duration-300"
+                                class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300"
                             >
                                 <svg
                                     class="w-6 h-6"
@@ -119,7 +137,7 @@
                                 </a>
                                 <a href="http://localhost:8000/registo">
                                     <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:bg-slate-100"
+                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +183,7 @@
                         <!-- Cart Icon -->
                         <a
                             href="#"
-                            class="p-2 text-gray-500 hover:text-gray-900 transition duration-300 relative"
+                            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300 relative"
                         >
                             <svg
                                 class="w-6 h-6"
@@ -180,10 +198,6 @@
                                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                 />
                             </svg>
-                            <span
-                                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-2 rounded-full"
-                                >2</span
-                            >
                         </a>
                     </div>
                 </div>
