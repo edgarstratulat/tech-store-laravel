@@ -1,36 +1,52 @@
 <template>
-    <h1 class="bg-gray-50 text-3xl text-center font-bold text-gray-800 p-12">
-        Lista de Produtos
-    </h1>
-    <div class="flex justify-center items-center bg-gray-50 p-4">
+    <div class="flex justify-center items-center bg-white p-4">
         <div class="w-full max-w-6xl">
-            <!-- Container com largura máxima -->
-            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
                     v-for="prod in Produtos"
                     :key="prod.id"
-                    class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                    class="bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
                     <a
                         :href="`http://localhost:8000/produtos/${prod.id}`"
                         class="block p-6"
                     >
                         <div class="flex flex-col justify-between h-full">
+                            <!-- Product Image -->
+                            <div class="mb-4">
+                                <img
+                                    :src="`/storage/${prod.image_path}`"
+                                    :alt="prod.name"
+                                    class="w-full h-48 object-cover rounded-lg"
+                                />
+                            </div>
+
+                            <!-- Product Details -->
                             <div>
-                                <h2 class="text-xl font-semibold">
+                                <h2 class="text-xl font-semibold mb-2">
                                     {{ prod.name }}
                                 </h2>
-                                <p class="text-gray-600">{{ prod.desc }}</p>
+
+                                <p class="text-gray-600 text-sm">
+                                    {{ DiminuirTexto(prod.desc, 150) }}
+                                    <a href="" class="font-bold text-gray-900"
+                                        >Ver Mais</a
+                                    >
+                                </p>
                             </div>
-                            <div class="mt-4 text-right">
-                                <span
-                                    class="text-lg font-bold text-gray-900 mr-2"
-                                    >{{ prod.price }}€</span
-                                >
+
+                            <div class="mt-4 flex justify-between items-center">
+                                <div>
+                                    <span
+                                        class="text-lg font-bold text-gray-900"
+                                    >
+                                        {{ prod.price }}€
+                                    </span>
+                                </div>
                                 <button
-                                    class="mt-2 bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-900 transition-colors duration-300"
+                                    class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-900 transition-colors duration-300"
                                 >
-                                    Ver Produto
+                                    Adicionar
                                 </button>
                             </div>
                         </div>
@@ -47,6 +63,11 @@ export default {
         Produtos: {
             type: Array,
             required: true,
+        },
+    },
+    methods: {
+        DiminuirTexto(text, maxLength) {
+            return text.slice(0, maxLength);
         },
     },
 };

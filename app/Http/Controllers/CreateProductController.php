@@ -16,7 +16,8 @@ class CreateProductController extends Controller
         $createProductsValidation = $request->validate([
             'name' => 'required|min:2',
             'price' => 'numeric',
-            'desc' => 'required|max:255',
+            'desc' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         Produto::create($createProductsValidation);

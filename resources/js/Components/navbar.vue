@@ -1,11 +1,11 @@
 <template>
-    <nav class="bg-slate-200 shadow-lg">
+    <nav class="#ffffff shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <!-- Logo e Links do Menu -->
                 <div class="flex items-center">
                     <!-- Logo -->
-                    <a href="#" class="flex items-center">
+                    <a href="http://localhost:8000/" class="flex items-center">
                         <span class="font-semibold text-gray-900 text-2xl"
                             >Tech Store</span
                         >
@@ -201,7 +201,7 @@
 
                     <!-- Links do Menu (Mobile) -->
                     <a
-                        href="#"
+                        href="http://localhost:8000/"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Home</a
                     >
