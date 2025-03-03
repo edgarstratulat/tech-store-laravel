@@ -16,6 +16,7 @@ class CreateProductController extends Controller
         $request->validate([
             'name' => 'required|min:2',
             'price' => 'numeric',
+            'sale_price' => 'numeric',
             'desc' => 'required',
             'category' => 'required',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -30,6 +31,7 @@ class CreateProductController extends Controller
         Produto::create([
             'name' => $request->name,
             'price' => $request->price,
+            'sale_price' => $request->sale_price,
             'desc' => $request->desc,
             'category' => $request->category,
             'image_path' => $imagePath

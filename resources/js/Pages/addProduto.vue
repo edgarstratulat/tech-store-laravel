@@ -1,13 +1,14 @@
 <script setup>
-import { handleError, reactive } from "vue";
+import { reactive } from "vue";
 import { router } from "@inertiajs/vue3";
 import Navbar from "../Components/navbar.vue";
 
 const form = reactive({
     name: null,
     price: null,
+    sale_price: null,
     desc: null,
-    category: null,
+    category: [],
     image: null,
 });
 
@@ -19,6 +20,8 @@ const submit = () => {
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("price", form.price);
+    formData.append("sale_price", form.sale_price);
+    formData.append("desc", form.desc);
     formData.append("image", form.image);
     formData.append("category", form.category);
     formData.append("desc", form.desc);
@@ -58,6 +61,20 @@ const submit = () => {
                 <input
                     id="price"
                     v-model="form.price"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
+                />
+            </div>
+
+            <div>
+                <label
+                    for="price"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    % de Desconto:
+                </label>
+                <input
+                    id="sale_price"
+                    v-model="form.sale_price"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>

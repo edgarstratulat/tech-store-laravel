@@ -21,8 +21,26 @@
                             <img
                                 :src="`/storage/${prod.image_path}`"
                                 :alt="prod.name"
-                                class="w-full h-64 object-contain rounded-lg transition delay-50 hover:scale-105"
+                                class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"
                             />
+                            <div
+                                class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
+                                v-if="prod.sale_price <= 0"
+                            >
+                                <p class="invisible">Teste</p>
+                            </div>
+                            <div
+                                class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
+                                v-else
+                            >
+                                -{{ prod.sale_price }}%
+                            </div>
+                        </div>
+
+                        <div class="flex-grow">
+                            <h2 class="text-md mb-2 text-neutral-300">
+                                {{ prod.category }}
+                            </h2>
                         </div>
 
                         <!-- Product Details -->
@@ -33,19 +51,31 @@
                                 {{ prod.name }}
                             </h2>
                         </div>
-                        <div class="flex-grow">
-                            <p class="text-gray-400 text-sm">
-                                {{ DiminuirTexto(prod.desc, 100) }} ...
-                            </p>
-                        </div>
 
                         <!-- Price and Button -->
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-lg font-bold text-blue-600">
+                        <div class="mt-4 flex gap-5 items-center">
+                            <span
+                                class="text-2xl mb-1 font-bold text-blue-600"
+                                v-if="prod.sale_price <= 0"
+                            >
                                 {{ prod.price }}€
                             </span>
+                            <span
+                                class="text-2xl mb-1 font-bold text-blue-600"
+                                v-else
+                            >
+                                {{ Desconto(prod) }}€
+                                <span
+                                    class="text-sm mb-1 text-neutral-400 line-through"
+                                >
+                                    {{ prod.price }}€
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="flex items-center">
                             <button
-                                class="bg-neutral-800 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300"
+                                class="bg-neutral-800 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-full"
                             >
                                 Adicionar
                             </button>
@@ -66,8 +96,12 @@ export default {
         },
     },
     methods: {
-        DiminuirTexto(text, maxLength) {
-            return text.slice(0, maxLength);
+        Desconto(prod) {
+            const Discount = prod.price * (prod.sale_price / 100);
+
+            const FinalDiscount = prod.price - Discount;
+
+            return FinalDiscount.toFixed(2);
         },
     },
 };

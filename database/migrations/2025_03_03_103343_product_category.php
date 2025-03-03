@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id()->incrementing();
             $table->string('name');
             $table->string('price');
+            $table->string('sale_price');
             $table->text('desc');
             $table->text('category');
             $table->string('image_path')->nullable();
