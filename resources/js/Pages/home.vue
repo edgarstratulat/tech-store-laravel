@@ -6,7 +6,7 @@
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
                 <button
-                    class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 justify-center"
+                    class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-600 transition-colors duration-300 justify-center"
                 >
                     Ver todas as ofertas
                 </button>

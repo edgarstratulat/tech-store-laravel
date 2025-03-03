@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center items-center bg-zinc-100 p-4">
+    <div class="flex justify-center items-center p-4">
         <div class="w-full max-w-6xl max-h-6xl">
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
@@ -61,7 +61,7 @@
                                 {{ prod.price }}€
                             </span>
                             <span
-                                class="text-2xl mb-1 font-bold text-blue-600"
+                                class="text-2xl mb-1 font-bold text-red-600"
                                 v-else
                             >
                                 {{ Desconto(prod) }}€
@@ -73,11 +73,46 @@
                             </span>
                         </div>
 
-                        <div class="flex items-center">
+                        <div class="flex gap-5 items-center">
+                            <span
+                                class="text-md mb-1 font-bold text-red-600"
+                                v-if="prod.stock <= 0"
+                            >
+                                <p>Sem Stock</p>
+                            </span>
+                            <span
+                                class="text-md font-bold text-yellow-600"
+                                v-else-if="prod.stock <= 10"
+                            >
+                                <p>Poucas unidades</p>
+                            </span>
+                            <span
+                                class="text-md mb-1 font-bold text-green-600"
+                                v-else
+                            >
+                                <p>Em Stock</p>
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-2">
                             <button
-                                class="bg-neutral-800 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-full"
+                                class="bg-neutral-800 text-white px-4 py-2 hover:bg-blue-600 transition-colors duration-300 w-5/6"
                             >
                                 Adicionar
+                            </button>
+                            <button
+                                class="bg-neutral-400 text-white px-4 py-2 hover:bg-blue-700 transition-colors duration-300"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    class="w-6 h-6"
+                                    fill="white"
+                                >
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                    />
+                                </svg>
                             </button>
                         </div>
                     </a>

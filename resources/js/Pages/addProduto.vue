@@ -10,6 +10,7 @@ const form = reactive({
     desc: null,
     category: [],
     image: null,
+    stock: null,
 });
 
 const handleImageUpload = (event) => {
@@ -25,6 +26,7 @@ const submit = () => {
     formData.append("image", form.image);
     formData.append("category", form.category);
     formData.append("desc", form.desc);
+    formData.append("stock", form.stock);
 
     router.post("/produto/adicionar", formData);
 };
@@ -74,6 +76,7 @@ const submit = () => {
                 </label>
                 <input
                     id="sale_price"
+                    type="number"
                     v-model="form.sale_price"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
@@ -111,6 +114,20 @@ const submit = () => {
                     <option>Telemóveis</option>
                     <option>Acessórios</option>
                 </select>
+            </div>
+            <div>
+                <label
+                    for="stock"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Stock do produto:
+                </label>
+                <input
+                    id="stock"
+                    type="number"
+                    v-model="form.stock"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
+                />
             </div>
             <div>
                 <label

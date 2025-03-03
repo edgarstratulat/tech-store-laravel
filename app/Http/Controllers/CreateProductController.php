@@ -19,6 +19,7 @@ class CreateProductController extends Controller
             'sale_price' => 'numeric',
             'desc' => 'required',
             'category' => 'required',
+            'stock' => 'required|numeric',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -34,6 +35,7 @@ class CreateProductController extends Controller
             'sale_price' => $request->sale_price,
             'desc' => $request->desc,
             'category' => $request->category,
+            'stock' => $request->stock,
             'image_path' => $imagePath
         ]);
 
