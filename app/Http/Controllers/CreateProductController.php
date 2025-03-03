@@ -17,6 +17,7 @@ class CreateProductController extends Controller
             'name' => 'required|min:2',
             'price' => 'numeric',
             'desc' => 'required',
+            'category' => 'required',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -30,6 +31,7 @@ class CreateProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'desc' => $request->desc,
+            'category' => $request->category,
             'image_path' => $imagePath
         ]);
 

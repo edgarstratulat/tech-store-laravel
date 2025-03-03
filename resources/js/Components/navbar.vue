@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <a href="http://localhost:8000/" class="flex items-center">
                         <span class="font-semibold text-blue-600 text-2xl"
-                            >Tech Store</span
+                            >MaRca</span
                         >
                     </a>
 
@@ -242,7 +242,6 @@
 
 <script>
 export default {
-    name: "Navbar",
     data() {
         return {
             isDropdownOpen: false,

@@ -7,6 +7,7 @@ const form = reactive({
     name: null,
     price: null,
     desc: null,
+    category: null,
     image: null,
 });
 
@@ -18,8 +19,9 @@ const submit = () => {
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("price", form.price);
-    formData.append("desc", form.desc);
     formData.append("image", form.image);
+    formData.append("category", form.category);
+    formData.append("desc", form.desc);
 
     router.post("/produto/adicionar", formData);
 };
@@ -73,6 +75,25 @@ const submit = () => {
                     v-model="form.desc"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
+            </div>
+            <div>
+                <label
+                    for="category"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Categoria do produto:
+                </label>
+                <select
+                    v-model="form.category"
+                    multiple
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option>Computadores</option>
+                    <option>Periféricos</option>
+                    <option>Componentes</option>
+                    <option>Telemóveis</option>
+                    <option>Acessórios</option>
+                </select>
             </div>
             <div>
                 <label
