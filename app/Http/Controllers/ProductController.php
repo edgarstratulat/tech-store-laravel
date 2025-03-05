@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promocoes;
+use App\Models\Telemovel;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -24,4 +25,24 @@ class ProductController extends Controller
             'DetalhesProduto' => $promo
         ]);
     }
+
+    public function indexTelemoveis()
+    {
+        $tel = Telemovel::all();
+
+        return Inertia::render('telemoveisPage', [
+            'Telemovel' => $tel,
+        ]);
+    }
+
+    public function showTelemoveis($id)
+    {
+        $promo = Telemovel::find($id);
+
+        return Inertia::render('detalhes-produto', [
+            'DetalhesProduto' => $promo
+        ]);
+    }
+
+    
 }

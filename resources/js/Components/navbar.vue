@@ -23,12 +23,27 @@
                         <a
                             href="#"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Contactos</a
+                            >Computadores</a
                         >
                         <a
-                            href="http://localhost:8000/produto/adicionar"
+                            href="#"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Adicionar Produtos</a
+                            >Perífericos</a
+                        >
+                        <a
+                            href="#"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
+                            >Componentes</a
+                        >
+                        <a
+                            href="http://localhost:8000/telemoveis"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
+                            >Telemóveis</a
+                        >
+                        <a
+                            href="#"
+                            class="text-gray-500 hover:text-blue-600 transition duration-300"
+                            >Acessórios</a
                         >
                     </div>
                 </div>
@@ -154,6 +169,20 @@
                                                 ></circle>
                                             </svg>
                                             <span class="ml-2">Login</span>
+                                            <hr class="my-2 border-slate-200" />
+                                        </li>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a
+                                        href="http://localhost:8000/produto/adicionar"
+                                    >
+                                        <li
+                                            class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
+                                        >
+                                            <span class="ml-2"
+                                                >Adicionar Produtos</span
+                                            >
                                             <hr class="my-2 border-slate-200" />
                                         </li>
                                     </a>

@@ -4,16 +4,16 @@
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
             >
-                Promoções
+                Telemóveis
             </h1>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
-                    v-for="promo in Promocoes"
+                    v-for="promo in Telemovel"
                     :key="promo.id"
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/promocoes/${promo.id}`"
+                        :href="`http://localhost:8000/telemoveis/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
@@ -58,22 +58,8 @@
 
                         <!-- Price and Button -->
                         <div class="mt-4 flex gap-5 items-center">
-                            <span
-                                class="text-2xl mb-1 font-bold text-blue-600"
-                                v-if="promo.sale_price <= 0"
-                            >
+                            <span class="text-2xl mb-1 font-bold text-blue-600">
                                 {{ promo.price }}€
-                            </span>
-                            <span
-                                class="text-2xl mb-1 font-bold text-red-600"
-                                v-else
-                            >
-                                {{ Desconto(promo) }}€
-                                <span
-                                    class="text-sm mb-1 text-neutral-400 line-through"
-                                >
-                                    {{ promo.price }}€
-                                </span>
                             </span>
                         </div>
 
@@ -135,18 +121,9 @@
 <script>
 export default {
     props: {
-        Promocoes: {
+        Telemovel: {
             type: Array,
             required: true,
-        },
-    },
-    methods: {
-        Desconto(promo) {
-            const Discount = promo.price * (promo.sale_price / 100);
-
-            const FinalDiscount = promo.price - Discount;
-
-            return FinalDiscount.toFixed(2);
         },
     },
 };

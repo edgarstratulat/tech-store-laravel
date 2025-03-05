@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use App\Models\Produto;
 use App\Models\Promocoes;
 
 class HomeController extends Controller

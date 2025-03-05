@@ -16,6 +16,10 @@ Route::get('/promocoes/{id}', [ProductController::class, 'show']);
 Route::middleware('auth')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
 Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::class, 'createProducts']);
 
+// Telemoveis
+Route::get('/telemoveis', [ProductController::class, 'indexTelemoveis']);
+Route::get('/telemoveis/{id}', [ProductController::class, 'showTelemoveis']);
+
 //User Controller
 Route::get('/registo', [UserController::class, 'showPageRegister']);
 Route::post('/registo', [UserController::class, 'createUser']);
