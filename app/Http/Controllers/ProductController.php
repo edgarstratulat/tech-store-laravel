@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Promocoes;
 use App\Models\Telemovel;
+use App\Models\ComponentePC;
 use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    public function index()
+
+    // Promocoes
+
+    public function indexPromocoes()
     {
         $promo = Promocoes::all();
 
@@ -17,14 +21,16 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function showPromocoes($id)
     {
         $promo = Promocoes::find($id);
 
         return Inertia::render('detalhes-produto', [
-            'DetalhesProduto' => $promo
+            'DetalhesProduto' => $promo,
         ]);
     }
+
+    // Telemoveis
 
     public function indexTelemoveis()
     {
@@ -40,9 +46,30 @@ class ProductController extends Controller
         $promo = Telemovel::find($id);
 
         return Inertia::render('detalhes-produto', [
-            'DetalhesProduto' => $promo
+            'DetalhesProduto' => $promo,
         ]);
     }
 
+
+    // Componentes
+
+    public function indexComponentes()
+    {
+
+        $componentesPC = ComponentePC::all();
+
+        return Inertia::render('componentePcPage', [
+            'Componentes' => $componentesPC
+        ]);
+    }
+
+    public function showComponentePC($id)
+    {
+        $promo = ComponentePC::find($id);
+
+        return Inertia::render('detalhes-produto', [
+            'DetalhesProduto' => $promo,
+        ]);
+    }
     
 }

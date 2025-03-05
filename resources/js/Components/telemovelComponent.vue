@@ -58,8 +58,22 @@
 
                         <!-- Price and Button -->
                         <div class="mt-4 flex gap-5 items-center">
-                            <span class="text-2xl mb-1 font-bold text-blue-600">
+                            <span
+                                class="text-2xl mb-1 font-bold text-blue-600"
+                                v-if="promo.sale_price <= 0"
+                            >
                                 {{ promo.price }}€
+                            </span>
+                            <span
+                                class="text-2xl mb-1 font-bold text-red-600"
+                                v-else
+                            >
+                                {{ Desconto(promo) }}€
+                                <span
+                                    class="text-sm mb-1 text-neutral-400 line-through"
+                                >
+                                    {{ promo.price }}€
+                                </span>
                             </span>
                         </div>
 
@@ -77,13 +91,7 @@
                                 <p>Poucas unidades</p>
                             </span>
                             <span
-                                class="text-md font-bold text-yellow-400"
-                                v-else-if="promo.stock == 1"
-                            >
-                                <p>É o último!</p>
-                            </span>
-                            <span
-                                class="text-md mb-1 font-bold text-green-600"
+                                class="text-md mb-1 font-bold text-emerald-400"
                                 v-else
                             >
                                 <p>Em Stock</p>
@@ -124,6 +132,15 @@ export default {
         Telemovel: {
             type: Array,
             required: true,
+        },
+    },
+    methods: {
+        Desconto(promo) {
+            const Discount = promo.price * (promo.sale_price / 100);
+
+            const FinalDiscount = promo.price - Discount;
+
+            return FinalDiscount.toFixed(2);
         },
     },
 };

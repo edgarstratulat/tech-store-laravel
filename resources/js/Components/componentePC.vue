@@ -4,16 +4,16 @@
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
             >
-                Promoções
+                Componentes para Computador
             </h1>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
-                    v-for="promo in Promocoes"
+                    v-for="promo in Componentes"
                     :key="promo.id"
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/promocoes/${promo.id}`"
+                        :href="`http://localhost:8000/componentes-para-pc/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
@@ -129,7 +129,7 @@
 <script>
 export default {
     props: {
-        Promocoes: {
+        Componentes: {
             type: Array,
             required: true,
         },

@@ -10,7 +10,7 @@
             />
         </div>
         <p>Nome: {{ DetalhesProduto.name }}</p>
-        <p>Preço: {{ DetalhesProduto.price }}€</p>
+        <p>Preço: {{ Desconto(DetalhesProduto) }}€</p>
         <p>Stock: {{ DetalhesProduto.stock }}</p>
         <p>Detalhes do produto: {{ DetalhesProduto.desc }}</p>
     </div>
@@ -27,6 +27,15 @@ export default {
         DetalhesProduto: {
             type: Object,
             required: true,
+        },
+    },
+    methods: {
+        Desconto(promo) {
+            const Discount = promo.price * (promo.sale_price / 100);
+
+            const FinalDiscount = promo.price - Discount;
+
+            return FinalDiscount.toFixed(2);
         },
     },
 };

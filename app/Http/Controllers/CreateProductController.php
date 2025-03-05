@@ -34,7 +34,7 @@ class CreateProductController extends Controller
             $imagePath = $request->file('image')->store('images', 'public');
         }
 
-        if($request->category == 'Computadores'){
+        if($request->category == 'Computadores' ){
             Computer::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -44,7 +44,7 @@ class CreateProductController extends Controller
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-        }  elseif($request->category == 'Periféricos') {
+        }  elseif($request->category == 'Periféricos' ) {
             Periferico::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -74,7 +74,7 @@ class CreateProductController extends Controller
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-        } elseif($request->category == 'Acessorios') {
+        } elseif($request->category == 'Acessorios' ) {
             Acessorio::create([
                 'name' => $request->name,
                 'price' => $request->price,

@@ -31,7 +31,7 @@
                             >Perífericos</a
                         >
                         <a
-                            href="#"
+                            href="http://localhost:8000/componentes-para-pc"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Componentes</a
                         >
@@ -99,25 +99,23 @@
                                 />
                             </svg>
                         </a>
-                        <div class="flex items-center space-x-4">
-                            <a
-                                href="#"
-                                class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300 relative"
+                        <a
+                            href="#"
+                            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300 relative"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    class="w-6 h-6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path
-                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                />
+                            </svg>
+                        </a>
 
                         <!-- User Icon with Dropdown -->
                         <div class="relative">
@@ -209,7 +207,6 @@
                                             ></polyline>
                                         </svg>
                                         <span class="ml-2">Registo</span>
-
                                         <hr class="my-2 border-slate-200" />
                                     </li>
                                 </a>
@@ -241,7 +238,6 @@
                                             ></line>
                                         </svg>
                                         <span class="ml-2">Logout</span>
-
                                         <hr class="my-2 border-slate-200" />
                                     </li>
                                 </a>
@@ -268,11 +264,33 @@
                             </svg>
                         </a>
                     </div>
+
+                    <!-- Hamburger Menu for Mobile -->
+                    <div class="md:hidden flex items-center">
+                        <button
+                            @click="toggleMobileMenu"
+                            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- Menu Mobile -->
-            <div class="md:hidden">
+            <div v-if="isMobileMenuOpen" class="md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-2">
                     <!-- Barra de Pesquisa (Mobile) -->
                     <input
@@ -319,11 +337,15 @@ export default {
     data() {
         return {
             isDropdownOpen: false,
+            isMobileMenuOpen: false,
         };
     },
     methods: {
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
+        },
+        toggleMobileMenu() {
+            this.isMobileMenuOpen = !this.isMobileMenuOpen;
         },
     },
 };
