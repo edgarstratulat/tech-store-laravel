@@ -129,42 +129,55 @@
                                 v-if="isDropdownOpen"
                                 class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
                             >
-                                <a href="http://localhost:8000/login">
-                                    <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:bg-slate-100"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                            class="w-5 h-5 text-slate-400"
+                                <div>
+                                    <a href="http://localhost:8000/login">
+                                        <li
+                                            class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                         >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z"
-                                                clip-rule="evenodd"
-                                            />
-                                        </svg>
-                                        <span class="ml-2">Login</span>
-
-                                        <hr class="my-2 border-slate-200" />
-                                    </li>
-                                </a>
+                                            <svg
+                                                class="w-5 h-5 text-slate-400"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path
+                                                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                                                ></path>
+                                                <circle
+                                                    cx="12"
+                                                    cy="7"
+                                                    r="4"
+                                                ></circle>
+                                            </svg>
+                                            <span class="ml-2">Login</span>
+                                            <hr class="my-2 border-slate-200" />
+                                        </li>
+                                    </a>
+                                </div>
                                 <a href="http://localhost:8000/registo">
                                     <li
                                         class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
                                             class="w-5 h-5 text-slate-400"
                                         >
                                             <path
-                                                fill-rule="evenodd"
-                                                d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z"
-                                                clip-rule="evenodd"
-                                            />
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                            ></path>
+                                            <polyline
+                                                points="22,6 12,13 2,6"
+                                            ></polyline>
                                         </svg>
                                         <span class="ml-2">Registo</span>
 
@@ -173,19 +186,30 @@
                                 </a>
                                 <a href="http://localhost:8000/logout">
                                     <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:bg-slate-100"
+                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
                                             class="w-5 h-5 text-slate-400"
                                         >
                                             <path
-                                                fill-rule="evenodd"
-                                                d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z"
-                                                clip-rule="evenodd"
-                                            />
+                                                d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                                            ></path>
+                                            <polyline
+                                                points="16 17 21 12 16 7"
+                                            ></polyline>
+                                            <line
+                                                x1="21"
+                                                y1="12"
+                                                x2="9"
+                                                y2="12"
+                                            ></line>
                                         </svg>
                                         <span class="ml-2">Logout</span>
 
@@ -257,6 +281,12 @@
 
 <script>
 export default {
+    props: {
+        User: {
+            type: Object,
+            required: true,
+        },
+    },
     data() {
         return {
             isDropdownOpen: false,

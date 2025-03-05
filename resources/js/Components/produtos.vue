@@ -87,6 +87,12 @@
                                 <p>Poucas unidades</p>
                             </span>
                             <span
+                                class="text-md font-bold text-yellow-400"
+                                v-else-if="prod.stock == 1"
+                            >
+                                <p>É o último!</p>
+                            </span>
+                            <span
                                 class="text-md mb-1 font-bold text-green-600"
                                 v-else
                             >
