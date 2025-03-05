@@ -11,7 +11,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'showProductsHome']);
 
 Route::get('/promocoes', [ProductController::class, 'index']);
-Route::get('/produtos/{id}', [ProductController::class, 'show']);
+Route::get('/promocoes/{id}', [ProductController::class, 'show']);
 
 Route::middleware('auth')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
 Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::class, 'createProducts']);

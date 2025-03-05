@@ -2,7 +2,7 @@
     <div class="bg-zinc-100">
         <Navbar />
         <Carroussel />
-        <Produtos :Produtos="Produtos" />
+        <Promocoes :Promocoes="Promocoes" />
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
                 <button
@@ -19,25 +19,20 @@
 <script>
 import Navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
-import Produtos from "../Components/produtos.vue";
+import Promocoes from "../Components/promocoes.vue";
 import Computadores from "../Components/computadores.vue";
 
 export default {
     components: {
         Navbar,
         Carroussel,
-        Produtos,
+        Promocoes,
         Computadores,
     },
     props: {
-        Produtos: {
+        Promocoes: {
             type: Array,
             required: true,
-        },
-    },
-    methods: {
-        limitedProducts() {
-            return Produtos.slice(0, 4);
         },
     },
 };

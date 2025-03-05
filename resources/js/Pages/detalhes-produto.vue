@@ -11,6 +11,7 @@
         </div>
         <p>Nome: {{ DetalhesProduto.name }}</p>
         <p>Preço: {{ DetalhesProduto.price }}€</p>
+        <p>Stock: {{ DetalhesProduto.stock }}</p>
         <p>Detalhes do produto: {{ DetalhesProduto.desc }}</p>
     </div>
 </template>

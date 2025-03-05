@@ -1,21 +1,21 @@
 <template>
     <div class="bg-zinc-100">
         <Navbar />
-        <Produtos :Produtos="Produtos" />
+        <Promocoes :Promocoes="Promocoes" />
     </div>
 </template>
 
 <script>
 import Navbar from "../Components/navbar.vue";
-import Produtos from "../Components/produtos.vue";
+import Promocoes from "../Components/promocoes.vue";
 
 export default {
     components: {
         Navbar,
-        Produtos,
+        Promocoes,
     },
     props: {
-        Produtos: {
+        Promocoes: {
             type: Array,
             required: true,
         },

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Acessorio;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Produto;
 use App\Models\Computer;
+use App\Models\Periferico;
+use App\Models\Telemovel;
+use App\Models\ComponentePC;
+use App\Models\Promocoes;
 
 class CreateProductController extends Controller
 {
@@ -41,7 +45,7 @@ class CreateProductController extends Controller
                 'image_path' => $imagePath
             ]);
         }  elseif($request->category == 'Periféricos') {
-            Produto::create([
+            Periferico::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
@@ -51,7 +55,27 @@ class CreateProductController extends Controller
                 'image_path' => $imagePath
             ]);
         } elseif($request->category == 'Telemóveis') {
-            Produto::create([
+            Telemovel::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);
+        } if($request->category == 'Componentes') {
+            ComponentePC::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);
+        } elseif($request->category == 'Acessorios') {
+            Acessorio::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
@@ -61,6 +85,18 @@ class CreateProductController extends Controller
                 'image_path' => $imagePath
             ]);
         } 
+        
+        if ($request->sale_price > 0) {
+            Promocoes::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'sale_price' => $request->sale_price,
+            'desc' => $request->desc,
+            'category' => $request->category,
+            'stock' => $request->stock,
+            'image_path' => $imagePath
+        ]);
+    }
 
         return Inertia::location('/');
     

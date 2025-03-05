@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Produto;
-
+use App\Models\Promocoes;
 
 class HomeController extends Controller
 {
     public function showProductsHome()
     {
-        $produtos = Produto::all();
+        $promocoes = Promocoes::all();
 
         return Inertia::render('home', [
-            'Produtos' => $produtos,
+            'Promocoes' => $promocoes,
         ]);
     }
 }

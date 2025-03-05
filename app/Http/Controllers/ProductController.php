@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
+use App\Models\Promocoes;
 use Inertia\Inertia;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::all();
+        $promo = Promocoes::all();
 
         return Inertia::render('produtosPage', [
-            'Produtos' => $produtos,
+            'Promocoes' => $promo,
         ]);
     }
 
     public function show($id)
     {
-        $produtos = Produto::find($id);
+        $promo = Promocoes::find($id);
 
         return Inertia::render('detalhes-produto', [
-            'DetalhesProduto' => $produtos
+            'DetalhesProduto' => $promo
         ]);
     }
 }

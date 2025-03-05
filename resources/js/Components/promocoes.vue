@@ -8,24 +8,24 @@
             </h1>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
-                    v-for="prod in Produtos"
-                    :key="prod.id"
+                    v-for="promo in Promocoes"
+                    :key="promo.id"
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/produtos/${prod.id}`"
+                        :href="`http://localhost:8000/promocoes/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
                         <div class="mb-4">
                             <img
-                                :src="`/storage/${prod.image_path}`"
-                                :alt="prod.name"
+                                :src="`/storage/${promo.image_path}`"
+                                :alt="promo.name"
                                 class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"
                             />
                             <div
                                 class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
-                                v-if="prod.sale_price <= 0"
+                                v-if="promo.sale_price <= 0"
                             >
                                 <p class="invisible">Teste</p>
                             </div>
@@ -33,13 +33,13 @@
                                 class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
                                 v-else
                             >
-                                -{{ prod.sale_price }}%
+                                -{{ promo.sale_price }}%
                             </div>
                         </div>
 
                         <div class="flex-grow">
                             <h2 class="text-md mb-2 text-neutral-300">
-                                {{ prod.category }}
+                                {{ promo.category }}
                             </h2>
                         </div>
 
@@ -48,7 +48,7 @@
                             <h2
                                 class="text-md font-semibold mb-2 hover:text-blue-600"
                             >
-                                {{ prod.name }}
+                                {{ promo.name }}
                             </h2>
                         </div>
 
@@ -56,19 +56,19 @@
                         <div class="mt-4 flex gap-5 items-center">
                             <span
                                 class="text-2xl mb-1 font-bold text-blue-600"
-                                v-if="prod.sale_price <= 0"
+                                v-if="promo.sale_price <= 0"
                             >
-                                {{ prod.price }}€
+                                {{ promo.price }}€
                             </span>
                             <span
                                 class="text-2xl mb-1 font-bold text-red-600"
                                 v-else
                             >
-                                {{ Desconto(prod) }}€
+                                {{ Desconto(promo) }}€
                                 <span
                                     class="text-sm mb-1 text-neutral-400 line-through"
                                 >
-                                    {{ prod.price }}€
+                                    {{ promo.price }}€
                                 </span>
                             </span>
                         </div>
@@ -76,19 +76,19 @@
                         <div class="flex gap-5 items-center">
                             <span
                                 class="text-md mb-1 font-bold text-red-600"
-                                v-if="prod.stock <= 0"
+                                v-if="promo.stock <= 0"
                             >
                                 <p>Sem Stock</p>
                             </span>
                             <span
                                 class="text-md font-bold text-yellow-600"
-                                v-else-if="prod.stock <= 10"
+                                v-else-if="promo.stock <= 10"
                             >
                                 <p>Poucas unidades</p>
                             </span>
                             <span
                                 class="text-md font-bold text-yellow-400"
-                                v-else-if="prod.stock == 1"
+                                v-else-if="promo.stock == 1"
                             >
                                 <p>É o último!</p>
                             </span>
@@ -131,16 +131,16 @@
 <script>
 export default {
     props: {
-        Produtos: {
+        Promocoes: {
             type: Array,
             required: true,
         },
     },
     methods: {
-        Desconto(prod) {
-            const Discount = prod.price * (prod.sale_price / 100);
+        Desconto(promo) {
+            const Discount = promo.price * (promo.sale_price / 100);
 
-            const FinalDiscount = prod.price - Discount;
+            const FinalDiscount = promo.price - Discount;
 
             return FinalDiscount.toFixed(2);
         },
