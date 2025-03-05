@@ -7,7 +7,7 @@
 
 <script>
 import Navbar from "../Components/navbar.vue";
-import Promocoes from "../Components/promocoes.vue";
+import Promocoes from "../Components/Categories/promocoes.vue";
 
 export default {
     components: {

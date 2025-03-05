@@ -19,7 +19,7 @@
 <script>
 import Navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
-import Promocoes from "../Components/promocoes.vue";
+import Promocoes from "../Components/Categories/promocoes.vue";
 import Computadores from "../Components/computadores.vue";
 
 export default {

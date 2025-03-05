@@ -21,12 +21,12 @@
                             >Promoções</a
                         >
                         <a
-                            href="#"
+                            href="http://localhost:8000/computadores"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Computadores</a
                         >
                         <a
-                            href="#"
+                            href="http://localhost:8000/perifericos"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Perífericos</a
                         >
@@ -41,7 +41,7 @@
                             >Telemóveis</a
                         >
                         <a
-                            href="#"
+                            href="http://localhost:8000/acessorios"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Acessórios</a
                         >
@@ -327,12 +327,12 @@
                         >Promoções</a
                     >
                     <a
-                        href="#"
+                        href="http://localhost:8000/computadores"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Computadores</a
                     >
                     <a
-                        href="#"
+                        href="http://localhost:8000/perifericos"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Perífericos</a
                     >
@@ -359,12 +359,6 @@
 
 <script>
 export default {
-    props: {
-        User: {
-            type: Object,
-            required: true,
-        },
-    },
     data() {
         return {
             isDropdownOpen: false,

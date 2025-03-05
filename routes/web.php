@@ -26,6 +26,19 @@ Route::get('/telemoveis/{id}', [ProductController::class, 'showTelemoveis']);
 Route::get('/componentes-para-pc', [ProductController::class, 'indexComponentes']);
 Route::get('/componentes-para-pc/{id}', [ProductController::class, 'showComponentePC']);
 
+//Perifericos
+Route::get('/perifericos', [ProductController::class, 'indexPerifericos']);
+Route::get('/perifericos/{id}', [ProductController::class, 'showPerifericos']);
+
+//Acessorios
+Route::get('/acessorios', [ProductController::class, 'indexAcessorios']);
+Route::get('/acessorios/{id}', [ProductController::class, 'showAcessorios']);
+
+//Computador
+Route::get('/computadores', [ProductController::class, 'indexComputadores']);
+Route::get('/computadores/{id}', [ProductController::class, 'showComputadores']);
+
+
 //Registo
 Route::get('/registo', [UserController::class, 'showPageRegister']);
 Route::post('/registo', [UserController::class, 'createUser']);

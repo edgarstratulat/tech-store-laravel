@@ -1,21 +1,21 @@
 <template>
     <div class="bg-zinc-100">
         <Navbar />
-        <ComponentePC :Componentes="Componentes" />
+        <Acessorio :Acessorio="Acessorio" />
     </div>
 </template>
 
 <script>
 import Navbar from "../Components/navbar.vue";
-import ComponentePC from "../Components/Categories/componentePC.vue";
+import Acessorio from "../Components/Categories/acessorioComponent.vue";
 
 export default {
     components: {
         Navbar,
-        ComponentePC,
+        Acessorio,
     },
     props: {
-        Componentes: {
+        Acessorio: {
             type: Array,
             required: true,
         },

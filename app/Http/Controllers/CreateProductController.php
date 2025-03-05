@@ -74,7 +74,7 @@ class CreateProductController extends Controller
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-        } elseif($request->category == 'Acessorios' ) {
+        } elseif($request->category == 'Acessórios' ) {
             Acessorio::create([
                 'name' => $request->name,
                 'price' => $request->price,
