@@ -178,6 +178,22 @@
                                         <li
                                             class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                         >
+                                            <svg
+                                                style="
+                                                    width: 20px;
+                                                    height: 20px;
+                                                    color: #94a3b8;
+                                                "
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 4v16M4 12h16" />
+                                            </svg>
                                             <span class="ml-2"
                                                 >Adicionar Produtos</span
                                             >
@@ -306,19 +322,34 @@
                         >Home</a
                     >
                     <a
-                        href="#"
+                        href="http://localhost:8000/promocoes"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Promoções</a
                     >
                     <a
                         href="#"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Contactos</a
+                        >Computadores</a
                     >
                     <a
                         href="#"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Adicionar Produtos</a
+                        >Perífericos</a
+                    >
+                    <a
+                        href="http://localhost:8000/componentes-para-pc"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Componentes</a
+                    >
+                    <a
+                        href="http://localhost:8000/telemoveis"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Telemóveis</a
+                    >
+                    <a
+                        href="http://localhost:8000/acessorios"
+                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
+                        >Acessórios</a
                     >
                 </div>
             </div>

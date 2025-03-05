@@ -6,7 +6,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Routing\RouteUri;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
