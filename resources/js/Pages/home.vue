@@ -6,7 +6,7 @@
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
                 <button
-                    class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300 justify-center"
+                    class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300"
                 >
                     Ver todas as ofertas
                 </button>
@@ -37,8 +37,20 @@
                     </button>
                 </a>
             </div>
-            <div>
+            <div class="pb-10">
                 <ComputadoresComponent :Computer="maxComputerProductsShow()" />
+            </div>
+        </div>
+        <div class="m-10">
+            <MaisVendidos :Promocoes="Promocoes" />
+            <div class="flex justify-center">
+                <a href="http://localhost:8000/promocoes">
+                    <button
+                        class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300"
+                    >
+                        Ver todas as ofertas
+                    </button>
+                </a>
             </div>
         </div>
     </div>
@@ -49,6 +61,7 @@ import Navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
 import Promocoes from "../Components/Categories/promocoes.vue";
 import ComputadoresComponent from "../Components/Categories/computadoresComponent.vue";
+import MaisVendidos from "../Components/maisVendidos.vue";
 
 export default {
     components: {
@@ -56,6 +69,7 @@ export default {
         Carroussel,
         Promocoes,
         ComputadoresComponent,
+        MaisVendidos,
     },
     props: {
         Promocoes: {
@@ -69,7 +83,7 @@ export default {
     },
     methods: {
         maxPromotionProductsShow() {
-            return this.Promocoes.slice(0, 4);
+            return this.Promocoes.slice(0, 6);
         },
         maxComputerProductsShow() {
             return this.Computadores.slice(0, 4);
