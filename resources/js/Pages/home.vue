@@ -2,17 +2,45 @@
     <div class="bg-zinc-100">
         <Navbar />
         <Carroussel />
-        <Promocoes :Promocoes="Promocoes" />
+        <Promocoes :Promocoes="maxPromotionProductsShow()" />
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
                 <button
-                    class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-600 transition-colors duration-300 justify-center"
+                    class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300 justify-center"
                 >
                     Ver todas as ofertas
                 </button>
             </a>
         </div>
-        <Computadores />
+        <div class="w-full bg-neutral-800">
+            <div class="flex justify-center pt-20 mt-24">
+                <h1 class="text-3xl font-bold text-white">Os nossos PC's</h1>
+            </div>
+            <div>
+                <p class="flex justify-center text-neutral-400 mt-2">
+                    Preparado para levar o teu jogo ao proximo nível? Conhece os
+                    nossos PC's, com componentes cuidadosamente selecionados por
+                    nós.
+                </p>
+            </div>
+            <div>
+                <span class="flex justify-center font-bold text-white"
+                    >Desempenho extremo para jogadores exigentes
+                </span>
+            </div>
+            <div class="flex justify-center m-4">
+                <a href="/computadores">
+                    <button
+                        class="bg-white text-black px-6 py-4 rounded-sm hover:bg-gray-300 transition-colors duration-300 justify-center"
+                    >
+                        Ver todos
+                    </button>
+                </a>
+            </div>
+            <div>
+                <ComputadoresComponent :Computer="maxComputerProductsShow()" />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,19 +48,31 @@
 import Navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
 import Promocoes from "../Components/Categories/promocoes.vue";
-import Computadores from "../Components/computadores.vue";
+import ComputadoresComponent from "../Components/Categories/computadoresComponent.vue";
 
 export default {
     components: {
         Navbar,
         Carroussel,
         Promocoes,
-        Computadores,
+        ComputadoresComponent,
     },
     props: {
         Promocoes: {
             type: Array,
             required: true,
+        },
+        Computadores: {
+            type: Array,
+            required: true,
+        },
+    },
+    methods: {
+        maxPromotionProductsShow() {
+            return this.Promocoes.slice(0, 4);
+        },
+        maxComputerProductsShow() {
+            return this.Computadores.slice(0, 4);
         },
     },
 };
