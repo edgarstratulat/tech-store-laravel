@@ -24,6 +24,7 @@ class CreateProductController extends Controller
             'sale_price' => 'numeric',
             'desc' => 'required',
             'category' => 'required',
+            'subCategory' => 'required',
             'stock' => 'required|numeric',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -34,17 +35,32 @@ class CreateProductController extends Controller
             $imagePath = $request->file('image')->store('images', 'public');
         }
 
-        if($request->category == 'Computadores' ){
+        if($request->category == 'Telemóveis' && $request->subCategory) {
+            Telemovel::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'subCategory' => $request->subCategory,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);  
+        }
+
+        if($request->category == 'Computadores' && $request->subCategory ){
             Computer::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'desc' => $request->desc,
                 'category' => $request->category,
+                'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-        }  elseif($request->category == 'Periféricos' ) {
+        }
+          if($request->category == 'Periféricos' && $request->subCategory ) {
             Periferico::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -54,16 +70,8 @@ class CreateProductController extends Controller
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-        } elseif($request->category == 'Telemóveis') {
-            Telemovel::create([
-                'name' => $request->name,
-                'price' => $request->price,
-                'sale_price' => $request->sale_price,
-                'desc' => $request->desc,
-                'category' => $request->category,
-                'stock' => $request->stock,
-                'image_path' => $imagePath
-            ]);
+    
+
         } if($request->category == 'Componentes') {
             ComponentePC::create([
                 'name' => $request->name,
@@ -93,6 +101,7 @@ class CreateProductController extends Controller
             'sale_price' => $request->sale_price,
             'desc' => $request->desc,
             'category' => $request->category,
+            'subCategory' => $request->subCategory,
             'stock' => $request->stock,
             'image_path' => $imagePath
         ]);
@@ -100,6 +109,6 @@ class CreateProductController extends Controller
 
         return Inertia::location('/');
     
-    }
+        }
 
-}
+    }

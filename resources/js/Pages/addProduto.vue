@@ -9,6 +9,7 @@ const form = reactive({
     sale_price: null,
     desc: null,
     category: [],
+    subCategory: [],
     image: null,
     stock: null,
 });
@@ -25,6 +26,7 @@ const submit = () => {
     formData.append("desc", form.desc);
     formData.append("image", form.image);
     formData.append("category", form.category);
+    formData.append("subCategory", form.subCategory);
     formData.append("desc", form.desc);
     formData.append("stock", form.stock);
 
@@ -105,16 +107,71 @@ const submit = () => {
                 </label>
                 <select
                     v-model="form.category"
-                    multiple
                     class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                 >
-                    <option>Computadores</option>
-                    <option>Periféricos</option>
-                    <option>Componentes</option>
-                    <option>Telemóveis</option>
-                    <option>Acessórios</option>
+                    <option value="">Selecione uma Categoria</option>
+                    <option value="Computadores">Computadores</option>
+                    <option value="Periféricos">Periféricos</option>
+                    <option value="Telemóveis">Telemóveis</option>
+                    <option value="Componentes">Componentes</option>
+                    <option value="Acessórios">Acessórios</option>
                 </select>
             </div>
+
+            <div>
+                <label
+                    for="subCategory"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    SubCategoria do produto:
+                </label>
+                <select
+                    v-model="form.subCategory"
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option value="">Selecione uma Subcategoria</option>
+
+                    <optgroup label="Computadores" class="mb-1">
+                        <option value="Desktop">Desktop</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="MicroComputadores">
+                            MicroComputadores
+                        </option>
+                    </optgroup>
+
+                    <optgroup label="Periféricos" class="mb-1">
+                        <option value="Ratos">Ratos</option>
+                        <option value="Teclados">Teclados</option>
+                        <option value="Simuladores Gaming">
+                            Simuladores Gaming
+                        </option>
+                    </optgroup>
+
+                    <optgroup label="Componentes" class="mb-1">
+                        <option value="Processadores">Processadores</option>
+                        <option value="Motherboard">Motherboard</option>
+                        <option value="Placas Gráficas">Placas Gráficas</option>
+                        <option value="Memórias RAM">Memórias RAM</option>
+                        <option value="Fontes de alimentação">
+                            Fontes de alimentação
+                        </option>
+                        <option value="Caixas de Computador">
+                            Caixas de Computador
+                        </option>
+                    </optgroup>
+
+                    <optgroup label="Telemóveis" class="mb-1">
+                        <option value="Android">Android</option>
+                        <option value="Iphone">Iphone</option>
+                    </optgroup>
+
+                    <optgroup label="Acessórios" class="mb-1">
+                        <option value="Casa">Casa</option>
+                        <option value="Computador">Computador</option>
+                    </optgroup>
+                </select>
+            </div>
+
             <div>
                 <label
                     for="stock"

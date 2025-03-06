@@ -35,12 +35,6 @@
                             </div>
                         </div>
 
-                        <div class="flex-grow">
-                            <h2 class="text-md mb-2 text-neutral-300">
-                                {{ promo.category }}
-                            </h2>
-                        </div>
-
                         <!-- Product Details -->
                         <div class="flex-grow">
                             <h2
