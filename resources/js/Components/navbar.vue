@@ -172,6 +172,16 @@
                                         <hr class="my-2 border-slate-200" />
                                     </li>
                                 </a>
+                                <a v-if="Utilizador">
+                                    <li
+                                        class="cursor-pointer text-slate-800 flex items-center p-3"
+                                    >
+                                        <span class="ml-2"
+                                            >Olá, {{ Utilizador.name }}</span
+                                        >
+                                        <hr class="my-2 border-slate-200" />
+                                    </li>
+                                </a>
                                 <a
                                     v-if="Utilizador"
                                     href="http://localhost:8000/produto/adicionar"
@@ -260,7 +270,9 @@
                                                 y2="12"
                                             ></line>
                                         </svg>
-                                        <span class="ml-2">Logout</span>
+                                        <span class="ml-2"
+                                            >Terminar Sessão</span
+                                        >
                                         <hr class="my-2 border-slate-200" />
                                     </li>
                                 </a>
