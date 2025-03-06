@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Computadores', function (Blueprint $table) {
+        Schema::create('Acessorios', function (Blueprint $table) {
             $table->id()->incrementing();
             $table->string('name');
             $table->string('price');
@@ -24,8 +24,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    //Acessorios, Componentes, Perifericos, 
 
     /**
      * Reverse the migrations.
