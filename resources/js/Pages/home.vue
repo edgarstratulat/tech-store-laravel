@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar />
+        <Navbar :Utilizador="Utilizador" />
         <Carroussel />
         <Promocoes :Promocoes="maxPromotionProductsShow()" />
         <div class="flex justify-center">
@@ -79,6 +79,9 @@ export default {
         Computadores: {
             type: Array,
             required: true,
+        },
+        Utilizador: {
+            type: Object,
         },
     },
     methods: {

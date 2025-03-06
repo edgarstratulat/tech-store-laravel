@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Promocoes;
 use App\Models\Computer;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -15,7 +17,8 @@ class HomeController extends Controller
 
         return Inertia::render('home', [
             'Promocoes' => $promocoes,
-            'Computadores' => $computadores
+            'Computadores' => $computadores,
+            'Utilizador' => Auth::user(),
         ]);
     }
 }
