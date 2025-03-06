@@ -60,35 +60,41 @@ class CreateProductController extends Controller
                 'image_path' => $imagePath
             ]);
         }
-          if($request->category == 'Periféricos' && $request->subCategory ) {
+        
+        if($request->category == 'Periféricos' && $request->subCategory ) {
             Periferico::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'desc' => $request->desc,
                 'category' => $request->category,
+                'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-    
-
-        } if($request->category == 'Componentes') {
+        } 
+   
+        if($request->category == 'Componentes' && $request->subCategory) {
             ComponentePC::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'desc' => $request->desc,
                 'category' => $request->category,
+                'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
-        } elseif($request->category == 'Acessórios' ) {
+        }
+
+        if($request->category == 'Acessórios' && $request->subCategory ) {
             Acessorio::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'desc' => $request->desc,
                 'category' => $request->category,
+                'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
