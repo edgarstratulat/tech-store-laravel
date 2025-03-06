@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function showProductsHome()
     {
-        $promocoes = Promocoes::all();
-        $computadores = Computer::all();
+        $promocoes = Promocoes::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
+        $computadores = Computer::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('home', [
             'Promocoes' => $promocoes,

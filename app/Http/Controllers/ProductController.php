@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function indexPromocoes()
     {
-        $promo = Promocoes::all();
+        $promo = Promocoes::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('promoPage', [
             'Promocoes' => $promo,
@@ -37,7 +37,7 @@ class ProductController extends Controller
 
     public function indexTelemoveis()
     {
-        $tel = Telemovel::all();
+        $tel = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('telemoveisPage', [
             'Telemovel' => $tel,
@@ -59,7 +59,7 @@ class ProductController extends Controller
     public function indexComponentes()
     {
 
-        $componentesPC = ComponentePC::all();
+        $componentesPC = ComponentePC::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('componentePcPage', [
             'Componentes' => $componentesPC
@@ -79,7 +79,7 @@ class ProductController extends Controller
     
     public function indexPerifericos()
     {
-        $peri = Periferico::all();
+        $peri = Periferico::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('perifericosPage', [
             'Perifericos' => $peri
@@ -98,7 +98,7 @@ class ProductController extends Controller
     //Acessorios
     public function indexAcessorios()
     {
-        $peri = Acessorio::all();
+        $peri = Acessorio::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('acessoriosPage', [
             'Acessorio' => $peri
@@ -117,7 +117,7 @@ class ProductController extends Controller
     //Computadores
     public function indexComputadores()
     {
-        $pc = Computer::all();
+        $pc = Computer::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('computadoresPage', [
             'Computer' => $pc
