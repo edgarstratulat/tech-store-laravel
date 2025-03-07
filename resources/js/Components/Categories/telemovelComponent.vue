@@ -13,7 +13,7 @@
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/telemoveis/${promo.id}`"
+                        :href="`http://localhost:8000/telemoveis/${promo.subCategory}/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
