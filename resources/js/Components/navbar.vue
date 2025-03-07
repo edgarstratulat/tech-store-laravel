@@ -133,11 +133,45 @@
                             </ul>
                         </div>
 
-                        <a
-                            href="http://localhost:8000/acessorios"
-                            class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Acessórios</a
-                        >
+                        <div class="relative">
+                            <a href="http://localhost:8000/acessorios">
+                                <button
+                                    @mouseover="toggleAcessoriosDropdown"
+                                    class="text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    Acessórios
+                                </button>
+                            </a>
+                            <ul
+                                v-if="isAcessoriosDropdownOpen"
+                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                            >
+                                <li>
+                                    <a
+                                        href="http://localhost:8000/telemoveis/?tipo=iphone"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Jardinagem</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="http://localhost:8000/telemoveis/?tipo=android"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Para Computador</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/telemoveis/?tipo=android"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Para Telemóvel</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/telemoveis/?tipo=android"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Casa</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -442,6 +476,7 @@ export default {
             isMobileMenuOpen: false,
             isSmartphoneDropdownOpen: false,
             isComponentesDropdownOpen: false,
+            isAcessoriosDropdownOpen: false,
         };
     },
     props: {
@@ -450,6 +485,9 @@ export default {
         },
     },
     methods: {
+        toggleAcessoriosDropdown() {
+            this.isAcessoriosDropdownOpen = !this.isAcessoriosDropdownOpen;
+        },
         toggleComponentesDropdown() {
             this.isComponentesDropdownOpen = !this.isComponentesDropdownOpen;
         },
