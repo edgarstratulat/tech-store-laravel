@@ -1,6 +1,11 @@
 <template>
     <div class="bg-zinc-100">
         <Navbar :Utilizador="Utilizador" />
+        <h1
+            class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
+        >
+            Processadores
+        </h1>
         <ComponentePC :Componentes="Componentes" />
     </div>
 </template>
