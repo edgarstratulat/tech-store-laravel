@@ -10,6 +10,7 @@ use App\Models\Periferico;
 use App\Models\Computer;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -36,32 +37,33 @@ class ProductController extends Controller
     }
 
     // Telemoveis
-    public function indexTelemoveis()
+    public function indexTelemoveis(Request $request)
     {
+        $subCategory = $request->query('tipo');
+
         $tel = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
+
+
+        if($subCategory === 'iphone'){
+            $iphone = Telemovel::where('subCategory', 'iphone')->get();
+            return Inertia::render('iphonePage', [
+                'Telemovel' => $iphone,
+                'Utilizador' => Auth::user(),
+            ]);
+        } 
+        if($subCategory === 'android'){
+            $android = Telemovel::where('subCategory', 'android')->get();
+            return Inertia::render('androidPage', [
+                'Telemovel' => $android,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
 
         return Inertia::render('telemoveisPage', [
             'Telemovel' => $tel,
             'Utilizador' => Auth::user(),
         ]);
-    }
 
-    public function showIphones(){
-        $iphone = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->where('subCategory', 'iphone')->get();
-
-        return Inertia::render('iphonePage', [
-            'Telemovel' => $iphone,
-            'Utilizador' => Auth::user(),
-        ]);
-    }
-
-    public function showAndroid(){
-        $android = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->where('subCategory', 'android')->get();
-
-        return Inertia::render('androidPage', [
-            'Telemovel' => $android,
-            'Utilizador' => Auth::user(),
-        ]);
     }
 
     public function showTelemoveis($subCategory,$id)
@@ -79,7 +81,7 @@ class ProductController extends Controller
     public function indexComponentes()
     {
 
-        $componentesPC = ComponentePC::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
+        $componentesPC = ComponentePC::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
 
         return Inertia::render('componentePcPage', [
             'Componentes' => $componentesPC,
@@ -87,7 +89,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function showComponentePC($id)
+    public function showComponentePC($subCategory, $id)
     {
         $promo = ComponentePC::find($id);
 

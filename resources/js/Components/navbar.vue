@@ -118,14 +118,14 @@
                             >
                                 <li>
                                     <a
-                                        href="http://localhost:8000/telemoveis/iphone"
+                                        href="http://localhost:8000/telemoveis/?tipo=iphone"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Iphone</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="http://localhost:8000/telemoveis/android"
+                                        href="http://localhost:8000/telemoveis/?tipo=android"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Android</a
                                     >
