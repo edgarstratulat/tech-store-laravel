@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Navbar from "../Components/navbar.vue";
-import Telemovel from "../Components/Categories/telemovelComponent.vue";
+import Navbar from "../../Components/navbar.vue";
+import Telemovel from "../../Components/Categories/telemovelComponent.vue";
 
 export default {
     components: {

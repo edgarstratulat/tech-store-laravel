@@ -46,20 +46,20 @@ class ProductController extends Controller
 
         if($subCategory === 'iphone'){
             $iphone = Telemovel::where('subCategory', 'iphone')->get();
-            return Inertia::render('iphonePage', [
+            return Inertia::render('Smartphones/iphonePage', [
                 'Telemovel' => $iphone,
                 'Utilizador' => Auth::user(),
             ]);
         } 
         if($subCategory === 'android'){
             $android = Telemovel::where('subCategory', 'android')->get();
-            return Inertia::render('androidPage', [
+            return Inertia::render('Smartphones/androidPage', [
                 'Telemovel' => $android,
                 'Utilizador' => Auth::user(),
             ]);
         }
 
-        return Inertia::render('telemoveisPage', [
+        return Inertia::render('Smartphones/telemoveisPage', [
             'Telemovel' => $tel,
             'Utilizador' => Auth::user(),
         ]);
@@ -148,7 +148,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return Inertia::render('componentePcPage', [
+        return Inertia::render('ComponentesPC/componentePcPage', [
             'Componentes' => $componentesPC,
             'Utilizador' => Auth::user(),
         ]);

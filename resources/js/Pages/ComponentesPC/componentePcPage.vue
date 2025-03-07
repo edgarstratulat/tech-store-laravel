@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Navbar from "../Components/navbar.vue";
-import ComponentePC from "../Components/Categories/componentePC.vue";
+import Navbar from "../../Components/navbar.vue";
+import ComponentePC from "../../Components/Categories/componentePC.vue";
 
 export default {
     components: {
