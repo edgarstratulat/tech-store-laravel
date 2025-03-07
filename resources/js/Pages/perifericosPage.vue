@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar />
+        <Navbar :Utilizador="Utilizador" />
         <Perifericos :Perifericos="Perifericos" />
     </div>
 </template>
@@ -17,6 +17,10 @@ export default {
     props: {
         Perifericos: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },

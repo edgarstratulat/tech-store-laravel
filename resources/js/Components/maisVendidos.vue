@@ -37,7 +37,7 @@
 
                         <div class="flex-grow">
                             <h2 class="text-md mb-2 text-neutral-300">
-                                {{ promo.category }}
+                                {{ promo.category }} {{ promo.subCategory }}
                             </h2>
                         </div>
 
@@ -47,12 +47,6 @@
                                 class="text-md font-semibold mb-2 hover:text-blue-600"
                             >
                                 {{ promo.name }}
-                            </h2>
-                        </div>
-
-                        <div class="flex-grow">
-                            <h2 class="text-xs text-neutral-500">
-                                {{ promo.category }} {{ promo.subCategory }}
                             </h2>
                         </div>
 

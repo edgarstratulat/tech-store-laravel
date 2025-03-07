@@ -9,6 +9,7 @@ use App\Models\ComponentePC;
 use App\Models\Periferico;
 use App\Models\Computer;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -21,6 +22,7 @@ class ProductController extends Controller
 
         return Inertia::render('promoPage', [
             'Promocoes' => $promo,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -41,6 +43,7 @@ class ProductController extends Controller
 
         return Inertia::render('telemoveisPage', [
             'Telemovel' => $tel,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -62,7 +65,8 @@ class ProductController extends Controller
         $componentesPC = ComponentePC::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('componentePcPage', [
-            'Componentes' => $componentesPC
+            'Componentes' => $componentesPC,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -82,7 +86,8 @@ class ProductController extends Controller
         $peri = Periferico::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('perifericosPage', [
-            'Perifericos' => $peri
+            'Perifericos' => $peri,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -101,7 +106,8 @@ class ProductController extends Controller
         $peri = Acessorio::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
         return Inertia::render('acessoriosPage', [
-            'Acessorio' => $peri
+            'Acessorio' => $peri,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -120,7 +126,8 @@ class ProductController extends Controller
         $pc = Computer::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
 
         return Inertia::render('computadoresPage', [
-            'Computer' => $pc
+            'Computer' => $pc,
+            'Utilizador' => Auth::user(),
         ]);
     }
 

@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar />
+        <Navbar :Utilizador="Utilizador" />
         <Acessorio :Acessorio="Acessorio" />
     </div>
 </template>
@@ -17,6 +17,10 @@ export default {
     props: {
         Acessorio: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },

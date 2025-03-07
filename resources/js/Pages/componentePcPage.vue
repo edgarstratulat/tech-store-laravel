@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar />
+        <Navbar :Utilizador="Utilizador" />
         <ComponentePC :Componentes="Componentes" />
     </div>
 </template>
@@ -17,6 +17,10 @@ export default {
     props: {
         Componentes: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },

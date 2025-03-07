@@ -21,6 +21,7 @@ export default {
         },
         Utilizador: {
             type: Object,
+            required: true,
         },
     },
 };

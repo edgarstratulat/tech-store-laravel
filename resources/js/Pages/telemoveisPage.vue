@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar />
+        <Navbar :Utilizador="Utilizador" />
         <Telemovel :Telemovel="Telemovel" />
     </div>
 </template>
@@ -17,6 +17,10 @@ export default {
     props: {
         Telemovel: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },
