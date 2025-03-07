@@ -46,56 +46,56 @@
                             >
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=processadores"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Processadores</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=motherboards"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Motherboards</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=placas-graficas"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Placas Gráficas</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=cpu-coolers"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >CPU Coolers</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=memorias-ram"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Memórias RAM</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=armazenamento"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Armazenamento</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=caixas-de-computadores"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Caixas de Computadores</a
                                     >
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
+                                        href="http://localhost:8000/componentes-para-pc/?componente=fontes-de-alimentacao"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Fontes de alimentação</a
                                     >

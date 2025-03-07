@@ -78,10 +78,75 @@ class ProductController extends Controller
 
     // Componentes
 
-    public function indexComponentes()
+    public function indexComponentes(Request $request)
     {
+        $subCategory = $request->query('componente');
 
         $componentesPC = ComponentePC::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
+
+        if($subCategory === 'processadores'){
+            $cpu = ComponentePC::where('subCategory', 'processadores')->get();
+            return Inertia::render('ComponentesPC/cpuPage', [
+                'Componentes' => $cpu,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'motherboards'){
+            $motherboard = ComponentePC::where('subCategory', 'motherboards')->get();
+            return Inertia::render('ComponentesPC/motherboardsPage', [
+                'Componentes' => $motherboard,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'cpu-coolers'){
+            $cpuCoolers = ComponentePC::where('subCategory', 'cpu-coolers')->get();
+            return Inertia::render('ComponentesPC/cpu-coolPage', [
+                'Componentes' => $cpuCoolers,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'placas-graficas'){
+            $gpu = ComponentePC::where('subCategory', 'placas-graficas')->get();
+            return Inertia::render('ComponentesPC/gpuPage', [
+                'Componentes' => $gpu,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'memorias-ram'){
+            $ram = ComponentePC::where('subCategory', 'memorias-ram')->get();
+            return Inertia::render('ComponentesPC/ramPage', [
+                'Componentes' => $ram,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'armazenamento'){
+            $ssd = ComponentePC::where('subCategory', 'armazenamento')->get();
+            return Inertia::render('ComponentesPC/armazenamentoPage', [
+                'Componentes' => $ssd,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'caixas-de-computadores'){
+            $caixas = ComponentePC::where('subCategory', 'caixas-de-computadores')->get();
+            return Inertia::render('ComponentesPC/caixasPcPage', [
+                'Componentes' => $caixas,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'fontes-de-alimentacao'){
+            $fontes = ComponentePC::where('subCategory', 'fontes-de-alimentacao')->get();
+            return Inertia::render('ComponentesPC/fontePage', [
+                'Componentes' => $fontes,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
 
         return Inertia::render('componentePcPage', [
             'Componentes' => $componentesPC,

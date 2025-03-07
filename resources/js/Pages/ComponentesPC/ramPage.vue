@@ -1,21 +1,21 @@
 <template>
     <div class="bg-zinc-100">
         <Navbar :Utilizador="Utilizador" />
-        <Telemovel :Telemovel="Telemovel" />
+        <ComponentePC :Componentes="Componentes" />
     </div>
 </template>
 
 <script>
-import Navbar from "../Components/navbar.vue";
-import Telemovel from "../Components/Categories/telemovelComponent.vue";
+import Navbar from "../../Components/navbar.vue";
+import ComponentePC from "../../Components/Categories/componentePC.vue";
 
 export default {
     components: {
         Navbar,
-        Telemovel,
+        ComponentePC,
     },
     props: {
-        Telemovel: {
+        Componentes: {
             type: Array,
             required: true,
         },
