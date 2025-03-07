@@ -14,6 +14,12 @@ const form = reactive({
     stock: null,
 });
 
+const Discount = () => {
+    const Discount = form.price * (form.sale_price / 100);
+    const FinalDiscount = form.price - Discount;
+    return FinalDiscount.toFixed(2);
+};
+
 const handleImageUpload = (event) => {
     form.image = event.target.files[0];
 };
@@ -84,6 +90,15 @@ const submit = () => {
                 />
             </div>
 
+            <div v-if="form.sale_price >= 0 || form.price > 0">
+                <label
+                    for="price"
+                    class="block mb-2 text-md font-medium text-emerald-400"
+                >
+                    Preço Final: {{ Discount() }}€
+                </label>
+            </div>
+
             <div>
                 <label
                     for="desc"
@@ -109,7 +124,8 @@ const submit = () => {
                     v-model="form.category"
                     class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                 >
-                    <option value="">Selecione uma Categoria</option>
+                    <option disabled value="">Selecione uma Categoria</option>
+
                     <option value="Computadores">Computadores</option>
                     <option value="Periféricos">Periféricos</option>
                     <option value="Telemóveis">Telemóveis</option>
@@ -118,57 +134,124 @@ const submit = () => {
                 </select>
             </div>
 
-            <div>
+            <div v-if="form.category == 'Computadores'">
                 <label
                     for="subCategory"
                     class="block mb-2 text-sm font-medium text-gray-700"
                 >
-                    SubCategoria do produto:
+                    Sub categoria do produto:
                 </label>
                 <select
                     v-model="form.subCategory"
                     class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                 >
-                    <option value="">Selecione uma Subcategoria</option>
+                    <option disabled value="">
+                        Selecione uma Sub categoria
+                    </option>
 
-                    <optgroup label="Computadores" class="mb-1">
-                        <option value="Desktop">Desktop</option>
-                        <option value="Laptop">Laptop</option>
-                        <option value="MicroComputadores">
-                            MicroComputadores
-                        </option>
-                    </optgroup>
+                    <option value="Desktop">Desktop</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Workstation">Workstation</option>
+                    <option value="MicroComputadores">MicroComputadores</option>
+                </select>
+            </div>
+            <div v-else-if="form.category == 'Periféricos'">
+                <label
+                    for="subCategory"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Sub categoria do produto:
+                </label>
+                <select
+                    v-model="form.subCategory"
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option disabled value="">
+                        Selecione uma Sub categoria
+                    </option>
 
-                    <optgroup label="Periféricos" class="mb-1">
-                        <option value="Ratos">Ratos</option>
-                        <option value="Teclados">Teclados</option>
-                        <option value="Simuladores Gaming">
-                            Simuladores Gaming
-                        </option>
-                    </optgroup>
+                    <option value="Ratos">Ratos</option>
+                    <option value="Teclados">Teclados</option>
+                    <option value="PC Audio">PC Audio</option>
+                    <option value="Camera Web">Câmaras web</option>
+                    <option value="Impressoras">Impressoras</option>
+                    <option value="Distribuição de Energia">
+                        Distribuição de Energia
+                    </option>
+                    <option value="Simuladores Gaming">
+                        Simuladores Gaming
+                    </option>
+                </select>
+            </div>
+            <div v-else-if="form.category == 'Telemóveis'">
+                <label
+                    for="subCategory"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Sub categoria do produto:
+                </label>
+                <select
+                    v-model="form.subCategory"
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option disabled value="">
+                        Selecione uma Sub categoria
+                    </option>
 
-                    <optgroup label="Componentes" class="mb-1">
-                        <option value="Processadores">Processadores</option>
-                        <option value="Motherboard">Motherboard</option>
-                        <option value="Placas Gráficas">Placas Gráficas</option>
-                        <option value="Memórias RAM">Memórias RAM</option>
-                        <option value="Fontes de alimentação">
-                            Fontes de alimentação
-                        </option>
-                        <option value="Caixas de Computador">
-                            Caixas de Computador
-                        </option>
-                    </optgroup>
+                    <option value="Iphone">Smartphones Iphone</option>
+                    <option value="Android">Smartphones Android</option>
+                    <option value="Telemóveis">Telemóveis</option>
+                </select>
+            </div>
+            <div v-else-if="form.category == 'Componentes'">
+                <label
+                    for="subCategory"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Sub categoria do produto:
+                </label>
+                <select
+                    v-model="form.subCategory"
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option disabled value="">
+                        Selecione uma Sub categoria
+                    </option>
 
-                    <optgroup label="Telemóveis" class="mb-1">
-                        <option value="Android">Android</option>
-                        <option value="Iphone">Iphone</option>
-                    </optgroup>
+                    <option value="Processadores">Processadores</option>
+                    <option value="Motherboards">Motherboards</option>
+                    <option value="CPU Coolers">CPU Coolers</option>
+                    <option value="Placas Gráficas">Placas Gráficas</option>
+                    <option value="Memórias RAM">Memórias RAM</option>
+                    <option value="Armazenamento">Armazenamento</option>
+                    <option value="Caixas de Computadores">
+                        Caixas de Computadores
+                    </option>
+                    <option value="Fontes de Alimentação">
+                        Fontes de alimentação
+                    </option>
+                </select>
+            </div>
+            <div v-else-if="form.category == 'Acessórios'">
+                <label
+                    for="subCategory"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Sub categoria do produto:
+                </label>
+                <select
+                    v-model="form.subCategory"
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option disabled value="Selecione uma Sub categoria">
+                        Selecione uma Sub categoria
+                    </option>
 
-                    <optgroup label="Acessórios" class="mb-1">
-                        <option value="Casa">Casa</option>
-                        <option value="Computador">Computador</option>
-                    </optgroup>
+                    <option value="Jardinagem">Jardinagem</option>
+                    <option value="Computador">Computador</option>
+                    <option value="Smartphone">Smartphone</option>
+                    <option value="Casa">Casa</option>
                 </select>
             </div>
 
