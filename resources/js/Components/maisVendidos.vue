@@ -52,6 +52,12 @@
 
                         <div class="flex-grow">
                             <h2 class="text-xs text-neutral-500">
+                                {{ promo.category }} {{ promo.subCategory }}
+                            </h2>
+                        </div>
+
+                        <div class="flex-grow">
+                            <h2 class="text-xs text-neutral-500">
                                 {{ promo.desc }}
                             </h2>
                         </div>

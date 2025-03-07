@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function indexPromocoes()
     {
-        $promo = Promocoes::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
+        $promo = Promocoes::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
 
         return Inertia::render('promoPage', [
             'Promocoes' => $promo,
@@ -117,7 +117,7 @@ class ProductController extends Controller
     //Computadores
     public function indexComputadores()
     {
-        $pc = Computer::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
+        $pc = Computer::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
 
         return Inertia::render('computadoresPage', [
             'Computer' => $pc

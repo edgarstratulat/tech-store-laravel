@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar />
+        <Navbar :Utilizador="Utilizador" />
         <computadoresComponent :Computer="Computer" />
     </div>
 </template>
@@ -18,6 +18,9 @@ export default {
         Computer: {
             type: Array,
             required: true,
+        },
+        Utilizador: {
+            type: Object,
         },
     },
 };

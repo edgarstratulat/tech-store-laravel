@@ -37,7 +37,7 @@
 
                         <div class="flex-grow">
                             <h2 class="text-md mb-2 text-neutral-300">
-                                {{ promo.category }}
+                                {{ promo.category }} {{ promo.subCategory }}
                             </h2>
                         </div>
 
