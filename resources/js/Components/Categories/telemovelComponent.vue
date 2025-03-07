@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-center items-center p-4">
-        <div class="w-full max-w-6xl max-h-6xl">
+    <div class="flex justify-center items-center p-5">
+        <div class="w-full max-w-screen-2xl">
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
             >
@@ -25,7 +25,7 @@
                             />
                             <div
                                 class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
-                                v-if="promo.sale_price <= 0"
+                                v-if="promo.sale_price == 0"
                             ></div>
                             <div
                                 class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-500 lg:text-lg"
@@ -33,6 +33,12 @@
                             >
                                 -{{ promo.sale_price }}%
                             </div>
+                        </div>
+
+                        <div class="flex-grow">
+                            <h2 class="text-md mb-2 text-neutral-300">
+                                {{ promo.category }} {{ promo.subCategory }}
+                            </h2>
                         </div>
 
                         <!-- Product Details -->
@@ -54,7 +60,7 @@
                         <div class="mt-4 flex gap-5 items-center">
                             <span
                                 class="text-2xl mb-1 font-bold text-blue-600"
-                                v-if="promo.sale_price <= 0"
+                                v-if="promo.sale_price == 0"
                             >
                                 {{ promo.price }}€
                             </span>

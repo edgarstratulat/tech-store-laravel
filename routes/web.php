@@ -20,7 +20,10 @@ Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::
 
 // Telemoveis
 Route::get('/telemoveis', [ProductController::class, 'indexTelemoveis']);
-Route::get('/telemoveis/{id}', [ProductController::class, 'showTelemoveis']);
+Route::get('/telemoveis/{subCategory}/{id}', [ProductController::class, 'showTelemoveis']);
+
+Route::get('/telemoveis/iphone', [ProductController::class, 'showIphones']);
+Route::get('/telemoveis/android', [ProductController::class, 'showAndroid']);
 
 //Componentes PC
 Route::get('/componentes-para-pc', [ProductController::class, 'indexComponentes']);

@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center items-center p-5">
-        <div class="w-full max-w-screen-6xl">
+        <div class="w-full max-w-8xl max-h-6xl mx-auto">
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
             >

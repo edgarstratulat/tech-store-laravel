@@ -1,19 +1,20 @@
 <template>
+    <Navbar :Utilizador="Utilizador" />
     <div class="flex justify-center items-center p-5">
-        <div class="w-full max-w-8xl max-h-6xl mx-auto">
+        <div class="w-full max-w-screen-2xl">
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
             >
-                Promoções
+                Telemóveis Iphone
             </h1>
-            <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
-                    v-for="promo in Promocoes"
+                    v-for="promo in Telemovel"
                     :key="promo.id"
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/promocoes/${promo.id}`"
+                        :href="`http://localhost:8000/telemoveis/${promo.subCategory}/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
@@ -25,7 +26,7 @@
                             />
                             <div
                                 class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
-                                v-if="promo.sale_price <= 0"
+                                v-if="promo.sale_price == 0"
                             ></div>
                             <div
                                 class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-500 lg:text-lg"
@@ -60,7 +61,7 @@
                         <div class="mt-4 flex gap-5 items-center">
                             <span
                                 class="text-2xl mb-1 font-bold text-blue-600"
-                                v-if="promo.sale_price <= 0"
+                                v-if="promo.sale_price == 0"
                             >
                                 {{ promo.price }}€
                             </span>
@@ -127,10 +128,19 @@
 </template>
 
 <script>
+import Navbar from "../Components/navbar.vue";
+
 export default {
+    components: {
+        Navbar,
+    },
     props: {
-        Promocoes: {
+        Telemovel: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },

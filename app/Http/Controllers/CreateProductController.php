@@ -10,11 +10,13 @@ use App\Models\Periferico;
 use App\Models\Telemovel;
 use App\Models\ComponentePC;
 use App\Models\Promocoes;
-
+use Illuminate\Support\Facades\Auth;
 class CreateProductController extends Controller
 {
     public function showProducts() {
-        return Inertia::render('addProduto');
+        return Inertia::render('addProduto', [
+            'Utilizador' => Auth::user(),
+        ]);
     }
 
     public function createProducts(Request $request) {

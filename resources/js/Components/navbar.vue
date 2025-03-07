@@ -28,18 +28,111 @@
                         <a
                             href="http://localhost:8000/perifericos"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Perífericos</a
+                            >Periféricos</a
                         >
-                        <a
-                            href="http://localhost:8000/componentes-para-pc"
-                            class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Componentes</a
-                        >
-                        <a
-                            href="http://localhost:8000/telemoveis"
-                            class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Telemóveis</a
-                        >
+
+                        <div class="relative">
+                            <a href="http://localhost:8000/componentes-para-pc">
+                                <button
+                                    @mouseover="toggleComponentesDropdown"
+                                    class="text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    Componentes
+                                </button>
+                            </a>
+                            <ul
+                                v-if="isComponentesDropdownOpen"
+                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                            >
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Processadores</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Motherboards</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Placas Gráficas</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >CPU Coolers</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Memórias RAM</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Armazenamento</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Caixas de Computadores</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Fontes de alimentação</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="relative">
+                            <a href="http://localhost:8000/telemoveis">
+                                <button
+                                    @mouseover="toggleSmartphoneDropdown"
+                                    class="text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    Telemóveis
+                                </button>
+                            </a>
+                            <ul
+                                v-if="isSmartphoneDropdownOpen"
+                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                            >
+                                <li>
+                                    <a
+                                        href="http://localhost:8000/telemoveis/iphone"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Iphone</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="http://localhost:8000/telemoveis/android"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Android</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
                         <a
                             href="http://localhost:8000/acessorios"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
@@ -48,6 +141,7 @@
                     </div>
                 </div>
 
+                <!-- Rest of the code remains unchanged -->
                 <div class="flex items-center space-x-6">
                     <!-- Barra de Pesquisa -->
                     <div class="hidden md:block">
@@ -81,42 +175,6 @@
 
                     <!-- Ícones lua -->
                     <div class="flex items-center space-x-4">
-                        <a
-                            href="#"
-                            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300 relative"
-                        >
-                            <svg
-                                class="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                                />
-                            </svg>
-                        </a>
-                        <a
-                            href="#"
-                            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300 relative"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                class="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                                />
-                            </svg>
-                        </a>
-
                         <!-- User Icon with Dropdown -->
                         <div class="relative">
                             <button
@@ -353,7 +411,7 @@
                     <a
                         href="http://localhost:8000/perifericos"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Perífericos</a
+                        >Periféricos</a
                     >
                     <a
                         href="http://localhost:8000/componentes-para-pc"
@@ -382,6 +440,8 @@ export default {
         return {
             isDropdownOpen: false,
             isMobileMenuOpen: false,
+            isSmartphoneDropdownOpen: false,
+            isComponentesDropdownOpen: false,
         };
     },
     props: {
@@ -390,6 +450,12 @@ export default {
         },
     },
     methods: {
+        toggleComponentesDropdown() {
+            this.isComponentesDropdownOpen = !this.isComponentesDropdownOpen;
+        },
+        toggleSmartphoneDropdown() {
+            this.isSmartphoneDropdownOpen = !this.isSmartphoneDropdownOpen;
+        },
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
         },

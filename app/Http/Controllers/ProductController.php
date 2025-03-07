@@ -36,10 +36,9 @@ class ProductController extends Controller
     }
 
     // Telemoveis
-
     public function indexTelemoveis()
     {
-        $tel = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
+        $tel = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
 
         return Inertia::render('telemoveisPage', [
             'Telemovel' => $tel,
@@ -47,7 +46,25 @@ class ProductController extends Controller
         ]);
     }
 
-    public function showTelemoveis($id)
+    public function showIphones(){
+        $iphone = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->where('subCategory', 'iphone')->get();
+
+        return Inertia::render('iphonePage', [
+            'Telemovel' => $iphone,
+            'Utilizador' => Auth::user(),
+        ]);
+    }
+
+    public function showAndroid(){
+        $android = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->where('subCategory', 'android')->get();
+
+        return Inertia::render('androidPage', [
+            'Telemovel' => $android,
+            'Utilizador' => Auth::user(),
+        ]);
+    }
+
+    public function showTelemoveis($subCategory,$id)
     {
         $promo = Telemovel::find($id);
 

@@ -41,7 +41,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Navbar />
+    <Navbar :Utilizador="Utilizador" />
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Adicionar Produtos
@@ -199,9 +199,9 @@ const submit = () => {
                         Selecione uma Sub categoria
                     </option>
 
-                    <option value="Iphone">Smartphones Iphone</option>
-                    <option value="Android">Smartphones Android</option>
-                    <option value="Telemóveis">Telemóveis</option>
+                    <option value="iphone">Smartphones Iphone</option>
+                    <option value="android">Smartphones Android</option>
+                    <option value="telemóveis">Telemóveis</option>
                 </select>
             </div>
             <div v-else-if="form.category == 'Componentes'">
@@ -305,6 +305,12 @@ const submit = () => {
 export default {
     components: {
         Navbar,
+    },
+    props: {
+        Utilizador: {
+            type: Object,
+            required: true,
+        },
     },
 };
 </script>
