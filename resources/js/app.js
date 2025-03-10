@@ -1,6 +1,7 @@
 import "./bootstrap";
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 
 createInertiaApp({
     resolve: (name) => {
@@ -8,8 +9,10 @@ createInertiaApp({
         return pages[`./Pages/${name}.vue`];
     },
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .mount(el);
+        const app = createApp({ render: () => h(App, props) });
+
+        app.component("Link", Link);
+
+        app.use(plugin).mount(el);
     },
 });

@@ -15,20 +15,20 @@
                     <div
                         class="hidden md:flex md:items-center md:space-x-6 ml-8"
                     >
-                        <a
-                            href="http://localhost:8000/promocoes"
+                        <Link
+                            href="promocoes"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Promoções</a
+                            >Promoções</Link
                         >
                         <div class="relative">
-                            <a href="http://localhost:8000/computadores">
+                            <Link href="computadores">
                                 <button
                                     @mouseover="toggleComputadoresDropdown"
                                     class="text-gray-500 hover:text-blue-600 transition"
                                 >
                                     Computadores
                                 </button>
-                            </a>
+                            </Link>
                             <ul
                                 v-if="isComputadoresDropdownOpen"
                                 class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
@@ -64,14 +64,14 @@
                         </div>
 
                         <div class="relative">
-                            <a href="http://localhost:8000/perifericos">
+                            <Link href="perifericos">
                                 <button
                                     @mouseover="togglePerifericosDropdown"
                                     class="text-gray-500 hover:text-blue-600 transition"
                                 >
                                     Periféricos
                                 </button>
-                            </a>
+                            </Link>
                             <ul
                                 v-if="isPerifericosDropdownOpen"
                                 class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
@@ -102,14 +102,14 @@
                         </div>
 
                         <div class="relative">
-                            <a href="http://localhost:8000/componentes-para-pc">
+                            <Link href="componentes-para-pc">
                                 <button
                                     @mouseover="toggleComponentesDropdown"
                                     class="text-gray-500 hover:text-blue-600 transition"
                                 >
                                     Componentes
                                 </button>
-                            </a>
+                            </Link>
                             <ul
                                 v-if="isComponentesDropdownOpen"
                                 class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
@@ -174,14 +174,14 @@
                         </div>
 
                         <div class="relative">
-                            <a href="http://localhost:8000/telemoveis">
+                            <Link href="telemoveis">
                                 <button
                                     @mouseover="toggleSmartphoneDropdown"
                                     class="text-gray-500 hover:text-blue-600 transition"
                                 >
                                     Telemóveis
                                 </button>
-                            </a>
+                            </Link>
                             <ul
                                 v-if="isSmartphoneDropdownOpen"
                                 class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
@@ -204,14 +204,14 @@
                         </div>
 
                         <div class="relative">
-                            <a href="http://localhost:8000/acessorios">
+                            <Link href="acessorios">
                                 <button
                                     @mouseover="toggleAcessoriosDropdown"
                                     class="text-gray-500 hover:text-blue-600 transition"
                                 >
                                     Acessórios
                                 </button>
-                            </a>
+                            </Link>
                             <ul
                                 v-if="isAcessoriosDropdownOpen"
                                 class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
@@ -296,10 +296,7 @@
                                 v-if="isDropdownOpen"
                                 class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
                             >
-                                <a
-                                    v-if="!Utilizador"
-                                    href="http://localhost:8000/login"
-                                >
+                                <Link v-if="!Utilizador" href="login">
                                     <li
                                         class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                     >
@@ -325,7 +322,7 @@
                                         <span class="ml-2">Login</span>
                                         <hr class="my-2 border-slate-200" />
                                     </li>
-                                </a>
+                                </Link>
                                 <a v-if="Utilizador">
                                     <li
                                         class="cursor-pointer text-slate-800 flex items-center p-3"
@@ -366,10 +363,7 @@
                                     </li>
                                 </a>
 
-                                <a
-                                    v-if="!Utilizador"
-                                    href="http://localhost:8000/registo"
-                                >
+                                <Link v-if="!Utilizador" href="registo">
                                     <li
                                         class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                     >
@@ -393,11 +387,8 @@
                                         <span class="ml-2">Registo</span>
                                         <hr class="my-2 border-slate-200" />
                                     </li>
-                                </a>
-                                <a
-                                    v-else="Utilizador"
-                                    href="http://localhost:8000/logout"
-                                >
+                                </Link>
+                                <Link v-else="Utilizador" href="logout">
                                     <li
                                         class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
                                     >
@@ -429,7 +420,7 @@
                                         >
                                         <hr class="my-2 border-slate-200" />
                                     </li>
-                                </a>
+                                </Link>
                             </ul>
                         </div>
 
@@ -490,37 +481,37 @@
 
                     <!-- Links do Menu (Mobile) -->
                     <a
-                        href="http://localhost:8000/"
+                        href="/"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Home</a
                     >
                     <a
-                        href="http://localhost:8000/promocoes"
+                        href="promocoes"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Promoções</a
                     >
                     <a
-                        href="http://localhost:8000/computadores"
+                        href="computadores"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Computadores</a
                     >
                     <a
-                        href="http://localhost:8000/perifericos"
+                        href="perifericos"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Periféricos</a
                     >
                     <a
-                        href="http://localhost:8000/componentes-para-pc"
+                        href="componentes-para-pc"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Componentes</a
                     >
                     <a
-                        href="http://localhost:8000/telemoveis"
+                        href="telemoveis"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Telemóveis</a
                     >
                     <a
-                        href="http://localhost:8000/acessorios"
+                        href="acessorios"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
                         >Acessórios</a
                     >
@@ -531,6 +522,8 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/vue3";
+
 export default {
     data() {
         return {

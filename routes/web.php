@@ -44,6 +44,6 @@ Route::get('/registo', [UserController::class, 'showPageRegister']);
 Route::post('/registo', [UserController::class, 'createUser']);
 
 // Login & Logout
-Route::get('/login', [LoginController::class, 'showPageLogin'])->name('login');
-Route::post('/login', [LoginController::class, 'userAuth'])->name('login');
+Route::get('/login', [LoginController::class, 'showPageLogin']);
+Route::post('/login', [LoginController::class, 'userAuth']);
 Route::get('/logout', [LoginController::class, 'userLogout']);
