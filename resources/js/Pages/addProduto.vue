@@ -171,17 +171,10 @@ const submit = () => {
                         Selecione uma Sub categoria
                     </option>
 
-                    <option value="Ratos">Ratos</option>
-                    <option value="Teclados">Teclados</option>
-                    <option value="PC Audio">PC Audio</option>
-                    <option value="Camera Web">Câmaras web</option>
-                    <option value="Impressoras">Impressoras</option>
-                    <option value="Distribuição de Energia">
-                        Distribuição de Energia
-                    </option>
-                    <option value="Simuladores Gaming">
-                        Simuladores Gaming
-                    </option>
+                    <option value="ratos-e-teclados">Ratos & Teclados</option>
+                    <option value="pc-audio">PC Audio</option>
+                    <option value="monitores">Monitores</option>
+                    <option value="webcams">Webcams</option>
                 </select>
             </div>
             <div v-else-if="form.category == 'Telemóveis'">
@@ -201,7 +194,6 @@ const submit = () => {
 
                     <option value="iphone">Smartphones Iphone</option>
                     <option value="android">Smartphones Android</option>
-                    <option value="telemóveis">Telemóveis</option>
                 </select>
             </div>
             <div v-else-if="form.category == 'Componentes'">
@@ -219,16 +211,16 @@ const submit = () => {
                         Selecione uma Sub categoria
                     </option>
 
-                    <option value="Processadores">Processadores</option>
-                    <option value="Motherboards">Motherboards</option>
-                    <option value="CPU Coolers">CPU Coolers</option>
-                    <option value="Placas Gráficas">Placas Gráficas</option>
-                    <option value="Memórias RAM">Memórias RAM</option>
-                    <option value="Armazenamento">Armazenamento</option>
-                    <option value="Caixas de Computadores">
+                    <option value="processadores">Processadores</option>
+                    <option value="motherboards">Motherboards</option>
+                    <option value="cpu-coolers">CPU Coolers</option>
+                    <option value="placas-graficas">Placas Gráficas</option>
+                    <option value="memorias-ram">Memórias RAM</option>
+                    <option value="armazenamento">Armazenamento</option>
+                    <option value="caixas-de-computadores">
                         Caixas de Computadores
                     </option>
-                    <option value="Fontes de Alimentação">
+                    <option value="fontes-de-alimentacao">
                         Fontes de alimentação
                     </option>
                 </select>

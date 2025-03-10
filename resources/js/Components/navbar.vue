@@ -25,11 +25,43 @@
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Computadores</a
                         >
-                        <a
-                            href="http://localhost:8000/perifericos"
-                            class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Periféricos</a
-                        >
+                        <div class="relative">
+                            <a href="http://localhost:8000/perifericos">
+                                <button
+                                    @mouseover="togglePerifericosDropdown"
+                                    class="text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    Periféricos
+                                </button>
+                            </a>
+                            <ul
+                                v-if="isPerifericosDropdownOpen"
+                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                            >
+                                <li>
+                                    <a
+                                        href="http://localhost:8000/perifericos/?periferico=ratos-e-teclados"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Ratos & Teclados</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/perifericos/?periferico=monitores"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Monitores</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/perifericos/?periferico=pc-audio"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Audio PC</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/perifericos/?periferico=webcams"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Webcams</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
 
                         <div class="relative">
                             <a href="http://localhost:8000/componentes-para-pc">
@@ -469,6 +501,7 @@ export default {
             isSmartphoneDropdownOpen: false,
             isComponentesDropdownOpen: false,
             isAcessoriosDropdownOpen: false,
+            isPerifericosDropdownOpen: false,
         };
     },
     props: {
@@ -477,6 +510,9 @@ export default {
         },
     },
     methods: {
+        togglePerifericosDropdown() {
+            this.isPerifericosDropdownOpen = !this.isPerifericosDropdownOpen;
+        },
         toggleAcessoriosDropdown() {
             this.isAcessoriosDropdownOpen = !this.isAcessoriosDropdownOpen;
         },

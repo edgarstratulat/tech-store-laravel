@@ -28,7 +28,7 @@ Route::get('/componentes-para-pc/{subCategory}/{id}', [ProductController::class,
 
 //Perifericos
 Route::get('/perifericos', [ProductController::class, 'indexPerifericos']);
-Route::get('/perifericos/{id}', [ProductController::class, 'showPerifericos']);
+Route::get('/perifericos/{subCategory}/{id}', [ProductController::class, 'showPerifericos']);
 
 //Acessorios
 Route::get('/acessorios', [ProductController::class, 'indexAcessorios']);

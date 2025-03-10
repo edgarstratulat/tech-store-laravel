@@ -165,17 +165,52 @@ class ProductController extends Controller
 
     //Perifericos
     
-    public function indexPerifericos()
+    public function indexPerifericos(Request $request)
     {
-        $peri = Periferico::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
-        return Inertia::render('perifericosPage', [
+        $subCategory = $request->query('periferico');
+
+        $peri = Periferico::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
+
+        if($subCategory === 'ratos-e-teclados'){
+            $ratoTeclado = Periferico::where('subCategory', 'ratos-e-teclados')->get();
+            return Inertia::render('Perifericos/RatoTecladoPage', [
+                'Perifericos' => $ratoTeclado,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'pc-audio'){
+            $pcaudio = Periferico::where('subCategory', 'pc-audio')->get();
+            return Inertia::render('Perifericos/PCAudioPage', [
+                'Perifericos' => $pcaudio,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'monitores'){
+            $monitores = Periferico::where('subCategory', 'monitores')->get();
+            return Inertia::render('Perifericos/MonitorPage', [
+                'Perifericos' => $monitores,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        if($subCategory === 'webcams'){
+            $webcam = Periferico::where('subCategory', 'webcams')->get();
+            return Inertia::render('Perifericos/WebcamPage', [
+                'Perifericos' => $webcam,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        return Inertia::render('Perifericos/perifericosPage', [
             'Perifericos' => $peri,
             'Utilizador' => Auth::user(),
         ]);
     }
 
-    public function showPerifericos($id)
+    public function showPerifericos($subCategory, $id)
     {
         $promo = Periferico::find($id);
 
