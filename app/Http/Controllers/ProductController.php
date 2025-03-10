@@ -185,17 +185,45 @@ class ProductController extends Controller
     }
 
     //Acessorios
-    public function indexAcessorios()
+    public function indexAcessorios(Request $request)
     {
-        $peri = Acessorio::select('id', 'name', 'price', 'sale_price', 'desc', 'image_path', 'stock')->get();
 
-        return Inertia::render('acessoriosPage', [
-            'Acessorio' => $peri,
+        $subCategory = $request->query('acessorio');
+
+        $aces = Acessorio::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
+
+        if($subCategory === 'acessorios-para-computador'){
+            $comp = Acessorio::where('subCategory', 'acessorios-para-computador')->get();
+            return Inertia::render('Acessorios/AcessoriosPcPage', [
+                'Acessorio' => $comp,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+
+        if($subCategory === 'acessorios-para-smartphone'){
+            $smart = Acessorio::where('subCategory', 'acessorios-para-smartphone')->get();
+            return Inertia::render('Acessorios/AcessoriosSmartPhonePage', [
+                'Acessorio' => $smart,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+        
+        if($subCategory === 'acessorios-para-casa'){
+            $casa = Acessorio::where('subCategory', 'acessorios-para-casa')->get();
+            return Inertia::render('Acessorios/AcessorioscasaPage', [
+                'Acessorio' => $casa,
+                'Utilizador' => Auth::user(),
+            ]);
+        }
+
+        return Inertia::render('Acessorios/acessoriosPage', [
+            'Acessorio' => $aces,
             'Utilizador' => Auth::user(),
-        ]);
+            ]);
     }
 
-    public function showAcessorios($id)
+    public function showAcessorios($subCategory, $id)
     {
         $ace = Acessorio::find($id);
 

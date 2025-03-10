@@ -24,11 +24,11 @@
                                 class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"
                             />
                             <div
-                                class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg"
+                                class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg p-0"
                                 v-if="promo.sale_price <= 0"
                             ></div>
                             <div
-                                class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-500 lg:text-lg"
+                                class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-500 lg:text-lg p-0"
                                 v-else
                             >
                                 -{{ promo.sale_price }}%

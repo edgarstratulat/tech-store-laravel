@@ -6,7 +6,7 @@
             >
                 Mais Vendidos
             </h1>
-            <ul class="flex flex-nowrap gap-6 overflow-x-auto">
+            <ul class="flex flex-nowrap gap-6 overflow-x-auto max-w-6xl">
                 <li
                     v-for="promo in Promocoes"
                     :key="promo.id"

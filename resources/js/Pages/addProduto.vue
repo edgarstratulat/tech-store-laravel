@@ -248,10 +248,15 @@ const submit = () => {
                         Selecione uma Sub categoria
                     </option>
 
-                    <option value="Jardinagem">Jardinagem</option>
-                    <option value="Computador">Computador</option>
-                    <option value="Smartphone">Smartphone</option>
-                    <option value="Casa">Casa</option>
+                    <option value="acessorios-para-computador">
+                        Acessórios para Computador
+                    </option>
+                    <option value="acessorios-para-smartphone">
+                        Acessórios para Smartphone
+                    </option>
+                    <option value="acessorios-para-casa">
+                        Acessórios para Casa
+                    </option>
                 </select>
             </div>
 

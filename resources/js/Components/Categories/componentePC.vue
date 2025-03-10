@@ -1,7 +1,7 @@
 <template>
     <div class="flex justify-center items-center p-4">
         <div class="w-full max-w-screen-2xl">
-            <ul class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
                     v-for="promo in Componentes"
                     :key="promo.id"

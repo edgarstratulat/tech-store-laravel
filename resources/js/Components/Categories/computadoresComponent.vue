@@ -1,12 +1,12 @@
 <template>
     <div class="flex justify-center items-center p-4">
-        <div class="w-full max-w-7xl max-h-6xl">
+        <div class="w-full max-w-screen-2xl">
             <h1
                 class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
             >
                 Computadores MaRca
             </h1>
-            <ul class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
                     v-for="promo in Computer"
                     :key="promo.id"

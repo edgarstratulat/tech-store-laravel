@@ -148,24 +148,17 @@
                             >
                                 <li>
                                     <a
-                                        href="http://localhost:8000/telemoveis/?tipo=iphone"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Jardinagem</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/telemoveis/?tipo=android"
+                                        href="http://localhost:8000/acessorios/?acessorio=acessorios-para-computador"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Para Computador</a
                                     >
                                     <a
-                                        href="http://localhost:8000/telemoveis/?tipo=android"
+                                        href="http://localhost:8000/acessorios/?acessorio=acessorios-para-smartphone"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Para Telemóvel</a
                                     >
                                     <a
-                                        href="http://localhost:8000/telemoveis/?tipo=android"
+                                        href="http://localhost:8000/acessorios/?acessorio=acessorios-para-casa"
                                         class="block px-4 py-2 text-gray-500 hover:text-blue-600"
                                         >Casa</a
                                     >
@@ -175,7 +168,6 @@
                     </div>
                 </div>
 
-                <!-- Rest of the code remains unchanged -->
                 <div class="flex items-center space-x-6">
                     <!-- Barra de Pesquisa -->
                     <div class="hidden md:block">

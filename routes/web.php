@@ -32,7 +32,7 @@ Route::get('/perifericos/{id}', [ProductController::class, 'showPerifericos']);
 
 //Acessorios
 Route::get('/acessorios', [ProductController::class, 'indexAcessorios']);
-Route::get('/acessorios/{id}', [ProductController::class, 'showAcessorios']);
+Route::get('/acessorios/{subCategory}/{id}', [ProductController::class, 'showAcessorios']);
 
 //Computador
 Route::get('/computadores', [ProductController::class, 'indexComputadores']);

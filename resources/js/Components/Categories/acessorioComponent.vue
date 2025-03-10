@@ -1,11 +1,6 @@
 <template>
     <div class="flex justify-center items-center p-4">
-        <div class="w-full max-w-6xl max-h-6xl">
-            <h1
-                class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
-            >
-                Acessórios
-            </h1>
+        <div class="w-full max-w-screen-2xl">
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
                     v-for="promo in Acessorio"
@@ -13,7 +8,7 @@
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/acessorios/${promo.id}`"
+                        :href="`http://localhost:8000/acessorios/${promo.subCategory}/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
