@@ -149,11 +149,13 @@ const submit = () => {
                         Selecione uma Sub categoria
                     </option>
 
-                    <option value="Desktop">Desktop</option>
-                    <option value="Gaming">Gaming</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Workstation">Workstation</option>
-                    <option value="MicroComputadores">MicroComputadores</option>
+                    <option value="desktop">Desktop</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="workstation">Workstation</option>
+                    <option value="micro-computadores">
+                        MicroComputadores
+                    </option>
                 </select>
             </div>
             <div v-else-if="form.category == 'Periféricos'">

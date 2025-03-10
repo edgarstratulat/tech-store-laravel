@@ -36,7 +36,7 @@ Route::get('/acessorios/{subCategory}/{id}', [ProductController::class, 'showAce
 
 //Computador
 Route::get('/computadores', [ProductController::class, 'indexComputadores']);
-Route::get('/computadores/{id}', [ProductController::class, 'showComputadores']);
+Route::get('/computadores/{subCategory}/{id}', [ProductController::class, 'showComputadores']);
 
 
 //Registo

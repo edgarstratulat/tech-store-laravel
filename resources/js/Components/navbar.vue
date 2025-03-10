@@ -20,11 +20,49 @@
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >Promoções</a
                         >
-                        <a
-                            href="http://localhost:8000/computadores"
-                            class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Computadores</a
-                        >
+                        <div class="relative">
+                            <a href="http://localhost:8000/computadores">
+                                <button
+                                    @mouseover="toggleComputadoresDropdown"
+                                    class="text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    Computadores
+                                </button>
+                            </a>
+                            <ul
+                                v-if="isComputadoresDropdownOpen"
+                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                            >
+                                <li>
+                                    <a
+                                        href="http://localhost:8000/computadores/?computador=desktop"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Desktop</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/computadores/?computador=gaming"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Gaming</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/computadores/?computador=laptop"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Laptop</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/computadores/?computador=workstation"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Workstation</a
+                                    >
+                                    <a
+                                        href="http://localhost:8000/computadores/?computador=micro-computadores"
+                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
+                                        >Micro Computadores</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
                         <div class="relative">
                             <a href="http://localhost:8000/perifericos">
                                 <button
@@ -502,6 +540,7 @@ export default {
             isComponentesDropdownOpen: false,
             isAcessoriosDropdownOpen: false,
             isPerifericosDropdownOpen: false,
+            isComputadoresDropdownOpen: false,
         };
     },
     props: {
@@ -510,6 +549,9 @@ export default {
         },
     },
     methods: {
+        toggleComputadoresDropdown() {
+            this.isComputadoresDropdownOpen = !this.isComputadoresDropdownOpen;
+        },
         togglePerifericosDropdown() {
             this.isPerifericosDropdownOpen = !this.isPerifericosDropdownOpen;
         },

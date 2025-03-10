@@ -86,7 +86,7 @@ export default {
     },
     methods: {
         maxPromotionProductsShow() {
-            return this.Promocoes.slice(0, 6);
+            return this.Promocoes.slice(0, 8);
         },
         maxComputerProductsShow() {
             return this.Computadores.slice(0, 4);
