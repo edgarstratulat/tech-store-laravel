@@ -23,6 +23,18 @@
                         >
                             {{ btn.button_name }}
                         </button>
+
+                        <!-- <ul v-if="btn.dropdown && isDropdownNavbarOpen(btn.id)">
+                            <li
+                                v-for="option in JSON.parse(
+                                    btn.dropdownOptions
+                                )"
+                                :key="option.id"
+                                @click="redirect(option.route)"
+                            >
+                                {{ option.button_name }}
+                            </li>
+                        </ul> -->
                     </div>
                 </div>
 
@@ -199,6 +211,7 @@ export default {
         return {
             isDropdownOpen: false,
             isMobileMenuOpen: false,
+            isDropdownNavbarOpen: false,
         };
     },
     props: {
@@ -233,6 +246,9 @@ export default {
         },
         toggleMobileMenu() {
             this.isMobileMenuOpen = !this.isMobileMenuOpen;
+        },
+        toggleDropdownNavbar() {
+            this.isDropdownNavbarOpen = !this.isDropdownNavbarOpen;
         },
         redirect(route) {
             this.$inertia.visit(route);

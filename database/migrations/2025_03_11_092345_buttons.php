@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id()->incrementing();
             $table->string('button_name');
             $table->string('route');
+            $table->boolean('dropdown');
+            $table->json('dropdownOptions')->nullable();
             $table->timestamps();
         });
     }

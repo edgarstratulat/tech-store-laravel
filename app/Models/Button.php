@@ -10,6 +10,6 @@ class Button extends Model
     use HasFactory;
 
     protected $table = 'Buttons';
-    protected $fillable = ['button_name', 'route'];
+    protected $fillable = ['button_name', 'route', 'dropdown', 'dropdownOptions'];
 }
 
