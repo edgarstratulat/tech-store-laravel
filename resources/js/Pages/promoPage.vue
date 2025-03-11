@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar :Utilizador="Utilizador" />
+        <navbar :Utilizador="Utilizador" :Buttons="Buttons" />
         <Promocoes :Promocoes="Promocoes" />
     </div>
 </template>
@@ -21,6 +21,10 @@ export default {
         },
         Utilizador: {
             type: Object,
+        },
+        Buttons: {
+            type: Array,
+            required: true,
         },
     },
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Acessorio;
+use App\Models\Button;
 use App\Models\Promocoes;
 use App\Models\Telemovel;
 use App\Models\ComponentePC;
@@ -21,8 +22,11 @@ class ProductController extends Controller
     {
         $promo = Promocoes::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
 
+        $buttons = Button::all();
+
         return Inertia::render('promoPage', [
             'Promocoes' => $promo,
+            'Buttons' => $buttons,
             'Utilizador' => Auth::user(),
         ]);
     }
@@ -43,6 +47,7 @@ class ProductController extends Controller
 
         $tel = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
 
+        $buttons = Button::all();
 
         if($subCategory === 'iphone'){
             $iphone = Telemovel::where('subCategory', 'iphone')->get();
@@ -62,6 +67,7 @@ class ProductController extends Controller
         return Inertia::render('Smartphones/telemoveisPage', [
             'Telemovel' => $tel,
             'Utilizador' => Auth::user(),
+            'Buttons' => $buttons,
         ]);
 
     }
@@ -83,6 +89,8 @@ class ProductController extends Controller
         $subCategory = $request->query('componente');
 
         $componentesPC = ComponentePC::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
+
+        $buttons = Button::all();
 
         if($subCategory === 'processadores'){
             $cpu = ComponentePC::where('subCategory', 'processadores')->get();
@@ -151,6 +159,7 @@ class ProductController extends Controller
         return Inertia::render('ComponentesPC/componentePcPage', [
             'Componentes' => $componentesPC,
             'Utilizador' => Auth::user(),
+            'Buttons' => $buttons,
         ]);
     }
 
@@ -171,6 +180,8 @@ class ProductController extends Controller
         $subCategory = $request->query('periferico');
 
         $peri = Periferico::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
+
+        $button = Button::all();
 
         if($subCategory === 'ratos-e-teclados'){
             $ratoTeclado = Periferico::where('subCategory', 'ratos-e-teclados')->get();
@@ -207,6 +218,7 @@ class ProductController extends Controller
         return Inertia::render('Perifericos/perifericosPage', [
             'Perifericos' => $peri,
             'Utilizador' => Auth::user(),
+            'Buttons' => $button
         ]);
     }
 
@@ -226,6 +238,8 @@ class ProductController extends Controller
         $subCategory = $request->query('acessorio');
 
         $aces = Acessorio::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
+
+        $button = Button::all();
 
         if($subCategory === 'acessorios-para-computador'){
             $comp = Acessorio::where('subCategory', 'acessorios-para-computador')->get();
@@ -255,6 +269,7 @@ class ProductController extends Controller
         return Inertia::render('Acessorios/acessoriosPage', [
             'Acessorio' => $aces,
             'Utilizador' => Auth::user(),
+            'Buttons' => $button
             ]);
     }
 
@@ -274,6 +289,8 @@ class ProductController extends Controller
         $subCategory = $request->query('computador');
 
         $pc = Computer::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
+
+        $buttons = Button::all();
 
         if($subCategory === 'desktop'){
             $desktop = Computer::where('subCategory', 'desktop')->get();
@@ -318,6 +335,7 @@ class ProductController extends Controller
         return Inertia::render('Computadores/computadoresPage', [
             'Computer' => $pc,
             'Utilizador' => Auth::user(),
+            'Buttons' => $buttons
         ]);
     }
 

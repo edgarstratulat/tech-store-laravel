@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar :Utilizador="Utilizador" />
+        <navbar :Utilizador="Utilizador" :Buttons="Buttons" />
         <Carroussel />
         <Promocoes :Promocoes="maxPromotionProductsShow()" />
         <div class="flex justify-center">
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import Navbar from "../Components/navbar.vue";
+import navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
 import Promocoes from "../Components/Categories/promocoes.vue";
 import ComputadoresComponent from "../Components/Categories/computadoresComponent.vue";
@@ -65,7 +65,7 @@ import MaisVendidos from "../Components/maisVendidos.vue";
 
 export default {
     components: {
-        Navbar,
+        navbar,
         Carroussel,
         Promocoes,
         ComputadoresComponent,
@@ -82,6 +82,9 @@ export default {
         },
         Utilizador: {
             type: Object,
+        },
+        Buttons: {
+            type: Array,
         },
     },
     methods: {

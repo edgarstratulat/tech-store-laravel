@@ -15,226 +15,14 @@
                     <div
                         class="hidden md:flex md:items-center md:space-x-6 ml-8"
                     >
-                        <Link
-                            href="promocoes"
+                        <button
+                            v-for="btn in Buttons"
+                            :key="btn.id"
+                            @click="redirect(btn.route)"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
-                            >Promoções</Link
                         >
-                        <div class="relative">
-                            <Link href="computadores">
-                                <button
-                                    @mouseover="toggleComputadoresDropdown"
-                                    class="text-gray-500 hover:text-blue-600 transition"
-                                >
-                                    Computadores
-                                </button>
-                            </Link>
-                            <ul
-                                v-if="isComputadoresDropdownOpen"
-                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
-                            >
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/computadores/?computador=desktop"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Desktop</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/computadores/?computador=gaming"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Gaming</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/computadores/?computador=laptop"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Laptop</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/computadores/?computador=workstation"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Workstation</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/computadores/?computador=micro-computadores"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Micro Computadores</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="relative">
-                            <Link href="perifericos">
-                                <button
-                                    @mouseover="togglePerifericosDropdown"
-                                    class="text-gray-500 hover:text-blue-600 transition"
-                                >
-                                    Periféricos
-                                </button>
-                            </Link>
-                            <ul
-                                v-if="isPerifericosDropdownOpen"
-                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
-                            >
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/perifericos/?periferico=ratos-e-teclados"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Ratos & Teclados</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/perifericos/?periferico=monitores"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Monitores</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/perifericos/?periferico=pc-audio"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Audio PC</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/perifericos/?periferico=webcams"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Webcams</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="relative">
-                            <Link href="componentes-para-pc">
-                                <button
-                                    @mouseover="toggleComponentesDropdown"
-                                    class="text-gray-500 hover:text-blue-600 transition"
-                                >
-                                    Componentes
-                                </button>
-                            </Link>
-                            <ul
-                                v-if="isComponentesDropdownOpen"
-                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
-                            >
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=processadores"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Processadores</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=motherboards"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Motherboards</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=placas-graficas"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Placas Gráficas</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=cpu-coolers"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >CPU Coolers</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=memorias-ram"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Memórias RAM</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=armazenamento"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Armazenamento</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=caixas-de-computadores"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Caixas de Computadores</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/componentes-para-pc/?componente=fontes-de-alimentacao"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Fontes de alimentação</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="relative">
-                            <Link href="telemoveis">
-                                <button
-                                    @mouseover="toggleSmartphoneDropdown"
-                                    class="text-gray-500 hover:text-blue-600 transition"
-                                >
-                                    Telemóveis
-                                </button>
-                            </Link>
-                            <ul
-                                v-if="isSmartphoneDropdownOpen"
-                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
-                            >
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/telemoveis/?tipo=iphone"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Iphone</a
-                                    >
-                                </li>
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/telemoveis/?tipo=android"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Android</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="relative">
-                            <Link href="acessorios">
-                                <button
-                                    @mouseover="toggleAcessoriosDropdown"
-                                    class="text-gray-500 hover:text-blue-600 transition"
-                                >
-                                    Acessórios
-                                </button>
-                            </Link>
-                            <ul
-                                v-if="isAcessoriosDropdownOpen"
-                                class="absolute left-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
-                            >
-                                <li>
-                                    <a
-                                        href="http://localhost:8000/acessorios/?acessorio=acessorios-para-computador"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Para Computador</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/acessorios/?acessorio=acessorios-para-smartphone"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Para Telemóvel</a
-                                    >
-                                    <a
-                                        href="http://localhost:8000/acessorios/?acessorio=acessorios-para-casa"
-                                        class="block px-4 py-2 text-gray-500 hover:text-blue-600"
-                                        >Casa</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
+                            {{ btn.button_name }}
+                        </button>
                     </div>
                 </div>
 
@@ -481,40 +269,13 @@
 
                     <!-- Links do Menu (Mobile) -->
                     <a
-                        href="/"
+                        v-for="btn in Buttons"
+                        :key="btn.id"
+                        @click="redirect(btn.route)"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Home</a
                     >
-                    <a
-                        href="promocoes"
-                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Promoções</a
-                    >
-                    <a
-                        href="computadores"
-                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Computadores</a
-                    >
-                    <a
-                        href="perifericos"
-                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Periféricos</a
-                    >
-                    <a
-                        href="componentes-para-pc"
-                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Componentes</a
-                    >
-                    <a
-                        href="telemoveis"
-                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Telemóveis</a
-                    >
-                    <a
-                        href="acessorios"
-                        class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
-                        >Acessórios</a
-                    >
+                        {{ btn.button_name }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -522,46 +283,30 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/vue3";
-
 export default {
     data() {
         return {
             isDropdownOpen: false,
             isMobileMenuOpen: false,
-            isSmartphoneDropdownOpen: false,
-            isComponentesDropdownOpen: false,
-            isAcessoriosDropdownOpen: false,
-            isPerifericosDropdownOpen: false,
-            isComputadoresDropdownOpen: false,
         };
     },
     props: {
         Utilizador: {
             type: Object,
         },
+        Buttons: {
+            type: Array,
+        },
     },
     methods: {
-        toggleComputadoresDropdown() {
-            this.isComputadoresDropdownOpen = !this.isComputadoresDropdownOpen;
-        },
-        togglePerifericosDropdown() {
-            this.isPerifericosDropdownOpen = !this.isPerifericosDropdownOpen;
-        },
-        toggleAcessoriosDropdown() {
-            this.isAcessoriosDropdownOpen = !this.isAcessoriosDropdownOpen;
-        },
-        toggleComponentesDropdown() {
-            this.isComponentesDropdownOpen = !this.isComponentesDropdownOpen;
-        },
-        toggleSmartphoneDropdown() {
-            this.isSmartphoneDropdownOpen = !this.isSmartphoneDropdownOpen;
-        },
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
         },
         toggleMobileMenu() {
             this.isMobileMenuOpen = !this.isMobileMenuOpen;
+        },
+        redirect(route) {
+            this.$inertia.visit(route);
         },
     },
 };

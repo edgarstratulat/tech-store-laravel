@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Button;
 use Inertia\Inertia;
 use App\Models\Promocoes;
 use App\Models\Computer;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -15,9 +15,12 @@ class HomeController extends Controller
         $promocoes = Promocoes::select('id', 'name', 'price', 'sale_price', 'desc','category', 'subCategory', 'image_path', 'stock')->get();
         $computadores = Computer::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
 
+        $buttons = Button::all();
+
         return Inertia::render('home', [
             'Promocoes' => $promocoes,
             'Computadores' => $computadores,
+            'Buttons' => $buttons,
             'Utilizador' => Auth::user(),
         ]);
     }
