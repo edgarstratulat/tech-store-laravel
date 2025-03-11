@@ -34,9 +34,12 @@ class ProductController extends Controller
     public function showPromocoes($id)
     {
         $promo = Promocoes::find($id);
+        $buttons = Button::all();
 
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $promo,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -75,9 +78,12 @@ class ProductController extends Controller
     public function showTelemoveis($subCategory,$id)
     {
         $promo = Telemovel::find($id);
+        $buttons = Button::all();
 
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $promo,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -167,8 +173,12 @@ class ProductController extends Controller
     {
         $promo = ComponentePC::find($id);
 
+        $buttons = Button::all();
+
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $promo,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -226,8 +236,12 @@ class ProductController extends Controller
     {
         $promo = Periferico::find($id);
 
+        $buttons = Button::all();
+
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $promo,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -277,8 +291,12 @@ class ProductController extends Controller
     {
         $ace = Acessorio::find($id);
 
+        $buttons = Button::all();
+
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $ace,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
         ]);
     }
 
@@ -343,8 +361,12 @@ class ProductController extends Controller
     {
         $promo = Computer::find($id);
 
+        $buttons = Button::all();
+
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $promo,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
         ]);
     }
 }

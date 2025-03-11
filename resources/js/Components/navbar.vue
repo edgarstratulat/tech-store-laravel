@@ -15,26 +15,14 @@
                     <div
                         class="hidden md:flex md:items-center md:space-x-6 ml-8"
                     >
-                        <button
-                            v-for="btn in filterButtonsNavBar"
-                            :key="btn.id"
-                            @click="redirect(btn.route)"
-                            class="text-gray-500 hover:text-blue-600 transition duration-300"
-                        >
-                            {{ btn.button_name }}
-                        </button>
-
-                        <!-- <ul v-if="btn.dropdown && isDropdownNavbarOpen(btn.id)">
-                            <li
-                                v-for="option in JSON.parse(
-                                    btn.dropdownOptions
-                                )"
-                                :key="option.id"
-                                @click="redirect(option.route)"
+                        <div v-for="btn in filterButtonsNavBar" :key="btn.id">
+                            <button
+                                @click="redirect(btn.route)"
+                                class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >
-                                {{ option.button_name }}
-                            </li>
-                        </ul> -->
+                                {{ btn.button_name }}
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -247,7 +235,7 @@ export default {
         toggleMobileMenu() {
             this.isMobileMenuOpen = !this.isMobileMenuOpen;
         },
-        toggleDropdownNavbar() {
+        toggleDropdownNavbarOpen() {
             this.isDropdownNavbarOpen = !this.isDropdownNavbarOpen;
         },
         redirect(route) {

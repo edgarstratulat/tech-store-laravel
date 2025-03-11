@@ -1,5 +1,5 @@
 <template>
-    <Navbar />
+    <Navbar :Utilizador="Utilizador" :Buttons="Buttons" />
     <div class="p-4">
         <h1 class="text-2xl font-bold mb-4">Detalhes do Produto</h1>
         <div class="mb-4">
@@ -27,6 +27,13 @@ export default {
         DetalhesProduto: {
             type: Object,
             required: true,
+        },
+        Buttons: {
+            type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
         },
     },
     methods: {
