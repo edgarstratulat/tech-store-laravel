@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Buttons', function(Blueprint $table) {
+        Schema::create('Componentes', function (Blueprint $table) {
             $table->id()->incrementing();
-            $table->string('button_name');
-            $table->string('route');
+            $table->string('name');
+            $table->string('price');
+            $table->string('sale_price');
+            $table->text('desc');
+            $table->text('category');
+            $table->text('subCategory');
+            $table->string('image_path')->nullable();
+            $table->string('stock');
             $table->timestamps();
         });
     }
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Buttons');
+        Schema::dropIfExists('Componentes');
     }
 };

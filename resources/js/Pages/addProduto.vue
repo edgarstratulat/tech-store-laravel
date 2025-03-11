@@ -41,7 +41,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Navbar :Utilizador="Utilizador" />
+    <Navbar :Utilizador="Utilizador" :Buttons="Buttons" />
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Adicionar Produtos
@@ -308,6 +308,10 @@ export default {
     props: {
         Utilizador: {
             type: Object,
+            required: true,
+        },
+        Buttons: {
+            type: Array,
             required: true,
         },
     },

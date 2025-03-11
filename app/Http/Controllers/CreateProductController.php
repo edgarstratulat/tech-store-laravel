@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Acessorio;
+use App\Models\Button;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Computer;
@@ -14,8 +15,12 @@ use Illuminate\Support\Facades\Auth;
 class CreateProductController extends Controller
 {
     public function showProducts() {
+
+        $buttons = Button::all();
+
         return Inertia::render('addProduto', [
             'Utilizador' => Auth::user(),
+            'Buttons' => $buttons
         ]);
     }
 

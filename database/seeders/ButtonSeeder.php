@@ -37,6 +37,22 @@ class ButtonSeeder extends Seeder
             [
                 'button_name' => 'Acessórios',
                 'route' => '/acessorios'
+            ],
+            [
+                'button_name' => 'Adicionar Produtos',
+                'route' => '/produto/adicionar'
+            ],
+            [
+                'button_name' => 'Login',
+                'route' => '/login'
+            ],
+            [
+                'button_name' => 'Registo',
+                'route' => '/registo'
+            ],
+            [
+                'button_name' => 'Logout',
+                'route' => '/logout'
             ]
         ]);
         

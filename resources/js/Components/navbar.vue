@@ -16,7 +16,7 @@
                         class="hidden md:flex md:items-center md:space-x-6 ml-8"
                     >
                         <button
-                            v-for="btn in Buttons"
+                            v-for="btn in filterButtonsNavBar"
                             :key="btn.id"
                             @click="redirect(btn.route)"
                             class="text-gray-500 hover:text-blue-600 transition duration-300"
@@ -57,7 +57,6 @@
                         </div>
                     </div>
 
-                    <!-- Ícones lua -->
                     <div class="flex items-center space-x-4">
                         <!-- User Icon with Dropdown -->
                         <div class="relative">
@@ -82,133 +81,45 @@
                             <!-- Dropdown Menu -->
                             <ul
                                 v-if="isDropdownOpen"
-                                class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg"
+                                class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg text-center"
                             >
-                                <Link v-if="!Utilizador" href="login">
-                                    <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
+                                <li
+                                    class="cursor-pointer text-slate-800 hover:text-blue-600"
+                                >
+                                    <button
+                                        v-if="!Utilizador"
+                                        v-for="btn in filterButtonsDropDownMenuNotLogged"
+                                        :key="btn.id"
+                                        @click="redirect(btn.route)"
+                                        class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
                                     >
-                                        <svg
-                                            class="w-5 h-5 text-slate-400"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
-                                            ></path>
-                                            <circle
-                                                cx="12"
-                                                cy="7"
-                                                r="4"
-                                            ></circle>
-                                        </svg>
-                                        <span class="ml-2">Login</span>
-                                        <hr class="my-2 border-slate-200" />
-                                    </li>
-                                </Link>
+                                        {{ btn.button_name }}
+                                    </button>
+                                </li>
                                 <a v-if="Utilizador">
                                     <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3"
+                                        class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
                                     >
-                                        <span class="ml-2"
+                                        <span class="text-center"
                                             >Olá, {{ Utilizador.name }}</span
                                         >
                                         <hr class="my-2 border-slate-200" />
                                     </li>
                                 </a>
-                                <a
-                                    v-if="Utilizador"
-                                    href="http://localhost:8000/produto/adicionar"
-                                >
-                                    <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
-                                    >
-                                        <svg
-                                            style="
-                                                width: 20px;
-                                                height: 20px;
-                                                color: #94a3b8;
-                                            "
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M12 4v16M4 12h16" />
-                                        </svg>
-                                        <span class="ml-2"
-                                            >Adicionar Produtos</span
-                                        >
-                                        <hr class="my-2 border-slate-200" />
-                                    </li>
-                                </a>
 
-                                <Link v-if="!Utilizador" href="registo">
-                                    <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
+                                <li
+                                    class="cursor-pointer text-slate-800 p-3 hover:text-blue-600"
+                                >
+                                    <button
+                                        v-if="Utilizador"
+                                        v-for="btn in filterButtonsDropDownMenuLogged"
+                                        :key="btn.id"
+                                        @click="redirect(btn.route)"
+                                        class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
                                     >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="w-5 h-5 text-slate-400"
-                                        >
-                                            <path
-                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                                            ></path>
-                                            <polyline
-                                                points="22,6 12,13 2,6"
-                                            ></polyline>
-                                        </svg>
-                                        <span class="ml-2">Registo</span>
-                                        <hr class="my-2 border-slate-200" />
-                                    </li>
-                                </Link>
-                                <Link v-else="Utilizador" href="logout">
-                                    <li
-                                        class="cursor-pointer text-slate-800 flex items-center p-3 hover:text-blue-600"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="w-5 h-5 text-slate-400"
-                                        >
-                                            <path
-                                                d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
-                                            ></path>
-                                            <polyline
-                                                points="16 17 21 12 16 7"
-                                            ></polyline>
-                                            <line
-                                                x1="21"
-                                                y1="12"
-                                                x2="9"
-                                                y2="12"
-                                            ></line>
-                                        </svg>
-                                        <span class="ml-2"
-                                            >Terminar Sessão</span
-                                        >
-                                        <hr class="my-2 border-slate-200" />
-                                    </li>
-                                </Link>
+                                        {{ btn.button_name }}
+                                    </button>
+                                </li>
                             </ul>
                         </div>
 
@@ -269,7 +180,7 @@
 
                     <!-- Links do Menu (Mobile) -->
                     <a
-                        v-for="btn in Buttons"
+                        v-for="btn in filterButtonsNavBar"
                         :key="btn.id"
                         @click="redirect(btn.route)"
                         class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
@@ -296,6 +207,24 @@ export default {
         },
         Buttons: {
             type: Array,
+        },
+    },
+    computed: {
+        filterButtonsNavBar() {
+            const navbarButtons = [1, 2, 3, 4, 5, 6];
+            return this.Buttons.filter((btn) => navbarButtons.includes(btn.id));
+        },
+        filterButtonsDropDownMenuNotLogged() {
+            const DropdownButtons = [8, 9];
+            return this.Buttons.filter((btn) =>
+                DropdownButtons.includes(btn.id)
+            );
+        },
+        filterButtonsDropDownMenuLogged() {
+            const DropdownButtons = [7, 10];
+            return this.Buttons.filter((btn) =>
+                DropdownButtons.includes(btn.id)
+            );
         },
     },
     methods: {
