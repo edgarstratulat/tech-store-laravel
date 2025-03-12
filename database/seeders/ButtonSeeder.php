@@ -26,11 +26,11 @@ class ButtonSeeder extends Seeder
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
                     ["button_name" => "Computadores", "route" => "/computadores"],
+                    ["button_name" => "Desktop", "route" => "/computadores/?computador=desktop"],
                     ["button_name" => "Gaming", "route" => "/computadores/?computador=gaming"],
                     ["button_name" => "Portáteis", "route" => "/computadores/?computador=laptop"],
                     ["button_name" => "Workstation", "route" => "/computadores/?computador=workstation"],
                     ["button_name" => "Micro-computadores", "route" => "/computadores/?computador=micro-computadores"],
-                    ["button_name" => "Desktop", "route" => "/computadores/?computador=desktop"],
                 ]), 
             ],
             [

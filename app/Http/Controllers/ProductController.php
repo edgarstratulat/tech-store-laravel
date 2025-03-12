@@ -57,6 +57,7 @@ class ProductController extends Controller
             return Inertia::render('Smartphones/iphonePage', [
                 'Telemovel' => $iphone,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons,
             ]);
         } 
         if($subCategory === 'android'){
@@ -64,6 +65,7 @@ class ProductController extends Controller
             return Inertia::render('Smartphones/androidPage', [
                 'Telemovel' => $android,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons,
             ]);
         }
 
@@ -103,6 +105,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/cpuPage', [
                 'Componentes' => $cpu,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -111,6 +114,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/motherboardsPage', [
                 'Componentes' => $motherboard,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -119,6 +123,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/cpu-coolPage', [
                 'Componentes' => $cpuCoolers,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -127,6 +132,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/gpuPage', [
                 'Componentes' => $gpu,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -135,6 +141,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/ramPage', [
                 'Componentes' => $ram,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -143,6 +150,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/armazenamentoPage', [
                 'Componentes' => $ssd,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -151,6 +159,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/caixasPcPage', [
                 'Componentes' => $caixas,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -159,6 +168,7 @@ class ProductController extends Controller
             return Inertia::render('ComponentesPC/fontePage', [
                 'Componentes' => $fontes,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -198,6 +208,7 @@ class ProductController extends Controller
             return Inertia::render('Perifericos/RatoTecladoPage', [
                 'Perifericos' => $ratoTeclado,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button
             ]);
         }
 
@@ -206,6 +217,7 @@ class ProductController extends Controller
             return Inertia::render('Perifericos/PCAudioPage', [
                 'Perifericos' => $pcaudio,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button
             ]);
         }
 
@@ -214,6 +226,7 @@ class ProductController extends Controller
             return Inertia::render('Perifericos/MonitorPage', [
                 'Perifericos' => $monitores,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button
             ]);
         }
 
@@ -222,6 +235,7 @@ class ProductController extends Controller
             return Inertia::render('Perifericos/WebcamPage', [
                 'Perifericos' => $webcam,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button
             ]);
         }
 
@@ -260,6 +274,7 @@ class ProductController extends Controller
             return Inertia::render('Acessorios/AcessoriosPcPage', [
                 'Acessorio' => $comp,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button    
             ]);
         }
 
@@ -269,6 +284,7 @@ class ProductController extends Controller
             return Inertia::render('Acessorios/AcessoriosSmartPhonePage', [
                 'Acessorio' => $smart,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button 
             ]);
         }
         
@@ -277,6 +293,7 @@ class ProductController extends Controller
             return Inertia::render('Acessorios/AcessorioscasaPage', [
                 'Acessorio' => $casa,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $button 
             ]);
         }
 
@@ -315,6 +332,7 @@ class ProductController extends Controller
             return Inertia::render('Computadores/DesktopPage', [
                 'Computer' => $desktop,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -323,6 +341,7 @@ class ProductController extends Controller
             return Inertia::render('Computadores/GamingPage', [
                 'Computer' => $gaming,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -331,6 +350,7 @@ class ProductController extends Controller
             return Inertia::render('Computadores/LaptopPage', [
                 'Computer' => $gaming,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -339,6 +359,7 @@ class ProductController extends Controller
             return Inertia::render('Computadores/workstationPage', [
                 'Computer' => $gaming,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
@@ -347,6 +368,7 @@ class ProductController extends Controller
             return Inertia::render('Computadores/MicroPcPage', [
                 'Computer' => $gaming,
                 'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
             ]);
         }
 
