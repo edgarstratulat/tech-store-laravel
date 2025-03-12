@@ -1,0 +1,97 @@
+<template>
+    <div class="relative">
+        <button
+            @click="toggleDropdown"
+            class="p-2 text-neutral-400 hover:text-blue-600 transition duration-300"
+        >
+            <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+            </svg>
+        </button>
+        <!-- Dropdown Menu -->
+        <ul
+            v-if="isDropdownOpen"
+            class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg text-center"
+        >
+            <li class="cursor-pointer text-slate-800 hover:text-blue-600">
+                <button
+                    v-if="!Utilizador"
+                    v-for="btn in filterButtonsDropDownMenuNotLogged"
+                    :key="btn.id"
+                    @click="redirect(btn.route)"
+                    class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
+                >
+                    {{ btn.button_name }}
+                </button>
+            </li>
+            <a v-if="Utilizador">
+                <li class="cursor-pointer text-slate-800 px-2 pt-2 font-bold">
+                    <span class="text-center">Olá, {{ Utilizador.name }}</span>
+                    <hr class="my-2 border-slate-200" />
+                </li>
+            </a>
+
+            <li class="cursor-pointer text-slate-800 p-3 hover:text-blue-600">
+                <button
+                    v-if="Utilizador"
+                    v-for="btn in filterButtonsDropDownMenuLogged"
+                    :key="btn.id"
+                    @click="redirect(btn.route)"
+                    class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
+                >
+                    {{ btn.button_name }}
+                </button>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            isDropdownOpen: false,
+        };
+    },
+    computed: {
+        filterButtonsDropDownMenuNotLogged() {
+            const DropdownButtons = [8, 9];
+            return this.Buttons.filter((btn) =>
+                DropdownButtons.includes(btn.id)
+            );
+        },
+        filterButtonsDropDownMenuLogged() {
+            const DropdownButtons = [7, 10];
+            return this.Buttons.filter((btn) =>
+                DropdownButtons.includes(btn.id)
+            );
+        },
+    },
+    methods: {
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
+        },
+        redirect(route) {
+            this.$inertia.visit(route);
+        },
+    },
+    props: {
+        Utilizador: {
+            type: Object,
+        },
+        Buttons: {
+            type: Array,
+        },
+    },
+};
+</script>

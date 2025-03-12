@@ -33,7 +33,6 @@
 export default {
     data() {
         return {
-            isDropdownOpen: false,
             dropdownNavbarStates: {},
         };
     },
@@ -50,23 +49,8 @@ export default {
             const navbarButtons = [1, 2, 3, 4, 5, 6];
             return this.Buttons.filter((btn) => navbarButtons.includes(btn.id));
         },
-        filterButtonsDropDownMenuNotLogged() {
-            const DropdownButtons = [8, 9];
-            return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
-            );
-        },
-        filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = [7, 10];
-            return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
-            );
-        },
     },
     methods: {
-        toggleDropdown() {
-            this.isDropdownOpen = !this.isDropdownOpen;
-        },
         toggleDropdownNavbar(btnId) {
             if (this.dropdownNavbarStates[btnId]) {
                 this.dropdownNavbarStates[btnId] = false;
