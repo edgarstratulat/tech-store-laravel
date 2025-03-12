@@ -25,6 +25,7 @@ class ButtonSeeder extends Seeder
                 'route' => '/computadores',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
+                    ["button_name" => "Computadores", "route" => "/computadores"],
                     ["button_name" => "Gaming", "route" => "/computadores/?computador=gaming"],
                     ["button_name" => "Portáteis", "route" => "/computadores/?computador=laptop"],
                     ["button_name" => "Workstation", "route" => "/computadores/?computador=workstation"],
@@ -37,6 +38,7 @@ class ButtonSeeder extends Seeder
                 'route' => '/perifericos',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
+                    ["button_name" => "Perifericos", "route" => "/perifericos"],
                     ["button_name" => "Rato & Teclados", "route" => "/perifericos/?periferico=ratos-e-teclados"],
                     ["button_name" => "Audio PC", "route" => "/perifericos/?periferico=pc-audio"],
                     ["button_name" => "Monitores", "route" => "/perifericos/?periferico=monitores"],
@@ -48,8 +50,9 @@ class ButtonSeeder extends Seeder
                 'route' => '/telemoveis',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
-                    ["button_name" => "Iphone", "route" => "/perifericos/?tipo=iphone"],
-                    ["button_name" => "Android", "route" => "/perifericos/?tipo=android"],
+                    ["button_name" => "Telemóveis", "route" => "/telemoveis"],
+                    ["button_name" => "Iphone", "route" => "/telemoveis/?tipo=iphone"],
+                    ["button_name" => "Android", "route" => "/telemoveis/?tipo=android"],
                 ]), 
             ],
             [
@@ -57,6 +60,7 @@ class ButtonSeeder extends Seeder
                 'route' => '/componentes-para-pc',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
+                    ["button_name" => "Componentes para PC", "route" => "/componentes-para-pc"],
                     ["button_name" => "Processadores", "route" => "/componentes-para-pc/?componente=processadores"],
                     ["button_name" => "Memória RAM", "route" => "/componentes-para-pc/?componente=memoria-ram"],
                     ["button_name" => "Armazenamento", "route" => "/componentes-para-pc/?componente=armazenamento"],
@@ -65,7 +69,6 @@ class ButtonSeeder extends Seeder
                     ["button_name" => "Fontes de Alimentação", "route" => "/componentes-para-pc/?componente=fonte-de-alimetacao"],
                     ["button_name" => "CPU Coolers", "route" => "/componentes-para-pc/?componente=cpu-coolers"],
                     ["button_name" => "Caixas para Computadores", "route" => "/componentes-para-pc/?componente=caixas-de-computadores"],
-                    ["button_name" => "Android", "route" => "/perifericos/?tipo=android"],
                 ]), 
             ],
             [
@@ -73,6 +76,7 @@ class ButtonSeeder extends Seeder
                 'route' => '/acessorios',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
+                    ["button_name" => "Acessórios", "route" => "/acessorios"],
                     ["button_name" => "Para Computador", "route" => "/acessorios/?acessorio=acessorios-para-computador"],
                     ["button_name" => "Para Telemóveis", "route" => "/acessorios/?acessorio=acessorios-para-smartphone"],
                     ["button_name" => "Para Casa", "route" => "/acessorios/?acessorio=acessorios-para-casa"],
