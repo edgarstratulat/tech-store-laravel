@@ -90,7 +90,7 @@ const submit = () => {
                 />
             </div>
 
-            <div v-if="form.sale_price >= 0 || form.price > 0">
+            <div v-if="form.sale_price >= 0 && form.price > 0">
                 <label
                     for="price"
                     class="block mb-2 text-md font-medium text-emerald-400"
