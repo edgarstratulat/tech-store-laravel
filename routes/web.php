@@ -61,6 +61,7 @@ Route::get('/computadores/gaming', [ComputadoresController::class, 'showGamingPC
 Route::get('/computadores/portateis', [ComputadoresController::class, 'showPortatil']);
 Route::get('/computadores/workstations', [ComputadoresController::class, 'showWorkstation']);
 Route::get('/computadores/micro-computadores', [ComputadoresController::class, 'showMicroPC']);
+Route::get('/computadores/desktop', [ComputadoresController::class, 'showDesktopPC']);
 Route::get('/computadores/{subCategory}/{id}', [ProductController::class, 'showComputadores']);
 
 

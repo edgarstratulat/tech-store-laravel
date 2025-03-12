@@ -72,4 +72,16 @@ class ComputadoresController extends Controller
         ]);
 
     }
+
+    public function showDesktopPC(){
+        $button = Button::all();
+
+        $gaming = Computer::where('subCategory', 'desktop')->get();
+        return Inertia::render('Computadores/DesktopPage', [
+            'Computer' => $gaming,
+            'Utilizador' => Auth::user(),
+            'Buttons' => $button
+        ]);
+
+    }
 }
