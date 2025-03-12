@@ -3,12 +3,12 @@
 use App\Http\Controllers\Acessorios\AcessoriosController;
 use App\Http\Controllers\Componentes\ComponentesController;
 use App\Http\Controllers\Computadores\ComputadoresController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CreateProductController;
+use App\Http\Controllers\Products\CreateProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Perifericos\PerifericosController;
+use App\Http\Controllers\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
 
@@ -22,6 +22,10 @@ Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 //Add produtos
 Route::middleware('auth')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
 Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::class, 'createProducts']);
+
+//Change Products
+Route::middleware('auth')->get('/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
+//Route::middleware('auth')->post('/produto/atualizar', [CreateProductController::class, 'showUpdateProductsForm']);
 
 // Telemoveis
 Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);
