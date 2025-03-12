@@ -1,13 +1,16 @@
 <?php
 
+use App\Http\Controllers\Acessorios\AcessoriosController;
 use App\Http\Controllers\Componentes\ComponentesController;
+use App\Http\Controllers\Computadores\ComputadoresController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Perifericos\PerifericosController;
 use App\Http\Controllers\Telemovel\TelemovelController;
+use App\Http\Controllers\Users\LoginRegisterController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
@@ -38,23 +41,34 @@ Route::get('/componentes/caixas-de-computadores', [ComponentesController::class,
 Route::get('/componentes/{subCategory}/{id}', [ComponentesController::class, 'showComponentePC']);
 
 //Perifericos
-Route::get('/perifericos', [ProductController::class, 'indexPerifericos']);
-Route::get('/perifericos/{subCategory}/{id}', [ProductController::class, 'showPerifericos']);
+Route::get('/perifericos', [PerifericosController::class, 'indexPerifericos']);
+Route::get('/perifericos/rato-e-teclados', [PerifericosController::class, 'showRatoSeTeclados']);
+Route::get('/perifericos/pc-audio', [PerifericosController::class, 'showPcAudio']);
+Route::get('/perifericos/monitores', [PerifericosController::class, 'showMonitores']);
+Route::get('/perifericos/webcams', [PerifericosController::class, 'showWebcams']);
+Route::get('/perifericos/{subCategory}/{id}', [PerifericosController::class, 'showPerifericos']);
 
 //Acessorios
-Route::get('/acessorios', [ProductController::class, 'indexAcessorios']);
-Route::get('/acessorios/{subCategory}/{id}', [ProductController::class, 'showAcessorios']);
+Route::get('/acessorios', [AcessoriosController::class, 'indexAcessorios']);
+Route::get('/acessorios/acessorios-para-computador', [AcessoriosController::class, 'AcessoriosPC']);
+Route::get('/acessorios/acessorios-para-casa', [AcessoriosController::class, 'AcessoriosCasa']);
+Route::get('/acessorios/acessorios-para-telemovel', [AcessoriosController::class, 'AcessoriosTel']);
+Route::get('/acessorios/{subCategory}/{id}', [AcessoriosController::class, 'showAcessorios']);
 
 //Computador
-Route::get('/computadores', [ProductController::class, 'indexComputadores']);
+Route::get('/computadores', [ComputadoresController::class, 'indexComputadores']);
+Route::get('/computadores/gaming', [ComputadoresController::class, 'showGamingPC']);
+Route::get('/computadores/portateis', [ComputadoresController::class, 'showPortatil']);
+Route::get('/computadores/workstations', [ComputadoresController::class, 'showWorkstation']);
+Route::get('/computadores/micro-computadores', [ComputadoresController::class, 'showMicroPC']);
 Route::get('/computadores/{subCategory}/{id}', [ProductController::class, 'showComputadores']);
 
 
 //Registo
-Route::get('/registo', [UserController::class, 'showPageRegister']);
-Route::post('/registo', [UserController::class, 'createUser']);
+Route::get('/registo', [LoginRegisterController::class, 'showPageRegister']);
+Route::post('/registo', [LoginRegisterController::class, 'createUser']);
 
 // Login & Logout
-Route::get('/login', [LoginController::class, 'showPageLogin']);
-Route::post('/login', [LoginController::class, 'userAuth']);
-Route::get('/logout', [LoginController::class, 'userLogout']);
+Route::get('/login', [LoginRegisterController::class, 'showPageLogin']);
+Route::post('/login', [LoginRegisterController::class, 'userAuth']);
+Route::get('/logout', [LoginRegisterController::class, 'userLogout']);

@@ -151,7 +151,7 @@ const submit = () => {
 
                     <option value="desktop">Desktop</option>
                     <option value="gaming">Gaming</option>
-                    <option value="laptop">Laptop</option>
+                    <option value="portateis">Portáteis</option>
                     <option value="workstation">Workstation</option>
                     <option value="micro-computadores">
                         MicroComputadores
@@ -245,7 +245,7 @@ const submit = () => {
                     <option value="acessorios-para-computador">
                         Acessórios para Computador
                     </option>
-                    <option value="acessorios-para-smartphone">
+                    <option value="acessorios-para-telemovel">
                         Acessórios para Smartphone
                     </option>
                     <option value="acessorios-para-casa">
