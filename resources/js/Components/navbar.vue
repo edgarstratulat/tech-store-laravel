@@ -17,11 +17,33 @@
                     >
                         <div v-for="btn in filterButtonsNavBar" :key="btn.id">
                             <button
-                                @click="redirect(btn.route)"
+                                @click="
+                                    btn.dropdown
+                                        ? toggleDropdownNavbar(btn.id)
+                                        : redirect(btn.route)
+                                "
                                 class="text-gray-500 hover:text-blue-600 transition duration-300"
                             >
                                 {{ btn.button_name }}
                             </button>
+
+                            <ul
+                                class="absolute p-5 z-10 mt-2 w-52 rounded-lg border border-slate-200 bg-white shadow-lg text-center text-md"
+                                v-if="
+                                    btn.dropdown && isDropdownNavbarOpen(btn.id)
+                                "
+                            >
+                                <li
+                                    class="cursor-pointer text-slate-800 hover:text-blue-600"
+                                    v-for="option in JSON.parse(
+                                        btn.dropdownOptions
+                                    )"
+                                    :key="option.id"
+                                    @click="redirect(option.route)"
+                                >
+                                    {{ option.button_name }}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -143,11 +165,8 @@
             <!-- Menu Mobile -->
             <div v-if="isMobileMenuOpen" class="md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-2">
-                    <!-- Barra de Pesquisa (Mobile) -->
-
                     <NavbarSearchMobile></NavbarSearchMobile>
 
-                    <!-- Links do Menu (Mobile) -->
                     <a
                         v-for="btn in filterButtonsNavBar"
                         :key="btn.id"
@@ -175,7 +194,7 @@ export default {
         return {
             isDropdownOpen: false,
             isMobileMenuOpen: false,
-            isDropdownNavbarOpen: false,
+            dropdownNavbarStates: {},
         };
     },
     props: {
@@ -211,8 +230,15 @@ export default {
         toggleMobileMenu() {
             this.isMobileMenuOpen = !this.isMobileMenuOpen;
         },
-        toggleDropdownNavbarOpen() {
-            this.isDropdownNavbarOpen = !this.isDropdownNavbarOpen;
+        toggleDropdownNavbar(btnId) {
+            if (this.dropdownNavbarStates[btnId]) {
+                this.dropdownNavbarStates[btnId] = false;
+            } else {
+                this.dropdownNavbarStates[btnId] = true;
+            }
+        },
+        isDropdownNavbarOpen(btnId) {
+            return this.dropdownNavbarStates[btnId] === true;
         },
         redirect(route) {
             this.$inertia.visit(route);
