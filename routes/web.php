@@ -38,11 +38,12 @@ Route::get('/componentes/memorias-ram', [ComponentesController::class, 'showRAM'
 Route::get('/componentes/armazenamento', [ComponentesController::class, 'showArmazenamento']);
 Route::get('/componentes/fontes-de-alimentacao', [ComponentesController::class, 'showFontes']);
 Route::get('/componentes/caixas-de-computadores', [ComponentesController::class, 'showCaixas']);
+Route::get('/componentes/cpu-coolers', [ComponentesController::class, 'showCPUCoolers']);
 Route::get('/componentes/{subCategory}/{id}', [ComponentesController::class, 'showComponentePC']);
 
 //Perifericos
 Route::get('/perifericos', [PerifericosController::class, 'indexPerifericos']);
-Route::get('/perifericos/rato-e-teclados', [PerifericosController::class, 'showRatoSeTeclados']);
+Route::get('/perifericos/ratos-e-teclados', [PerifericosController::class, 'showRatoSeTeclados']);
 Route::get('/perifericos/pc-audio', [PerifericosController::class, 'showPcAudio']);
 Route::get('/perifericos/monitores', [PerifericosController::class, 'showMonitores']);
 Route::get('/perifericos/webcams', [PerifericosController::class, 'showWebcams']);
@@ -62,6 +63,7 @@ Route::get('/computadores/portateis', [ComputadoresController::class, 'showPorta
 Route::get('/computadores/workstations', [ComputadoresController::class, 'showWorkstation']);
 Route::get('/computadores/micro-computadores', [ComputadoresController::class, 'showMicroPC']);
 Route::get('/computadores/desktop', [ComputadoresController::class, 'showDesktopPC']);
+Route::get('/computadores/cpu-coolers', [ComputadoresController::class, 'showCPUCoolers']);
 Route::get('/computadores/{subCategory}/{id}', [ProductController::class, 'showComputadores']);
 
 

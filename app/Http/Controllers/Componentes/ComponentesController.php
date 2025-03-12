@@ -110,6 +110,18 @@ class ComponentesController extends Controller
             ]);
     }
 
+    public function showCPUCoolers()
+    {
+        $buttons = Button::all();
+
+        $caixaspc = ComponentePC::where('subCategory', 'cpu-coolers')->get();
+            return Inertia::render('ComponentesPC/cpu-coolPage', [
+                'Componentes' => $caixaspc,
+                'Utilizador' => Auth::user(),
+                'Buttons' => $buttons
+            ]);
+    }
+
     public function showComponentePC($subCategory, $id)
     {
         $promo = ComponentePC::find($id);
@@ -122,4 +134,6 @@ class ComponentesController extends Controller
             'Utilizador' => Auth::user(),
         ]);
     }
+
+    
 }
