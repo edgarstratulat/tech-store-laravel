@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Products\CreateProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Perifericos\PerifericosController;
+use App\Http\Controllers\Products\DeleteProductController;
 use App\Http\Controllers\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
@@ -26,6 +27,10 @@ Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::
 //Change Products
 Route::middleware('auth')->get('/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
 Route::middleware('auth')->put('/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
+
+//Delete Products
+Route::middleware('auth')->get('/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
+Route::middleware('auth')->delete('/produto/eliminar/{name}', [DeleteProductController::class, 'DeleteProducts']);
 
 // Telemoveis
 Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);
@@ -69,7 +74,6 @@ Route::get('/computadores/micro-computadores', [ComputadoresController::class, '
 Route::get('/computadores/desktop', [ComputadoresController::class, 'showDesktopPC']);
 Route::get('/computadores/cpu-coolers', [ComputadoresController::class, 'showCPUCoolers']);
 Route::get('/computadores/{subCategory}/{id}', [ComputadoresController::class, 'showComputadores']);
-
 
 //Registo
 Route::get('/registo', [LoginRegisterController::class, 'showPageRegister']);
