@@ -65,6 +65,24 @@
             />
         </div>
 
+        <div v-if="form.price">
+            <label
+                for="price"
+                class="block mt-2 text-lg text-center font-medium text-emerald-400"
+            >
+                Preço final: {{ form.price }}€
+            </label>
+        </div>
+
+        <div v-if="form.stock">
+            <label
+                for="price"
+                class="block mt-2 text-lg text-center font-medium text-red-400"
+            >
+                Stock final: {{ form.stock }} unidades
+            </label>
+        </div>
+
         <button
             type="submit"
             v-if="form.id && form.price && form.stock"
