@@ -68,7 +68,7 @@ Route::get('/computadores/workstations', [ComputadoresController::class, 'showWo
 Route::get('/computadores/micro-computadores', [ComputadoresController::class, 'showMicroPC']);
 Route::get('/computadores/desktop', [ComputadoresController::class, 'showDesktopPC']);
 Route::get('/computadores/cpu-coolers', [ComputadoresController::class, 'showCPUCoolers']);
-Route::get('/computadores/{subCategory}/{id}', [ProductController::class, 'showComputadores']);
+Route::get('/computadores/{subCategory}/{id}', [ComputadoresController::class, 'showComputadores']);
 
 
 //Registo
