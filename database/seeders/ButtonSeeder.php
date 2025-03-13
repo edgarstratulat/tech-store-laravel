@@ -95,6 +95,12 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => null
             ],
             [
+                'button_name' => 'Eliminar Produtos',
+                'route' => '/produto/eliminar',
+                'dropdown' => false,
+                "dropdownOptions" => null
+            ],
+            [
                 'button_name' => 'Iniciar Sessão',
                 'route' => '/login',
                 'dropdown' => false,

@@ -74,6 +74,7 @@ export default {
             const DropdownButtons = [
                 "Adicionar Produtos",
                 "Atualizar Produtos",
+                "Eliminar Produtos",
                 "Terminar Sessão",
             ];
             return this.Buttons.filter((btn) =>
