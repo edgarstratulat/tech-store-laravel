@@ -84,4 +84,17 @@ class ComputadoresController extends Controller
         ]);
 
     }
+
+    public function showComputadores($subCategory, $id)
+    {
+        $promo = Computer::find($id);
+
+        $buttons = Button::all();
+
+        return Inertia::render('detalhes-produto', [
+            'DetalhesProduto' => $promo,
+            'Buttons' => $buttons,
+            'Utilizador' => Auth::user(),
+        ]);
+    }
 }
