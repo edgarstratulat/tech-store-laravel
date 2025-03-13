@@ -65,7 +65,7 @@ export default {
     },
     computed: {
         filterButtonsDropDownMenuNotLogged() {
-            const DropdownButtons = ["Login", "Registo"];
+            const DropdownButtons = ["Iniciar Sessão", "Criar Conta"];
             return this.Buttons.filter((btn) =>
                 DropdownButtons.includes(btn.button_name)
             );
