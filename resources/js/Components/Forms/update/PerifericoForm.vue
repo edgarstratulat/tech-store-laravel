@@ -3,14 +3,14 @@
         <label
             for="product"
             class="block mb-2 text-sm font-medium text-gray-700"
-            >Qual é o Telemóvel?</label
+            >Qual é o Periferico?</label
         >
         <select
             v-model="form.id"
             class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
         >
-            <option disabled value="">Selecione o Telemóvel</option>
-            <option v-for="item in Telemovel" :key="item.id" :value="item.id">
+            <option disabled value="">Selecione o Periferico</option>
+            <option v-for="item in Periferico" :key="item.id" :value="item.id">
                 {{ item.name }}
             </option>
         </select>
@@ -20,14 +20,14 @@
             class="block mt-2 text-lg text-center font-medium text-emerald-400"
         >
             Preço atual:
-            {{ Telemovel.find((item) => item.id === form.id).price }}€
+            {{ Periferico.find((item) => item.id === form.id).price }}€
         </label>
 
         <label
             v-if="form.id"
             class="block text-lg text-center mt-2 text-md font-medium text-red-400"
             >Stock atual:
-            {{ Telemovel.find((item) => item.id === form.id).stock }}
+            {{ Periferico.find((item) => item.id === form.id).stock }}
             Unidades</label
         >
 
@@ -66,7 +66,7 @@
             v-if="form.id && form.price && form.stock"
             class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
         >
-            Atualizar Telemóvel
+            Atualizar Periférico
         </button>
     </div>
 </template>
@@ -77,7 +77,7 @@ export default {
         form: {
             type: Object,
         },
-        Telemovel: {
+        Periferico: {
             type: Array,
             default: () => [],
         },

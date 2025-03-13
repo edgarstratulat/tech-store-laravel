@@ -35,8 +35,9 @@ const submit = () => {
                 >
                     <option disabled value="">Selecione uma Categoria</option>
                     <option value="Telemóveis">Telemóveis</option>
+                    <option value="Periféricos">Periféricos</option>
                     <option value="Componentes">Componentes</option>
-                    <option value="Acessorios">Acessórios</option>
+                    <option value="Acessórios">Acessórios</option>
                     <option value="Computadores">Computadores</option>
                 </select>
             </div>
@@ -47,12 +48,29 @@ const submit = () => {
                     :form="form"
                 ></telemovelForm>
             </div>
-
             <div v-if="form.category == 'Componentes'">
                 <componentesForm
                     :ComponentePC="ComponentePC"
                     :form="form"
                 ></componentesForm>
+            </div>
+            <div v-if="form.category == 'Computadores'">
+                <ComputadorForm
+                    :Computador="Computador"
+                    :form="form"
+                ></ComputadorForm>
+            </div>
+            <div v-if="form.category == 'Acessórios'">
+                <AcessoriosForm
+                    :Acessorio="Acessorio"
+                    :form="form"
+                ></AcessoriosForm>
+            </div>
+            <div v-if="form.category == 'Periféricos'">
+                <PerifericoForm
+                    :Periferico="Periferico"
+                    :form="form"
+                ></PerifericoForm>
             </div>
         </form>
     </div>
@@ -62,12 +80,18 @@ const submit = () => {
 import Navbar from "../../Components/navbar.vue";
 import telemovelForm from "../../Components/Forms/update/telemovelForm.vue";
 import componentesForm from "../../Components/Forms/update/componentesForm.vue";
+import ComputadorForm from "../../Components/Forms/update/computadorForm.vue";
+import AcessoriosForm from "../../Components/Forms/update/AcessoriosForm.vue";
+import PerifericoForm from "../../Components/Forms/update/perifericoForm.vue";
 
 export default {
     components: {
         Navbar,
         telemovelForm,
         componentesForm,
+        ComputadorForm,
+        AcessoriosForm,
+        PerifericoForm,
     },
     props: {
         Buttons: {
@@ -83,6 +107,18 @@ export default {
             default: () => [],
         },
         ComponentePC: {
+            type: Array,
+            default: () => [],
+        },
+        Computador: {
+            type: Array,
+            default: () => [],
+        },
+        Acessorio: {
+            type: Array,
+            default: () => [],
+        },
+        Periferico: {
             type: Array,
             default: () => [],
         },

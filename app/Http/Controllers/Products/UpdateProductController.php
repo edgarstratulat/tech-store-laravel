@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Models\Acessorio;
 use Inertia\Inertia;
 use App\Models\Button;
 use App\Models\Telemovel;
 use App\Models\ComponentePC;
+use App\Models\Computer;
+use App\Models\Periferico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,12 +20,18 @@ class UpdateProductController extends Controller
         $buttons = Button::all();
         $telemovel = Telemovel::all();
         $compPC = ComponentePC::all();
+        $pc = Computer::all();
+        $ace = Acessorio::all();
+        $peri = Periferico::all();
 
         return Inertia::render('Products/updateProduto', [
             'Buttons' => $buttons,
             'Utilizador' => Auth::user(),
             'Telemovel' => $telemovel,
-            'ComponentePC' => $compPC
+            'ComponentePC' => $compPC,
+            'Computador' => $pc,
+            'Acessorio' => $ace,
+            'Periferico' => $peri
          ]);
     }
 
@@ -34,6 +43,9 @@ class UpdateProductController extends Controller
 
         $tel = Telemovel::find($request->id);
         $compPC = ComponentePC::find($request->id);
+        $pc = Computer::find($request->id);
+        $ace = Acessorio::find($request->id);
+        $peri = Periferico::find($request->id);
 
         if(Telemovel::find($request->id)){
             $tel->update([
@@ -44,6 +56,27 @@ class UpdateProductController extends Controller
 
         if(ComponentePC::find($request->id)){
             $compPC->update([
+                'price' => $request->price,
+                'stock' => $request->stock,
+            ]);
+        }
+
+        if(Computer::find($request->id)){
+            $pc->update([
+                'price' => $request->price,
+                'stock' => $request->stock,
+            ]);
+        }
+
+        if(Acessorio::find($request->id)){
+            $ace->update([
+                'price' => $request->price,
+                'stock' => $request->stock,
+            ]);
+        }
+
+        if(Periferico::find($request->id)){
+            $peri->update([
                 'price' => $request->price,
                 'stock' => $request->stock,
             ]);

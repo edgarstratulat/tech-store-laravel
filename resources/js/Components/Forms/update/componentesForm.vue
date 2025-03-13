@@ -19,6 +19,22 @@
             </option>
         </select>
 
+        <label
+            v-if="form.id"
+            class="block mt-2 text-lg text-center font-medium text-emerald-400"
+        >
+            Preço atual:
+            {{ ComponentePC.find((item) => item.id === form.id).price }}€
+        </label>
+
+        <label
+            v-if="form.id"
+            class="block text-lg text-center mt-2 text-md font-medium text-red-400"
+            >Stock atual:
+            {{ ComponentePC.find((item) => item.id === form.id).stock }}
+            Unidades</label
+        >
+
         <div v-if="form.id" class="mt-5">
             <label
                 for="price"
@@ -39,7 +55,7 @@
                 for="stock"
                 class="block mb-2 text-sm font-medium text-gray-700"
             >
-                Qual é o stock neste momento?
+                Adicionar Stock
             </label>
             <input
                 id="stock"
