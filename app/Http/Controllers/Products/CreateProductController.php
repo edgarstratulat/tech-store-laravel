@@ -29,7 +29,7 @@ class CreateProductController extends Controller
         $request->validate([
             'name' => 'required|min:2',
             'price' => 'numeric',
-            'sale_price' => 'numeric',
+            'sale_price' => 'numeric|max:100',
             'desc' => 'required',
             'category' => 'required',
             'subCategory' => 'required',
