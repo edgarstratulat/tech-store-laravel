@@ -25,7 +25,7 @@ Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::
 
 //Change Products
 Route::middleware('auth')->get('/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
-//Route::middleware('auth')->post('/produto/atualizar', [CreateProductController::class, 'showUpdateProductsForm']);
+Route::middleware('auth')->put('/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
 
 // Telemoveis
 Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);

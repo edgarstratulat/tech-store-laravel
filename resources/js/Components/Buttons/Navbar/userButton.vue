@@ -65,15 +65,19 @@ export default {
     },
     computed: {
         filterButtonsDropDownMenuNotLogged() {
-            const DropdownButtons = [8, 9];
+            const DropdownButtons = ["Login", "Registo"];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
+                DropdownButtons.includes(btn.button_name)
             );
         },
         filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = [7, 10];
+            const DropdownButtons = [
+                "Adicionar Produtos",
+                "Atualizar Produtos",
+                "Terminar Sessão",
+            ];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
+                DropdownButtons.includes(btn.button_name)
             );
         },
     },

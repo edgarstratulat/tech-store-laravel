@@ -89,19 +89,25 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => null
             ],
             [
-                'button_name' => 'Login',
+                'button_name' => 'Atualizar Produtos',
+                'route' => '/produto/atualizar',
+                'dropdown' => false,
+                "dropdownOptions" => null
+            ],
+            [
+                'button_name' => 'Iniciar Sessão',
                 'route' => '/login',
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
             [
-                'button_name' => 'Registo',
+                'button_name' => 'Criar Conta',
                 'route' => '/registo',
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
             [
-                'button_name' => 'Logout',
+                'button_name' => 'Terminar Sessão',
                 'route' => '/logout',
                 'dropdown' => false,
                 "dropdownOptions" => null
