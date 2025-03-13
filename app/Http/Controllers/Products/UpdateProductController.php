@@ -18,11 +18,12 @@ class UpdateProductController extends Controller
     public function showUpdateProductsForm()
     {
         $buttons = Button::all();
-        $telemovel = Telemovel::all();
-        $compPC = ComponentePC::all();
-        $pc = Computer::all();
-        $ace = Acessorio::all();
-        $peri = Periferico::all();
+
+        $telemovel = Telemovel::select('id', 'name', 'price', 'stock')->get();
+        $compPC = ComponentePC::select('id', 'name', 'price', 'stock')->get();
+        $pc = Computer::select('id', 'name', 'price', 'stock')->get();
+        $ace = Acessorio::select('id', 'name', 'price', 'stock')->get();
+        $peri = Periferico::select('id', 'name', 'price', 'stock')->get();
 
         return Inertia::render('Products/updateProduto', [
             'Buttons' => $buttons,
