@@ -7,6 +7,7 @@ const form = reactive({
     price: null,
     stock: null,
     category: [],
+    subCategory: [],
 });
 
 const submit = () => {
@@ -46,6 +47,13 @@ const submit = () => {
                     :form="form"
                 ></telemovelForm>
             </div>
+
+            <div v-if="form.category == 'Componentes'">
+                <componentesForm
+                    :ComponentePC="ComponentePC"
+                    :form="form"
+                ></componentesForm>
+            </div>
         </form>
     </div>
 </template>
@@ -53,11 +61,13 @@ const submit = () => {
 <script>
 import Navbar from "../../Components/navbar.vue";
 import telemovelForm from "../../Components/Forms/update/telemovelForm.vue";
+import componentesForm from "../../Components/Forms/update/componentesForm.vue";
 
 export default {
     components: {
         Navbar,
         telemovelForm,
+        componentesForm,
     },
     props: {
         Buttons: {
@@ -69,6 +79,10 @@ export default {
             required: true,
         },
         Telemovel: {
+            type: Array,
+            default: () => [],
+        },
+        ComponentePC: {
             type: Array,
             default: () => [],
         },
