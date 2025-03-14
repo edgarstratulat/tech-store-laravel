@@ -8,7 +8,7 @@
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
                     <a
-                        :href="`http://localhost:8000/componentes-para-pc/${promo.subCategory}/${promo.id}`"
+                        :href="`http://localhost:8000/componentes/${promo.subCategory}/${promo.id}`"
                         class="flex p-6 flex-col flex-grow"
                     >
                         <!-- Product Image -->
