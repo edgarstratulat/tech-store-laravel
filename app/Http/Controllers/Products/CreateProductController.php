@@ -44,6 +44,25 @@ class CreateProductController extends Controller
         }
 
         if($request->category == 'Telemóveis' && $request->subCategory) {
+
+            $promocaoId = null;
+
+            if ($request->sale_price > 0) {
+                $promocao = Promocoes::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'subCategory' => $request->subCategory,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);
+    
+            $promocaoId = $promocao->id;
+    
+            }
+
             Telemovel::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -52,11 +71,31 @@ class CreateProductController extends Controller
                 'category' => $request->category,
                 'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
-                'image_path' => $imagePath
+                'image_path' => $imagePath,
+                'promocao_id' => $promocaoId
             ]);  
         }
 
         if($request->category == 'Computadores' && $request->subCategory ){
+
+            $promocaoId = null;
+
+            if ($request->sale_price > 0) {
+                $promocao = Promocoes::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'subCategory' => $request->subCategory,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);
+
+            $promocaoId = $promocao->id;
+    
+            }
+
             Computer::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -65,11 +104,31 @@ class CreateProductController extends Controller
                 'category' => $request->category,
                 'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
-                'image_path' => $imagePath
+                'image_path' => $imagePath,
+                'promocao_id' => $promocaoId
             ]);
         }
         
         if($request->category == 'Periféricos' && $request->subCategory ) {
+
+            $promocaoId = null;
+
+            if ($request->sale_price > 0) {
+                $promocao = Promocoes::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'subCategory' => $request->subCategory,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);
+
+            $promocaoId = $promocao->id;
+    
+        }
+
             Periferico::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -78,11 +137,31 @@ class CreateProductController extends Controller
                 'category' => $request->category,
                 'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
-                'image_path' => $imagePath
+                'image_path' => $imagePath,
+                'promocao_id' => $promocaoId
             ]);
         } 
    
         if($request->category == 'Componentes' && $request->subCategory) {
+
+            $promocaoId = null;
+
+            if ($request->sale_price > 0) {
+                $promocao = Promocoes::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'subCategory' => $request->subCategory,
+                'stock' => $request->stock,
+                'image_path' => $imagePath
+            ]);
+
+            $promocaoId = $promocao->id;
+    
+        }
+
             ComponentePC::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -91,12 +170,17 @@ class CreateProductController extends Controller
                 'category' => $request->category,
                 'subCategory' => $request->subCategory,
                 'stock' => $request->stock,
-                'image_path' => $imagePath
+                'image_path' => $imagePath,
+                'promocao_id' => $promocaoId
             ]);
         }
 
         if($request->category == 'Acessórios' && $request->subCategory ) {
-            Acessorio::create([
+
+            $promocaoId = null;
+
+            if ($request->sale_price > 0) {
+                $promocao = Promocoes::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
@@ -106,21 +190,24 @@ class CreateProductController extends Controller
                 'stock' => $request->stock,
                 'image_path' => $imagePath
             ]);
+
+            $promocaoId = $promocao->id;
+    
+        }
+
+            Acessorio::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'desc' => $request->desc,
+                'category' => $request->category,
+                'subCategory' => $request->subCategory,
+                'stock' => $request->stock,
+                'image_path' => $imagePath,
+                'promocao_id' => $promocaoId
+            ]);
         } 
         
-        if ($request->sale_price > 0) {
-            Promocoes::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'sale_price' => $request->sale_price,
-            'desc' => $request->desc,
-            'category' => $request->category,
-            'subCategory' => $request->subCategory,
-            'stock' => $request->stock,
-            'image_path' => $imagePath
-        ]);
-    }
-
         return Inertia::location('/');
     
         }

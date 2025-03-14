@@ -10,5 +10,5 @@ class Telemovel extends Model
     use HasFactory; 
 
     protected $table = 'Telemoveis';
-    protected $fillable = ['name', 'price','sale_price', 'desc','category','subCategory','stock','image_path'];
+    protected $fillable = ['name','promocao_id', 'price','sale_price', 'desc','category','subCategory','stock','image_path'];
 }
