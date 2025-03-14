@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Acessorios', function (Blueprint $table) {
-            $table->id()->incrementing();
+            $table->id();
+            $table->unsignedBigInteger('promocao_id')->nullable();
+            $table->foreign('promocao_id')->references('id')->on('Promocoes')->nullOnDelete('Promocoes');
             $table->string('name');
             $table->string('price');
             $table->string('sale_price');

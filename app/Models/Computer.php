@@ -12,5 +12,5 @@ class Computer extends Model
     use HasFactory; 
 
     protected $table = 'Computadores';
-    protected $fillable = ['name', 'price','sale_price', 'desc','category','subCategory','stock','image_path'];
+    protected $fillable = ['name', 'promocao_id', 'price','sale_price', 'desc','category','subCategory','stock','image_path'];
 }
