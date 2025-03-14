@@ -7,7 +7,7 @@ const form = reactive({
 });
 
 const submit = () => {
-    router.delete(`/produto/eliminar/${form.name}`);
+    router.delete(`/produto/eliminar/${form.id}`);
 };
 </script>
 
@@ -32,6 +32,9 @@ const submit = () => {
                     <option disabled value="">Selecione uma Categoria</option>
                     <option value="Telemóveis">Telemóveis</option>
                     <option value="Componentes">Componentes</option>
+                    <option value="Computadores">Computadores</option>
+                    <option value="Perifericos">Periféricos</option>
+                    <option value="Acessorios">Acessórios</option>
                 </select>
 
                 <div v-if="form.category === 'Telemóveis'">
@@ -41,14 +44,14 @@ const submit = () => {
                         >Qual é o Telemóvel?</label
                     >
                     <select
-                        v-model="form.name"
+                        v-model="form.id"
                         class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                     >
                         <option disabled value="">Selecione o Telemóvel</option>
                         <option
                             v-for="item in Telemoveis"
-                            :key="item.name"
-                            :value="item.name"
+                            :key="item.id"
+                            :value="item.id"
                         >
                             {{ item.name }}
                         </option>
@@ -56,7 +59,7 @@ const submit = () => {
 
                     <button
                         type="submit"
-                        v-if="form.name"
+                        v-if="form.id"
                         class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                     >
                         Eliminar Telemóvel
@@ -90,7 +93,98 @@ const submit = () => {
                         v-if="form.id"
                         class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                     >
-                        Eliminar Telemóvel
+                        Eliminar Componente
+                    </button>
+                </div>
+
+                <div v-if="form.category === 'Computadores'">
+                    <label
+                        for="product"
+                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
+                        >Qual é o Computador?</label
+                    >
+                    <select
+                        v-model="form.id"
+                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                    >
+                        <option disabled value="">
+                            Selecione o Computador
+                        </option>
+                        <option
+                            v-for="comp in Computadores"
+                            :key="comp.id"
+                            :value="comp.id"
+                        >
+                            {{ comp.name }}
+                        </option>
+                    </select>
+
+                    <button
+                        type="submit"
+                        v-if="form.id"
+                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                    >
+                        Eliminar Computador
+                    </button>
+                </div>
+
+                <div v-if="form.category === 'Perifericos'">
+                    <label
+                        for="product"
+                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
+                        >Qual é o Periférico?</label
+                    >
+                    <select
+                        v-model="form.id"
+                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                    >
+                        <option disabled value="">
+                            Selecione o Periferico
+                        </option>
+                        <option
+                            v-for="comp in Perifericos"
+                            :key="comp.id"
+                            :value="comp.id"
+                        >
+                            {{ comp.name }}
+                        </option>
+                    </select>
+
+                    <button
+                        type="submit"
+                        v-if="form.id"
+                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                    >
+                        Eliminar Periférico
+                    </button>
+                </div>
+
+                <div v-if="form.category === 'Acessorios'">
+                    <label
+                        for="product"
+                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
+                        >Qual é o Acessório?</label
+                    >
+                    <select
+                        v-model="form.id"
+                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                    >
+                        <option disabled value="">Selecione o Acessório</option>
+                        <option
+                            v-for="comp in Acessorios"
+                            :key="comp.id"
+                            :value="comp.id"
+                        >
+                            {{ comp.name }}
+                        </option>
+                    </select>
+
+                    <button
+                        type="submit"
+                        v-if="form.id"
+                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                    >
+                        Eliminar Acessório
                     </button>
                 </div>
             </div>
@@ -119,6 +213,18 @@ export default {
             default: () => [],
         },
         Componentes: {
+            type: Array,
+            default: () => [],
+        },
+        Computadores: {
+            type: Array,
+            default: () => [],
+        },
+        Perifericos: {
+            type: Array,
+            default: () => [],
+        },
+        Acessorios: {
             type: Array,
             default: () => [],
         },

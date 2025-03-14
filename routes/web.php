@@ -30,7 +30,7 @@ Route::middleware('auth')->put('/produto/atualizar', [UpdateProductController::c
 
 //Delete Products
 Route::middleware('auth')->get('/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
-Route::middleware('auth')->delete('/produto/eliminar/{name}', [DeleteProductController::class, 'DeleteProducts']);
+Route::middleware('auth')->delete('/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
 
 // Telemoveis
 Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);
