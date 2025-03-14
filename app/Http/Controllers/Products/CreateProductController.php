@@ -28,7 +28,7 @@ class CreateProductController extends Controller
     public function createProducts(Request $request) {
         $request->validate([
             'name' => 'required|min:2',
-            'price' => 'numeric',
+            'price' => 'numeric|min:0.01',
             'sale_price' => 'numeric|min:0|max:100',
             'desc' => 'required',
             'category' => 'required',
