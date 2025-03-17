@@ -5,11 +5,11 @@ use App\Http\Controllers\Componentes\ComponentesController;
 use App\Http\Controllers\Computadores\ComputadoresController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Products\CreateProductController;
+use App\Http\Controllers\Admin\Products\CreateProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Perifericos\PerifericosController;
-use App\Http\Controllers\Products\DeleteProductController;
-use App\Http\Controllers\Products\UpdateProductController;
+use App\Http\Controllers\Admin\Products\DeleteProductController;
+use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
 
