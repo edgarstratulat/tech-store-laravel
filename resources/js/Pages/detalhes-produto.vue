@@ -1,5 +1,6 @@
 <template>
-    <Navbar :Utilizador="Utilizador" :Buttons="Buttons" />
+    <Navbar :Utilizador="Utilizador" :Buttons="Buttons" :isAdmin="isAdmin" />
+    <router-view />
     <div class="p-4">
         <h1 class="text-2xl font-bold mb-4">Detalhes do Produto</h1>
         <div class="mb-4">
@@ -34,6 +35,9 @@ export default {
         },
         Utilizador: {
             type: Object,
+        },
+        isAdmin: {
+            type: Boolean,
         },
     },
     methods: {

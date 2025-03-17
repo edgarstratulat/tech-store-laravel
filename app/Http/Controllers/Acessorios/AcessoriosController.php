@@ -82,11 +82,15 @@ class AcessoriosController extends Controller
         $ace = Acessorio::find($id);
 
         $buttons = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
 
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $ace,
             'Buttons' => $buttons,
-            'Utilizador' => Auth::user(),
+            'Utilizador' => $user,
+            'isAdmin' => $isAdmin
         ]);
     }
 }

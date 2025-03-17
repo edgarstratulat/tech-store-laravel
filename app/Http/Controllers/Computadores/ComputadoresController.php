@@ -108,11 +108,15 @@ class ComputadoresController extends Controller
         $promo = Computer::find($id);
 
         $buttons = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
 
         return Inertia::render('detalhes-produto', [
             'DetalhesProduto' => $promo,
             'Buttons' => $buttons,
-            'Utilizador' => Auth::user(),
+            'Utilizador' => $user,
+            'isAdmin' => $isAdmin
         ]);
     }
 }

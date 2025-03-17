@@ -18,11 +18,32 @@ class ProductSeeder extends Seeder
             [
             'name' => 'Iphone 16',
             'price' => '989',
-            'sale_price' => '5',
+            'sale_price' => '0',
             'desc' => 'Arroz',
             'category' => 'Telemóveis',
             'subCategory' => 'iphone',
             'stock' => '100',
+            'image_path' => 'images/6w6PCzXATZdTg4YpZqcE1IMjQNDrGFRKVMS7tmjA.webp'
+        ],
+        [
+            'name' => 'Iphone 16 Pro',
+            'price' => '1399',
+            'sale_price' => '0',
+            'desc' => 'Arroz',
+            'category' => 'Telemóveis',
+            'subCategory' => 'iphone',
+            'stock' => '100',
+            'image_path' => 'images/6w6PCzXATZdTg4YpZqcE1IMjQNDrGFRKVMS7tmjA.webp'
+        ],
+        [
+            'name' => 'Xiaomi 14TPRO',
+            'price' => '1399',
+            'sale_price' => '0',
+            'desc' => 'Arroz',
+            'category' => 'Telemóveis',
+            'subCategory' => 'iphone',
+            'stock' => '100',
+            'image_path' => 'images/6w6PCzXATZdTg4YpZqcE1IMjQNDrGFRKVMS7tmjA.webp'
         ],
     ];
         
