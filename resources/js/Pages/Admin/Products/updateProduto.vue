@@ -77,12 +77,12 @@ const submit = () => {
 </template>
 
 <script>
-import Navbar from "../../Components/navbar.vue";
-import telemovelForm from "../../Components/Forms/update/telemovelForm.vue";
-import componentesForm from "../../Components/Forms/update/componentesForm.vue";
-import ComputadorForm from "../../Components/Forms/update/computadorForm.vue";
-import AcessoriosForm from "../../Components/Forms/update/AcessoriosForm.vue";
-import PerifericoForm from "../../Components/Forms/update/perifericoForm.vue";
+import Navbar from "../../../Components/navbar.vue";
+import telemovelForm from "../../../Components/Forms/update/telemovelForm.vue";
+import componentesForm from "../../../Components/Forms/update/componentesForm.vue";
+import ComputadorForm from "../../../Components/Forms/update/computadorForm.vue";
+import AcessoriosForm from "../../../Components/Forms/update/AcessoriosForm.vue";
+import PerifericoForm from "../../../Components/Forms/update/perifericoForm.vue";
 
 export default {
     components: {

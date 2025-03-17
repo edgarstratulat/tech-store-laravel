@@ -26,7 +26,7 @@ class UpdateProductController extends Controller
         $pc = Computer::select('id', 'name', 'price', 'stock')->get();
         $ace = Acessorio::select('id', 'name', 'price', 'stock')->get();
 
-        return Inertia::render('Products/updateProduto', [
+        return Inertia::render('Admin/Products/updateProduto', [
             'Buttons' => $buttons,
             'Utilizador' => Auth::user(),
             'Telemovel' => $telemovel,

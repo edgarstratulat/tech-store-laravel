@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from "vue";
 import { router } from "@inertiajs/vue3";
-import Navbar from "../../Components/navbar.vue";
+import Navbar from "../../../Components/navbar.vue";
 
 const form = reactive({
     name: null,

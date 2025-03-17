@@ -193,7 +193,7 @@ const submit = () => {
 </template>
 
 <script>
-import navbar from "../../Components/navbar.vue";
+import navbar from "../../../Components/navbar.vue";
 
 export default {
     components: {

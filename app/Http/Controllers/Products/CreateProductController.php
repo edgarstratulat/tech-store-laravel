@@ -19,7 +19,7 @@ class CreateProductController extends Controller
 
         $buttons = Button::all();
 
-        return Inertia::render('Products/addProduto', [
+        return Inertia::render('Admin/Products/addProduto', [
             'Utilizador' => Auth::user(),
             'Buttons' => $buttons
         ]);

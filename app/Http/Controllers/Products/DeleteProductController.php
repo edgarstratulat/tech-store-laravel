@@ -26,7 +26,7 @@ class DeleteProductController extends Controller
         $peri = Periferico::select('id', 'name')->get();
         $ace = Acessorio::select('id', 'name')->get();
         
-        return Inertia::render('Products/deleteProduto', [
+        return Inertia::render('Admin/Products/deleteProduto', [
             'Buttons' => $button,
             'Telemoveis' => $telemovel,
             'Componentes' => $comp,
