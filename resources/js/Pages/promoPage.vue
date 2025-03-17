@@ -1,6 +1,10 @@
 <template>
     <div class="bg-zinc-100">
-        <navbar :Utilizador="Utilizador" :Buttons="Buttons" />
+        <navbar
+            :Utilizador="Utilizador"
+            :Buttons="Buttons"
+            :isAdmin="isAdmin"
+        />
         <Promocoes :Promocoes="Promocoes" />
     </div>
 </template>
@@ -25,6 +29,9 @@ export default {
         Buttons: {
             type: Array,
             required: true,
+        },
+        isAdmin: {
+            type: Boolean,
         },
     },
 };

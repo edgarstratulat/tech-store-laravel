@@ -16,47 +16,64 @@ class AcessoriosController extends Controller
         $aces = Acessorio::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
 
         $button = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
 
         return Inertia::render('Acessorios/acessoriosPage', [
             'Acessorio' => $aces,
-            'Utilizador' => Auth::user(),
-            'Buttons' => $button
+            'Utilizador' => $user,
+            'Buttons' => $button,
+            'isAdmin' => $isAdmin
+
             ]);
     }
 
     public function AcessoriosPC()
     {
         $button = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
 
         $comp = Acessorio::where('subCategory', 'acessorios-para-computador')->get();
             return Inertia::render('Acessorios/AcessoriosPcPage', [
                 'Acessorio' => $comp,
-                'Utilizador' => Auth::user(),
-                'Buttons' => $button    
+                'Utilizador' => $user,
+                'Buttons' => $button,
+                'isAdmin' => $isAdmin    
             ]);
     }
 
     public function AcessoriosCasa()
     {
         $button = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
 
         $comp = Acessorio::where('subCategory', 'acessorios-para-casa')->get();
             return Inertia::render('Acessorios/AcessorioscasaPage', [
                 'Acessorio' => $comp,
-                'Utilizador' => Auth::user(),
-                'Buttons' => $button    
+                'Utilizador' => $user,
+                'Buttons' => $button,
+                'isAdmin' => $isAdmin    
             ]);
     }
 
     public function AcessoriosTel()
     {
         $button = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
 
         $comp = Acessorio::where('subCategory', 'acessorios-para-telemovel')->get();
             return Inertia::render('Acessorios/AcessoriosSmartPhonePage', [
                 'Acessorio' => $comp,
-                'Utilizador' => Auth::user(),
-                'Buttons' => $button    
+                'Utilizador' => $user,
+                'Buttons' => $button,
+                'isAdmin' => $isAdmin    
             ]);
     }
 

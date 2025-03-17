@@ -19,11 +19,14 @@ class TelemovelController extends Controller
         $tel = Telemovel::select('id', 'name', 'price', 'sale_price', 'desc','category','subCategory', 'image_path', 'stock')->get();
 
         $buttons = Button::all();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
 
         return Inertia::render('Smartphones/telemoveisPage', [
             'Telemovel' => $tel,
-            'Utilizador' => Auth::user(),
+            'Utilizador' => $user,
             'Buttons' => $buttons,
+            'isAdmin' => $isAdmin,
         ]);
 
     }
@@ -32,12 +35,16 @@ class TelemovelController extends Controller
     {
         $buttons = Button::all();
 
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
         
         $iphone = Telemovel::where('subCategory', 'iphone')->get();
         return Inertia::render('Smartphones/iphonePage', [
             'Telemovel' => $iphone,
-            'Utilizador' => Auth::user(),
+            'Utilizador' => $user,
             'Buttons' => $buttons,
+            'isAdmin' => $isAdmin,
         ]);    
     }
 
@@ -45,12 +52,16 @@ class TelemovelController extends Controller
     {
         $buttons = Button::all();
 
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+
         
         $android = Telemovel::where('subCategory', 'android')->get();
         return Inertia::render('Smartphones/androidPage', [
             'Telemovel' => $android,
-            'Utilizador' => Auth::user(),
+            'Utilizador' => $user,
             'Buttons' => $buttons,
+            'isAdmin' => $isAdmin,
         ]);    
     }
 

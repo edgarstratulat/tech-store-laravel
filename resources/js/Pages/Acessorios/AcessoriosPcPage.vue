@@ -1,6 +1,10 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar :Utilizador="Utilizador" :Buttons="Buttons" />
+        <Navbar
+            :Utilizador="Utilizador"
+            :Buttons="Buttons"
+            :isAdmin="isAdmin"
+        />
         <h1
             class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
@@ -30,6 +34,9 @@ export default {
         Buttons: {
             type: Array,
             required: true,
+        },
+        isAdmin: {
+            type: Boolean,
         },
     },
 };
