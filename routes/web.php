@@ -13,6 +13,7 @@ use App\Http\Controllers\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
 
+
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
 
@@ -20,16 +21,17 @@ Route::get('/', [HomeController::class, 'showProductsHome']);
 Route::get('/promocoes', [ProductController::class, 'indexPromocoes']);
 Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 
+
 //Add produtos
-Route::middleware('auth')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
+Route::middleware('auth', 'permission:Manage Store')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
 Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::class, 'createProducts']);
 
 //Change Products
-Route::middleware('auth')->get('/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
+Route::middleware('auth', 'permission:Manage Store')->get('/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
 Route::middleware('auth')->put('/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
 
 //Delete Products
-Route::middleware('auth')->get('/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
+Route::middleware('auth', 'permission:Manage Store')->get('/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
 Route::middleware('auth')->delete('/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
 
 // Telemoveis
@@ -80,6 +82,6 @@ Route::get('/registo', [LoginRegisterController::class, 'showPageRegister']);
 Route::post('/registo', [LoginRegisterController::class, 'createUser']);
 
 // Login & Logout
-Route::get('/login', [LoginRegisterController::class, 'showPageLogin']);
+Route::get('/login', [LoginRegisterController::class, 'showPageLogin'])->name('login');
 Route::post('/login', [LoginRegisterController::class, 'userAuth']);
 Route::get('/logout', [LoginRegisterController::class, 'userLogout']);
