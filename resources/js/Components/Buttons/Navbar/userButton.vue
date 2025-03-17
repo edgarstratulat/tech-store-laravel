@@ -34,16 +34,22 @@
                     {{ btn.button_name }}
                 </button>
             </li>
-            <a v-if="Utilizador">
-                <li class="cursor-pointer text-slate-800 px-2 pt-2 font-bold">
-                    <span class="text-center">Olá, {{ Utilizador.name }}</span>
-                    <hr class="my-2 border-slate-200" />
-                </li>
-            </a>
 
-            <li class="cursor-pointer text-slate-800 p-3 hover:text-blue-600">
+            <li
+                v-if="Utilizador"
+                class="cursor-pointer text-slate-800 p-3 hover:text-blue-600"
+            >
+                <a>
+                    <li
+                        class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
+                    >
+                        <span class="text-center"
+                            >Olá, {{ Utilizador.name }}</span
+                        >
+                        <hr class="my-2 border-slate-200" />
+                    </li>
+                </a>
                 <button
-                    v-if="Utilizador"
                     v-for="btn in filterButtonsDropDownMenuLogged"
                     :key="btn.id"
                     @click="redirect(btn.route)"
