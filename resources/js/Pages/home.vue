@@ -1,6 +1,10 @@
 <template>
     <div class="bg-zinc-100">
-        <navbar :Utilizador="Utilizador" :Buttons="Buttons" />
+        <navbar
+            :Utilizador="Utilizador"
+            :Buttons="Buttons"
+            :isAdmin="isAdmin"
+        />
         <Carroussel />
         <Promocoes :Promocoes="maxPromotionProductsShow()" />
         <div class="flex justify-center">
@@ -85,6 +89,9 @@ export default {
         },
         Buttons: {
             type: Array,
+        },
+        isAdmin: {
+            type: Boolean,
         },
     },
     methods: {

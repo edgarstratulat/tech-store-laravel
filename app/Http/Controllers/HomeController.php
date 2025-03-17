@@ -16,12 +16,16 @@ class HomeController extends Controller
         $computadores = Computer::select('id', 'name', 'price', 'sale_price', 'desc', 'category', 'subCategory', 'image_path', 'stock')->get();
 
         $buttons = Button::all();
+        $user = Auth::user();
+
+        $isAdmin = $user ? $user->hasRole('admin') : false;
 
         return Inertia::render('home', [
             'Promocoes' => $promocoes,
             'Computadores' => $computadores,
             'Buttons' => $buttons,
-            'Utilizador' => Auth::user(),
+            'Utilizador' => $user,
+            'isAdmin' => $isAdmin,
         ]);
     }
 }

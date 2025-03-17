@@ -23,9 +23,11 @@
             v-if="isDropdownOpen"
             class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg text-center"
         >
-            <li class="cursor-pointer text-slate-800 hover:text-blue-600">
+            <li
+                v-if="!Utilizador"
+                class="cursor-pointer text-slate-800 hover:text-blue-600"
+            >
                 <button
-                    v-if="!Utilizador"
                     v-for="btn in filterButtonsDropDownMenuNotLogged"
                     :key="btn.id"
                     @click="redirect(btn.route)"
@@ -34,9 +36,8 @@
                     {{ btn.button_name }}
                 </button>
             </li>
-
             <li
-                v-if="Utilizador"
+                v-if="Utilizador && !isAdmin"
                 class="cursor-pointer text-slate-800 p-3 hover:text-blue-600"
             >
                 <a>
@@ -51,6 +52,26 @@
                 </a>
                 <button
                     v-for="btn in filterButtonsDropDownMenuLogged"
+                    :key="btn.id"
+                    @click="redirect(btn.route)"
+                    class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
+                >
+                    {{ btn.button_name }}
+                </button>
+            </li>
+            <li v-if="isAdmin">
+                <a>
+                    <li
+                        class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
+                    >
+                        <span class="text-center"
+                            >Olá, {{ Utilizador.name }}</span
+                        >
+                        <hr class="my-2 border-slate-200" />
+                    </li>
+                </a>
+                <button
+                    v-for="btn in filterButtonsDropDownMenuAdmin"
                     :key="btn.id"
                     @click="redirect(btn.route)"
                     class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
@@ -77,10 +98,14 @@ export default {
             );
         },
         filterButtonsDropDownMenuLogged() {
+            const DropdownButtons = ["Definições da Conta", "Terminar Sessão"];
+            return this.Buttons.filter((btn) =>
+                DropdownButtons.includes(btn.button_name)
+            );
+        },
+        filterButtonsDropDownMenuAdmin() {
             const DropdownButtons = [
-                "Adicionar Produtos",
-                "Atualizar Produtos",
-                "Eliminar Produtos",
+                "Painel Administrativo",
                 "Terminar Sessão",
             ];
             return this.Buttons.filter((btn) =>
@@ -102,6 +127,9 @@ export default {
         },
         Buttons: {
             type: Array,
+        },
+        isAdmin: {
+            type: Boolean,
         },
     },
 };

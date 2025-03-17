@@ -26,6 +26,7 @@
                         <userButton
                             :Utilizador="Utilizador"
                             :Buttons="Buttons"
+                            :isAdmin="isAdmin"
                         ></userButton>
 
                         <!-- Cart Icon -->
@@ -85,6 +86,9 @@ export default {
         },
         Buttons: {
             type: Array,
+        },
+        isAdmin: {
+            type: Boolean,
         },
     },
     methods: {
