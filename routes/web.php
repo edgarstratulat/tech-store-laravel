@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\Products\DeleteProductController;
 use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
-
+use App\Http\Controllers\Admin\AdminController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'showProductsHome']);
 Route::get('/promocoes', [ProductController::class, 'indexPromocoes']);
 Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 
+//Admin Dashboard
+Route::middleware('auth', 'permission:Manage Store')->get('/dashboard', [AdminController::class, 'showAdminPanel']);
 
 //Add produtos
 Route::middleware('auth', 'permission:Manage Store')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
