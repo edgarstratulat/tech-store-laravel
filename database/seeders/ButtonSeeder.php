@@ -89,6 +89,18 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => null
             ],
             [
+                'button_name' => 'Painel Administrativo',
+                'route' => '/dashboard',
+                'dropdown' => false,
+                "dropdownOptions" => null
+            ],
+            [
+                'button_name' => 'Definições da Conta',
+                'route' => '/telemoveis',
+                'dropdown' => false,
+                "dropdownOptions" => null
+            ],
+            [
                 'button_name' => 'Atualizar Produtos',
                 'route' => '/produto/atualizar',
                 'dropdown' => false,
