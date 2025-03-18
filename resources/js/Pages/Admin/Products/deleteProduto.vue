@@ -7,7 +7,7 @@ const form = reactive({
 });
 
 const submit = () => {
-    router.delete(`dashboard/produto/eliminar/${form.id}`);
+    router.delete(`/dashboard/produto/eliminar/${form.id}`);
 };
 </script>
 
@@ -204,7 +204,6 @@ export default {
             type: Array,
             required: true,
         },
-
         Telemoveis: {
             type: Array,
             default: () => [],

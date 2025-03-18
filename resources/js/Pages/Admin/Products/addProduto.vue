@@ -36,7 +36,7 @@ const submit = () => {
     formData.append("desc", form.desc);
     formData.append("stock", form.stock);
 
-    router.post("dashboard/produto/adicionar", formData);
+    router.post("/dashboard/produto/adicionar", formData);
 };
 </script>
 
@@ -302,6 +302,10 @@ export default {
     props: {
         adminBtn: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },
