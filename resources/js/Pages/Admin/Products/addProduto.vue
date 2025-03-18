@@ -304,10 +304,6 @@ export default {
             type: Array,
             required: true,
         },
-        Utilizador: {
-            type: Object,
-            required: true,
-        },
     },
 };
 </script>
