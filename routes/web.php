@@ -25,16 +25,16 @@ Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 Route::middleware('auth', 'permission:Manage Store')->get('/dashboard', [AdminController::class, 'showAdminPanel']);
 
 //Add produtos
-Route::middleware('auth', 'permission:Manage Store')->get('/produto/adicionar', [CreateProductController::class, 'showProducts']);
-Route::middleware('auth')->post('/produto/adicionar', [CreateProductController::class, 'createProducts']);
+Route::middleware('auth', 'permission:Manage Store')->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
+Route::middleware('auth')->post('/dashboard/produto/adicionar', [CreateProductController::class, 'createProducts']);
 
 //Change Products
-Route::middleware('auth', 'permission:Manage Store')->get('/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
-Route::middleware('auth')->put('/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
+Route::middleware('auth', 'permission:Manage Store')->get('/dashboard/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
+Route::middleware('auth')->put('/dashboard/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
 
 //Delete Products
-Route::middleware('auth', 'permission:Manage Store')->get('/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
-Route::middleware('auth')->delete('/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
+Route::middleware('auth', 'permission:Manage Store')->get('/dashboard/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
+Route::middleware('auth')->delete('/dashboard/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
 
 // Telemoveis
 Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);

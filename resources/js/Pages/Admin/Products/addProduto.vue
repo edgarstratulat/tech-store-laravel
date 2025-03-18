@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from "vue";
 import { router } from "@inertiajs/vue3";
-import Navbar from "../../../Components/navbar.vue";
+import Navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 
 const form = reactive({
     name: null,
@@ -36,12 +36,12 @@ const submit = () => {
     formData.append("desc", form.desc);
     formData.append("stock", form.stock);
 
-    router.post("/produto/adicionar", formData);
+    router.post("dashboard/produto/adicionar", formData);
 };
 </script>
 
 <template>
-    <Navbar :Utilizador="Utilizador" :Buttons="Buttons" />
+    <Navbar :adminBtn="adminBtn" />
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Adicionar Produtos
@@ -290,12 +290,6 @@ const submit = () => {
             >
                 Adicionar Produto
             </button>
-
-            <a href="/">
-                <h1 class="font-bold mb-6 text-gray-800 text-center mt-5">
-                    Página Inicial
-                </h1>
-            </a>
         </form>
     </div>
 </template>
@@ -306,11 +300,7 @@ export default {
         Navbar,
     },
     props: {
-        Utilizador: {
-            type: Object,
-            required: true,
-        },
-        Buttons: {
+        adminBtn: {
             type: Array,
             required: true,
         },

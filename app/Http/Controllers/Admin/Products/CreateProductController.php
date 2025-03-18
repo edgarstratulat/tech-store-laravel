@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\Acessorio;
-use App\Models\Button;
+use App\Models\AdminButton;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Computer;
@@ -17,11 +17,10 @@ class CreateProductController extends Controller
 {
     public function showProducts() {
 
-        $buttons = Button::all();
+        $buttons = AdminButton::all();
 
         return Inertia::render('Admin/Products/addProduto', [
-            'Utilizador' => Auth::user(),
-            'Buttons' => $buttons
+            'adminBtn' => $buttons
         ]);
     }
 
@@ -208,7 +207,7 @@ class CreateProductController extends Controller
             ]);
         } 
         
-        return Inertia::location('/');
+        return Inertia::location('/dashboard');
     
         }
 

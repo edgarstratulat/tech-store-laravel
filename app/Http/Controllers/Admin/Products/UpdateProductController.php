@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Products;
 use App\Http\Controllers\Controller;
 use App\Models\Acessorio;
 use Inertia\Inertia;
-use App\Models\Button;
+use App\Models\AdminButton;
 use App\Models\Telemovel;
 use App\Models\ComponentePC;
 use App\Models\Computer;
@@ -18,7 +18,7 @@ class UpdateProductController extends Controller
 {
     public function showUpdateProductsForm()
     {
-        $buttons = Button::all();
+        $buttons = AdminButton::all();
 
         $telemovel = Telemovel::select('id', 'name', 'price', 'stock')->get();
         $comp = ComponentePC::select('id', 'name', 'price', 'stock')->get();
@@ -27,9 +27,8 @@ class UpdateProductController extends Controller
         $ace = Acessorio::select('id', 'name', 'price', 'stock')->get();
 
         return Inertia::render('Admin/Products/updateProduto', [
-            'Buttons' => $buttons,
-            'Utilizador' => Auth::user(),
-            'Telemovel' => $telemovel,
+            'adminBtn' => $buttons,
+             'Telemovel' => $telemovel,
             'ComponentePC' => $comp,
             'Periferico' => $peri,
             'Computador' => $pc,
@@ -135,7 +134,7 @@ class UpdateProductController extends Controller
 
         }
 
-        return Inertia::location('/');
+        return Inertia::location('/dashboard');
     }
 
 }

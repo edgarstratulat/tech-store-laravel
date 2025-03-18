@@ -7,12 +7,12 @@ const form = reactive({
 });
 
 const submit = () => {
-    router.delete(`/produto/eliminar/${form.id}`);
+    router.delete(`dashboard/produto/eliminar/${form.id}`);
 };
 </script>
 
 <template>
-    <navbar :Utilizador="Utilizador" :Buttons="Buttons"></navbar>
+    <navbar :adminBtn="adminBtn"></navbar>
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Eliminar Produtos
@@ -193,21 +193,18 @@ const submit = () => {
 </template>
 
 <script>
-import navbar from "../../../Components/navbar.vue";
+import navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 
 export default {
     components: {
         navbar,
     },
     props: {
-        Buttons: {
+        adminBtn: {
             type: Array,
             required: true,
         },
-        Utilizador: {
-            type: Object,
-            required: true,
-        },
+
         Telemoveis: {
             type: Array,
             default: () => [],

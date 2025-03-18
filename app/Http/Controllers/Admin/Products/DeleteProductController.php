@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Products;
 use App\Http\Controllers\Controller;
 use App\Models\Acessorio;
 use Inertia\Inertia;
-use App\Models\Button;
+use App\Models\AdminButton;
 use App\Models\ComponentePC;
 use App\Models\Computer;
 use App\Models\Periferico;
@@ -18,7 +18,7 @@ class DeleteProductController extends Controller
 {
     public function showDeleteForm()
     {
-        $button = Button::all();
+        $button = AdminButton::all();
 
         $telemovel = Telemovel::select('id', 'name')->get();
         $comp = ComponentePC::select('id', 'name')->get();
@@ -27,13 +27,12 @@ class DeleteProductController extends Controller
         $ace = Acessorio::select('id', 'name')->get();
         
         return Inertia::render('Admin/Products/deleteProduto', [
-            'Buttons' => $button,
+            'adminBtn' => $button,
             'Telemoveis' => $telemovel,
             'Componentes' => $comp,
             'Computadores' => $pc,
             'Perifericos' => $peri,
             'Acessorios' => $ace,
-            'Utilizador' => Auth::user()
         ]);
     }
 
@@ -91,6 +90,6 @@ class DeleteProductController extends Controller
             }
         }
 
-        return Inertia::location('/');
+        return Inertia::location('/dashboard');
     }
 }

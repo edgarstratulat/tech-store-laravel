@@ -11,12 +11,12 @@ const form = reactive({
 });
 
 const submit = () => {
-    router.put("/produto/atualizar", form);
+    router.put("dashboard/produto/atualizar", form);
 };
 </script>
 
 <template>
-    <Navbar :Utilizador="Utilizador" :Buttons="Buttons"></Navbar>
+    <Navbar :adminBtn="adminBtn"></Navbar>
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Atualizar Produtos
@@ -77,7 +77,7 @@ const submit = () => {
 </template>
 
 <script>
-import Navbar from "../../../Components/navbar.vue";
+import Navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 import telemovelForm from "../../../Components/Forms/update/telemovelForm.vue";
 import componentesForm from "../../../Components/Forms/update/componentesForm.vue";
 import ComputadorForm from "../../../Components/Forms/update/computadorForm.vue";
@@ -94,7 +94,7 @@ export default {
         PerifericoForm,
     },
     props: {
-        Buttons: {
+        adminBtn: {
             type: Array,
             required: true,
         },
