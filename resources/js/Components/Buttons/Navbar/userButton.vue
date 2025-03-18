@@ -127,7 +127,11 @@ export default {
             );
         },
         filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = ["Definições da Conta", "Terminar Sessão"];
+            const DropdownButtons = [
+                "Definições da Conta",
+                "Ver Pedidos",
+                "Terminar Sessão",
+            ];
             return this.Buttons.filter((btn) =>
                 DropdownButtons.includes(btn.button_name)
             );

@@ -97,8 +97,15 @@ class ButtonSeeder extends Seeder
             ],
             [
                 'button_name' => 'Definições da Conta',
-                'route' => '/telemoveis',
+                'route' => '#',
                 'icon'=> 'fa-gear',
+                'dropdown' => false,
+                "dropdownOptions" => null
+            ],
+            [
+                'button_name' => 'Ver Pedidos',
+                'route' => '#',
+                'icon'=> 'fa-box-open',
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
