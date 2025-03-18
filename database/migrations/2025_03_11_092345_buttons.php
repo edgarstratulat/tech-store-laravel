@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Buttons', function(Blueprint $table) {
-            $table->id()->incrementing();
+            $table->id();
             $table->string('button_name');
             $table->string('route');
+            $table->string('icon')->nullable();
             $table->boolean('dropdown');
             $table->json('dropdownOptions')->nullable();
             $table->timestamps();

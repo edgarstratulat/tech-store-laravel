@@ -42,10 +42,10 @@
                         class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3"
                     >
                         <li
+                            class="cursor-pointer text-slate-800 hover:text-blue-600"
                             v-for="option in JSON.parse(btn.dropdownOptions)"
                             :key="option.id"
                             @click="redirect(option.route)"
-                            class="cursor-pointer text-slate-800 hover:text-blue-600"
                         >
                             <span class="flex items-center gap-2">
                                 <fa
@@ -53,8 +53,6 @@
                                     :icon="option.icon"
                                     class="text-lg"
                                 ></fa>
-                                <i class="fa-solid fa-home"></i>
-
                                 <span>{{ option.button_name }} </span>
                             </span>
                         </li>
