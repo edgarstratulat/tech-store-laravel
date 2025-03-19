@@ -30,26 +30,28 @@ const submit = () => {
                     class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                 >
                     <option disabled value="">Selecione uma Categoria</option>
-                    <option value="Telemóveis">Telemóveis</option>
-                    <option value="Componentes">Componentes</option>
-                    <option value="Computadores">Computadores</option>
-                    <option value="Perifericos">Periféricos</option>
-                    <option value="Acessorios">Acessórios</option>
+                    <option
+                        v-for="categoria in categories"
+                        :key="categoria.id"
+                        :value="categoria.id"
+                    >
+                        {{ categoria.name }}
+                    </option>
                 </select>
 
-                <div v-if="form.category === 'Telemóveis'">
+                <div>
                     <label
                         for="product"
                         class="block mt-2 mb-2 text-sm font-medium text-gray-700"
-                        >Qual é o Telemóvel?</label
+                        >Qual é o Produto?</label
                     >
                     <select
                         v-model="form.id"
                         class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                     >
-                        <option disabled value="">Selecione o Telemóvel</option>
+                        <option disabled value="">Selecione o produto</option>
                         <option
-                            v-for="item in Telemoveis"
+                            v-for="item in products"
                             :key="item.id"
                             :value="item.id"
                         >
@@ -59,132 +61,9 @@ const submit = () => {
 
                     <button
                         type="submit"
-                        v-if="form.id"
                         class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                     >
                         Eliminar Telemóvel
-                    </button>
-                </div>
-
-                <div v-if="form.category === 'Componentes'">
-                    <label
-                        for="product"
-                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
-                        >Qual é o Componente?</label
-                    >
-                    <select
-                        v-model="form.id"
-                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        <option disabled value="">
-                            Selecione o Componente
-                        </option>
-                        <option
-                            v-for="comp in Componentes"
-                            :key="comp.id"
-                            :value="comp.id"
-                        >
-                            {{ comp.name }}
-                        </option>
-                    </select>
-
-                    <button
-                        type="submit"
-                        v-if="form.id"
-                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        Eliminar Componente
-                    </button>
-                </div>
-
-                <div v-if="form.category === 'Computadores'">
-                    <label
-                        for="product"
-                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
-                        >Qual é o Computador?</label
-                    >
-                    <select
-                        v-model="form.id"
-                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        <option disabled value="">
-                            Selecione o Computador
-                        </option>
-                        <option
-                            v-for="comp in Computadores"
-                            :key="comp.id"
-                            :value="comp.id"
-                        >
-                            {{ comp.name }}
-                        </option>
-                    </select>
-
-                    <button
-                        type="submit"
-                        v-if="form.id"
-                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        Eliminar Computador
-                    </button>
-                </div>
-
-                <div v-if="form.category === 'Perifericos'">
-                    <label
-                        for="product"
-                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
-                        >Qual é o Periférico?</label
-                    >
-                    <select
-                        v-model="form.id"
-                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        <option disabled value="">
-                            Selecione o Periferico
-                        </option>
-                        <option
-                            v-for="comp in Perifericos"
-                            :key="comp.id"
-                            :value="comp.id"
-                        >
-                            {{ comp.name }}
-                        </option>
-                    </select>
-
-                    <button
-                        type="submit"
-                        v-if="form.id"
-                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        Eliminar Periférico
-                    </button>
-                </div>
-
-                <div v-if="form.category === 'Acessorios'">
-                    <label
-                        for="product"
-                        class="block mt-2 mb-2 text-sm font-medium text-gray-700"
-                        >Qual é o Acessório?</label
-                    >
-                    <select
-                        v-model="form.id"
-                        class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        <option disabled value="">Selecione o Acessório</option>
-                        <option
-                            v-for="comp in Acessorios"
-                            :key="comp.id"
-                            :value="comp.id"
-                        >
-                            {{ comp.name }}
-                        </option>
-                    </select>
-
-                    <button
-                        type="submit"
-                        v-if="form.id"
-                        class="mt-5 w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    >
-                        Eliminar Acessório
                     </button>
                 </div>
             </div>
@@ -204,25 +83,13 @@ export default {
             type: Array,
             required: true,
         },
-        Telemoveis: {
+        products: {
             type: Array,
             default: () => [],
         },
-        Componentes: {
+        categories: {
             type: Array,
-            default: () => [],
-        },
-        Computadores: {
-            type: Array,
-            default: () => [],
-        },
-        Perifericos: {
-            type: Array,
-            default: () => [],
-        },
-        Acessorios: {
-            type: Array,
-            default: () => [],
+            required: true,
         },
     },
 };
