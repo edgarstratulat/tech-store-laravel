@@ -22,19 +22,19 @@ Route::get('/promocoes', [ProductController::class, 'indexPromocoes']);
 Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 
 //Admin Dashboard
-Route::middleware('auth', 'permission:Manage Store')->get('/dashboard', [AdminController::class, 'showAdminPanel']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);
 
 //Add produtos
-Route::middleware('auth', 'permission:Manage Store')->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
-Route::middleware('auth')->post('/dashboard/produto/adicionar', [CreateProductController::class, 'createProducts']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
+Route::middleware(['auth', 'permission:Manage Store'])->post('/dashboard/produto/adicionar', [CreateProductController::class, 'createProducts']);
 
 //Change Products
-Route::middleware('auth', 'permission:Manage Store')->get('/dashboard/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
-Route::middleware('auth')->put('/dashboard/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
+Route::middleware(['auth', 'permission:Manage Store'])->put('/dashboard/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
 
 //Delete Products
-Route::middleware('auth', 'permission:Manage Store')->get('/dashboard/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
-Route::middleware('auth')->delete('/dashboard/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
+Route::middleware(['auth', 'permission:Manage Store'])->delete('/dashboard/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
 
 // Telemoveis
 Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);
