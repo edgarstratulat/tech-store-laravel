@@ -17,8 +17,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->decimal('sale_price', 10, 2);
             $table->text('description');
-            $table->foreignId('category_id')->constrained('categories', 'id');
-            $table->foreignId('subcategory_id')->constrained('subCategories', 'id');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('subcategory_id')->constrained('subCategories');
             $table->integer('stock');
             $table->string('image_path')->nullable();
             $table->timestamps();

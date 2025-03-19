@@ -28,6 +28,9 @@ Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [Admin
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
 Route::middleware(['auth', 'permission:Manage Store'])->post('/dashboard/produto/adicionar', [CreateProductController::class, 'createProducts']);
 
+
+
+
 //Change Products
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
 Route::middleware(['auth', 'permission:Manage Store'])->put('/dashboard/produto/atualizar', [UpdateProductController::class, 'updateProduct']);

@@ -4,14 +4,14 @@ import { router } from "@inertiajs/vue3";
 import Navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 
 const form = reactive({
-    name: null,
-    price: null,
-    sale_price: null,
-    desc: null,
-    category: [],
-    subCategory: [],
+    name: "",
+    price: "",
+    sale_price: "",
+    description: "",
+    category_id: "",
+    subcategory_id: "",
     image: null,
-    stock: null,
+    stock: "",
 });
 
 const Discount = () => {
@@ -29,14 +29,32 @@ const submit = () => {
     formData.append("name", form.name);
     formData.append("price", form.price);
     formData.append("sale_price", form.sale_price);
-    formData.append("desc", form.desc);
+    formData.append("description", form.description);
     formData.append("image", form.image);
-    formData.append("category", form.category);
-    formData.append("subCategory", form.subCategory);
-    formData.append("desc", form.desc);
+    formData.append("category_id", form.category_id);
+    formData.append("subcategory_id", form.subcategory_id);
     formData.append("stock", form.stock);
 
     router.post("/dashboard/produto/adicionar", formData);
+};
+</script>
+
+<script>
+export default {
+    props: {
+        adminBtn: {
+            type: Array,
+            required: true,
+        },
+        categories: {
+            type: Array,
+            required: true,
+        },
+        subcategories: {
+            type: Array,
+            required: true,
+        },
+    },
 };
 </script>
 
@@ -58,6 +76,7 @@ const submit = () => {
                     id="name"
                     v-model="form.name"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
+                    autocomplete="name"
                 />
             </div>
 
@@ -70,6 +89,7 @@ const submit = () => {
                 </label>
                 <input
                     id="price"
+                    type="number"
                     v-model="form.price"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
@@ -109,7 +129,7 @@ const submit = () => {
                 <input
                     type="text"
                     id="desc"
-                    v-model="form.desc"
+                    v-model="form.description"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />
             </div>
@@ -121,20 +141,18 @@ const submit = () => {
                     Categoria do produto:
                 </label>
                 <select
-                    v-model="form.category"
+                    v-model="form.category_id"
                     class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                 >
                     <option disabled value="">Selecione uma Categoria</option>
 
-                    <option value="Computadores">Computadores</option>
-                    <option value="Periféricos">Periféricos</option>
-                    <option value="Telemóveis">Telemóveis</option>
-                    <option value="Componentes">Componentes</option>
-                    <option value="Acessórios">Acessórios</option>
+                    <option v-for="category in categories" :value="category.id">
+                        {{ category.name }}
+                    </option>
                 </select>
             </div>
 
-            <div v-if="form.category == 'Computadores'">
+            <div>
                 <label
                     for="subCategory"
                     class="block mb-2 text-sm font-medium text-gray-700"
@@ -142,114 +160,18 @@ const submit = () => {
                     Sub categoria do produto:
                 </label>
                 <select
-                    v-model="form.subCategory"
+                    v-model="form.subcategory_id"
                     class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
                 >
                     <option disabled value="">
                         Selecione uma Sub categoria
                     </option>
 
-                    <option value="desktop">Desktop</option>
-                    <option value="gaming">Gaming</option>
-                    <option value="portateis">Portáteis</option>
-                    <option value="workstation">Workstation</option>
-                    <option value="micro-computadores">
-                        MicroComputadores
-                    </option>
-                </select>
-            </div>
-            <div v-else-if="form.category == 'Periféricos'">
-                <label
-                    for="subCategory"
-                    class="block mb-2 text-sm font-medium text-gray-700"
-                >
-                    Sub categoria do produto:
-                </label>
-                <select
-                    v-model="form.subCategory"
-                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                >
-                    <option disabled value="">
-                        Selecione uma Sub categoria
-                    </option>
-
-                    <option value="ratos-e-teclados">Ratos & Teclados</option>
-                    <option value="pc-audio">PC Audio</option>
-                    <option value="monitores">Monitores</option>
-                    <option value="webcams">Webcams</option>
-                </select>
-            </div>
-            <div v-else-if="form.category == 'Telemóveis'">
-                <label
-                    for="subCategory"
-                    class="block mb-2 text-sm font-medium text-gray-700"
-                >
-                    Sub categoria do produto:
-                </label>
-                <select
-                    v-model="form.subCategory"
-                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                >
-                    <option disabled value="">
-                        Selecione uma Sub categoria
-                    </option>
-
-                    <option value="iphone">Smartphones Iphone</option>
-                    <option value="android">Smartphones Android</option>
-                </select>
-            </div>
-            <div v-else-if="form.category == 'Componentes'">
-                <label
-                    for="subCategory"
-                    class="block mb-2 text-sm font-medium text-gray-700"
-                >
-                    Sub categoria do produto:
-                </label>
-                <select
-                    v-model="form.subCategory"
-                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                >
-                    <option disabled value="">
-                        Selecione uma Sub categoria
-                    </option>
-
-                    <option value="processadores">Processadores</option>
-                    <option value="motherboards">Motherboards</option>
-                    <option value="cpu-coolers">CPU Coolers</option>
-                    <option value="placas-graficas">Placas Gráficas</option>
-                    <option value="memorias-ram">Memórias RAM</option>
-                    <option value="armazenamento">Armazenamento</option>
-                    <option value="caixas-de-computadores">
-                        Caixas de Computadores
-                    </option>
-                    <option value="fontes-de-alimentacao">
-                        Fontes de alimentação
-                    </option>
-                </select>
-            </div>
-            <div v-else-if="form.category == 'Acessórios'">
-                <label
-                    for="subCategory"
-                    class="block mb-2 text-sm font-medium text-gray-700"
-                >
-                    Sub categoria do produto:
-                </label>
-                <select
-                    v-model="form.subCategory"
-                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                >
-                    <option disabled value="Selecione uma Sub categoria">
-                        Selecione uma Sub categoria
-                    </option>
-
-                    <option value="acessorios-para-computador">
-                        Acessórios para Computador
-                    </option>
-                    <option value="acessorios-para-telemovel">
-                        Acessórios para Smartphone
-                    </option>
-                    <option value="acessorios-para-casa">
-                        Acessórios para Casa
+                    <option
+                        v-for="subCategory in subcategories"
+                        :value="subCategory.id"
+                    >
+                        {{ subCategory.name }}
                     </option>
                 </select>
             </div>
@@ -293,17 +215,3 @@ const submit = () => {
         </form>
     </div>
 </template>
-
-<script>
-export default {
-    components: {
-        Navbar,
-    },
-    props: {
-        adminBtn: {
-            type: Array,
-            required: true,
-        },
-    },
-};
-</script>
