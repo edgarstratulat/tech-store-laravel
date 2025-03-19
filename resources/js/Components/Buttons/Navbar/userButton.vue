@@ -21,19 +21,34 @@
         <!-- Dropdown Menu -->
         <ul
             v-if="isDropdownOpen"
-            class="absolute right-0 z-10 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg text-center"
+            class="absolute right-0 z-10 mt-3 w-60 pb-3 rounded-lg border border-slate-200 bg-white shadow-lg text-center"
         >
             <li
                 v-if="!Utilizador"
                 class="cursor-pointer text-slate-800 hover:text-blue-600"
             >
+                <a>
+                    <li
+                        class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
+                    >
+                        <span class="text-center">Olá, Visitante</span>
+                        <hr class="my-2 border-slate-200" />
+                    </li>
+                </a>
                 <button
                     v-for="btn in filterButtonsDropDownMenuNotLogged"
                     :key="btn.id"
                     @click="redirect(btn.route)"
                     class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
                 >
-                    {{ btn.button_name }}
+                    <span class="flex items-center gap-2">
+                        <fa
+                            v-if="btn.icon"
+                            :icon="btn.icon"
+                            class="text-lg"
+                        ></fa>
+                        <span>{{ btn.button_name }} </span>
+                    </span>
                 </button>
             </li>
             <li
@@ -56,7 +71,14 @@
                     @click="redirect(btn.route)"
                     class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
                 >
-                    {{ btn.button_name }}
+                    <span class="flex items-center gap-2">
+                        <fa
+                            v-if="btn.icon"
+                            :icon="btn.icon"
+                            class="text-lg"
+                        ></fa>
+                        <span>{{ btn.button_name }} </span>
+                    </span>
                 </button>
             </li>
             <li v-if="isAdmin">
@@ -76,7 +98,14 @@
                     @click="redirect(btn.route)"
                     class="text-slate-800 hover:text-blue-600 transition duration-300 ml-2"
                 >
-                    {{ btn.button_name }}
+                    <span class="flex items-center gap-2">
+                        <fa
+                            v-if="btn.icon"
+                            :icon="btn.icon"
+                            class="text-lg"
+                        ></fa>
+                        <span>{{ btn.button_name }} </span>
+                    </span>
                 </button>
             </li>
         </ul>
@@ -98,7 +127,11 @@ export default {
             );
         },
         filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = ["Definições da Conta", "Terminar Sessão"];
+            const DropdownButtons = [
+                "Definições da Conta",
+                "Ver Pedidos",
+                "Terminar Sessão",
+            ];
             return this.Buttons.filter((btn) =>
                 DropdownButtons.includes(btn.button_name)
             );

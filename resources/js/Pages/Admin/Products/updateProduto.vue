@@ -11,7 +11,7 @@ const form = reactive({
 });
 
 const submit = () => {
-    router.put("dashboard/produto/atualizar", form);
+    router.put("/dashboard/produto/atualizar", form);
 };
 </script>
 
@@ -96,10 +96,6 @@ export default {
     props: {
         adminBtn: {
             type: Array,
-            required: true,
-        },
-        Utilizador: {
-            type: Object,
             required: true,
         },
         Telemovel: {

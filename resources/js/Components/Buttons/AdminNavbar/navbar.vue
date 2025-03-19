@@ -26,11 +26,13 @@
                         class="w-full flex items-center justify-between p-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all duration-300"
                     >
                         <span class="flex items-center gap-2">
-                            <i
+                            <fa
                                 v-if="btn.icon"
-                                :class="btn.icon"
+                                :icon="btn.icon"
                                 class="text-lg"
-                            ></i>
+                            ></fa>
+                            <i class="fa-solid fa-home"></i>
+
                             <span>{{ btn.button_name }} </span>
                         </span>
                     </button>
@@ -40,12 +42,19 @@
                         class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3"
                     >
                         <li
+                            class="cursor-pointer text-slate-800 hover:text-blue-600"
                             v-for="option in JSON.parse(btn.dropdownOptions)"
                             :key="option.id"
                             @click="redirect(option.route)"
-                            class="cursor-pointer text-slate-800 hover:text-blue-600"
                         >
-                            {{ option.button_name }}
+                            <span class="flex items-center gap-2">
+                                <fa
+                                    v-if="option.icon"
+                                    :icon="option.icon"
+                                    class="text-lg"
+                                ></fa>
+                                <span>{{ option.button_name }} </span>
+                            </span>
                         </li>
                     </ul>
                 </div>
