@@ -13,12 +13,13 @@ use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Products\ProductsController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
 
 //Promocoes
-Route::get('/promocoes', [ProductController::class, 'indexPromocoes']);
+Route::get('/promocoes', [ProductsController::class, 'showDiscountProducts']);
 Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 
 //Admin Dashboard

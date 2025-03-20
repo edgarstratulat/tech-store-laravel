@@ -1,11 +1,6 @@
 <template>
     <div class="flex justify-center items-center p-5">
         <div class="w-full max-w-8xl max-h-6xl mx-auto">
-            <h1
-                class="text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
-            >
-                Promoções
-            </h1>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
                     v-for="promo in products"
@@ -37,7 +32,8 @@
 
                         <div class="flex-grow">
                             <h2 class="text-md mb-2 text-neutral-300">
-                                {{ promo.category }} {{ promo.subCategory }}
+                                {{ promo.category_id.name }}
+                                {{ promo.subcategory_id.name }}
                             </h2>
                         </div>
 
@@ -52,7 +48,7 @@
 
                         <div class="flex-grow">
                             <h2 class="text-xs text-neutral-500">
-                                {{ promo.desc }}
+                                {{ promo.description }}
                             </h2>
                         </div>
 

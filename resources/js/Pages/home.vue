@@ -5,7 +5,13 @@
             :Buttons="Buttons"
             :isAdmin="isAdmin"
         />
+
         <Carroussel />
+        <h1
+            class="flex text-3xl mb-5 ml-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
+        >
+            Promoções
+        </h1>
         <Product :products="discountProductsShow()" />
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
@@ -46,7 +52,6 @@
             </div>
         </div>
         <div class="m-10">
-            <MaisVendidos :Promocoes="Promocoes" />
             <div class="flex justify-center">
                 <a href="http://localhost:8000/promocoes">
                     <button
