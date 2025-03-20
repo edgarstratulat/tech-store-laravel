@@ -8,12 +8,12 @@ use App\Http\Controllers\Admin\Products\CreateProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Products\DeleteProductController;
 use App\Http\Controllers\Admin\Products\UpdateProductController;
-use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Products\ComputersController;
 use App\Http\Controllers\Products\DiscountProductsController;
 use App\Http\Controllers\Products\PeripheralsController;
+use App\Http\Controllers\Products\SmartphonesController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
@@ -38,10 +38,10 @@ Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/
 Route::middleware(['auth', 'permission:Manage Store'])->delete('/dashboard/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
 
 // Telemoveis
-Route::get('/telemoveis', [TelemovelController::class, 'indexTelemoveis']);
-Route::get('/telemoveis/iphone', [TelemovelController::class, 'IphoneShowTelemoveis']);
-Route::get('/telemoveis/android', [TelemovelController::class, 'AndroidShowTelemoveis']);
-Route::get('/telemoveis/{subCategory}/{id}', [TelemovelController::class, 'showTelemoveis']);
+Route::get('/telemoveis', [SmartphonesController::class, 'showSmartphones']);
+Route::get('/telemoveis/iphone', [SmartphonesController::class, 'showIphoneSmartphone']);
+Route::get('/telemoveis/android', [SmartphonesController::class, 'showAndroidSmartphone']);
+// Route::get('/telemoveis/{subCategory}/{id}', [TelemovelController::class, 'showTelemoveis']);
 
 //Componentes PC
 Route::get('/componentes', [ComponentesController::class, 'indexComponentes']);

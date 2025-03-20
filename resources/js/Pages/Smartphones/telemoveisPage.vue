@@ -1,8 +1,8 @@
 <template>
     <div class="bg-zinc-100">
-        <navbar
+        <Navbar
             :Utilizador="Utilizador"
-            :Buttons="Buttons"
+            :Buttons="buttons"
             :isAdmin="isAdmin"
         />
         <h1
@@ -10,28 +10,28 @@
         >
             Telemóveis
         </h1>
-        <Telemovel :Telemovel="Telemovel" />
+        <Product :products="products" />
     </div>
 </template>
 
 <script>
 import Navbar from "../../Components/navbar.vue";
-import Telemovel from "../../Components/Categories/telemovelComponent.vue";
+import Product from "../../Components/Categories/productComponent.vue";
 
 export default {
     components: {
         Navbar,
-        Telemovel,
+        Product,
     },
     props: {
-        Telemovel: {
+        products: {
             type: Array,
             required: true,
         },
         Utilizador: {
             type: Object,
         },
-        Buttons: {
+        buttons: {
             type: Array,
             required: true,
         },
