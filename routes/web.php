@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\Acessorios\AcessoriosController;
 use App\Http\Controllers\Componentes\ComponentesController;
-use App\Http\Controllers\Computadores\ComputadoresController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\Products\CreateProductController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Perifericos\PerifericosController;
 use App\Http\Controllers\Admin\Products\DeleteProductController;
 use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
@@ -15,6 +13,7 @@ use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Products\ComputersController;
 use App\Http\Controllers\Products\DiscountProductsController;
+use App\Http\Controllers\Products\PeripheralsController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
@@ -57,12 +56,12 @@ Route::get('/componentes/cpu-coolers', [ComponentesController::class, 'showCPUCo
 Route::get('/componentes/{subCategory}/{id}', [ComponentesController::class, 'showComponentePC']);
 
 //Perifericos
-Route::get('/perifericos', [PerifericosController::class, 'indexPerifericos']);
-Route::get('/perifericos/ratos-e-teclados', [PerifericosController::class, 'showRatoSeTeclados']);
-Route::get('/perifericos/pc-audio', [PerifericosController::class, 'showPcAudio']);
-Route::get('/perifericos/monitores', [PerifericosController::class, 'showMonitores']);
-Route::get('/perifericos/webcams', [PerifericosController::class, 'showWebcams']);
-Route::get('/perifericos/{subCategory}/{id}', [PerifericosController::class, 'showPerifericos']);
+Route::get('/perifericos', [PeripheralsController::class, 'showPeripherals']);
+Route::get('/perifericos/ratos-e-teclados', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard']);
+Route::get('/perifericos/audio', [PeripheralsController::class, 'showPeripheralsAudio']);
+Route::get('/perifericos/monitores', [PeripheralsController::class, 'showPeripheralsMonitor']);
+Route::get('/perifericos/video', [PeripheralsController::class, 'showPeripheralsVideo']);
+// Route::get('/perifericos/{subCategory}/{id}', [PerifericosController::class, 'showPerifericos']);
 
 //Acessorios
 Route::get('/acessorios', [AcessoriosController::class, 'indexAcessorios']);
