@@ -2,7 +2,7 @@
     <div class="bg-zinc-100">
         <Navbar
             :Utilizador="Utilizador"
-            :Buttons="Buttons"
+            :Buttons="buttons"
             :isAdmin="isAdmin"
         />
         <h1
@@ -10,28 +10,28 @@
         >
             Computadores Laptop / Portáteis / Notebooks
         </h1>
-        <computadoresComponent :Computer="Computer" />
+        <Product :products="products" />
     </div>
 </template>
 
 <script>
 import Navbar from "../../Components/navbar.vue";
-import computadoresComponent from "../../Components/Categories/computadoresComponent.vue";
+import Product from "../../Components/Categories/productComponent.vue";
 
 export default {
     components: {
         Navbar,
-        computadoresComponent,
+        Product,
     },
     props: {
-        Computer: {
+        products: {
             type: Array,
             required: true,
         },
         Utilizador: {
             type: Object,
         },
-        Buttons: {
+        buttons: {
             type: Array,
             required: true,
         },

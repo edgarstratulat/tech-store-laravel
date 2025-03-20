@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-class ProductsController extends Controller
+class DiscountProductsController extends Controller
 {
     public function showDiscountProducts()
     {

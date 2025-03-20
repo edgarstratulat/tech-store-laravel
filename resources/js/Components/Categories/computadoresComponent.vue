@@ -3,7 +3,7 @@
         <div class="w-full max-w-screen-2xl">
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
-                    v-for="promo in Computer"
+                    v-for="promo in computer"
                     :key="promo.id"
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
@@ -47,7 +47,7 @@
 
                         <div class="flex-grow">
                             <h2 class="text-xs text-neutral-500">
-                                {{ promo.desc }}
+                                {{ promo.description }}
                             </h2>
                         </div>
 
@@ -103,7 +103,7 @@
 <script>
 export default {
     props: {
-        Computer: {
+        computer: {
             type: Array,
             required: true,
         },

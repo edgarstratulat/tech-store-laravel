@@ -13,13 +13,14 @@ use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Telemovel\TelemovelController;
 use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\Products\ComputersController;
+use App\Http\Controllers\Products\DiscountProductsController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
 
 //Promocoes
-Route::get('/promocoes', [ProductsController::class, 'showDiscountProducts']);
+Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
 Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 
 //Admin Dashboard
@@ -28,9 +29,6 @@ Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [Admin
 //Add produtos
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
 Route::middleware(['auth', 'permission:Manage Store'])->post('/dashboard/produto/adicionar', [CreateProductController::class, 'createProducts']);
-
-
-
 
 //Change Products
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
@@ -74,14 +72,13 @@ Route::get('/acessorios/acessorios-para-telemovel', [AcessoriosController::class
 Route::get('/acessorios/{subCategory}/{id}', [AcessoriosController::class, 'showAcessorios']);
 
 //Computador
-Route::get('/computadores', [ComputadoresController::class, 'indexComputadores']);
-Route::get('/computadores/gaming', [ComputadoresController::class, 'showGamingPC']);
-Route::get('/computadores/portateis', [ComputadoresController::class, 'showPortatil']);
-Route::get('/computadores/workstations', [ComputadoresController::class, 'showWorkstation']);
-Route::get('/computadores/micro-computadores', [ComputadoresController::class, 'showMicroPC']);
-Route::get('/computadores/desktop', [ComputadoresController::class, 'showDesktopPC']);
-Route::get('/computadores/cpu-coolers', [ComputadoresController::class, 'showCPUCoolers']);
-Route::get('/computadores/{subCategory}/{id}', [ComputadoresController::class, 'showComputadores']);
+Route::get('/computadores', [ComputersController::class, 'showComputers']);
+Route::get('/computadores/gaming', [ComputersController::class, 'showGamingComputers']);
+Route::get('/computadores/portateis', [ComputersController::class, 'showLaptopsComputers']);
+Route::get('/computadores/workstations', [ComputersController::class, 'showWorkStationComputers']);
+Route::get('/computadores/micro-computadores', [ComputersController::class, 'showMicroComputers']);
+Route::get('/computadores/desktop', [ComputersController::class, 'showDesktopComputers']);
+
 
 //Registo
 Route::get('/registo', [LoginRegisterController::class, 'showPageRegister']);
