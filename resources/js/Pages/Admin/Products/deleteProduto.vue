@@ -19,26 +19,6 @@ const submit = () => {
         </h1>
         <form @submit.prevent="submit" class="space-y-4">
             <div>
-                <label
-                    for="category"
-                    class="block mb-2 text-sm font-medium text-gray-700"
-                >
-                    Categoria do produto:
-                </label>
-                <select
-                    v-model="form.category"
-                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                >
-                    <option disabled value="">Selecione uma Categoria</option>
-                    <option
-                        v-for="categoria in categories"
-                        :key="categoria.id"
-                        :value="categoria.id"
-                    >
-                        {{ categoria.name }}
-                    </option>
-                </select>
-
                 <div>
                     <label
                         for="product"
@@ -86,10 +66,6 @@ export default {
         products: {
             type: Array,
             default: () => [],
-        },
-        categories: {
-            type: Array,
-            required: true,
         },
     },
 };
