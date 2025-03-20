@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Acessorios\AcessoriosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\Products\CreateProductController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\Admin\Products\DeleteProductController;
 use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Products\AccessoriesController;
 use App\Http\Controllers\Products\ComponentsController;
 use App\Http\Controllers\Products\ComputersController;
 use App\Http\Controllers\Products\DiscountProductsController;
@@ -64,11 +64,11 @@ Route::get('/perifericos/video', [PeripheralsController::class, 'showPeripherals
 // Route::get('/perifericos/{subCategory}/{id}', [PerifericosController::class, 'showPerifericos']);
 
 //Acessorios
-Route::get('/acessorios', [AcessoriosController::class, 'indexAcessorios']);
-Route::get('/acessorios/acessorios-para-computador', [AcessoriosController::class, 'AcessoriosPC']);
-Route::get('/acessorios/acessorios-para-casa', [AcessoriosController::class, 'AcessoriosCasa']);
-Route::get('/acessorios/acessorios-para-telemovel', [AcessoriosController::class, 'AcessoriosTel']);
-Route::get('/acessorios/{subCategory}/{id}', [AcessoriosController::class, 'showAcessorios']);
+Route::get('/acessorios', [AccessoriesController::class, 'showAccessories']);
+Route::get('/acessorios/acessorios-para-computador', [AccessoriesController::class, 'showAccessoriesForComputer']);
+Route::get('/acessorios/acessorios-para-casa', [AccessoriesController::class, 'showAccessoriesForHome']);
+Route::get('/acessorios/acessorios-para-telemovel', [AccessoriesController::class, 'showAccessoriesForSmartphone']);
+// Route::get('/acessorios/{subCategory}/{id}', [AcessoriosController::class, 'showAcessorios']);
 
 //Computador
 Route::get('/computadores', [ComputersController::class, 'showComputers']);
