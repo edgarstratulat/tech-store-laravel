@@ -12,7 +12,14 @@ class UpdateProductController extends Controller
 {
     public function showUpdateProductsForm()
     {
-        $buttons = AdminButton::all();
+        $buttons = AdminButton::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $product = Product::select('id', 'name', 'price', 'stock')->get();
 
         return Inertia::render('Admin/Products/updateProduto', [

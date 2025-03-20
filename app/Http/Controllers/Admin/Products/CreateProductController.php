@@ -14,9 +14,16 @@ class CreateProductController extends Controller
 {
     public function showProducts() {
 
-        $buttons = AdminButton::all();
-        $categories = Category::all('id', 'name');
-        $subCategories = subCategory::all('id', 'name');
+        $buttons = AdminButton::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
+        $categories = Category::select('id', 'name')->get();
+        $subCategories = subCategory::select('id', 'name')->get();
         
         return Inertia::render('Admin/Products/addProduto', [
             'adminBtn' => $buttons,

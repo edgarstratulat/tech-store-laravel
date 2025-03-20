@@ -12,7 +12,14 @@ class ComponentsController extends Controller
 {
     public function showComponents()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->get();
@@ -27,7 +34,14 @@ class ComponentsController extends Controller
 
     public function showCPU()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 12)->get();
@@ -42,7 +56,14 @@ class ComponentsController extends Controller
 
     public function showRAM()
     {
-        $buttons = Button::all();
+        $buttons = Button::all(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        );
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 13)->get();
@@ -57,7 +78,14 @@ class ComponentsController extends Controller
 
     public function showArmazenamento()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 14)->get();
@@ -72,7 +100,14 @@ class ComponentsController extends Controller
 
     public function showMotherboards()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 15)->get();
@@ -87,7 +122,14 @@ class ComponentsController extends Controller
 
     public function showGPU()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 16)->get();
@@ -102,7 +144,14 @@ class ComponentsController extends Controller
 
     public function showFontes()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 17)->get();
@@ -117,7 +166,14 @@ class ComponentsController extends Controller
 
     public function showCPUCoolers()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 18)->get();
@@ -132,7 +188,14 @@ class ComponentsController extends Controller
 
     public function showCaixas()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 4)->where('subcategory_id', 19)->get();

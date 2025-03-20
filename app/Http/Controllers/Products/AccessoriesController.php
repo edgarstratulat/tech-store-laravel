@@ -12,7 +12,14 @@ class AccessoriesController extends Controller
 {
     public function showAccessories()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 5)->get();
@@ -27,7 +34,14 @@ class AccessoriesController extends Controller
 
     public function showAccessoriesForComputer()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 5)->where('subcategory_id', 20)->get();
@@ -42,7 +56,14 @@ class AccessoriesController extends Controller
 
     public function showAccessoriesForSmartphone()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 5)->where('subcategory_id', 21)->get();
@@ -57,7 +78,14 @@ class AccessoriesController extends Controller
 
     public function showAccessoriesForHome()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 5)->where('subcategory_id', 22)->get();

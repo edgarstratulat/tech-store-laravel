@@ -12,7 +12,14 @@ class DiscountProductsController extends Controller
 {
     public function showDiscountProducts()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('sale_price', '>', 1)->get();

@@ -12,7 +12,14 @@ class SmartphonesController extends Controller
 {
     public function showSmartphones()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 3)->get();
@@ -27,7 +34,14 @@ class SmartphonesController extends Controller
 
     public function showIphoneSmartphone()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 3)->where('subcategory_id', 10)->get();
@@ -42,7 +56,14 @@ class SmartphonesController extends Controller
 
     public function showAndroidSmartphone()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
         $products = Product::where('category_id', 3)->where('subcategory_id', 11)->get();

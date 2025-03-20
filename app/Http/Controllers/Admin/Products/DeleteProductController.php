@@ -12,11 +12,18 @@ class DeleteProductController extends Controller
 {
     public function showDeleteForm()
     {
-        $button = AdminButton::all();
+        $buttons = AdminButton::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $products = Product::select('id','name')->get();     
         
         return Inertia::render('Admin/Products/deleteProduto', [
-            'adminBtn' => $button,
+            'adminBtn' => $buttons,
             'products' => $products,
         ]);
     }
