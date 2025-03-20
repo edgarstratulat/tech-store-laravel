@@ -6,7 +6,7 @@
             :isAdmin="isAdmin"
         />
         <Carroussel />
-        <Promocoes :Promocoes="maxPromotionProductsShow()" />
+        <Product :products="discountProductsShow()" />
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
                 <button
@@ -42,7 +42,7 @@
                 </a>
             </div>
             <div class="pb-10">
-                <ComputadoresComponent :Computer="maxComputerProductsShow()" />
+                <!----<ComputadoresComponent :Computer="maxComputerProductsShow()" /> !-->
             </div>
         </div>
         <div class="m-10">
@@ -63,24 +63,16 @@
 <script>
 import navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
-import Promocoes from "../Components/Categories/promocoes.vue";
-import ComputadoresComponent from "../Components/Categories/computadoresComponent.vue";
-import MaisVendidos from "../Components/maisVendidos.vue";
+import Product from "../Components/Categories/productComponent.vue";
 
 export default {
     components: {
         navbar,
         Carroussel,
-        Promocoes,
-        ComputadoresComponent,
-        MaisVendidos,
+        Product,
     },
     props: {
-        Promocoes: {
-            type: Array,
-            required: true,
-        },
-        Computadores: {
+        products: {
             type: Array,
             required: true,
         },
@@ -95,11 +87,13 @@ export default {
         },
     },
     methods: {
-        maxPromotionProductsShow() {
-            return this.Promocoes.slice(0, 8);
-        },
-        maxComputerProductsShow() {
-            return this.Computadores.slice(0, 4);
+        discountProductsShow() {
+            const discountItems = this.products.filter(
+                (item) => item.sale_price > 0
+            );
+
+            const maxDiscountProductShow = discountItems.slice(0, 8);
+            return maxDiscountProductShow;
         },
     },
 };

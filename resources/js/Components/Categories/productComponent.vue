@@ -8,7 +8,7 @@
             </h1>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
-                    v-for="promo in Promocoes"
+                    v-for="promo in products"
                     :key="promo.id"
                     class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                 >
@@ -129,7 +129,7 @@
 <script>
 export default {
     props: {
-        Promocoes: {
+        products: {
             type: Array,
             required: true,
         },
