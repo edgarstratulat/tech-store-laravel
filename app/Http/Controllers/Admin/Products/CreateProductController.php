@@ -15,8 +15,8 @@ class CreateProductController extends Controller
     public function showProducts() {
 
         $buttons = AdminButton::all();
-        $categories = Category::all();
-        $subCategories = subCategory::all();
+        $categories = Category::all('id', 'name');
+        $subCategories = subCategory::all('id', 'name');
         
         return Inertia::render('Admin/Products/addProduto', [
             'adminBtn' => $buttons,
