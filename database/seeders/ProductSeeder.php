@@ -14,14 +14,105 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
-            'name' => 'Test iPhone 16 Pro',
-            'price' => 989,
-            'sale_price' => 0,
-            'description' => 'iPhone 16 Test Description',
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
             'category_id' => 3,
             'subcategory_id' => 10,
-            'stock' => 123,
-            'image_path' => null
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
         ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        Product::create([
+            'name' => 'iPhone 16 Pro',
+            'price' => 1399,
+            'sale_price' => 10,
+            'description' => 'iPhone 16 Pro Test Description',
+            'category_id' => 3,
+            'subcategory_id' => 10,
+            'stock' => 20,
+            'image_path' => "/storage/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpeg"
+        ]);
+        
     }
 }
