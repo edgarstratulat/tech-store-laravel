@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Acessorios\AcessoriosController;
-use App\Http\Controllers\Componentes\ComponentesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\Products\CreateProductController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\Admin\Products\DeleteProductController;
 use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Products\ComponentsController;
 use App\Http\Controllers\Products\ComputersController;
 use App\Http\Controllers\Products\DiscountProductsController;
 use App\Http\Controllers\Products\PeripheralsController;
@@ -44,16 +44,16 @@ Route::get('/telemoveis/android', [SmartphonesController::class, 'showAndroidSma
 // Route::get('/telemoveis/{subCategory}/{id}', [TelemovelController::class, 'showTelemoveis']);
 
 //Componentes PC
-Route::get('/componentes', [ComponentesController::class, 'indexComponentes']);
-Route::get('/componentes/processadores', [ComponentesController::class, 'showProcessadores']);
-Route::get('/componentes/motherboards', [ComponentesController::class, 'showMotherboards']);
-Route::get('/componentes/placas-graficas', [ComponentesController::class, 'showGPU']);
-Route::get('/componentes/memorias-ram', [ComponentesController::class, 'showRAM']);
-Route::get('/componentes/armazenamento', [ComponentesController::class, 'showArmazenamento']);
-Route::get('/componentes/fontes-de-alimentacao', [ComponentesController::class, 'showFontes']);
-Route::get('/componentes/caixas-de-computadores', [ComponentesController::class, 'showCaixas']);
-Route::get('/componentes/cpu-coolers', [ComponentesController::class, 'showCPUCoolers']);
-Route::get('/componentes/{subCategory}/{id}', [ComponentesController::class, 'showComponentePC']);
+Route::get('/componentes', [ComponentsController::class, 'showComponents']);
+Route::get('/componentes/processadores', [ComponentsController::class, 'showCPU']);
+Route::get('/componentes/motherboards', [ComponentsController::class, 'showMotherboards']);
+Route::get('/componentes/placas-graficas', [ComponentsController::class, 'showGPU']);
+Route::get('/componentes/memorias-ram', [ComponentsController::class, 'showRAM']);
+Route::get('/componentes/armazenamento', [ComponentsController::class, 'showArmazenamento']);
+Route::get('/componentes/fontes-de-alimentacao', [ComponentsController::class, 'showFontes']);
+Route::get('/componentes/caixas-de-computadores', [ComponentsController::class, 'showCaixas']);
+Route::get('/componentes/cpu-coolers', [ComponentsController::class, 'showCPUCoolers']);
+// Route::get('/componentes/{subCategory}/{id}', [ComponentesController::class, 'showComponentePC']);
 
 //Perifericos
 Route::get('/perifericos', [PeripheralsController::class, 'showPeripherals']);
