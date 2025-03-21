@@ -11,9 +11,18 @@ class HomeController extends Controller
 {
     public function showProductsHome()
     {
-        $products = Product::select('id', 'name', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->get();
+        $products = Product::select('id', 'name', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->orderBy('id', 'asc')->take(9)->get();
 
-        $buttons = Button::all();
+        $computers = Product::select('id', 'name', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->where('category_id', 1)->orderBy('id', 'asc')->take(4)->get();
+
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
 
         $isAdmin = $user ? $user->hasRole('admin') : false;
@@ -22,7 +31,8 @@ class HomeController extends Controller
             'Buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
-            'products' => $products
+            'products' => $products,
+            'computers' => $computers
         ]);
     }
 }

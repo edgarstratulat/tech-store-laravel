@@ -48,7 +48,7 @@
                 </a>
             </div>
             <div class="pb-10">
-                <!----<ComputadoresComponent :Computer="maxComputerProductsShow()" /> !-->
+                <ComputerHome :computers="computers" />
             </div>
         </div>
         <div class="m-10">
@@ -69,15 +69,21 @@
 import navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
 import Product from "../Components/Categories/productComponent.vue";
+import ComputerHome from "../Components/Categories/HomeComputerComponent.vue";
 
 export default {
     components: {
         navbar,
         Carroussel,
         Product,
+        ComputerHome,
     },
     props: {
         products: {
+            type: Array,
+            required: true,
+        },
+        computers: {
             type: Array,
             required: true,
         },
@@ -97,8 +103,7 @@ export default {
                 (item) => item.sale_price > 0
             );
 
-            const maxDiscountProductShow = discountItems.slice(0, 8);
-            return maxDiscountProductShow;
+            return discountItems;
         },
     },
 };
