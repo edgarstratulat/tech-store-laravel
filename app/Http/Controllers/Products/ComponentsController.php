@@ -22,7 +22,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->get();
+        $products = Product::where('category_id', 4)->paginate(12);
 
         return Inertia::render('ComponentesPC/componentePcPage', [
             'buttons' => $buttons,
@@ -44,7 +44,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 12)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 12)->paginate();
 
         return Inertia::render('ComponentesPC/cpuPage', [
             'buttons' => $buttons,
@@ -66,7 +66,7 @@ class ComponentsController extends Controller
         );
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 13)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 13)->paginate(12);
 
         return Inertia::render('ComponentesPC/ramPage', [
             'buttons' => $buttons,
@@ -88,7 +88,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 14)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 14)->paginate(12);
 
         return Inertia::render('ComponentesPC/armazenamentoPage', [
             'buttons' => $buttons,
@@ -110,7 +110,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 15)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 15)->paginate(12);
 
         return Inertia::render('ComponentesPC/motherboardsPage', [
             'buttons' => $buttons,
@@ -132,7 +132,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 16)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 16)->paginate(12);
 
         return Inertia::render('ComponentesPC/gpuPage', [
             'buttons' => $buttons,
@@ -154,7 +154,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 17)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 17)->paginate(12);
 
         return Inertia::render('ComponentesPC/fontePage', [
             'buttons' => $buttons,
@@ -176,7 +176,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 18)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 18)->paginate(12);
 
         return Inertia::render('ComponentesPC/cpu-coolPage', [
             'buttons' => $buttons,
@@ -198,7 +198,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 19)->get();
+        $products = Product::where('category_id', 4)->where('subcategory_id', 19)->paginate(12);
 
         return Inertia::render('ComponentesPC/caixasPcPage', [
             'buttons' => $buttons,

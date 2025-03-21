@@ -22,7 +22,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->get();
+        $products = Product::where('category_id', 5)->paginate(12);
 
         return Inertia::render('Acessorios/acessoriosPage', [
             'buttons' => $buttons,
@@ -44,7 +44,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->where('subcategory_id', 20)->get();
+        $products = Product::where('category_id', 5)->where('subcategory_id', 20)->paginate(12);
 
         return Inertia::render('Acessorios/AcessoriosPcPage', [
             'buttons' => $buttons,
@@ -66,7 +66,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->where('subcategory_id', 21)->get();
+        $products = Product::where('category_id', 5)->where('subcategory_id', 21)->paginate(12);
 
         return Inertia::render('Acessorios/AcessoriosSmartPhonePage', [
             'buttons' => $buttons,
@@ -88,7 +88,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->where('subcategory_id', 22)->get();
+        $products = Product::where('category_id', 5)->where('subcategory_id', 22)->paginate(12);
 
         return Inertia::render('Acessorios/AcessorioscasaPage', [
             'buttons' => $buttons,

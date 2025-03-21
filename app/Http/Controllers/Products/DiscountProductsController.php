@@ -22,7 +22,7 @@ class DiscountProductsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('sale_price', '>', 1)->get();
+        $products = Product::select('id', 'name', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->where('sale_price', '>', 1)->paginate(12);
 
         return Inertia::render('promoPage', [
             'products' => $products,

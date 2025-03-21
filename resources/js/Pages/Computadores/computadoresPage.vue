@@ -10,23 +10,26 @@
         >
             Computadores MaRca
         </h1>
-        <Product :products="products"></Product>
+        <Product :products="products.data"></Product>
+        <Pagination :links="products.links" />
     </div>
 </template>
 
 <script>
 import navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
+import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
 
 export default {
     components: {
         navbar,
         Product,
+        Pagination,
     },
     props: {
         products: {
-            type: Array,
-            required: true,
+            type: [Array, Object],
+            default: () => [],
         },
         Utilizador: {
             type: Object,

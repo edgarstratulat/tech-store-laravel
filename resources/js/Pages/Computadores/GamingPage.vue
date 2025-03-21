@@ -10,17 +10,21 @@
         >
             Computadores Gaming MaRca
         </h1>
-        <Product :products="products" />
+        <Product :products="products.data" />
+        <Pagination :links="products.links" />
     </div>
 </template>
 
 <script>
 import Navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
+import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
+
 export default {
     components: {
         Navbar,
         Product,
+        Pagination,
     },
     props: {
         products: {

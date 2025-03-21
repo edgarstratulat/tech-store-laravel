@@ -22,7 +22,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->get();
+        $products = Product::where('category_id', 2)->paginate(12);
 
         return Inertia::render('Perifericos/perifericosPage', [
             'buttons' => $buttons,
@@ -44,7 +44,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 6)->get();
+        $products = Product::where('category_id', 2)->where('subcategory_id', 6)->paginate(12);
 
         return Inertia::render('Perifericos/RatoTecladoPage', [
             'buttons' => $buttons,
@@ -59,7 +59,7 @@ class PeripheralsController extends Controller
         $buttons = Button::all();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 8)->get();
+        $products = Product::where('category_id', 2)->where('subcategory_id', 8)->paginate(12);
 
         return Inertia::render('Perifericos/PCAudioPage', [
             'buttons' => $buttons,
@@ -81,7 +81,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 7)->get();
+        $products = Product::where('category_id', 2)->where('subcategory_id', 7)->paginate(12);
 
         return Inertia::render('Perifericos/MonitorPage', [
             'buttons' => $buttons,
@@ -103,7 +103,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 9)->get();
+        $products = Product::where('category_id', 2)->where('subcategory_id', 9)->paginate(12);
 
         return Inertia::render('Perifericos/VideoPage', [
             'buttons' => $buttons,

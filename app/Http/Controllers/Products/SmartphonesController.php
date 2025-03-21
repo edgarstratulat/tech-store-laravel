@@ -22,7 +22,7 @@ class SmartphonesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 3)->get();
+        $products = Product::where('category_id', 3)->paginate(12);
 
         return Inertia::render('Smartphones/telemoveisPage', [
             'buttons' => $buttons,
@@ -44,7 +44,7 @@ class SmartphonesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 3)->where('subcategory_id', 10)->get();
+        $products = Product::where('category_id', 3)->where('subcategory_id', 10)->paginate(12);
 
         return Inertia::render('Smartphones/iphonePage', [
             'buttons' => $buttons,
@@ -66,7 +66,7 @@ class SmartphonesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 3)->where('subcategory_id', 11)->get();
+        $products = Product::where('category_id', 3)->where('subcategory_id', 11)->paginate(12);
 
         return Inertia::render('Smartphones/androidPage', [
             'buttons' => $buttons,

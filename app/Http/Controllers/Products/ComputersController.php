@@ -22,7 +22,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->get();
+        $products = Product::where('category_id', 1)->paginate(12);
 
         return Inertia::render('Computadores/computadoresPage', [
             'buttons' => $buttons,
@@ -44,7 +44,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 1)->get();
+        $products = Product::where('category_id', 1)->where('subcategory_id', 1)->paginate(12);
 
         return Inertia::render('Computadores/DesktopPage', [
             'buttons' => $buttons,
@@ -66,7 +66,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 2)->get();
+        $products = Product::where('category_id', 1)->where('subcategory_id', 2)->paginate(12);
 
         return Inertia::render('Computadores/GamingPage', [
             'buttons' => $buttons,
@@ -88,7 +88,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 3)->get();
+        $products = Product::where('category_id', 1)->where('subcategory_id', 3)->paginate(12);
 
         return Inertia::render('Computadores/LaptopPage', [
             'buttons' => $buttons,
@@ -110,7 +110,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 4)->get();
+        $products = Product::where('category_id', 1)->where('subcategory_id', 4)->paginate(12);
 
         return Inertia::render('Computadores/workstationPage', [
             'buttons' => $buttons,
@@ -132,7 +132,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 5)->get();
+        $products = Product::where('category_id', 1)->where('subcategory_id', 5)->paginate(12);
 
         return Inertia::render('Computadores/MicroPcPage', [
             'buttons' => $buttons,
