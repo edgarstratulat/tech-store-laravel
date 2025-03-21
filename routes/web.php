@@ -20,7 +20,6 @@ Route::get('/', [HomeController::class, 'showProductsHome']);
 
 //Promocoes
 Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
-Route::get('/promocoes/{id}', [ProductController::class, 'showPromocoes']);
 
 //Admin Dashboard
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);
@@ -41,7 +40,6 @@ Route::middleware(['auth', 'permission:Manage Store'])->delete('/dashboard/produ
 Route::get('/telemoveis', [SmartphonesController::class, 'showSmartphones']);
 Route::get('/telemoveis/iphone', [SmartphonesController::class, 'showIphoneSmartphone']);
 Route::get('/telemoveis/android', [SmartphonesController::class, 'showAndroidSmartphone']);
-// Route::get('/telemoveis/{subCategory}/{id}', [TelemovelController::class, 'showTelemoveis']);
 
 //Componentes PC
 Route::get('/componentes', [ComponentsController::class, 'showComponents']);
@@ -53,7 +51,6 @@ Route::get('/componentes/armazenamento', [ComponentsController::class, 'showArma
 Route::get('/componentes/fontes-de-alimentacao', [ComponentsController::class, 'showFontes']);
 Route::get('/componentes/caixas-de-computadores', [ComponentsController::class, 'showCaixas']);
 Route::get('/componentes/cpu-coolers', [ComponentsController::class, 'showCPUCoolers']);
-// Route::get('/componentes/{subCategory}/{id}', [ComponentesController::class, 'showComponentePC']);
 
 //Perifericos
 Route::get('/perifericos', [PeripheralsController::class, 'showPeripherals']);
@@ -61,14 +58,13 @@ Route::get('/perifericos/ratos-e-teclados', [PeripheralsController::class, 'show
 Route::get('/perifericos/audio', [PeripheralsController::class, 'showPeripheralsAudio']);
 Route::get('/perifericos/monitores', [PeripheralsController::class, 'showPeripheralsMonitor']);
 Route::get('/perifericos/video', [PeripheralsController::class, 'showPeripheralsVideo']);
-// Route::get('/perifericos/{subCategory}/{id}', [PerifericosController::class, 'showPerifericos']);
 
 //Acessorios
 Route::get('/acessorios', [AccessoriesController::class, 'showAccessories']);
 Route::get('/acessorios/acessorios-para-computador', [AccessoriesController::class, 'showAccessoriesForComputer']);
 Route::get('/acessorios/acessorios-para-casa', [AccessoriesController::class, 'showAccessoriesForHome']);
 Route::get('/acessorios/acessorios-para-telemovel', [AccessoriesController::class, 'showAccessoriesForSmartphone']);
-// Route::get('/acessorios/{subCategory}/{id}', [AcessoriosController::class, 'showAcessorios']);
+
 
 //Computador
 Route::get('/computadores', [ComputersController::class, 'showComputers']);
