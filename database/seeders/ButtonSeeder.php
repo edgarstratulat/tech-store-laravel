@@ -43,9 +43,9 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => json_encode([
                     ["button_name" => "Perifericos","icon" => null, "route" => "/perifericos"],
                     ["button_name" => "Rato & Teclados","icon" => null, "route" => "/perifericos/ratos-e-teclados"],
-                    ["button_name" => "Audio PC","icon" => null, "route" => "/perifericos/pc-audio"],
                     ["button_name" => "Monitores","icon" => null, "route" => "/perifericos/monitores"],
-                    ["button_name" => "Webcams","icon" => null, "route" => "/perifericos/webcams"],
+                    ["button_name" => "Audio","icon" => null, "route" => "/perifericos/audio"],
+                    ["button_name" => "Vídeo","icon" => null, "route" => "/perifericos/video"],
                 ]), 
             ],
             [
