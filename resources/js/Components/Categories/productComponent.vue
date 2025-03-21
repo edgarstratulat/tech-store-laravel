@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center items-center p-5">
-        <div class="w-full max-w-8xl max-h-6xl mx-auto">
+        <div class="w-full max-w-6xl max-h-6xl mx-auto">
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
                     v-for="promo in products"
