@@ -13,7 +13,7 @@ class SearchController extends Controller
     public function SearchProduct(Request $request) {
         $query = $request->input('query');
 
-        $search = Product::search($query)->get();
+        $search = Product::search($query)->paginate(12);
 
         $buttons = Button::select(
             'id',
