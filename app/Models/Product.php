@@ -38,7 +38,6 @@ class Product extends Model
     {
         return [
             'name' => $this->name,
-            'description' => $this->description
         ];
     }
 
