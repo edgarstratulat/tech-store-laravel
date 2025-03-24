@@ -96,6 +96,9 @@ export default {
         isAdmin: {
             type: Boolean,
         },
+        searchProducts: {
+            type: Array,
+        },
     },
     methods: {
         discountProductsShow() {

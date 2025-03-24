@@ -13,9 +13,11 @@ use App\Http\Controllers\Products\ComputersController;
 use App\Http\Controllers\Products\DiscountProductsController;
 use App\Http\Controllers\Products\PeripheralsController;
 use App\Http\Controllers\Products\SmartphonesController;
+use App\Http\Controllers\SearchController;
 
 //Home
 Route::get('/', [HomeController::class, 'showProductsHome']);
+Route::get('/search', [SearchController::class, 'SearchProduct']);
 
 //Promocoes
 Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
