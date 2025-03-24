@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\subCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,13 +14,13 @@ class subCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $subCategory = [
+        foreach([
             ['name' => 'Desktop', 'category_id' => 1],  
             ['name' => 'Gaming', 'category_id' => 1],  
             ['name' => 'Portáteis', 'category_id' => 1],  
             ['name' => 'Workstation', 'category_id' => 1],  
             ['name' => 'Micro-computadores', 'category_id' => 1],
-            ['name' => 'Rato & Teclados', 'category_id' => 2],  
+            ['name' => 'Rato e Teclados', 'category_id' => 2],  
             ['name' => 'Monitores', 'category_id' => 2],  
             ['name' => 'Audio', 'category_id' => 2],  
             ['name' => 'Vídeo', 'category_id' => 2],
@@ -36,8 +37,8 @@ class subCategorySeeder extends Seeder
             ['name' => 'Para Computador', 'category_id' => 5],  
             ['name' => 'Para Telemóvel', 'category_id' => 5],  
             ['name' => 'Para Casa', 'category_id' => 5],
-        ];
+        ] as $subCategory)
 
-        DB::table('subCategories')->insert($subCategory);
+        subCategory::create($subCategory);
     }
 }
