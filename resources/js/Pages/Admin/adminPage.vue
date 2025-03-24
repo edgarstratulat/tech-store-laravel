@@ -1,5 +1,5 @@
 <template>
-    <navbar :adminBtn="adminBtn"></navbar>
+    <navbar :adminBtn="adminBtn" :Utilizador="Utilizador"></navbar>
 </template>
 
 <script>
@@ -12,6 +12,10 @@ export default {
     props: {
         adminBtn: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },

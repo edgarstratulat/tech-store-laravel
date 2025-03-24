@@ -46,6 +46,16 @@ class AdminButtons extends Seeder
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
+            [
+                'button_name' => 'Olá',
+                'route' => '#',
+                'icon' => 'fa-user',
+                'dropdown' => true,
+                "dropdownOptions" => json_encode([
+                    ["button_name" => "Terminar Sessão", "icon" => "fa-sign-out-alt", "route" => "/logout"],
+                ]), 
+            ],
+
         ];
 
         DB::table('AdminButtons')->insert($buttons);

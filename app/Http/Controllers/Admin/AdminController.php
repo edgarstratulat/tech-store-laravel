@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminButton;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AdminController extends Controller
@@ -18,9 +19,12 @@ class AdminController extends Controller
             'dropdown',
             'dropdownOptions'
         );
+        
+        $user = Auth::user();
 
         return Inertia::render('Admin/adminPage', [
-            'adminBtn' => $adminBtn
+            'adminBtn' => $adminBtn,
+            'Utilizador' => $user, 
         ]);
     }
 }
