@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\Products\CreateProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Products\DeleteProductController;
@@ -20,6 +19,8 @@ Route::get('/', [HomeController::class, 'showProductsHome']);
 
 //Promocoes
 Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
+
+Route::get('/produtos/{slug}', [DiscountProductsController::class, 'DiscountProductSlug']);
 
 //Admin Dashboard
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);

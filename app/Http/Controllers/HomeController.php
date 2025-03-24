@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Button;
+use App\Models\Category;
 use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,9 @@ class HomeController extends Controller
 {
     public function showProductsHome()
     {
-        $products = Product::select('id', 'name', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->orderBy('id', 'asc')->take(9)->get();
+        $products = Product::select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->orderBy('id', 'asc')->take(9)->get();
 
-        $computers = Product::select('id', 'name', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->where('category_id', 1)->orderBy('id', 'asc')->take(4)->get();
+        $computers = Product::select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->where('category_id', 1)->orderBy('id', 'asc')->take(4)->get();
 
         $buttons = Button::select(
             'id',
@@ -32,7 +33,7 @@ class HomeController extends Controller
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'products' => $products,
-            'computers' => $computers
+            'computers' => $computers,
         ]);
     }
 }

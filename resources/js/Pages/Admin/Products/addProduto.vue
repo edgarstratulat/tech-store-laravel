@@ -90,6 +90,7 @@ export default {
                 <input
                     id="price"
                     type="number"
+                    step="0.01"
                     v-model="form.price"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                 />

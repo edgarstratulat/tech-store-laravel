@@ -1,6 +1,5 @@
 <template>
     <Navbar :Utilizador="Utilizador" :Buttons="Buttons" :isAdmin="isAdmin" />
-    <router-view />
     <div class="p-4">
         <h1 class="text-2xl font-bold mb-4">Detalhes do Produto</h1>
         <div class="mb-4">
@@ -13,7 +12,7 @@
         <p>Nome: {{ DetalhesProduto.name }}</p>
         <p>Preço: {{ Desconto(DetalhesProduto) }}€</p>
         <p>Stock: {{ DetalhesProduto.stock }}</p>
-        <p>Detalhes do produto: {{ DetalhesProduto.desc }}</p>
+        <p>Detalhes do produto: {{ DetalhesProduto.description }}</p>
     </div>
 </template>
 
