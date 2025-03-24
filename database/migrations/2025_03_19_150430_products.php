@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->decimal('price', 10, 2);
-            $table->decimal('sale_price', 10, 2);
+            $table->integer('sale_price');
             $table->text('description');
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('subcategory_id')->constrained('subCategories');
