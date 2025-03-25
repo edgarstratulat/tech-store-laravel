@@ -6,11 +6,15 @@
             :isAdmin="isAdmin"
         />
         <h1
-            class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
+            class="m-8 text-center text-xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
             Resultados da pesquisa: {{ query }}
         </h1>
-        <Product :products="searchProducts.data"></Product>
+        <Product
+            :products="searchProducts.data"
+            :category="category"
+            :subcategory="subcategory"
+        ></Product>
         <Pagination :links="searchProducts.links"></Pagination>
     </div>
 </template>
@@ -30,6 +34,14 @@ export default {
         searchProducts: {
             type: [Object, Array],
             default: () => [],
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
+            type: Array,
+            required: true,
         },
         Utilizador: {
             type: Object,

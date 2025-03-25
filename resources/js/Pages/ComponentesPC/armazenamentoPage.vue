@@ -10,7 +10,11 @@
         >
             Armazenamento
         </h1>
-        <Product :products="products.data" />
+        <Product
+            :products="products.data"
+            :category="category"
+            :subcategory="subcategory"
+        />
         <Pagination :links="products.links" />
     </div>
 </template>
@@ -28,6 +32,14 @@ export default {
     },
     props: {
         products: {
+            type: Array,
+            required: true,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
             type: Array,
             required: true,
         },
