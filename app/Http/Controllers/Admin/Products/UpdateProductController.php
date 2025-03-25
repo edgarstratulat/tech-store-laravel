@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\AdminButton;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateProductController extends Controller
 {
@@ -22,9 +23,12 @@ class UpdateProductController extends Controller
         )->get();
         $product = Product::select('id', 'name', 'price', 'stock')->get();
 
+        $user = Auth::user();
+
         return Inertia::render('Admin/Products/updateProduto', [
             'adminBtn' => $buttons,
             'product' => $product,
+            'Utilizador' => $user,
          ]);
     }
 

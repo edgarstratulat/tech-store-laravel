@@ -16,7 +16,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Navbar :adminBtn="adminBtn"></Navbar>
+    <Navbar :adminBtn="adminBtn" :Utilizador="Utilizador"></Navbar>
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Atualizar Produtos
@@ -132,6 +132,10 @@ export default {
         },
         product: {
             type: Array,
+            required: true,
+        },
+        Utilizador: {
+            type: Object,
             required: true,
         },
     },

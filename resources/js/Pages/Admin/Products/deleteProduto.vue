@@ -12,7 +12,7 @@ const submit = () => {
 </script>
 
 <template>
-    <navbar :adminBtn="adminBtn"></navbar>
+    <navbar :adminBtn="adminBtn" :Utilizador="Utilizador"></navbar>
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Eliminar Produtos
@@ -66,6 +66,10 @@ export default {
         products: {
             type: Array,
             default: () => [],
+        },
+        Utilizador: {
+            type: Object,
+            required: true,
         },
     },
 };

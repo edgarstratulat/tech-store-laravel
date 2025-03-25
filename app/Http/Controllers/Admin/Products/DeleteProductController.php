@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\AdminButton;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DeleteProductController extends Controller
 {
@@ -21,10 +22,13 @@ class DeleteProductController extends Controller
             'dropdownOptions'
         )->get();
         $products = Product::select('id','name')->get();     
+
+        $user = Auth::user();
         
         return Inertia::render('Admin/Products/deleteProduto', [
             'adminBtn' => $buttons,
             'products' => $products,
+            'Utilizador' => $user,
         ]);
     }
 

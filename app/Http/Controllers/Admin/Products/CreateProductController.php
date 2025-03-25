@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\subCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class CreateProductController extends Controller
@@ -24,11 +25,14 @@ class CreateProductController extends Controller
         )->get();
         $categories = Category::select('id', 'name')->get();
         $subCategories = subCategory::select('id', 'name')->get();
+
+        $user = Auth::user();
         
         return Inertia::render('Admin/Products/addProduto', [
             'adminBtn' => $buttons,
             'categories' => $categories,
-            'subcategories' => $subCategories
+            'subcategories' => $subCategories,
+            'Utilizador' => $user
         ]);
     }
 
