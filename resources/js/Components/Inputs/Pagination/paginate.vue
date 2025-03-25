@@ -6,7 +6,7 @@
                 :href="link.url"
                 class="px-4 py-2 text-sm text-black font-medium bg-white border border-gray-300 rounded-sm hover:bg-gray-100"
                 :class="{
-                    'bg-blue-500 text-white hover:bg-blue-500 ': link.active,
+                    'bg-blue-400 text-white hover:bg-blue-500 ': link.active,
                 }"
                 v-html="link.label"
             />

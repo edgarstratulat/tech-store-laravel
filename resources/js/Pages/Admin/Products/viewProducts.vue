@@ -4,63 +4,125 @@
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
             Produtos
         </h1>
-        <div class="w-full text-sm text-left text-gray-500">
-            <table
-                class="w-full max-h-6xl max-w-6xl mx-auto text-sm text-left text-gray-500"
-            >
+        <div class="overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-white uppercase bg-blue-500">
                     <tr>
-                        <th class="px-6 py-3">Nome</th>
-                        <th class="px-6 py-3">Preço</th>
-                        <th class="px-6 py-3">Descrição</th>
-                        <th class="px-6 py-3">Categoria</th>
-                        <th class="px-6 py-3">Subcategoria</th>
-                        <th class="px-6 py-3">Stock</th>
-                        <th class="px-6 py-3">Atualizar</th>
-                        <th class="px-6 py-3">Eliminar</th>
+                        <th scope="col" class="px-4 py-3 sm:px-6 sm:py-3">
+                            Nome
+                        </th>
+                        <th
+                            scope="col"
+                            class="px-4 py-3 sm:px-6 sm:py-3 sm:table-cell"
+                        >
+                            Preço
+                        </th>
+                        <th
+                            scope="col"
+                            class="px-4 py-3 sm:px-6 sm:py-3 hidden md:table-cell"
+                        >
+                            Descrição
+                        </th>
+                        <th scope="col" class="px-4 py-3 sm:px-6 sm:py-3">
+                            Categoria
+                        </th>
+                        <th
+                            scope="col"
+                            class="px-4 py-3 sm:px-6 sm:py-3 hidden lg:table-cell"
+                        >
+                            Subcategoria
+                        </th>
+                        <th scope="col" class="px-4 py-3 sm:px-6 sm:py-3">
+                            Stock
+                        </th>
+                        <th scope="col" class="px-4 py-3 sm:px-6 sm:py-3">
+                            Ações
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr
-                        v-for="products in products.data"
-                        :key="products.id"
-                        class="bg-gray-100 shadow-md text-center"
+                        v-for="product in products.data"
+                        class="bg-white border-b hover:bg-gray-50"
                     >
                         <td
-                            class="pl-6 py-3 font-medium text-left text-gray-900 whitespace-nowrap"
+                            class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap"
                         >
-                            {{ products.name }}
+                            {{ product.name }}
                         </td>
-                        <td>{{ products.price }}</td>
-                        <td>{{ products.description }}</td>
-                        <td>{{ showCategories(products.category_id) }}</td>
-                        <td>
-                            {{ showSubcategories(products.subcategory_id) }}
+
+                        <td class="px-4 py-4 sm:table-cell">
+                            {{ product.price }}€
                         </td>
-                        <td v-if="products.stock <= 0" class="text-red-600">
-                            {{ products.stock }}
+
+                        <td
+                            class="px-4 py-4 hidden md:table-cell truncate max-w-[150px]"
+                        >
+                            {{ product.description }}
+                        </td>
+
+                        <td class="px-4 py-4">
+                            {{ showCategories(product.category_id) }}
+                        </td>
+
+                        <td class="px-4 py-4 hidden lg:table-cell">
+                            {{ showSubcategories(product.subcategory_id) }}
+                        </td>
+
+                        <td
+                            v-if="product.stock <= 0"
+                            class="px-4 py-4 text-red-600"
+                        >
+                            {{ product.stock }}
                         </td>
                         <td
-                            v-else-if="products.stock <= 10"
-                            class="text-yellow-600"
+                            v-else-if="product.stock <= 10"
+                            class="text-yellow-400"
                         >
-                            {{ products.stock }}
+                            {{ product.stock }}
                         </td>
                         <td v-else class="text-emerald-500">
-                            {{ products.stock }}
+                            {{ product.stock }}
                         </td>
-                        <td>
+
+                        <td class="px-4 py-4 space-x-2 whitespace-nowrap">
                             <button
-                                class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg"
+                                @click="editProduct(product.id)"
+                                class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg text-sm"
                             >
-                                Atualizar
+                                <span class="hidden sm:inline">Atualizar</span>
+                                <svg
+                                    class="w-5 h-5 sm:hidden"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                    />
+                                </svg>
                             </button>
-                        </td>
-                        <td>
                             <button
-                                class="bg-red-600 hover:bg-red-800 text-white p-2 rounded-lg"
+                                @click="deleteProduct(product.id)"
+                                class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg text-sm"
                             >
-                                Eliminar
+                                <span class="hidden sm:inline">Eliminar</span>
+                                <svg
+                                    class="w-5 h-5 sm:hidden"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                    />
+                                </svg>
                             </button>
                         </td>
                     </tr>
