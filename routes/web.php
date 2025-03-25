@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Products\DeleteProductController;
 use App\Http\Controllers\Admin\Products\UpdateProductController;
 use App\Http\Controllers\Users\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\Products\ProductsController;
 use App\Http\Controllers\Products\AccessoriesController;
 use App\Http\Controllers\Products\ComponentsController;
 use App\Http\Controllers\Products\ComputersController;
@@ -26,6 +27,9 @@ Route::get('/produtos/{slug}', [DiscountProductsController::class, 'DiscountProd
 
 //Admin Dashboard
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);
+
+//Show Products
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos', [ProductsController::class, 'showProducts']);
 
 //Add produtos
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
