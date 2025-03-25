@@ -33,7 +33,7 @@ class DiscountProductsController extends Controller
         return Inertia::render('promoPage', [
             'products' => $products,
             'category' => $category,
-            'subCategory' => $subCategory, 
+            'subcategory' => $subCategory, 
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin

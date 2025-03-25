@@ -10,7 +10,11 @@
         >
             Promoções
         </h1>
-        <Products :products="products.data"></Products>
+        <Products
+            :products="products.data"
+            :category="category"
+            :subcategory="subcategory"
+        ></Products>
         <Pagination :links="products.links" />
     </div>
 </template>
@@ -30,6 +34,14 @@ export default {
         products: {
             type: [Object, Array],
             default: () => [],
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
+            type: Array,
+            required: true,
         },
         Utilizador: {
             type: Object,

@@ -30,12 +30,12 @@
                         </div>
                     </div>
 
-                    <!-- <div class="flex-grow">
-                        <h2 class="text-md mb-2 text-neutral-300">
-                            {{ promo.category_id.name }}
-                            {{ promo.subcategory_id.name }}
+                    <div class="flex-grow">
+                        <h2 class="text-xs mb-2 text-neutral-300">
+                            {{ showCategories(promo.category_id) }}
+                            {{ showSubcategories(promo.subcategory_id) }}
                         </h2>
-                    </div> -->
+                    </div>
 
                     <!-- Product Details -->
                     <div class="flex-grow">
@@ -132,6 +132,14 @@ export default {
             type: Array,
             required: true,
         },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
+            type: Array,
+            required: true,
+        },
     },
     methods: {
         Desconto(promo) {
@@ -140,6 +148,21 @@ export default {
             const FinalDiscount = promo.price - Discount;
 
             return FinalDiscount.toFixed(2);
+        },
+        showCategories(category_id) {
+            const category = this.category.find(
+                (cate) => cate.id === category_id
+            );
+
+            return category.name;
+        },
+
+        showSubcategories(subcategory_id) {
+            const subcategory = this.subcategory.find(
+                (subcate) => subcate.id === subcategory_id
+            );
+
+            return subcategory.name;
         },
     },
 };

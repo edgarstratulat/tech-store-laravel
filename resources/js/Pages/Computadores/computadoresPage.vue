@@ -10,7 +10,11 @@
         >
             Computadores MaRca
         </h1>
-        <Product :products="products.data"></Product>
+        <Product
+            :products="products.data"
+            :category="category"
+            :subcategory="subcategory"
+        ></Product>
         <Pagination :links="products.links" />
     </div>
 </template>
@@ -40,6 +44,14 @@ export default {
         },
         isAdmin: {
             type: Boolean,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
+            type: Array,
+            required: true,
         },
     },
 };

@@ -8,9 +8,13 @@
         <h1
             class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
-            MicroComputadores / Arduino / Raspberry Pi
+            Microcomputadores
         </h1>
-        <Product :products="products.data" />
+        <Product
+            :products="products.data"
+            :category="category"
+            :subcategory="subcategory"
+        />
         <Pagination :links="products.links" />
     </div>
 </template>
@@ -28,6 +32,14 @@ export default {
     },
     props: {
         products: {
+            type: Array,
+            required: true,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
             type: Array,
             required: true,
         },

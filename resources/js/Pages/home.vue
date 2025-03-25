@@ -12,7 +12,11 @@
         >
             Promoções
         </h1>
-        <Product :products="discountProductsShow()" />
+        <Product
+            :products="discountProductsShow()"
+            :category="category"
+            :subcategory="subcategory"
+        />
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
                 <button
@@ -80,6 +84,14 @@ export default {
     },
     props: {
         products: {
+            type: Array,
+            required: true,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
             type: Array,
             required: true,
         },
