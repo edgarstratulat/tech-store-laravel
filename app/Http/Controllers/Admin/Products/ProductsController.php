@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminButton;
+use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -34,9 +35,14 @@ class ProductsController extends Controller
 
         $user = Auth::user();
 
+        $category = Category::select('id','name')->get();
+        $subcategory = subCategory::select('id', 'name')->get();
+
         return Inertia::render('Admin/Products/viewProducts', [
             'adminBtn' => $buttons,
             'products' => $products,
+            'category' => $category,
+            'subcategory' => $subcategory,
             'Utilizador' => $user
         ]);
     }
