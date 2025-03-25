@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminButton;
+use App\Models\Button;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\subCategory;
@@ -44,6 +45,35 @@ class ProductsController extends Controller
             'category' => $category,
             'subcategory' => $subcategory,
             'Utilizador' => $user
+        ]);
+    }
+
+    public function ProductSlug($categorySlug, $subcategorySlug, $slug)
+    {
+        $category = Category::where('slug', $categorySlug)->firstOrFail();
+
+        $subcategory = subCategory::where('slug', $subcategorySlug)->firstOrFail();
+
+        $products = Product::where('slug', $slug)->where('category_id', $category->id)->where('subcategory_id', $subcategory->id)->firstOrFail();
+
+
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
+        $user = Auth::user();
+        $isAdmin = $user ? $user->hasRole('admin') : false;
+    
+        return Inertia::render('detalhes-produto', [
+            'DetalhesProduto' => $products,
+            'category' => $category,
+            'Buttons' => $buttons,
+            'Utilizador' => $user,
+            'isAdmin' => $isAdmin
         ]);
     }
 }

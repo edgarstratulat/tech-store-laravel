@@ -24,7 +24,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -51,7 +51,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 12)->paginate();
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -79,7 +79,7 @@ class ComponentsController extends Controller
         );
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 13)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 13)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -106,7 +106,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 14)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 14)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -133,7 +133,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 15)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -160,7 +160,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 16)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -187,7 +187,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 17)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -215,7 +215,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 18)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 18)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -242,7 +242,7 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 4)->where('subcategory_id', 19)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 19)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();

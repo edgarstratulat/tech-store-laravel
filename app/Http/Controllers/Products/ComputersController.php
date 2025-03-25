@@ -24,7 +24,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -52,7 +52,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 1)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 1)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -79,7 +79,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 2)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 2)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -106,7 +106,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 3)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 3)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -133,7 +133,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 4)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 4)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -160,7 +160,7 @@ class ComputersController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 1)->where('subcategory_id', 5)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 5)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();

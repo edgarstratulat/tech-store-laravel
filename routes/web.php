@@ -23,7 +23,7 @@ Route::get('/search', [SearchController::class, 'SearchProduct']);
 //Promocoes
 Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
 
-Route::get('/produtos/{slug}', [DiscountProductsController::class, 'DiscountProductSlug']);
+Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::class, 'ProductSlug']);
 
 //Admin Dashboard
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);

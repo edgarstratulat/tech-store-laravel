@@ -24,7 +24,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 5)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -51,7 +51,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->where('subcategory_id', 20)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 5)->where('subcategory_id', 20)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -78,7 +78,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->where('subcategory_id', 21)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 5)->where('subcategory_id', 21)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -105,7 +105,7 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 5)->where('subcategory_id', 22)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 5)->where('subcategory_id', 22)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();

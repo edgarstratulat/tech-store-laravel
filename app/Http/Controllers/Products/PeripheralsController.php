@@ -24,7 +24,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -52,7 +52,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 6)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 6)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -72,7 +72,7 @@ class PeripheralsController extends Controller
         $buttons = Button::all();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 8)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 8)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -99,7 +99,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 7)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 7)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -126,7 +126,7 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::where('category_id', 2)->where('subcategory_id', 9)->paginate(12);
+        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 9)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();

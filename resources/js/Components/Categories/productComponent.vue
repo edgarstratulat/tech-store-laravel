@@ -10,7 +10,7 @@
                     <!-- Product Image -->
                     <div class="mb-4">
                         <a
-                            :href="`http://localhost:8000/produtos/${promo.slug}`"
+                            :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
                             <img
                                 :src="`/storage/${promo.image_path}`"
@@ -40,7 +40,7 @@
                     <!-- Product Details -->
                     <div class="flex-grow">
                         <a
-                            :href="`http://localhost:8000/produtos/${promo.slug}`"
+                            :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
                             <h2
                                 class="text-md font-semibold mb-2 hover:text-blue-600"
