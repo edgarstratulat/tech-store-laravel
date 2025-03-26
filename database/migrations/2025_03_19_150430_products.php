@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('manufacturer');
             $table->decimal('price', 10, 2);
             $table->integer('sale_price');
             $table->text('description');
