@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class AccessoriesController extends Controller
 {
@@ -24,7 +25,11 @@ class AccessoriesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 5)->paginate(12);
+
+        $products = QueryBuilder::for(Product::class)->allowedFilters('name')
+        ->with(['category', 'subcategory'])
+        ->where('category_id', 5)
+        ->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
