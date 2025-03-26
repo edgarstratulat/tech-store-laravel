@@ -5,6 +5,7 @@ import Navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 
 const form = reactive({
     name: "",
+    manufacturer: "",
     price: "",
     sale_price: "",
     description: "",
@@ -28,6 +29,7 @@ const submit = () => {
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("price", form.price);
+    formData.append("manufacturer", form.manufacturer);
     formData.append("sale_price", form.sale_price);
     formData.append("description", form.description);
     formData.append("image", form.image);
@@ -81,6 +83,20 @@ export default {
                     v-model="form.name"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
                     autocomplete="name"
+                />
+            </div>
+            <div>
+                <label
+                    for="manufacturer"
+                    class="block mb-2 text-sm font-medium text-gray-700"
+                >
+                    Fabricante:
+                </label>
+                <input
+                    id="manufacturer"
+                    v-model="form.manufacturer"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
+                    autocomplete="manufacturer"
                 />
             </div>
 

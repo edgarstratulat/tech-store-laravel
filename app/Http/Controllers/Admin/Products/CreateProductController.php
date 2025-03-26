@@ -40,6 +40,7 @@ class CreateProductController extends Controller
 
         $request->validate([
             'name' => 'required|min:2',
+            'manufacturer' => 'required|min:2',
             'price' => 'required|numeric',
             'sale_price' => 'numeric|max:100',
             'description' => 'required',
@@ -59,6 +60,7 @@ class CreateProductController extends Controller
 
             Product::create([
                 'name' => $request->name,
+                'manufacturer' => $request->manufacturer,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'description' => $request->description,
