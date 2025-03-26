@@ -14,22 +14,23 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
-            'name' => 'Smartphone iPhone 16 Pro',
+            'name' => 'Smartphone Apple iPhone 16 Pro',
             'manufacturer' => 'Apple',
             'price' => 1399.99,
             'sale_price' => 10,
-            'description' => 'Teste Description',
+            'description' => 'iPhone 16 Pro. Com um espetacular design em titânio. Controlo da câmara. Dolby Vision 4K a 120 fps. E o processador A18 Pro.',
             'category_id' => 3,
             'subcategory_id' => 10,
             'stock' => 20,
             'image_path' => "images/6yBdrqYEofhYggD1raUtSxeGxtk6cT8qnJAuM1JP.jpg"
         ]);
         Product::create([
-            'name' => 'Smartphone iPhone 15',
+            'name' => 'Smartphone Apple iPhone 15',
             'manufacturer' => 'Apple',
             'price' => 829.99,
             'sale_price' => 0,
-            'description' => 'Teste Description',
+            'description' => 'Inclui a Dynamic Island, câmara Principal de 48 MP e ligação USB-C. Design resistente em alumínio e vidro infundido com cor.
+',
             'category_id' => 3,
             'subcategory_id' => 10,
             'stock' => 20,
@@ -40,7 +41,7 @@ class ProductSeeder extends Seeder
             'manufacturer' => 'Xiaomi',
             'price' => 649.99,
             'sale_price' => 10,
-            'description' => 'Teste Description',
+            'description' => 'Android 14 | Mediatek Dimensity 9300+ | 512GB ROM | 12GB RAM | 3 Câmaras Traseiras | 1 Câmara Frontal | Bateria...',
             'category_id' => 3,
             'subcategory_id' => 11,
             'stock' => 20,
@@ -60,7 +61,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'MacBook Pro 16"',
+            'name' => 'Apple MacBook Pro 16"',
             'manufacturer' => 'Apple',
             'price' => 2399.99,
             'sale_price' => 5,
@@ -145,7 +146,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Capa OtterBox iPhone 15 Case',
-            'manufacturer' => 'Apple',
+            'manufacturer' => 'OtterBox',
             'price' => 29.99,
             'sale_price' => 0,
             'description' => 'Durable iPhone case for protection',
@@ -240,7 +241,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Computador Gaming Alienware Aurora R13',
+            'name' => 'Computador Desktop Alienware Aurora R13',
             'manufacturer' => 'Alienware',
             'price' => 2399.99,
             'sale_price' => 10,
@@ -264,7 +265,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Razer Blade 15 Advanced',
+            'name' => 'Portátil Razer Blade 15 Advanced',
             'manufacturer' => 'Razer',
             'price' => 2199.99,
             'sale_price' => 5,
@@ -288,7 +289,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'MacBook Pro 16" M1 Pro',
+            'name' => 'Apple MacBook Pro 16" M1 Pro',
             'manufacturer' => 'Apple',
             'price' => 2499.99,
             'sale_price' => 8,
@@ -318,7 +319,7 @@ class ProductSeeder extends Seeder
             'sale_price' => 12,
             'description' => 'All-in-one gaming desktop with excellent cooling and performance',
             'category_id' => 1, 
-            'subcategory_id' => 20, 
+            'subcategory_id' => 1, 
             'stock' => 12,
             'image_path' => 'images/corsair_vengeance_i7200.jpeg'
         ]);
@@ -336,37 +337,37 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Workstation HP Z4 G4 Workstation',
+            'name' => 'Computador Workstation HP Z4 G4 Workstation',
             'manufacturer' => 'HP',
             'price' => 2399.99,
             'sale_price' => 5,
             'description' => 'Powerful workstation for CAD and engineering applications',
             'category_id' => 1,  
-            'subcategory_id' => 5,  
+            'subcategory_id' => 4,  
             'stock' => 10,
             'image_path' => 'images/hp_z4_g4_workstation.jpeg'  
         ]);
     
         Product::create([
-            'name' => 'Workstation Dell Precision 5820 Tower Workstation',
+            'name' => 'Computador Workstation Dell Precision 5820 Tower Workstation',
             'manufacturer' => 'Dell',
             'price' => 3199.99,
             'sale_price' => 8,
             'description' => 'High-end workstation designed for demanding software applications',
             'category_id' => 1,  
-            'subcategory_id' => 5, 
+            'subcategory_id' => 4, 
             'stock' => 8,
             'image_path' => 'images/dell_precision_5820.jpeg'
         ]);
     
         Product::create([
-            'name' => 'Workstation Lenovo ThinkStation P520',
+            'name' => 'Computador Workstation Lenovo ThinkStation P520',
             'manufacturer' => 'Lenovo',
             'price' => 2999.99,
             'sale_price' => 10,
             'description' => 'Top-of-the-line workstation for professional creators',
             'category_id' => 1, 
-            'subcategory_id' => 5,  
+            'subcategory_id' => 4,  
             'stock' => 12,
             'image_path' => 'images/lenovo_thinkstation_p520.jpeg'
         ]);
