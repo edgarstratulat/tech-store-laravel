@@ -17,6 +17,8 @@ class SearchController extends Controller
 
         $search = Product::search($query)->paginate(12);
 
+        $search->load('category')->load('subcategory');
+
         $buttons = Button::select(
             'id',
             'button_name',
