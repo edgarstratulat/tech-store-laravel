@@ -27,7 +27,7 @@ class ComponentsController extends Controller
         $isAdmin = $user ? $user->hasRole('admin') : false;
 
         $products = QueryBuilder::for(Product::class)
-        ->allowedFilters('name')
+        ->allowedFilters('manufacturer')
         ->with(['category', 'subcategory'])
         ->where('category_id', 4)
         ->paginate(12);

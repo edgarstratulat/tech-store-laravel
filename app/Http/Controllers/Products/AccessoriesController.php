@@ -26,7 +26,8 @@ class AccessoriesController extends Controller
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
 
-        $products = QueryBuilder::for(Product::class)->allowedFilters('name')
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters('manufacturer')
         ->with(['category', 'subcategory'])
         ->where('category_id', 5)
         ->paginate(12);

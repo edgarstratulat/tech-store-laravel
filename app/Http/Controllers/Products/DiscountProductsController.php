@@ -27,7 +27,7 @@ class DiscountProductsController extends Controller
         $isAdmin = $user ? $user->hasRole('admin') : false;
 
         $products = QueryBuilder::for(Product::class)
-        ->allowedFilters(['name'])
+        ->allowedFilters(['manufacturer'])
         ->with(['category', 'subcategory'])
         ->select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id',     'subcategory_id', 'image_path', 'stock')
         ->where('sale_price', '>', 1)
