@@ -35,7 +35,7 @@ const submit = () => {
     formData.append("subcategory_id", form.subcategory_id);
     formData.append("stock", form.stock);
 
-    router.post("/dashboard/produto/adicionar", formData);
+    router.post("/dashboard/produtos/adicionar", formData);
 };
 </script>
 
