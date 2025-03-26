@@ -35,9 +35,9 @@ class AdminButtons extends Seeder
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
                     ["button_name" => "Visualizar Produtos", "icon" => "fa-eye", "route" => "/dashboard/produtos"],
-                    ["button_name" => "Adicionar Produtos", "icon" => "fa-plus", "route" => "/dashboard/produto/adicionar"],
-                    ["button_name" => "Atualizar Produtos", "icon" => "fa-edit", "route" => "/dashboard/produto/atualizar"],
-                    ["button_name" => "Eliminar Produtos", "icon" => "fa-trash", "route" => "/dashboard/produto/eliminar"],
+                    ["button_name" => "Adicionar Produtos", "icon" => "fa-plus", "route" => "/dashboard/produtos/adicionar"],
+                    ["button_name" => "Atualizar Produtos", "icon" => "fa-edit", "route" => "/dashboard/produtos/atualizar"],
+                    ["button_name" => "Eliminar Produtos", "icon" => "fa-trash", "route" => "/dashboard/produtos/eliminar"],
                 ]), 
             ],
             [

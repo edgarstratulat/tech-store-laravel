@@ -23,8 +23,6 @@ Route::get('/search', [SearchController::class, 'SearchProduct']);
 //Promocoes
 Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
 
-Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::class, 'ProductSlug']);
-
 //Admin Dashboard
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);
 
@@ -32,16 +30,20 @@ Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [Admin
 Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos', [ProductsController::class, 'showProducts']);
 
 //Add produtos
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/adicionar', [CreateProductController::class, 'showProducts']);
-Route::middleware(['auth', 'permission:Manage Store'])->post('/dashboard/produto/adicionar', [CreateProductController::class, 'createProducts']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos/adicionar', [CreateProductController::class, 'showProducts']);
+Route::middleware(['auth', 'permission:Manage Store'])->post('/dashboard/produtos/adicionar', [CreateProductController::class, 'createProducts']);
 
 //Change Products
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
-Route::middleware(['auth', 'permission:Manage Store'])->put('/dashboard/produto/atualizar', [UpdateProductController::class, 'updateProduct']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
+Route::middleware(['auth', 'permission:Manage Store'])->put('/dashboard/produtos/atualizar', [UpdateProductController::class, 'updateProduct']);
 
 //Delete Products
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produto/eliminar', [DeleteProductController::class,'showDeleteForm']);
-Route::middleware(['auth', 'permission:Manage Store'])->delete('/dashboard/produto/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
+Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos/eliminar', [DeleteProductController::class,'showDeleteForm']);
+Route::middleware(['auth', 'permission:Manage Store'])->delete('/dashboard/produtos/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
+
+
+Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::class, 'ProductSlug']);
+
 
 // Telemoveis
 Route::get('/telemoveis', [SmartphonesController::class, 'showSmartphones']);
