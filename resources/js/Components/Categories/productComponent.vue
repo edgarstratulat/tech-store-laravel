@@ -19,14 +19,13 @@
                             />
                         </a>
                         <div
-                            class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-600 lg:text-lg p-0"
-                            v-if="promo.sale_price <= 0"
-                        ></div>
-                        <div
-                            class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-500 lg:text-lg p-0"
-                            v-else
+                            v-if="promo.sale_price > 0"
+                            class="text-right text-sm font-semibold text-red-500 lg:text-lg"
                         >
                             -{{ promo.sale_price }}%
+                        </div>
+                        <div v-else class="invisible">
+                            {{ promo.sale_price }}
                         </div>
                     </div>
 
@@ -43,7 +42,7 @@
                             :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
                             <h2
-                                class="text-md font-semibold mb-2 hover:text-blue-600"
+                                class="text-sm font-semibold mb-2 hover:text-blue-600"
                             >
                                 {{ promo.name }}
                             </h2>
@@ -51,7 +50,7 @@
                     </div>
 
                     <div class="flex-grow">
-                        <h2 class="text-xs text-neutral-500">
+                        <h2 class="truncate text-xs max-w-100 text-neutral-500">
                             {{ promo.description }}
                         </h2>
                     </div>

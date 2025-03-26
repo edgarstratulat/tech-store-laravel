@@ -10,7 +10,7 @@
         >
             Computadores Workstation
         </h1>
-        <Produt
+        <Product
             :products="products.data"
             :category="category"
             :subcategory="subcategory"
@@ -32,7 +32,7 @@ export default {
     },
     props: {
         products: {
-            type: Array,
+            type: [Array, Object],
             required: true,
         },
         category: {
