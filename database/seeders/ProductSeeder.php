@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
     {
         Product::create([
             'name' => 'Smartphone Apple iPhone 16 Pro',
-            'manufacturer' => 'Apple',
+            'manufacturer_id' => 1,
             'price' => 1399.99,
             'sale_price' => 10,
             'description' => 'iPhone 16 Pro. Com um espetacular design em titânio. Controlo da câmara. Dolby Vision 4K a 120 fps. E o processador A18 Pro.',
@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
         ]);
         Product::create([
             'name' => 'Smartphone Apple iPhone 15',
-            'manufacturer' => 'Apple',
+            'manufacturer_id' => 1,
             'price' => 829.99,
             'sale_price' => 0,
             'description' => 'Inclui a Dynamic Island, câmara Principal de 48 MP e ligação USB-C. Design resistente em alumínio e vidro infundido com cor.
@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
         ]);
         Product::create([
             'name' => 'Smartphone Xiaomi 14T Pro',
-            'manufacturer' => 'Xiaomi',
+            'manufacturer_id' => 3,
             'price' => 649.99,
             'sale_price' => 10,
             'description' => 'Android 14 | Mediatek Dimensity 9300+ | 512GB ROM | 12GB RAM | 3 Câmaras Traseiras | 1 Câmara Frontal | Bateria...',
@@ -50,7 +50,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Portátil Dell XPS 15',
-            'manufacturer' => 'Dell',
+            'manufacturer_id' => 4,
             'price' => 1899.99,
             'sale_price' => 15,
             'description' => 'High performance laptop',
@@ -62,7 +62,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Apple MacBook Pro 16"',
-            'manufacturer' => 'Apple',
+            'manufacturer_id' => 1,
             'price' => 2399.99,
             'sale_price' => 5,
             'description' => 'Professional-grade laptop with stunning display',
@@ -74,7 +74,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Rato Logitech G Pro X Superlight',
-            'manufacturer' => 'Logitech',
+            'manufacturer_id' => 5,
             'price' => 149.99,
             'sale_price' => 10,
             'description' => 'Wireless gaming mouse',
@@ -86,7 +86,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Monitor Samsung Odyssey G7',
-            'manufacturer' => 'Samsung',
+            'manufacturer_id' => 2,
             'price' => 699.99,
             'sale_price' => 5,
             'description' => 'Curved QHD gaming monitor',
@@ -98,7 +98,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Headphones Bose QuietComfort 35 II',
-            'manufacturer' => 'Bose',
+            'manufacturer_id' => 6,
             'price' => 299.99,
             'sale_price' => 10,
             'description' => 'Noise-cancelling wireless headphones',
@@ -110,7 +110,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Processador Intel Core i9-13900K',
-            'manufacturer' => 'Intel',
+            'manufacturer_id' => 7,
             'price' => 799.99,
             'sale_price' => 15,
             'description' => 'High-end processor for gamers and professionals',
@@ -122,7 +122,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Memória RAM Corsair Vengeance LPX 16GB',
-            'manufacturer' => 'Corsair',
+            'manufacturer_id' => 8,
             'price' => 79.99,
             'sale_price' => 5,
             'description' => '16GB DDR4 RAM for gaming',
@@ -134,7 +134,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'SSD Samsung 970 EVO 1TB',
-            'manufacturer' => 'Samsung',
+            'manufacturer_id' => 2,
             'price' => 129.99,
             'sale_price' => 10,
             'description' => 'High-speed solid-state drive',
@@ -146,7 +146,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Capa OtterBox iPhone 15 Case',
-            'manufacturer' => 'OtterBox',
+            'manufacturer_id' => 9,
             'price' => 29.99,
             'sale_price' => 0,
             'description' => 'Durable iPhone case for protection',
@@ -158,7 +158,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Powerbank Anker PowerCore 10000mAh',
-            'manufacturer' => 'Anker',
+            'manufacturer_id' => 10,
             'price' => 39.99,
             'sale_price' => 5,
             'description' => 'Portable charger for phones and tablets',
@@ -170,7 +170,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'MSI MPG Z490 Gaming Edge WiFi',
-            'manufacturer' => 'MSI',
+            'manufacturer_id' => 11,
             'price' => 219.99,
             'sale_price' => 10,
             'description' => 'Motherboard with support for Intel 10th Gen Processors',
@@ -182,7 +182,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Motherboard ASUS ROG Strix Z690-E Gaming WiFi',
-            'manufacturer' => 'ASUS',
+            'manufacturer_id' => 12,
             'price' => 399.99,
             'sale_price' => 12,
             'description' => 'Premium motherboard for Intel 12th Gen Processors with Wi-Fi 6E',
@@ -194,7 +194,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Placa Gráfica NVIDIA GeForce RTX 3080',
-            'manufacturer' => 'Nvidia',
+            'manufacturer_id' => 13,
             'price' => 699.99,
             'sale_price' => 5,
             'description' => 'High-performance graphics card for 4K gaming',
@@ -206,7 +206,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Fonte de Alimentação EVGA SuperNOVA 850 G5, 80 Plus Gold 850W',
-            'manufacturer' => 'EVGA',
+            'manufacturer_id' => 14,
             'price' => 139.99,
             'sale_price' => 10,
             'description' => 'Reliable power supply for high-performance PCs',
@@ -218,7 +218,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Air Cooler CPU Cooler Master Hyper 212 EVO',
-            'manufacturer' => 'Cooler Master',
+            'manufacturer_id' => 15,
             'price' => 34.99,
             'sale_price' => 5,
             'description' => 'Efficient CPU cooler for optimal performance',
@@ -230,7 +230,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Caixa NZXT H510 Mid Tower ATX',
-            'manufacturer' => 'NZXT',
+            'manufacturer_id' => 16,
             'price' => 79.99,
             'sale_price' => 15,
             'description' => 'Sleek and stylish PC case for custom builds',
@@ -242,7 +242,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Computador Desktop Alienware Aurora R13',
-            'manufacturer' => 'Alienware',
+            'manufacturer_id' => 17,
             'price' => 2399.99,
             'sale_price' => 10,
             'description' => 'High-performance gaming desktop with powerful hardware',
@@ -254,7 +254,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Computador Desktop HP Omen 30L',
-            'manufacturer' => 'Omen by HP',
+            'manufacturer_id' => 18,
             'price' => 1899.99,
             'sale_price' => 12,
             'description' => 'Powerful gaming desktop with premium components',
@@ -266,7 +266,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Portátil Razer Blade 15 Advanced',
-            'manufacturer' => 'Razer',
+            'manufacturer_id' => 19,
             'price' => 2199.99,
             'sale_price' => 5,
             'description' => 'Slim and powerful gaming laptop with 4K display',
@@ -278,7 +278,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Portátil MSI GE76 Raider',
-            'manufacturer' => 'MSI',
+            'manufacturer_id' => 11,
             'price' => 2599.99,
             'sale_price' => 10,
             'description' => 'High-end gaming laptop with Intel Core i9 and RTX 3080',
@@ -290,7 +290,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Apple MacBook Pro 16" M1 Pro',
-            'manufacturer' => 'Apple',
+            'manufacturer_id' => 1,
             'price' => 2499.99,
             'sale_price' => 8,
             'description' => 'Powerful MacBook with Apple Silicon M1 Pro chip for professionals',
@@ -302,7 +302,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Portátil Lenovo ThinkPad X1 Carbon Gen 9',
-            'manufacturer' => 'Lenovo',
+            'manufacturer_id' => 20,
             'price' => 1899.99,
             'sale_price' => 7,
             'description' => 'Business-oriented laptop with Intel i7 and robust build quality',
@@ -314,7 +314,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Computador Desktop Corsair Vengeance i7200',
-            'manufacturer' => 'Corsair',
+            'manufacturer_id' => 8,
             'price' => 1799.99,
             'sale_price' => 12,
             'description' => 'All-in-one gaming desktop with excellent cooling and performance',
@@ -326,7 +326,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Portátil ASUS ROG Strix G15',
-            'manufacturer' => 'ASUS',
+            'manufacturer_id' => 12,
             'price' => 1699.99,
             'sale_price' => 15,
             'description' => 'Gaming laptop with a Ryzen 9 5900HX processor and RTX 3070 GPU',
@@ -338,7 +338,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => 'Computador Workstation HP Z4 G4 Workstation',
-            'manufacturer' => 'HP',
+            'manufacturer_id' => 21,
             'price' => 2399.99,
             'sale_price' => 5,
             'description' => 'Powerful workstation for CAD and engineering applications',
@@ -350,7 +350,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Computador Workstation Dell Precision 5820 Tower Workstation',
-            'manufacturer' => 'Dell',
+            'manufacturer_id' => 4,
             'price' => 3199.99,
             'sale_price' => 8,
             'description' => 'High-end workstation designed for demanding software applications',
@@ -362,7 +362,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Computador Workstation Lenovo ThinkStation P520',
-            'manufacturer' => 'Lenovo',
+            'manufacturer_id' => 20,
             'price' => 2999.99,
             'sale_price' => 10,
             'description' => 'Top-of-the-line workstation for professional creators',
@@ -374,7 +374,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Microcomputador Intel NUC 11 Performance Kit',
-            'manufacturer' => 'Intel',
+            'manufacturer_id' => 7,
             'price' => 699.99,
             'sale_price' => 5,
             'description' => 'Compact micro-PC for home or office use with great performance',
@@ -386,7 +386,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Microcomputador Raspberry Pi 4 Model B',
-            'manufacturer' => 'Raspberry Pi Foundation',
+            'manufacturer_id' => 22,
             'price' => 79.99,
             'sale_price' => 0,
             'description' => 'Ultra-low-cost micro-computer with open-source flexibility',
@@ -398,7 +398,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Microcomputador Beelink GT King Pro',
-            'manufacturer' => 'Beelink',
+            'manufacturer_id' => 23,
             'price' => 159.99,
             'sale_price' => 5,
             'description' => 'Compact and powerful micro-PC for entertainment and light work',
@@ -410,7 +410,7 @@ class ProductSeeder extends Seeder
     
         Product::create([
             'name' => 'Microcomputador MINISFORUM UM700',
-            'manufacturer' => 'MiniForum',
+            'manufacturer_id' => 24,
             'price' => 499.99,
             'sale_price' => 10,
             'description' => 'Compact mini-PC with Ryzen 7 3750H and 16GB RAM',

@@ -72,7 +72,7 @@
 <script>
 import navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
-import Product from "../Components/Categories/productComponent.vue";
+import Product from "../Components/Categories/HomeProductComponent.vue";
 import ComputerHome from "../Components/Categories/HomeComputerComponent.vue";
 
 export default {

@@ -17,7 +17,7 @@ class Product extends Model
         'name',
         'slug',
         'price',
-        'manufacturer',
+        'manufacturer_id',
         'sale_price',
         'description',
         'category_id',
@@ -50,5 +50,10 @@ class Product extends Model
     public function subcategory()
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
     }
 }

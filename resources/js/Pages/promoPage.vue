@@ -14,7 +14,9 @@
             :products="products.data"
             :category="category"
             :subcategory="subcategory"
+            :manufacturer="manufacturer"
         ></Products>
+
         <Pagination :links="products.links" />
     </div>
 </template>
@@ -23,12 +25,14 @@
 import Navbar from "../Components/navbar.vue";
 import Products from "../Components/Categories/productComponent.vue";
 import Pagination from "../Components/Inputs/Pagination/paginate.vue";
+import FilterSideBar from "../Components/Inputs/FilterSideBar/navbar.vue";
 
 export default {
     components: {
         Navbar,
         Products,
         Pagination,
+        FilterSideBar,
     },
     props: {
         products: {
@@ -40,6 +44,10 @@ export default {
             required: true,
         },
         subcategory: {
+            type: Array,
+            required: true,
+        },
+        manufacturer: {
             type: Array,
             required: true,
         },

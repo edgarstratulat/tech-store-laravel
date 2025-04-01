@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             PermissionSeeder::class,
             AdminButtons::class,
+            ManufacturerSeeder::class,
             CategorySeeder::class,
             SubcategorySeeder::class,
-            ProductSeeder::class,
+            ProductSeeder::class
         ]);
     }
 }
