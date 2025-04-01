@@ -16,6 +16,7 @@
             :products="discountProductsShow()"
             :category="category"
             :subcategory="subcategory"
+            :manufacturer="manufacturer"
         />
         <div class="flex justify-center">
             <a href="http://localhost:8000/promocoes">
@@ -88,6 +89,10 @@ export default {
             required: true,
         },
         category: {
+            type: Array,
+            required: true,
+        },
+        manufacturer: {
             type: Array,
             required: true,
         },

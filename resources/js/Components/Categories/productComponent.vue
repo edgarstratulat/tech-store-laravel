@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center items-center p-5">
+    <div class="mt-8 flex justify-center items-center ml-5 p-5">
         <div class="w-full max-w-6xl max-h-6xl mx-auto">
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
@@ -125,7 +125,11 @@
 </template>
 
 <script>
+import FilterSideBar from "../Inputs/FilterSideBar/navbar.vue";
 export default {
+    components: {
+        FilterSideBar,
+    },
     props: {
         products: {
             type: Array,
@@ -136,6 +140,10 @@ export default {
             required: true,
         },
         subcategory: {
+            type: Array,
+            required: true,
+        },
+        manufacturer: {
             type: Array,
             required: true,
         },

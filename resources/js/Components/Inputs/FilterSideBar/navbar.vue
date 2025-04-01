@@ -5,6 +5,9 @@ import { router } from "@inertiajs/vue3";
 const isOpen = ref(false);
 const selectedFilters = ref({
     manufacturer: "",
+    stock: "",
+    nostock: "",
+    category: "",
 });
 
 const closeSidebar = (event) => {
@@ -17,11 +20,23 @@ onMounted(() => document.addEventListener("click", closeSidebar));
 onUnmounted(() => document.removeEventListener("click", closeSidebar));
 
 const applyFilters = () => {
-    router.get(
-        `?filter[manufacturer_id]=${Number(selectedFilters.value)}`,
-        selectedFilters.manufacturer
-    );
-    console.log("Filtros aplicados:", selectedFilters.value);
+    const queryParams = {};
+
+    if (selectedFilters.value.manufacturer) {
+        queryParams["filter[manufacturer]"] =
+            selectedFilters.value.manufacturer;
+    }
+    if (selectedFilters.value.stock) {
+        queryParams["filter[stock]"] = selectedFilters.value.stock;
+    }
+    if (selectedFilters.value.nostock) {
+        queryParams["filter[nostock]"] = selectedFilters.value.nostock;
+    }
+    if (selectedFilters.value.category) {
+        queryParams["filter[category]"] = selectedFilters.value.category;
+    }
+
+    router.get(window.location.pathname, queryParams);
 };
 </script>
 
@@ -32,46 +47,82 @@ export default {
             type: Array,
             required: true,
         },
+        products: {
+            type: Array,
+            required: true,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
     },
 };
 </script>
 
 <template>
-    <div class="relative">
-        <div
-            class="sidebar fixed lg:relative inset-y-0 left-0 w-64 bg-white shadow-lg p-4 transition-transform duration-300 lg:translate-x-0"
-            :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
-        >
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg font-semibold">Filtros</h2>
-                <button @click="isOpen = false" class="text-gray-500 lg:hidden">
-                    ✖
-                </button>
+    <div class="mt-8 h-screen w-full bg-white shadow-lg p-4">
+        <h2 class="text-lg font-semibold mb-4">Filtros</h2>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1">Stock</label>
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        v-model="selectedFilters.stock"
+                        class="form-checkbox"
+                    />
+                    <span class="ml-2">Em stock</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        v-model="selectedFilters.nostock"
+                        class="form-checkbox"
+                    />
+                    <span class="ml-2">Sem Stock</span>
+                </label>
             </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium">Marca</label>
-                    <select
-                        v-model="selectedFilters.manufacturer"
-                        class="w-full border p-2 rounded"
-                    >
-                        <option
-                            v-for="manu in manufacturer"
-                            :value="manu.id"
-                            :key="manu.id"
-                        >
-                            {{ manu.name }}
-                        </option>
-                    </select>
-                </div>
-            </div>
-            <button
-                @click="applyFilters"
-                class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
-            >
-                Aplicar Filtros
-            </button>
         </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1">Fabricante</label>
+            <select
+                v-model="selectedFilters.manufacturer"
+                class="w-full border p-2 rounded"
+            >
+                <option
+                    v-for="manu in manufacturer"
+                    :value="manu.id"
+                    :key="manu.id"
+                >
+                    {{ manu.name }}
+                </option>
+            </select>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1">Categoria</label>
+            <select
+                v-model="selectedFilters.category"
+                class="w-full border p-2 rounded"
+            >
+                <option
+                    v-for="cate in category"
+                    :value="cate.id"
+                    :key="cate.id"
+                >
+                    {{ cate.name }}
+                </option>
+            </select>
+        </div>
+
+        <button
+            @click="applyFilters"
+            class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
+        >
+            Aplicar Filtros
+        </button>
     </div>
 </template>
 

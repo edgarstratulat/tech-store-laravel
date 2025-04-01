@@ -24,7 +24,7 @@ class Manufacturer extends Model
         ];
     }
 
-    public function Product(): HasMany
+    public function product(): HasMany
     {  
         return $this->hasMany(Product::class); 
     }

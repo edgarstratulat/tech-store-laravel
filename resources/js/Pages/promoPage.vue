@@ -1,21 +1,35 @@
 <template>
-    <div class="bg-zinc-100">
+    <div class="bg-zinc-100 min-h-screen">
         <navbar
             :Utilizador="Utilizador"
             :Buttons="buttons"
             :isAdmin="isAdmin"
         />
+
         <h1
             class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
             Promoções
         </h1>
-        <Products
-            :products="products.data"
-            :category="category"
-            :subcategory="subcategory"
-            :manufacturer="manufacturer"
-        ></Products>
+
+        <div class="flex gap-5 px-8">
+            <div class="w-1/4">
+                <FilterSideBar
+                    :manufacturer="manufacturer"
+                    :products="products.data"
+                    :category="category"
+                />
+            </div>
+
+            <div class="w-3/4">
+                <Products
+                    :products="products.data"
+                    :category="category"
+                    :subcategory="subcategory"
+                    :manufacturer="manufacturer"
+                />
+            </div>
+        </div>
 
         <Pagination :links="products.links" />
     </div>

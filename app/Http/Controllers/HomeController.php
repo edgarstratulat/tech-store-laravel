@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Button;
 use App\Models\Category;
+use App\Models\Manufacturer;
 use Inertia\Inertia;
 use App\Models\Product;
 use App\Models\subCategory;
@@ -27,6 +28,8 @@ class HomeController extends Controller
         )->get();
         $user = Auth::user();
 
+        $manufacturer = Manufacturer::select('id', 'name')->get();
+
         $isAdmin = $user ? $user->hasRole('admin') : false;
 
         $category = Category::select('id','name')->get();
@@ -37,6 +40,7 @@ class HomeController extends Controller
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'products' => $products,
+            'manufacturer' => $manufacturer,
             'category' => $category,
             'subcategory' => $subcategory,
             'computers' => $computers,

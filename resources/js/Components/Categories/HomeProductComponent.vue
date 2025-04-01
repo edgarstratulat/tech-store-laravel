@@ -132,7 +132,7 @@ export default {
     },
     props: {
         products: {
-            type: Array,
+            type: [Array, Object],
             required: true,
         },
         category: {
