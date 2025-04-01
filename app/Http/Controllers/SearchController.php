@@ -17,7 +17,11 @@ class SearchController extends Controller
 
         $search = Product::search($query)->paginate(12);
 
-        $search->load('category')->load('subcategory');
+        $search->load('category','subcategory');
+
+        if(strlen($query) < 2){
+            return response()->json('Minimo 3 characters');
+        }
 
         $buttons = Button::select(
             'id',
