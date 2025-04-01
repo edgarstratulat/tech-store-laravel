@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
@@ -28,10 +27,5 @@ createServer((page) =>
 
             return server;
         },
-        // setup({ App, props, plugin }) {
-        //     return createSSRApp({
-        //         render: () => h(App, props),
-        //     }).use(plugin);
-        // },
     })
 );
