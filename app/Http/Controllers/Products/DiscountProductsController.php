@@ -30,7 +30,6 @@ class DiscountProductsController extends Controller
 
         $products = QueryBuilder::for(Product::class)
         ->allowedFilters([
-            'name',
             AllowedFilter::callback('stock', function ($query, $value) {
                 $query->where('stock', '>', 0);
             }),
