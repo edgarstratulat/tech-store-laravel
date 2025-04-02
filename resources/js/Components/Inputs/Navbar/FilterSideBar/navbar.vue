@@ -8,8 +8,9 @@ const selectedFilters = ref({
     stock: "",
     nostock: "",
     category: "",
-    price: "",
-    recent: "",
+    sort: "",
+    max_price: "",
+    min_price: "",
 });
 
 const closeSidebar = (event) => {
@@ -40,6 +41,12 @@ const applyFilters = () => {
     if (selectedFilters.value.sort) {
         queryParams["sort[price]"] = selectedFilters.value.sort;
     }
+    if (selectedFilters.value.min_price) {
+        queryParams["filter[min_price]"] = selectedFilters.value.min_price;
+    }
+    if (selectedFilters.value.max_price) {
+        queryParams["filter[max_price]"] = selectedFilters.value.max_price;
+    }
 
     router.get(window.location.pathname, queryParams);
 };
@@ -69,9 +76,7 @@ export default {
         <h2 class="text-lg font-semibold mb-4">Filtros</h2>
 
         <div>
-            <label for="minimum_price" class="block text-sm font-medium mb-1"
-                >Ordenar por:</label
-            >
+            <label class="block text-sm font-medium mb-1">Ordenar por:</label>
             <select
                 v-model="selectedFilters.sort"
                 class="w-full border p-1 rounded"
@@ -88,6 +93,7 @@ export default {
                 <label class="inline-flex items-center">
                     <input
                         type="checkbox"
+                        value="min"
                         v-model="selectedFilters.stock"
                         class="form-checkbox"
                     />
@@ -96,11 +102,47 @@ export default {
                 <label class="inline-flex items-center">
                     <input
                         type="checkbox"
+                        value="max"
                         v-model="selectedFilters.nostock"
                         class="form-checkbox"
                     />
                     <span class="ml-2">Sem Stock</span>
                 </label>
+            </div>
+        </div>
+
+        <!-- <div class="mt-4">
+            <label class="block text-sm font-medium mb-1">Preço</label>
+            <input
+                type="number"
+                placeholder="min"
+                v-model="selectedFilters.min_price"
+                class="w-full border p-1 rounded"
+            />{{}}
+            <input
+                type="number"
+                placeholder="max"
+                v-model="selectedFilters.max_price"
+                class="w-full border p-1 rounded"
+            />
+        </div> -->
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1">Preço</label>
+            <div class="flex items-center space-x-4">
+                <input
+                    type="number"
+                    placeholder="min"
+                    v-model="selectedFilters.min_price"
+                    class="w-1/3 border p-1 rounded"
+                    min="0"
+                />
+                <input
+                    type="number"
+                    placeholder="max"
+                    v-model="selectedFilters.max_price"
+                    class="w-1/3 border p-1 rounded"
+                    :min="selectedFilters.min_price"
+                />
             </div>
         </div>
 
