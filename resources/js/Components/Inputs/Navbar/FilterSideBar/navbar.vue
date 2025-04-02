@@ -7,7 +7,6 @@ const selectedFilters = ref({
     manufacturer: "",
     stock: "",
     nostock: "",
-    category: "",
     sort: "",
     max_price: "",
     min_price: "",
@@ -35,9 +34,6 @@ const applyFilters = () => {
     if (selectedFilters.value.nostock) {
         queryParams["filter[nostock]"] = selectedFilters.value.nostock;
     }
-    if (selectedFilters.value.category) {
-        queryParams["filter[category]"] = selectedFilters.value.category;
-    }
     if (selectedFilters.value.sort) {
         queryParams["sort[price]"] = selectedFilters.value.sort;
     }
@@ -60,10 +56,6 @@ export default {
             required: true,
         },
         products: {
-            type: Array,
-            required: true,
-        },
-        category: {
             type: Array,
             required: true,
         },
@@ -111,21 +103,6 @@ export default {
             </div>
         </div>
 
-        <!-- <div class="mt-4">
-            <label class="block text-sm font-medium mb-1">Preço</label>
-            <input
-                type="number"
-                placeholder="min"
-                v-model="selectedFilters.min_price"
-                class="w-full border p-1 rounded"
-            />{{}}
-            <input
-                type="number"
-                placeholder="max"
-                v-model="selectedFilters.max_price"
-                class="w-full border p-1 rounded"
-            />
-        </div> -->
         <div class="mt-4">
             <label class="block text-sm font-medium mb-1">Preço</label>
             <div class="flex items-center space-x-4">
@@ -158,22 +135,6 @@ export default {
                     :key="manu.id"
                 >
                     {{ manu.name }}
-                </option>
-            </select>
-        </div>
-
-        <div class="mt-4">
-            <label class="block text-sm font-medium mb-1">Categoria</label>
-            <select
-                v-model="selectedFilters.category"
-                class="w-full border p-2 rounded"
-            >
-                <option
-                    v-for="cate in category"
-                    :value="cate.id"
-                    :key="cate.id"
-                >
-                    {{ cate.name }}
                 </option>
             </select>
         </div>

@@ -17,7 +17,6 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :products="products.data"
-                    :category="category"
                 />
             </div>
 
