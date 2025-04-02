@@ -125,11 +125,7 @@
 </template>
 
 <script>
-import FilterSideBar from "../Inputs/FilterSideBar/navbar.vue";
 export default {
-    components: {
-        FilterSideBar,
-    },
     props: {
         products: {
             type: Array,

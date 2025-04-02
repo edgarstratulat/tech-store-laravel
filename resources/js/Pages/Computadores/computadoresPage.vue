@@ -10,11 +10,24 @@
         >
             Computadores MaRca
         </h1>
-        <Product
-            :products="products.data"
-            :category="category"
-            :subcategory="subcategory"
-        ></Product>
+        <div class="flex gap-5 px-8">
+            <div class="w-1/4">
+                <FilterSideBar
+                    :manufacturer="manufacturer"
+                    :products="products.data"
+                    :category="category"
+                />
+            </div>
+
+            <div class="w-3/4">
+                <Product
+                    :products="products.data"
+                    :category="category"
+                    :subcategory="subcategory"
+                    :manufacturer="manufacturer"
+                />
+            </div>
+        </div>
         <Pagination :links="products.links" />
     </div>
 </template>
@@ -23,12 +36,14 @@
 import navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
 import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
+import FilterSideBar from "../../Components/Inputs/Navbar/FilterSideBar/navbar.vue";
 
 export default {
     components: {
         navbar,
         Product,
         Pagination,
+        FilterSideBar,
     },
     props: {
         products: {
@@ -50,6 +65,10 @@ export default {
             required: true,
         },
         subcategory: {
+            type: Array,
+            required: true,
+        },
+        manufacturer: {
             type: Array,
             required: true,
         },
