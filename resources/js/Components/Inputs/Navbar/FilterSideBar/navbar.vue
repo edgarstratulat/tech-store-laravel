@@ -8,7 +8,8 @@ const selectedFilters = ref({
     stock: "",
     nostock: "",
     category: "",
-    sort: "",
+    price: "",
+    recent: "",
 });
 
 const closeSidebar = (event) => {
@@ -37,7 +38,7 @@ const applyFilters = () => {
         queryParams["filter[category]"] = selectedFilters.value.category;
     }
     if (selectedFilters.value.sort) {
-        queryParams["filter[sort]"] = selectedFilters.value.sort;
+        queryParams["sort[price]"] = selectedFilters.value.sort;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -75,8 +76,9 @@ export default {
                 v-model="selectedFilters.sort"
                 class="w-full border p-1 rounded"
             >
-                <option value="asc">Preço mais baixo</option>
-                <option value="desc">Preço mais alto</option>
+                <option value="-created_at">Mais Recentes</option>
+                <option value="price">Preço mais baixo</option>
+                <option value="-price">Preço mais alto</option>
             </select>
         </div>
 
