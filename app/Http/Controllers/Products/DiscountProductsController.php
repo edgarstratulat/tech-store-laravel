@@ -41,7 +41,10 @@ class DiscountProductsController extends Controller
             }),
             AllowedFilter::callback('category', function ($query, $value) {
                 $query->where('category_id', '=', $value);
-            })
+            }),
+            AllowedFilter::callback('sort', function ($query, $value) {
+                $query->orderBy('price', $value);
+            }),
         ])->with(['category', 'subcategory'])
         ->select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id',     'subcategory_id', 'manufacturer_id', 'image_path', 'stock')
         ->where('sale_price', '>', 1)

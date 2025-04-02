@@ -8,6 +8,7 @@ const selectedFilters = ref({
     stock: "",
     nostock: "",
     category: "",
+    sort: "",
 });
 
 const closeSidebar = (event) => {
@@ -34,6 +35,9 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.category) {
         queryParams["filter[category]"] = selectedFilters.value.category;
+    }
+    if (selectedFilters.value.sort) {
+        queryParams["filter[sort]"] = selectedFilters.value.sort;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -62,6 +66,19 @@ export default {
 <template>
     <div class="mt-8 h-screen w-full bg-white shadow-lg p-4">
         <h2 class="text-lg font-semibold mb-4">Filtros</h2>
+
+        <div>
+            <label for="minimum_price" class="block text-sm font-medium mb-1"
+                >Ordenar por:</label
+            >
+            <select
+                v-model="selectedFilters.sort"
+                class="w-full border p-1 rounded"
+            >
+                <option value="asc">Preço mais baixo</option>
+                <option value="desc">Preço mais alto</option>
+            </select>
+        </div>
 
         <div class="mt-4">
             <label class="block text-sm font-medium mb-1">Stock</label>
@@ -125,9 +142,3 @@ export default {
         </button>
     </div>
 </template>
-
-<style scoped>
-.sidebar {
-    z-index: 50;
-}
-</style>
