@@ -1,4 +1,4 @@
-import { ref, mergeProps, useSSRContext, resolveComponent, reactive, onMounted, onUnmounted, createSSRApp, h } from "vue";
+import { ref, mergeProps, useSSRContext, resolveComponent, onMounted, onUnmounted, reactive, createSSRApp, h } from "vue";
 import { ssrRenderAttrs, ssrRenderAttr, ssrRenderList, ssrInterpolate, ssrRenderComponent, ssrGetDynamicModelProps, ssrIncludeBooleanAttr, ssrLooseContain, ssrLooseEqual } from "vue/server-renderer";
 import { Link, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
@@ -449,7 +449,7 @@ function _sfc_ssrRender$B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push(ssrRenderComponent(_component_Link, {
           href: link.url,
           class: ["px-4 py-2 text-sm text-black font-medium bg-white border border-gray-300 rounded-sm", {
-            "bg-blue-700 text-white hover:bg-blue-500 ": link.active
+            "bg-blue-400 text-white hover:bg-blue-500 ": link.active
           }]
         }, null, _parent));
       } else {
@@ -658,24 +658,64 @@ const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   __proto__: null,
   default: AcessorioscasaPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$D = {
-  components: {
-    Navbar,
-    Product: Product$1,
-    Pagination
-  },
+const __default__$3 = {
   props: {
+    manufacturer: {
+      type: Array,
+      required: true
+    },
     products: {
       type: Array,
       required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+    }
+  }
+};
+const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$3, {
+  __name: "navbar",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const isOpen = ref(false);
+    const selectedFilters = ref({
+      manufacturer: "",
+      stock: "",
+      nostock: "",
+      sort: "",
+      max_price: "",
+      min_price: ""
+    });
+    const closeSidebar = (event) => {
+      if (!event.target.closest(".sidebar") && window.innerWidth < 1024) {
+        isOpen.value = false;
+      }
+    };
+    onMounted(() => document.addEventListener("click", closeSidebar));
+    onUnmounted(() => document.removeEventListener("click", closeSidebar));
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "mt-8 h-screen w-full bg-white shadow-lg p-4" }, _attrs))}><h2 class="text-lg font-semibold mb-4">Filtros</h2><div><label class="block text-sm font-medium mb-1">Ordenar por:</label><select class="w-full border p-1 rounded"><option value="-created_at"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.sort) ? ssrLooseContain(selectedFilters.value.sort, "-created_at") : ssrLooseEqual(selectedFilters.value.sort, "-created_at")) ? " selected" : ""}>Mais Recentes</option><option value="price"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.sort) ? ssrLooseContain(selectedFilters.value.sort, "price") : ssrLooseEqual(selectedFilters.value.sort, "price")) ? " selected" : ""}>Preço mais baixo</option><option value="-price"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.sort) ? ssrLooseContain(selectedFilters.value.sort, "-price") : ssrLooseEqual(selectedFilters.value.sort, "-price")) ? " selected" : ""}>Preço mais alto</option></select></div><div class="mt-4"><label class="block text-sm font-medium mb-1">Stock</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" value="min"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.stock) ? ssrLooseContain(selectedFilters.value.stock, "min") : selectedFilters.value.stock) ? " checked" : ""} class="form-checkbox"><span class="ml-2">Em stock</span></label><label class="inline-flex items-center"><input type="checkbox" value="max"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.nostock) ? ssrLooseContain(selectedFilters.value.nostock, "max") : selectedFilters.value.nostock) ? " checked" : ""} class="form-checkbox"><span class="ml-2">Sem Stock</span></label></div></div><div class="mt-4"><label class="block text-sm font-medium mb-1">Preço</label><div class="flex items-center space-x-4"><input type="number" placeholder="min"${ssrRenderAttr("value", selectedFilters.value.min_price)} class="w-1/3 border p-1 rounded" min="0"><input type="number" placeholder="max"${ssrRenderAttr("value", selectedFilters.value.max_price)} class="w-1/3 border p-1 rounded"${ssrRenderAttr("min", selectedFilters.value.min_price)}></div></div><div class="mt-4"><label class="block text-sm font-medium mb-1">Fabricante</label><select class="w-full border p-2 rounded"><!--[-->`);
+      ssrRenderList(__props.manufacturer, (manu) => {
+        _push(`<option${ssrRenderAttr("value", manu.id)}${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.manufacturer) ? ssrLooseContain(selectedFilters.value.manufacturer, manu.id) : ssrLooseEqual(selectedFilters.value.manufacturer, manu.id)) ? " selected" : ""}>${ssrInterpolate(manu.name)}</option>`);
+      });
+      _push(`<!--]--></select></div><button class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"> Aplicar Filtros </button></div>`);
+    };
+  }
+});
+const _sfc_setup$D = _sfc_main$D.setup;
+_sfc_main$D.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Inputs/Navbar/FilterSideBar/navbar.vue");
+  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+};
+const _sfc_main$C = {
+  components: {
+    navbar: Navbar,
+    Product: Product$1,
+    Pagination,
+    FilterSideBar: _sfc_main$D
+  },
+  props: {
+    products: {
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -686,42 +726,62 @@ const _sfc_main$D = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
     }
   }
 };
 function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Acessórios </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Acessórios </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
+  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$D = _sfc_main$D.setup;
-_sfc_main$D.setup = (props, ctx) => {
+const _sfc_setup$C = _sfc_main$C.setup;
+_sfc_main$C.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Acessorios/acessoriosPage.vue");
-  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
-const acessoriosPage = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["ssrRender", _sfc_ssrRender$x]]);
+const acessoriosPage = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["ssrRender", _sfc_ssrRender$x]]);
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: acessoriosPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$C = {
+const _sfc_main$B = {
   data() {
     return {
       dropdownNavbarStates: {}
@@ -841,14 +901,14 @@ function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]--></div></nav></div></div>`);
 }
-const _sfc_setup$C = _sfc_main$C.setup;
-_sfc_main$C.setup = (props, ctx) => {
+const _sfc_setup$B = _sfc_main$B.setup;
+_sfc_main$B.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/AdminNavbar/navbar.vue");
-  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
+  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-const navbar = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["ssrRender", _sfc_ssrRender$w]]);
-const __default__$3 = {
+const navbar = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["ssrRender", _sfc_ssrRender$w]]);
+const __default__$2 = {
   props: {
     adminBtn: {
       type: Array,
@@ -865,16 +925,20 @@ const __default__$3 = {
     Utilizador: {
       type: Object,
       required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
     }
   }
 };
-const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$3, {
+const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$2, {
   __name: "addProduto",
   __ssrInlineRender: true,
   setup(__props) {
     const form = reactive({
       name: "",
-      manufacturer: "",
+      manufacturer_id: "",
       price: "",
       sale_price: "",
       description: "",
@@ -894,7 +958,11 @@ const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$3, {
         adminBtn: __props.adminBtn,
         Utilizador: __props.Utilizador
       }, null, _parent));
-      _push(`<div class="max-w-2xl mx-auto p-6 mt-5"><h1 class="text-3xl font-bold mb-6 text-gray-800 text-center"> Adicionar Produtos </h1><form class="space-y-4"><div><label for="name" class="block mb-2 text-sm font-medium text-gray-700"> Nome do produto: </label><input id="name"${ssrRenderAttr("value", form.name)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition" autocomplete="name"></div><div><label for="manufacturer" class="block mb-2 text-sm font-medium text-gray-700"> Fabricante: </label><input id="manufacturer"${ssrRenderAttr("value", form.manufacturer)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition" autocomplete="manufacturer"></div><div><label for="price" class="block mb-2 text-sm font-medium text-gray-700"> Preço: </label><input id="price" type="number" step="0.01"${ssrRenderAttr("value", form.price)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"></div><div><label for="price" class="block mb-2 text-sm font-medium text-gray-700"> % de Desconto: </label><input id="sale_price" type="number"${ssrRenderAttr("value", form.sale_price)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"></div>`);
+      _push(`<div class="max-w-2xl mx-auto p-6 mt-5"><h1 class="text-3xl font-bold mb-6 text-gray-800 text-center"> Adicionar Produtos </h1><form class="space-y-4"><div><label for="name" class="block mb-2 text-sm font-medium text-gray-700"> Nome do produto: </label><input id="name"${ssrRenderAttr("value", form.name)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition" autocomplete="name"></div><div><label for="manufacturer" class="block mb-2 text-sm font-medium text-gray-700"> Fabricante: </label><select class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"><option disabled value=""${ssrIncludeBooleanAttr(Array.isArray(form.manufacturer_id) ? ssrLooseContain(form.manufacturer_id, "") : ssrLooseEqual(form.manufacturer_id, "")) ? " selected" : ""}>Selecione um Fabricante</option><!--[-->`);
+      ssrRenderList(__props.manufacturer, (manu) => {
+        _push(`<option${ssrRenderAttr("value", manu.id)}${ssrIncludeBooleanAttr(Array.isArray(form.manufacturer_id) ? ssrLooseContain(form.manufacturer_id, manu.id) : ssrLooseEqual(form.manufacturer_id, manu.id)) ? " selected" : ""}>${ssrInterpolate(manu.name)}</option>`);
+      });
+      _push(`<!--]--></select></div><div><label for="price" class="block mb-2 text-sm font-medium text-gray-700"> Preço: </label><input id="price" type="number" step="0.01"${ssrRenderAttr("value", form.price)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"></div><div><label for="price" class="block mb-2 text-sm font-medium text-gray-700"> % de Desconto: </label><input id="sale_price" type="number"${ssrRenderAttr("value", form.sale_price)} class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"></div>`);
       if (form.sale_price >= 0 && form.price > 0) {
         _push(`<div><label for="price" class="block mb-2 text-md font-medium text-emerald-400"> Preço Final: ${ssrInterpolate(Discount())}€ </label></div>`);
       } else {
@@ -912,17 +980,17 @@ const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$3, {
     };
   }
 });
-const _sfc_setup$B = _sfc_main$B.setup;
-_sfc_main$B.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Admin/Products/addProduto.vue");
-  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$B
+  default: _sfc_main$A
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$2 = {
+const __default__$1 = {
   components: {
     navbar
   },
@@ -941,7 +1009,7 @@ const __default__$2 = {
     }
   }
 };
-const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$2, {
+const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$1, {
   __name: "deleteProduto",
   __ssrInlineRender: true,
   setup(__props) {
@@ -962,17 +1030,17 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$2, {
     };
   }
 });
-const _sfc_setup$A = _sfc_main$A.setup;
-_sfc_main$A.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Admin/Products/deleteProduto.vue");
-  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$A
+  default: _sfc_main$z
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$1 = {
+const __default__ = {
   components: {
     Navbar: navbar
   },
@@ -991,7 +1059,7 @@ const __default__$1 = {
     }
   }
 };
-const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$1, {
+const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__, {
   __name: "updateProduto",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1052,17 +1120,17 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$1, {
     };
   }
 });
-const _sfc_setup$z = _sfc_main$z.setup;
-_sfc_main$z.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Admin/Products/updateProduto.vue");
-  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$z
+  default: _sfc_main$y
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$y = {
+const _sfc_main$x = {
   components: {
     Navbar: navbar,
     Pagination
@@ -1130,18 +1198,18 @@ function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div><!--]-->`);
 }
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Admin/Products/viewProducts.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const viewProducts = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$v]]);
+const viewProducts = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$v]]);
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: viewProducts
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$x = {
+const _sfc_main$w = {
   components: {
     navbar
   },
@@ -1163,18 +1231,18 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     Utilizador: $props.Utilizador
   }, _attrs), null, _parent));
 }
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Admin/adminPage.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const adminPage = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$u]]);
+const adminPage = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$u]]);
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: adminPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$w = {
+const _sfc_main$v = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1226,18 +1294,18 @@ function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$w = _sfc_main$w.setup;
-_sfc_main$w.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/armazenamentoPage.vue");
-  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const armazenamentoPage = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$t]]);
+const armazenamentoPage = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$t]]);
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: armazenamentoPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$v = {
+const _sfc_main$u = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1289,35 +1357,28 @@ function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$v = _sfc_main$v.setup;
-_sfc_main$v.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/caixasPcPage.vue");
-  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const caixasPcPage = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$s]]);
+const caixasPcPage = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["ssrRender", _sfc_ssrRender$s]]);
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: caixasPcPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$u = {
+const _sfc_main$t = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
       type: [Array, Object],
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1328,42 +1389,62 @@ const _sfc_main$u = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
     }
   }
 };
 function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Componentes para Computador </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Componentes para Computadores </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
+  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/componentePcPage.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const componentePcPage = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["ssrRender", _sfc_ssrRender$r]]);
+const componentePcPage = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["ssrRender", _sfc_ssrRender$r]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: componentePcPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$t = {
+const _sfc_main$s = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1415,18 +1496,18 @@ function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/cpu-coolPage.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const cpuCoolPage = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["ssrRender", _sfc_ssrRender$q]]);
+const cpuCoolPage = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["ssrRender", _sfc_ssrRender$q]]);
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: cpuCoolPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$s = {
+const _sfc_main$r = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1478,18 +1559,18 @@ function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/cpuPage.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const cpuPage = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["ssrRender", _sfc_ssrRender$p]]);
+const cpuPage = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["ssrRender", _sfc_ssrRender$p]]);
 const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: cpuPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$r = {
+const _sfc_main$q = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1541,18 +1622,18 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/fontePage.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const fontePage = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["ssrRender", _sfc_ssrRender$o]]);
+const fontePage = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["ssrRender", _sfc_ssrRender$o]]);
 const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: fontePage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$q = {
+const _sfc_main$p = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1604,18 +1685,18 @@ function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/gpuPage.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const gpuPage = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["ssrRender", _sfc_ssrRender$n]]);
+const gpuPage = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["ssrRender", _sfc_ssrRender$n]]);
 const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: gpuPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$p = {
+const _sfc_main$o = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1667,18 +1748,18 @@ function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/motherboardsPage.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const motherboardsPage = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["ssrRender", _sfc_ssrRender$m]]);
+const motherboardsPage = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["ssrRender", _sfc_ssrRender$m]]);
 const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: motherboardsPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$o = {
+const _sfc_main$n = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1730,18 +1811,18 @@ function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ComponentesPC/ramPage.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const ramPage = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["ssrRender", _sfc_ssrRender$l]]);
+const ramPage = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$l]]);
 const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ramPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$n = {
+const _sfc_main$m = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1793,18 +1874,18 @@ function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Computadores/DesktopPage.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
-const DesktopPage = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$k]]);
+const DesktopPage = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["ssrRender", _sfc_ssrRender$k]]);
 const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: DesktopPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$m = {
+const _sfc_main$l = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1856,18 +1937,18 @@ function _sfc_ssrRender$j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Computadores/GamingPage.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const GamingPage = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["ssrRender", _sfc_ssrRender$j]]);
+const GamingPage = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["ssrRender", _sfc_ssrRender$j]]);
 const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: GamingPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$l = {
+const _sfc_main$k = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1919,18 +2000,18 @@ function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Computadores/LaptopPage.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-const LaptopPage = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["ssrRender", _sfc_ssrRender$i]]);
+const LaptopPage = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["ssrRender", _sfc_ssrRender$i]]);
 const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: LaptopPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$k = {
+const _sfc_main$j = {
   components: {
     Navbar,
     Product: Product$1,
@@ -1982,77 +2063,23 @@ function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Computadores/MicroPcPage.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const MicroPcPage = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["ssrRender", _sfc_ssrRender$h]]);
+const MicroPcPage = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$h]]);
 const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: MicroPcPage
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__ = {
-  props: {
-    manufacturer: {
-      type: Array,
-      required: true
-    },
-    products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    }
-  }
-};
-const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__, {
-  __name: "navbar",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const isOpen = ref(false);
-    const selectedFilters = ref({
-      manufacturer: "",
-      stock: "",
-      nostock: "",
-      category: ""
-    });
-    const closeSidebar = (event) => {
-      if (!event.target.closest(".sidebar") && window.innerWidth < 1024) {
-        isOpen.value = false;
-      }
-    };
-    onMounted(() => document.addEventListener("click", closeSidebar));
-    onUnmounted(() => document.removeEventListener("click", closeSidebar));
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "mt-8 h-screen w-full bg-white shadow-lg p-4" }, _attrs))} data-v-5d2c6b84><h2 class="text-lg font-semibold mb-4" data-v-5d2c6b84>Filtros</h2><div class="mt-4" data-v-5d2c6b84><label class="block text-sm font-medium mb-1" data-v-5d2c6b84>Stock</label><div class="flex items-center space-x-4" data-v-5d2c6b84><label class="inline-flex items-center" data-v-5d2c6b84><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.stock) ? ssrLooseContain(selectedFilters.value.stock, null) : selectedFilters.value.stock) ? " checked" : ""} class="form-checkbox" data-v-5d2c6b84><span class="ml-2" data-v-5d2c6b84>Em stock</span></label><label class="inline-flex items-center" data-v-5d2c6b84><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.nostock) ? ssrLooseContain(selectedFilters.value.nostock, null) : selectedFilters.value.nostock) ? " checked" : ""} class="form-checkbox" data-v-5d2c6b84><span class="ml-2" data-v-5d2c6b84>Sem Stock</span></label></div></div><div class="mt-4" data-v-5d2c6b84><label class="block text-sm font-medium mb-1" data-v-5d2c6b84>Fabricante</label><select class="w-full border p-2 rounded" data-v-5d2c6b84><!--[-->`);
-      ssrRenderList(__props.manufacturer, (manu) => {
-        _push(`<option${ssrRenderAttr("value", manu.id)} data-v-5d2c6b84${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.manufacturer) ? ssrLooseContain(selectedFilters.value.manufacturer, manu.id) : ssrLooseEqual(selectedFilters.value.manufacturer, manu.id)) ? " selected" : ""}>${ssrInterpolate(manu.name)}</option>`);
-      });
-      _push(`<!--]--></select></div><div class="mt-4" data-v-5d2c6b84><label class="block text-sm font-medium mb-1" data-v-5d2c6b84>Categoria</label><select class="w-full border p-2 rounded" data-v-5d2c6b84><!--[-->`);
-      ssrRenderList(__props.category, (cate) => {
-        _push(`<option${ssrRenderAttr("value", cate.id)} data-v-5d2c6b84${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.category) ? ssrLooseContain(selectedFilters.value.category, cate.id) : ssrLooseEqual(selectedFilters.value.category, cate.id)) ? " selected" : ""}>${ssrInterpolate(cate.name)}</option>`);
-      });
-      _push(`<!--]--></select></div><button class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded" data-v-5d2c6b84> Aplicar Filtros </button></div>`);
-    };
-  }
-});
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Inputs/Navbar/FilterSideBar/navbar.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
-};
-const FilterSideBar = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-5d2c6b84"]]);
 const _sfc_main$i = {
   components: {
     navbar: Navbar,
     Product: Product$1,
     Pagination,
-    FilterSideBar
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
@@ -2086,7 +2113,7 @@ const _sfc_main$i = {
 function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_navbar = resolveComponent("navbar");
   const _component_FilterSideBar = resolveComponent("FilterSideBar");
-  const _component_Products = resolveComponent("Products");
+  const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
   _push(ssrRenderComponent(_component_navbar, {
@@ -2097,11 +2124,10 @@ function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Computadores MaRca </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data,
-    category: $props.category
+    products: $props.products.data
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
-  _push(ssrRenderComponent(_component_Products, {
+  _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
     subcategory: $props.subcategory,
@@ -2441,22 +2467,15 @@ const __vite_glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$c = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
       type: [Array, Object],
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -2467,25 +2486,45 @@ const _sfc_main$c = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
     }
   }
 };
 function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Periféricos </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Periféricos </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
+  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
@@ -2630,22 +2669,15 @@ const __vite_glob_0_30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$9 = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -2656,25 +2688,45 @@ const _sfc_main$9 = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
     }
   }
 };
 function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Telemóveis </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Telemóveis </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
+  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
@@ -3009,7 +3061,7 @@ const _sfc_main$1 = {
     Navbar,
     Products: Product$1,
     Pagination,
-    FilterSideBar
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
@@ -3054,8 +3106,7 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Promoções </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data,
-    category: $props.category
+    products: $props.products.data
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Products, {
