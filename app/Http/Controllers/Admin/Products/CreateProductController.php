@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Products;
 use App\Http\Controllers\Controller;
 use App\Models\AdminButton;
 use App\Models\Category;
+use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\subCategory;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class CreateProductController extends Controller
         )->get();
         $categories = Category::select('id', 'name')->get();
         $subCategories = subCategory::select('id', 'name')->get();
+        $manufacturer = Manufacturer::select('id','name')->get();
 
         $user = Auth::user();
         
@@ -32,6 +34,7 @@ class CreateProductController extends Controller
             'adminBtn' => $buttons,
             'categories' => $categories,
             'subcategories' => $subCategories,
+            'manufacturer' => $manufacturer,
             'Utilizador' => $user
         ]);
     }
@@ -40,7 +43,7 @@ class CreateProductController extends Controller
 
         $request->validate([
             'name' => 'required|min:2',
-            'manufacturer' => 'required|min:2',
+            'manufacturer_id' => 'required',
             'price' => 'required|numeric',
             'sale_price' => 'numeric|max:100',
             'description' => 'required',
@@ -60,7 +63,7 @@ class CreateProductController extends Controller
 
             Product::create([
                 'name' => $request->name,
-                'manufacturer' => $request->manufacturer,
+                'manufacturer_id' => $request->manufacturer_id,
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'description' => $request->description,

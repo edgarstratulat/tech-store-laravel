@@ -5,7 +5,7 @@ import Navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 
 const form = reactive({
     name: "",
-    manufacturer: "",
+    manufacturer_id: "",
     price: "",
     sale_price: "",
     description: "",
@@ -29,7 +29,7 @@ const submit = () => {
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("price", form.price);
-    formData.append("manufacturer", form.manufacturer);
+    formData.append("manufacturer_id", form.manufacturer_id);
     formData.append("sale_price", form.sale_price);
     formData.append("description", form.description);
     formData.append("image", form.image);
@@ -58,6 +58,10 @@ export default {
         },
         Utilizador: {
             type: Object,
+            required: true,
+        },
+        manufacturer: {
+            type: Array,
             required: true,
         },
     },
@@ -92,12 +96,16 @@ export default {
                 >
                     Fabricante:
                 </label>
-                <input
-                    id="manufacturer"
-                    v-model="form.manufacturer"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition"
-                    autocomplete="manufacturer"
-                />
+                <select
+                    v-model="form.manufacturer_id"
+                    class="w-full bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+                >
+                    <option disabled value="">Selecione um Fabricante</option>
+
+                    <option v-for="manu in manufacturer" :value="manu.id">
+                        {{ manu.name }}
+                    </option>
+                </select>
             </div>
 
             <div>
