@@ -10,6 +10,7 @@ const selectedFilters = ref({
     sort: "",
     max_price: "",
     min_price: "",
+    category: "",
 });
 
 const closeSidebar = (event) => {
@@ -43,6 +44,9 @@ const applyFilters = () => {
     if (selectedFilters.value.max_price) {
         queryParams["filter[max_price]"] = selectedFilters.value.max_price;
     }
+    if (selectedFilters.value.category) {
+        queryParams["filter[category]"] = selectedFilters.value.category;
+    }
 
     router.get(window.location.pathname, queryParams);
 };
@@ -56,6 +60,10 @@ export default {
             required: true,
         },
         products: {
+            type: Array,
+            required: true,
+        },
+        category: {
             type: Array,
             required: true,
         },
@@ -111,16 +119,30 @@ export default {
                     placeholder="min"
                     v-model="selectedFilters.min_price"
                     class="w-1/3 border p-1 rounded"
-                    min="0"
                 />
                 <input
                     type="number"
                     placeholder="max"
                     v-model="selectedFilters.max_price"
                     class="w-1/3 border p-1 rounded"
-                    :min="selectedFilters.min_price"
                 />
             </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1">Categoria</label>
+            <select
+                v-model="selectedFilters.category"
+                class="w-full border p-2 rounded"
+            >
+                <option
+                    v-for="manu in category"
+                    :value="manu.id"
+                    :key="manu.id"
+                >
+                    {{ manu.name }}
+                </option>
+            </select>
         </div>
 
         <div class="mt-4">
