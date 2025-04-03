@@ -24,6 +24,7 @@
                         >
                             -{{ promo.sale_price }}%
                         </div>
+
                         <div v-else class="invisible">
                             {{ promo.sale_price }}
                         </div>
@@ -73,6 +74,14 @@
                             >
                                 {{ promo.price }}€
                             </span>
+                        </span>
+                    </div>
+                    <div>
+                        <span
+                            v-if="promo.reconditioned === true"
+                            class="text-xs font-semibold text-purple-500 lg:text-xs"
+                        >
+                            <p>Recondicionado</p>
                         </span>
                     </div>
 
