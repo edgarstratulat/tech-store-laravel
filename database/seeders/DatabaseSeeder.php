@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             ManufacturerSeeder::class,
             CategorySeeder::class,
             SubcategorySeeder::class,
-            ProductSeeder::class
+            //ProductSeeder::class
+            RamSeeder::class
         ]);
     }
 }

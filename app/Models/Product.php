@@ -57,4 +57,9 @@ class Product extends Model
     {
         return $this->belongsTo(Manufacturer::class);
     }
+
+    public function ram()
+    {
+        return $this->belongsTo(Ram::class);
+    }
 }
