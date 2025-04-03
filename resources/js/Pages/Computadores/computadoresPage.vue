@@ -15,6 +15,7 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :products="products.data"
+                    :category="category"
                     :subcategory="subcategory"
                 />
             </div>

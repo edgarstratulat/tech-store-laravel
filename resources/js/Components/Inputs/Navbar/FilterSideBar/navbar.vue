@@ -15,6 +15,7 @@ const selectedFilters = ref({
     min_price: "",
     category: "",
     subcategory: "",
+    promotion: "",
 });
 
 const closeSidebar = (event) => {
@@ -53,6 +54,9 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.subcategory) {
         queryParams["filter[subcategory]"] = selectedFilters.value.subcategory;
+    }
+    if (selectedFilters.value.promotion) {
+        queryParams["filter[promotion]"] = selectedFilters.value.promotion;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -170,6 +174,23 @@ export default {
                     {{ manu.name }}
                 </option>
             </select>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1"
+                >Estado do produto</label
+            >
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="min"
+                        v-model="selectedFilters.promotion"
+                        class="form-checkbox"
+                    />
+                    <span class="ml-2">Promoções</span>
+                </label>
+            </div>
         </div>
 
         <button

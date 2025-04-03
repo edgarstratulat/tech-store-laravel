@@ -30,10 +30,10 @@ class AccessoriesController extends Controller
 
         $products = QueryBuilder::for(Product::class)
         ->allowedFilters([
-            AllowedFilter::callback('stock', function ($query, $value) {
+            AllowedFilter::callback('stock', function ($query) {
                 $query->where('stock', '>', 0);
             }),
-            AllowedFilter::callback('nostock', function ($query, $value) {
+            AllowedFilter::callback('nostock', function ($query) {
                 $query->where('stock', '=', 0);
             }),
             AllowedFilter::callback('manufacturer', function ($query, $value) {
@@ -48,7 +48,9 @@ class AccessoriesController extends Controller
             AllowedFilter::callback('subcategory', function ($query, $value) {
                 $query->where('subcategory_id', '=', $value);
             }),
-            
+            AllowedFilter::callback('promotion', function($query) {
+                $query->where('sale_price', '>', 1);
+            })
         ])
         ->defaultSort('created_at')
         ->allowedSorts([
