@@ -20,6 +20,7 @@ class Product extends Model
         'manufacturer_id',
         'sale_price',
         'description',
+        'reconditioned',
         'category_id',
         'subcategory_id',
         'stock',

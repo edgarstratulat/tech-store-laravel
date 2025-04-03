@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('sale_price');
             $table->text('description');
+            $table->boolean('reconditioned');
             $table->foreignId('manufacturer_id')->constrained('manufacturer');
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('subcategory_id')->constrained('subCategories');
