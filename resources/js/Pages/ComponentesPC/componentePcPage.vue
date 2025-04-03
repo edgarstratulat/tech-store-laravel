@@ -17,6 +17,7 @@
                     :products="products.data"
                     :category="category"
                     :subcategory="subcategory"
+                    :ram="ram"
                 />
             </div>
 
@@ -72,6 +73,10 @@ export default {
         manufacturer: {
             type: Array,
             required: true,
+        },
+        ram: {
+            type: Array,
+            default: () => [],
         },
     },
 };

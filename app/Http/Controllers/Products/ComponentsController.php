@@ -7,6 +7,7 @@ use App\Models\Button;
 use App\Models\Category;
 use App\Models\Manufacturer;
 use App\Models\Product;
+use App\Models\Ram;
 use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -54,6 +55,11 @@ class ComponentsController extends Controller
             AllowedFilter::callback('reconditioned', function ($query) {
                 $query->where('reconditioned', '=', true);
             }),
+
+            //RAM
+            AllowedFilter::callback('memoria_ram', function ($query, $value) {
+                $query->where('ram_id', '=', $value);
+            }),
             
         ])
         ->defaultSort('created_at')
@@ -68,6 +74,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4);
         })->select('id', 'name')->get();
 
+        $ram = Ram::select('id', 'size', 'type', 'speed')->get();
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
 
@@ -78,7 +85,8 @@ class ComponentsController extends Controller
             'products' => $products,
             'manufacturer' => $manufacturer,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'ram' => $ram
         ]);
     }
 

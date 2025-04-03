@@ -14,6 +14,9 @@ const selectedFilters = ref({
     subcategory: "",
     promotion: "",
     reconditioned: "",
+
+    //RAM
+    memoria_ram: [],
 });
 
 const closeSidebar = (event) => {
@@ -61,6 +64,11 @@ const applyFilters = () => {
             selectedFilters.value.reconditioned;
     }
 
+    //RAM
+    if (selectedFilters.value.memoria_ram) {
+        queryParams["filter[memoria_ram]"] = selectedFilters.value.memoria_ram;
+    }
+
     router.get(window.location.pathname, queryParams);
 };
 </script>
@@ -83,6 +91,10 @@ export default {
         subcategory: {
             type: Array,
             required: true,
+        },
+        ram: {
+            type: Array,
+            default: () => [],
         },
     },
 };
@@ -200,6 +212,26 @@ export default {
                         class="form-checkbox"
                     />
                     <span class="ml-2">Recondicionados</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1"
+                >Memória RAM ( Capacidade)</label
+            >
+            <div
+                class="flex items-center space-x-4"
+                v-for="ramOption in ram"
+                :key="ramOption.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="ramOption.id"
+                        v-model="selectedFilters.memoria_ram"
+                    />
+                    <span class="ml-2">{{ ramOption.size }}</span>
                 </label>
             </div>
         </div>
