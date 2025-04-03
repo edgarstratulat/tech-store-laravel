@@ -16,6 +16,7 @@ const selectedFilters = ref({
     category: "",
     subcategory: "",
     promotion: "",
+    reconditioned: "",
 });
 
 const closeSidebar = (event) => {
@@ -57,6 +58,10 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.promotion) {
         queryParams["filter[promotion]"] = selectedFilters.value.promotion;
+    }
+    if (selectedFilters.value.reconditioned) {
+        queryParams["filter[reconditioned]"] =
+            selectedFilters.value.reconditioned;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -189,6 +194,17 @@ export default {
                         class="form-checkbox"
                     />
                     <span class="ml-2">Promoções</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="min"
+                        v-model="selectedFilters.reconditioned"
+                        class="form-checkbox"
+                    />
+                    <span class="ml-2"
+                        >Recondicionado {{ products.reconditioned }}</span
+                    >
                 </label>
             </div>
         </div>

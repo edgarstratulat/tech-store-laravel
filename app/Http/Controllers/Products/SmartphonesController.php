@@ -51,6 +51,9 @@ class SmartphonesController extends Controller
             AllowedFilter::callback('promotion', function ($query) {
                 $query->where('sale_price', '>', 1);
             }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
             
         ])
         ->defaultSort('created_at')

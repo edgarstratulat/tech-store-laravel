@@ -51,9 +51,10 @@ class PeripheralsController extends Controller
             AllowedFilter::callback('promotion', function ($query) {
                 $query->where('sale_price', '>', 1);
             }),
-            
+            AllowedFilter::callback('reconditioned', function($query) {
+                $query->where('reconditioned', '=', 1);
+            })
         ])
-        ->defaultSort('created_at')
         ->allowedSorts([
             'price', '-price', '-created_at'
         ])

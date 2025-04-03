@@ -51,11 +51,14 @@ class ComputersController extends Controller
             AllowedFilter::callback('promotion', function ($query) {
                 $query->where('sale_price', '>', 1);
             }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
             
         ])
-        ->defaultSort('created_at')
+        ->defaultSorts('created_at')
         ->allowedSorts([
-            'price', '-price', '-created_at'
+            'price', '-price', 'created_at'
         ])
         ->with(['category', 'subcategory'])
         ->where('category_id', 1)

@@ -69,7 +69,7 @@ class ProductSeeder extends Seeder
             'price' => 2399.99,
             'sale_price' => 5,
             'description' => 'Professional-grade laptop with stunning display',
-            'reconditioned' => 1,
+            'reconditioned' => 0,
             'category_id' => 1,  
             'subcategory_id' => 3, 
             'stock' => 12,
@@ -420,10 +420,10 @@ class ProductSeeder extends Seeder
             'price' => 79.99,
             'sale_price' => 0,
             'description' => 'Ultra-low-cost micro-computer with open-source flexibility',
-            'reconditioned' => 0,
+            'reconditioned' => 1,
             'category_id' => 1,  
             'subcategory_id' => 5,  
-            'stock' => 100,
+            'stock' => 9,
             'image_path' => 'images/raspberry_pi_4.jpeg'
         ]);
     

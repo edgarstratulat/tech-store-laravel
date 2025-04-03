@@ -15,6 +15,7 @@ const selectedFilters = ref({
     min_price: "",
     category: "",
     subcategory: "",
+    reconditioned: "",
 });
 
 const closeSidebar = (event) => {
@@ -53,6 +54,11 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.subcategory) {
         queryParams["filter[subcategory]"] = selectedFilters.value.subcategory;
+    }
+
+    if (selectedFilters.value.reconditioned) {
+        queryParams["filter[reconditioned]"] =
+            selectedFilters.value.reconditioned;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -143,11 +149,11 @@ export default {
         <div class="mt-4">
             <label class="block text-sm font-medium mb-1">Categoria</label>
             <select
-                v-model="selectedFilters.category"
+                v-model="selectedFilters.subcategory"
                 class="w-full border p-2 rounded"
             >
                 <option
-                    v-for="manu in category"
+                    v-for="manu in subcategory"
                     :value="manu.id"
                     :key="manu.id"
                 >
@@ -170,6 +176,23 @@ export default {
                     {{ manu.name }}
                 </option>
             </select>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium mb-1"
+                >Estado do produto</label
+            >
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="min"
+                        v-model="selectedFilters.reconditioned"
+                        class="form-checkbox"
+                    />
+                    <span class="ml-2">Recondicionado</span>
+                </label>
+            </div>
         </div>
 
         <button
