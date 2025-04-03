@@ -1,6 +1,9 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { router } from "@inertiajs/vue3";
+import { usePage } from "@inertiajs/vue3";
+
+const page = usePage();
 
 const isOpen = ref(false);
 const selectedFilters = ref({
@@ -11,6 +14,11 @@ const selectedFilters = ref({
     max_price: "",
     min_price: "",
     category: "",
+    subcategory: "",
+});
+
+const showElement = computed(() => {
+    return page.url === "/promocoes";
 });
 
 const closeSidebar = (event) => {
@@ -47,6 +55,9 @@ const applyFilters = () => {
     if (selectedFilters.value.category) {
         queryParams["filter[category]"] = selectedFilters.value.category;
     }
+    if (selectedFilters.value.subcategory) {
+        queryParams["filter[subcategory]"] = selectedFilters.value.subcategory;
+    }
 
     router.get(window.location.pathname, queryParams);
 };
@@ -64,6 +75,10 @@ export default {
             required: true,
         },
         category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
             type: Array,
             required: true,
         },
@@ -129,7 +144,7 @@ export default {
             </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4" v-if="showElement">
             <label class="block text-sm font-medium mb-1">Categoria</label>
             <select
                 v-model="selectedFilters.category"
@@ -137,6 +152,22 @@ export default {
             >
                 <option
                     v-for="manu in category"
+                    :value="manu.id"
+                    :key="manu.id"
+                >
+                    {{ manu.name }}
+                </option>
+            </select>
+        </div>
+
+        <div v-else class="mt-4">
+            <label class="block text-sm font-medium mb-1">Categoria</label>
+            <select
+                v-model="selectedFilters.subcategory"
+                class="w-full border p-2 rounded"
+            >
+                <option
+                    v-for="manu in subcategory"
                     :value="manu.id"
                     :key="manu.id"
                 >

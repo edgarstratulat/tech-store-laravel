@@ -45,6 +45,9 @@ class AccessoriesController extends Controller
             AllowedFilter::callback('max_price', function ($query, $value) {
                 $query->where('price', '<=', $value);
             }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
             
         ])
         ->defaultSort('created_at')
@@ -60,7 +63,7 @@ class AccessoriesController extends Controller
         })->select('id', 'name', 'slug')->get();
 
         $category = Category::select('id', 'name')->get();
-        $subCategory = subCategory::select('id', 'name')->get();
+        $subCategory = subCategory::select('id', 'name')->where('category_id', 5)->get();
 
         return Inertia::render('Acessorios/acessoriosPage', [
             'buttons' => $buttons,
