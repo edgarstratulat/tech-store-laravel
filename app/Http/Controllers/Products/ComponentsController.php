@@ -60,7 +60,7 @@ class ComponentsController extends Controller
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4);
-        })->select('id', 'name', 'slug')->get();
+        })->select('id', 'name')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();

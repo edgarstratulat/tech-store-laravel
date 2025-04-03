@@ -61,7 +61,7 @@ class DiscountProductsController extends Controller
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('sale_price', '>', 1);
-        })->select('id', 'name', 'slug')->get();
+        })->select('id', 'name')->get();
 
         $category = Category::select('id', 'name', 'slug')->get();
         $subCategory = subCategory::select('id', 'name', 'slug')->get();
