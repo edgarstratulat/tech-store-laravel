@@ -89,7 +89,7 @@ export default {
 </script>
 
 <template>
-    <div class="mt-8 h-screen w-full bg-white shadow-lg p-4">
+    <div class="mt-8 h-screen w-full bg-white shadow-lg p-4 rounded-lg">
         <h2 class="text-lg font-semibold mb-4">Filtros</h2>
 
         <div>
