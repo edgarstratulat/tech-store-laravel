@@ -14,7 +14,7 @@
 
         <div class="flex gap-5 px-8">
             <div class="w-1/4">
-                <FilterSideBar
+                <discountFilterNavbar
                     :manufacturer="manufacturer"
                     :products="products.data"
                     :category="category"
@@ -40,14 +40,14 @@
 import Navbar from "../Components/navbar.vue";
 import Products from "../Components/Categories/productComponent.vue";
 import Pagination from "../Components/Inputs/Pagination/paginate.vue";
-import FilterSideBar from "../Components/Inputs/Navbar/FilterSideBar/navbar.vue";
+import discountFilterNavbar from "../Components/Inputs/Navbar/FilterSideBar/discountNavbar.vue";
 
 export default {
     components: {
         Navbar,
         Products,
         Pagination,
-        FilterSideBar,
+        discountFilterNavbar,
     },
     props: {
         products: {

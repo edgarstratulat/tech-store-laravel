@@ -143,11 +143,11 @@ export default {
         <div class="mt-4">
             <label class="block text-sm font-medium mb-1">Categoria</label>
             <select
-                v-model="selectedFilters.subcategory"
+                v-model="selectedFilters.category"
                 class="w-full border p-2 rounded"
             >
                 <option
-                    v-for="manu in subcategory"
+                    v-for="manu in category"
                     :value="manu.id"
                     :key="manu.id"
                 >
