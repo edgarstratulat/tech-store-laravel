@@ -1,9 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { router } from "@inertiajs/vue3";
-import { usePage } from "@inertiajs/vue3";
-
-const page = usePage();
 
 const isOpen = ref(false);
 const selectedFilters = ref({
@@ -153,7 +150,7 @@ export default {
             <label class="block text-sm font-medium mb-1">Categoria</label>
             <select
                 v-model="selectedFilters.subcategory"
-                class="w-full border p-2 rounded"
+                class="w-full border p-1 rounded"
             >
                 <option
                     v-for="manu in subcategory"
@@ -169,7 +166,7 @@ export default {
             <label class="block text-sm font-medium mb-1">Fabricante</label>
             <select
                 v-model="selectedFilters.manufacturer"
-                class="w-full border p-2 rounded"
+                class="w-full border p-1 rounded"
             >
                 <option
                     v-for="manu in manufacturer"
@@ -202,9 +199,7 @@ export default {
                         v-model="selectedFilters.reconditioned"
                         class="form-checkbox"
                     />
-                    <span class="ml-2"
-                        >Recondicionado {{ products.reconditioned }}</span
-                    >
+                    <span class="ml-2">Recondicionados</span>
                 </label>
             </div>
         </div>

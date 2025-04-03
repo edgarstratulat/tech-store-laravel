@@ -150,7 +150,7 @@ export default {
             <label class="block text-sm font-medium mb-1">Categoria</label>
             <select
                 v-model="selectedFilters.subcategory"
-                class="w-full border p-2 rounded"
+                class="w-full border p-1 rounded"
             >
                 <option
                     v-for="manu in subcategory"
@@ -166,7 +166,7 @@ export default {
             <label class="block text-sm font-medium mb-1">Fabricante</label>
             <select
                 v-model="selectedFilters.manufacturer"
-                class="w-full border p-2 rounded"
+                class="w-full border p-1 rounded"
             >
                 <option
                     v-for="manu in manufacturer"
@@ -190,7 +190,7 @@ export default {
                         v-model="selectedFilters.reconditioned"
                         class="form-checkbox"
                     />
-                    <span class="ml-2">Recondicionado</span>
+                    <span class="ml-2">Recondicionados</span>
                 </label>
             </div>
         </div>
