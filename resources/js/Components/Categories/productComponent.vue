@@ -81,19 +81,37 @@
                             class="text-md mb-1 font-bold text-red-600"
                             v-if="promo.stock <= 0"
                         >
-                            <p>Sem Stock</p>
+                            <p>
+                                <fa
+                                    icon="fa-solid fa-xmark"
+                                    class="text-red-600 mr-1"
+                                ></fa
+                                >Sem Stock
+                            </p>
                         </span>
                         <span
                             class="text-md font-bold text-yellow-600"
                             v-else-if="promo.stock <= 10"
                         >
-                            <p>Poucas unidades</p>
+                            <p>
+                                <fa
+                                    icon="fa-solid fa-check"
+                                    class="text-yellow-600 mr-1"
+                                ></fa
+                                >Poucas unidades
+                            </p>
                         </span>
                         <span
                             class="text-md mb-1 font-bold text-emerald-400"
                             v-else
                         >
-                            <p>Em Stock</p>
+                            <p>
+                                <fa
+                                    icon="fa-solid fa-check"
+                                    class="text-emerald-400 mr-1"
+                                ></fa
+                                >Em Stock
+                            </p>
                         </span>
                     </div>
 
