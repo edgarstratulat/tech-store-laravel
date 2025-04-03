@@ -55,7 +55,6 @@ class DiscountProductsController extends Controller
             'price', '-price', '-created_at'
         ])
         ->with(['category', 'subcategory'])
-        ->select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id',     'subcategory_id', 'manufacturer_id', 'image_path', 'stock', 'created_at')
         ->where('sale_price', '>', 1)
         ->paginate(12)->appends(request()->query());
 
