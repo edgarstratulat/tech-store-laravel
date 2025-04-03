@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-8 flex justify-center items-center ml-5 p-5">
+    <div class="mt-8 flex justify-center items-center ml-5">
         <div class="w-full max-w-6xl max-h-6xl mx-auto">
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <li
@@ -12,11 +12,19 @@
                         <a
                             :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
-                            <img
-                                :src="`/storage/${promo.image_path}`"
-                                :alt="promo.name"
-                                class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"
-                            />
+                            <div>
+                                <div
+                                    v-if="promo.reconditioned == true"
+                                    class="z-10 text-sm font-bold text-purple-500 m-0"
+                                >
+                                    <h1>Recondicionado</h1>
+                                </div>
+                                <img
+                                    :src="`/storage/${promo.image_path}`"
+                                    :alt="promo.name"
+                                    class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"
+                                />
+                            </div>
                         </a>
                         <div
                             v-if="promo.sale_price > 0"
@@ -76,16 +84,7 @@
                             </span>
                         </span>
                     </div>
-                    <div>
-                        <span
-                            v-if="promo.reconditioned === true"
-                            class="text-xs font-semibold text-purple-500 lg:text-xs"
-                        >
-                            <p>Recondicionado</p>
-                        </span>
-                    </div>
-
-                    <div class="flex gap-5 items-center">
+                    <div class="flex gap-4 items-center">
                         <span
                             class="text-md mb-1 font-bold text-red-600"
                             v-if="promo.stock <= 0"
@@ -94,20 +93,20 @@
                                 <fa
                                     icon="fa-solid fa-xmark"
                                     class="text-red-600 mr-1"
-                                ></fa
-                                >Sem Stock
+                                ></fa>
+                                Sem Stock
                             </p>
                         </span>
                         <span
-                            class="text-md font-bold text-yellow-600"
+                            class="text-md mb-1 font-bold text-yellow-600"
                             v-else-if="promo.stock <= 10"
                         >
                             <p>
                                 <fa
                                     icon="fa-solid fa-check"
                                     class="text-yellow-600 mr-1"
-                                ></fa
-                                >Poucas unidades
+                                ></fa>
+                                Poucas unidades
                             </p>
                         </span>
                         <span
@@ -118,8 +117,8 @@
                                 <fa
                                     icon="fa-solid fa-check"
                                     class="text-emerald-400 mr-1"
-                                ></fa
-                                >Em Stock
+                                ></fa>
+                                Em Stock
                             </p>
                         </span>
                     </div>
