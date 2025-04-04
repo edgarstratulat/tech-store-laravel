@@ -68,4 +68,9 @@ class Product extends Model
         return $this->belongsTo(Armazenamento::class);
     }
 
+    public function cpu()
+    {
+        return $this->belongsTo(Processor::class);
+    }
+
 }

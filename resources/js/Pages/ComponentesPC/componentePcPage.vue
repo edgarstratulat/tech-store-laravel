@@ -19,6 +19,7 @@
                     :subcategory="subcategory"
                     :ram="ram"
                     :armazenamento="armazenamento"
+                    :cpu="cpu"
                 />
             </div>
 
@@ -80,6 +81,10 @@ export default {
             default: () => [],
         },
         armazenamento: {
+            type: Array,
+            default: () => [],
+        },
+        cpu: {
             type: Array,
             default: () => [],
         },

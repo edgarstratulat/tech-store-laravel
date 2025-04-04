@@ -7,6 +7,7 @@ use App\Models\Armazenamento;
 use App\Models\Button;
 use App\Models\Category;
 use App\Models\Manufacturer;
+use App\Models\Processor;
 use App\Models\Product;
 use App\Models\Ram;
 use App\Models\subCategory;
@@ -67,6 +68,12 @@ class ComponentsController extends Controller
                 $query->whereHas('armazenamento', function($q) use ($value){
                     $q->where('size', '=', $value);
                 });
+            }),
+            
+            AllowedFilter::callback('cpu', function($query, $value){
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('model', '=', $value);
+                });
             })
             
         ])
@@ -82,8 +89,10 @@ class ComponentsController extends Controller
             $query->where('category_id', 4);
         })->select('id', 'name')->get();
 
-        $ram = Ram::select('id', 'type', 'size', 'frequency', 'latency')->get();
-        $armazenamento = Armazenamento::select('id', 'size', 'type', 'writing_speed', 'reading_speed')->get();
+        $ram = Ram::select('id', 'size')->get();
+        $armazenamento = Armazenamento::select('id', 'size')->get();
+        $cpu = Processor::select('id', 'model')->get();
+
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
 
@@ -96,7 +105,8 @@ class ComponentsController extends Controller
             'category' => $category,
             'subcategory' => $subCategory,
             'ram' => $ram,
-            'armazenamento' => $armazenamento
+            'armazenamento' => $armazenamento,
+            'cpu' => $cpu
         ]);
     }
 
@@ -112,7 +122,66 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate();
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('cpu', function($query, $value){
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('model', '=', $value);
+                });
+            }),
+            AllowedFilter::callback('cpu_cores', function($query, $value){
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('cores', '=', $value);
+                });
+            }),
+            AllowedFilter::callback('cpu_threads', function($query, $value){
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('threads', '=', $value);
+                });
+            }),
+
+            AllowedFilter::callback('cpu_tdp', function($query, $value){
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('tdp', '=', $value);
+                });
+            }),
+            
+        ])
+        ->defaultSort('-created_at')
+        ->allowedSorts([
+            'price', '-price', 'created_at'
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate();
+
+
+        $cpu = Processor::select('id', 'model', 'cores', 'threads', 'base_clock', 'boost_clock', 'tdp', 'socket')->get();
+
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 12);
+        })->select('id', 'name')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -124,7 +193,9 @@ class ComponentsController extends Controller
             'isAdmin' => $isAdmin,
             'products' => $products,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'cpu' => $cpu
         ]);
     }
 

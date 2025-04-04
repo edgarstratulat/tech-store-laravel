@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreignId('subcategory_id')->constrained('subCategories');
             $table->foreignId('ram_id')->nullable()->constrained('ram_specs');
             $table->foreignId('armazenamento_id')->nullable()->constrained('storage_specs');
+            $table->foreignId('cpu_id')->nullable()->constrained('processor_specs');
             $table->integer('stock');
             $table->string('image_path')->nullable();
             $table->timestamps();

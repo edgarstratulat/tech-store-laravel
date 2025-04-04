@@ -15,9 +15,10 @@ const selectedFilters = ref({
     promotion: "",
     reconditioned: "",
 
-    memoria_ram: [],
-    armazenamento: [],
     cpu: [],
+    cores: [],
+    threads: [],
+    tdp: [],
 });
 
 const closeSidebar = (event) => {
@@ -51,9 +52,6 @@ const applyFilters = () => {
     if (selectedFilters.value.max_price) {
         queryParams["filter[max_price]"] = selectedFilters.value.max_price;
     }
-    if (selectedFilters.value.category) {
-        queryParams["filter[category]"] = selectedFilters.value.category;
-    }
     if (selectedFilters.value.subcategory) {
         queryParams["filter[subcategory]"] = selectedFilters.value.subcategory;
     }
@@ -64,19 +62,17 @@ const applyFilters = () => {
         queryParams["filter[reconditioned]"] =
             selectedFilters.value.reconditioned;
     }
-
-    if (selectedFilters.value.memoria_ram) {
-        queryParams["filter[capacidade_ram]"] =
-            selectedFilters.value.memoria_ram;
-    }
-
-    if (selectedFilters.value.armazenamento) {
-        queryParams["filter[capacidade_armazenamento]"] =
-            selectedFilters.value.armazenamento;
-    }
-
     if (selectedFilters.value.cpu) {
         queryParams["filter[cpu]"] = selectedFilters.value.cpu;
+    }
+    if (selectedFilters.value.cores) {
+        queryParams["filter[cpu_cores]"] = selectedFilters.value.cores;
+    }
+    if (selectedFilters.value.threads) {
+        queryParams["filter[cpu_threads]"] = selectedFilters.value.threads;
+    }
+    if (selectedFilters.value.tdp) {
+        queryParams["filter[cpu_tdp]"] = selectedFilters.value.tdp;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -102,45 +98,47 @@ export default {
             type: Array,
             required: true,
         },
-        ram: {
-            type: Array,
-            default: () => [],
-        },
-        armazenamento: {
-            type: Array,
-            default: () => [],
-        },
         cpu: {
             type: Array,
             default: () => [],
         },
     },
     computed: {
-        uniqueSizesRam() {
-            const sizeRAM = new Set();
-            return this.ram.filter((ram) => {
-                if (!sizeRAM.has(ram.size)) {
-                    sizeRAM.add(ram.size);
-                    return true;
-                }
-                return false;
-            });
-        },
-        uniqueArmazenamento() {
-            const sizeRAM = new Set();
-            return this.armazenamento.filter((ram) => {
-                if (!sizeRAM.has(ram.size)) {
-                    sizeRAM.add(ram.size);
-                    return true;
-                }
-                return false;
-            });
-        },
         uniqueCPU() {
             const sizeRAM = new Set();
             return this.cpu.filter((ram) => {
                 if (!sizeRAM.has(ram.model)) {
                     sizeRAM.add(ram.model);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueCores() {
+            const sizeRAM = new Set();
+            return this.cpu.filter((ram) => {
+                if (!sizeRAM.has(ram.cores)) {
+                    sizeRAM.add(ram.cores);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueThreads() {
+            const sizeRAM = new Set();
+            return this.cpu.filter((ram) => {
+                if (!sizeRAM.has(ram.threads)) {
+                    sizeRAM.add(ram.threads);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueTDP() {
+            const sizeRAM = new Set();
+            return this.cpu.filter((ram) => {
+                if (!sizeRAM.has(ram.tdp)) {
+                    sizeRAM.add(ram.tdp);
                     return true;
                 }
                 return false;
@@ -154,10 +152,10 @@ export default {
     <div
         class="overflow-y-auto mt-8 h-screen w-full bg-white shadow-lg p-4 rounded-lg"
     >
-        <h2 class="text-2xl font-bold mb-4">Filtros</h2>
+        <h2 class="text-lg font-semibold mb-4">Filtros</h2>
 
         <div>
-            <label class="block text-md font-semibold mb-1">Ordenar por:</label>
+            <label class="block text-md font-medium mb-1">Ordenar por:</label>
             <select
                 v-model="selectedFilters.sort"
                 class="w-full border p-1 rounded"
@@ -169,7 +167,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-md font-semibold mb-1">Stock</label>
+            <label class="block text-md font-medium mb-1">Stock</label>
             <div class="flex items-center space-x-4">
                 <label class="inline-flex items-center">
                     <input
@@ -193,7 +191,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-md font-semibold mb-1">Preço</label>
+            <label class="block text-md font-medium mb-1">Preço</label>
             <div class="flex items-center space-x-4">
                 <input
                     type="number"
@@ -211,23 +209,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-md font-semibold mb-1">Categoria</label>
-            <select
-                v-model="selectedFilters.subcategory"
-                class="w-full border p-1 rounded"
-            >
-                <option
-                    v-for="manu in subcategory"
-                    :value="manu.id"
-                    :key="manu.id"
-                >
-                    {{ manu.name }}
-                </option>
-            </select>
-        </div>
-
-        <div class="mt-4">
-            <label class="block text-md font-semibold mb-1">Fabricante</label>
+            <label class="block text-md font-medium mb-1">Fabricante</label>
             <select
                 v-model="selectedFilters.manufacturer"
                 class="w-full border p-1 rounded"
@@ -243,7 +225,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-md font-semibold mb-1"
+            <label class="block text-md font-medium mb-1"
                 >Estado do produto</label
             >
             <div class="flex items-center space-x-4">
@@ -270,58 +252,6 @@ export default {
 
         <div class="mt-4">
             <label class="block text-md font-semibold mb-1"
-                >Memória RAM (Capacidade)</label
-            >
-            <div
-                class="flex items-center space-x-4"
-                v-for="option in uniqueSizesRam"
-                :key="option.id"
-            >
-                <label class="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        :value="option.size"
-                        v-model="selectedFilters.memoria_ram"
-                        class="form-checkbox size-4"
-                    />
-                    <span class="ml-2"
-                        >{{
-                            option.size >= 1000
-                                ? option.size / 1000 + " TB"
-                                : option.size + " GB"
-                        }}
-                    </span>
-                </label>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label class="block text-md font-semibold mb-1"
-                >Armazenamento (Capacidade)</label
-            >
-            <div
-                class="flex items-center space-x-4"
-                v-for="option in uniqueArmazenamento"
-                :key="option.id"
-            >
-                <label class="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        :value="option.size"
-                        v-model="selectedFilters.armazenamento"
-                        class="form-checkbox size-4"
-                    />
-                    <span class="ml-2">{{
-                        option.size >= 1000
-                            ? option.size / 1000 + " TB"
-                            : option.size + " GB"
-                    }}</span>
-                </label>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label class="block text-md font-semibold mb-1"
                 >Família Processador</label
             >
             <div
@@ -337,6 +267,69 @@ export default {
                         class="form-checkbox size-4"
                     />
                     <span class="ml-2">{{ option.model }}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1"
+                >Núcleos Processador</label
+            >
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueCores"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.cores"
+                        v-model="selectedFilters.cores"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.cores }} núcleos</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1"
+                >Threads Processador</label
+            >
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueThreads"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.threads"
+                        v-model="selectedFilters.threads"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.threads }} threads</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1"
+                >TDP Processador</label
+            >
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueTDP"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.tdp"
+                        v-model="selectedFilters.tdp"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.tdp }} W</span>
                 </label>
             </div>
         </div>
