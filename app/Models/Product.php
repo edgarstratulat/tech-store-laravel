@@ -62,4 +62,10 @@ class Product extends Model
     {
         return $this->belongsTo(Ram::class);
     }
+
+    public function armazenamento()
+    {
+        return $this->belongsTo(Armazenamento::class);
+    }
+
 }

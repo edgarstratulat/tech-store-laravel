@@ -271,7 +271,13 @@ export default {
                         v-model="selectedFilters.memoria_ram"
                         class="form-checkbox size-4"
                     />
-                    <span class="ml-2">{{ option.size }} GB</span>
+                    <span class="ml-2"
+                        >{{
+                            option.size >= 1000
+                                ? option.size / 1000 + " TB"
+                                : option.size + " GB"
+                        }}
+                    </span>
                 </label>
             </div>
         </div>

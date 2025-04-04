@@ -170,65 +170,66 @@ class ProductSeeder extends Seeder
             'image_path' => "images/corsair_vengeance.jpeg"
         ]);
 
-        // Product::create([
-        //     'name' => 'SSD M.2 Samsung 970 EVO 1TB',
-        //     'manufacturer_id' => 2,
-        //     'price' => 129.99,
-        //     'sale_price' => 10,
-        //     'description' => 'High-speed solid-state drive',
-        //     'reconditioned' => 0,
-        //     'category_id' => 4, 
-        //     'subcategory_id' => 14,
-        //     'ram_id' => null,
-        //     'armazenamento_id' => 1,
-        //     'stock' => 35,
-        //     'image_path' => "images/samsung_970_evo.jpeg"
-        // ]);
+        Product::create([
+            'name' => 'SSD M.2 Samsung 970 EVO 1TB',
+            'manufacturer_id' => 2,
+            'price' => 129.99,
+            'sale_price' => 10,
+            'description' => 'High-speed solid-state drive',
+            'reconditioned' => 0,
+            'category_id' => 4, 
+            'subcategory_id' => 14,
+            'ram_id' => null,
+            'armazenamento_id' => 5, 
+            'stock' => 35,
+            'image_path' => "images/samsung_970_evo.jpeg"
+        ]);
 
-        // Product::create([
-        //     'name' => 'SSD 2.5" Samsung 870 EVO 500GB MLC V-NAND SATA',
-        //     'manufacturer_id' => 2,
-        //     'price' => 64.99,
-        //     'sale_price' => 0,
-        //     'description' => 'High-speed solid-state drive',
-        //     'reconditioned' => 0,
-        //     'category_id' => 4, 
-        //     'subcategory_id' => 14,
-        //     'ram_id' => null,
-        //     'armazenamento_id' => 5,
-        //     'stock' => 35,
-        //     'image_path' => "images/sata.jpeg"
-        // ]);
-
-        // Product::create([
-        //     'name' => 'SSD M.2 Samsung 970 EVO 2TB',
-        //     'manufacturer_id' => 2,
-        //     'price' => 149.99,
-        //     'sale_price' => 10,
-        //     'description' => 'High-speed solid-state drive',
-        //     'reconditioned' => 0,
-        //     'category_id' => 4, 
-        //     'subcategory_id' => 14,
-        //     'ram_id' => null,
-        //     'armazenamento_id' => 3,
-        //     'stock' => 35,
-        //     'image_path' => "images/samsung_970_evo.jpeg"
-        // ]);
-
-        // Product::create([
-        //     'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
-        //     'manufacturer_id' => 2,
-        //     'price' => 84.99,
-        //     'sale_price' => 0,
-        //     'description' => 'High-speed solid-state drive SATA',
-        //     'reconditioned' => 0,
-        //     'category_id' => 4, 
-        //     'subcategory_id' => 14,
-        //     'ram_id' => null,
-        //     'armazenamento_id' => 2,
-        //     'stock' => 35,
-        //     'image_path' => "images/sata.jpeg"
-        // ]);
+        Product::create([
+            'name' => 'SSD 2.5" Samsung 870 EVO 500GB MLC V-NAND SATA',
+            'manufacturer_id' => 2,
+            'price' => 64.99,
+            'sale_price' => 0,
+            'description' => 'High-speed solid-state drive',
+            'reconditioned' => 0,
+            'category_id' => 4, 
+            'subcategory_id' => 14,
+            'ram_id' => null,
+            'armazenamento_id' => 2,
+            'stock' => 35,
+            'image_path' => "images/sata.jpeg"
+        ]);
+    
+        Product::create([
+            'name' => 'SSD M.2 Samsung 970 EVO 2TB',
+            'manufacturer_id' => 2,
+            'price' => 149.99,
+            'sale_price' => 10,
+            'description' => 'High-speed solid-state drive',
+            'reconditioned' => 0,
+            'category_id' => 4, 
+            'subcategory_id' => 14,
+            'ram_id' => null,
+            'armazenamento_id' => 6,
+            'stock' => 35,
+            'image_path' => "images/samsung_970_evo.jpeg"
+        ]);
+    
+        Product::create([
+            'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
+            'manufacturer_id' => 2,
+            'price' => 84.99,
+            'sale_price' => 0,
+            'description' => 'High-speed solid-state drive SATA',
+            'reconditioned' => 0,
+            'category_id' => 4, 
+            'subcategory_id' => 14,
+            'ram_id' => null,
+            'armazenamento_id' => 3,
+            'stock' => 35,
+            'image_path' => "images/sata.jpeg"
+        ]);
+    
 
         // Product::create([
         //     'name' => 'Capa OtterBox iPhone 15 Case',

@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Ram extends Model
+class Armazenamento extends Model
 {
-    protected $table = 'ram_specs';
+    protected $table = 'storage_specs';
 
     protected $fillable = [
         'size',
         'type',
-        'frequency',
-        'latency'
+        'writing_speed',
+        'reading_speed',
     ];
 
     public function product(): HasMany

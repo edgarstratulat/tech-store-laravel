@@ -18,6 +18,7 @@
                     :category="category"
                     :subcategory="subcategory"
                     :ram="ram"
+                    :armazenamento="armazenamento"
                 />
             </div>
 
@@ -75,6 +76,10 @@ export default {
             required: true,
         },
         ram: {
+            type: Array,
+            default: () => [],
+        },
+        armazenamento: {
             type: Array,
             default: () => [],
         },

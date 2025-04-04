@@ -16,6 +16,7 @@ const selectedFilters = ref({
     reconditioned: "",
 
     memoria_ram: [],
+    armazenamento: [],
 });
 
 const closeSidebar = (event) => {
@@ -68,6 +69,11 @@ const applyFilters = () => {
             selectedFilters.value.memoria_ram;
     }
 
+    if (selectedFilters.value.armazenamento) {
+        queryParams["filter[capacidade_armazenamento]"] =
+            selectedFilters.value.armazenamento;
+    }
+
     router.get(window.location.pathname, queryParams);
 };
 </script>
@@ -95,11 +101,25 @@ export default {
             type: Array,
             default: () => [],
         },
+        armazenamento: {
+            type: Array,
+            default: () => [],
+        },
     },
     computed: {
         uniqueSizesRam() {
             const sizeRAM = new Set();
             return this.ram.filter((ram) => {
+                if (!sizeRAM.has(ram.size)) {
+                    sizeRAM.add(ram.size);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueArmazenamento() {
+            const sizeRAM = new Set();
+            return this.armazenamento.filter((ram) => {
                 if (!sizeRAM.has(ram.size)) {
                     sizeRAM.add(ram.size);
                     return true;
@@ -245,7 +265,38 @@ export default {
                         v-model="selectedFilters.memoria_ram"
                         class="form-checkbox size-4"
                     />
-                    <span class="ml-2">{{ option.size }} GB</span>
+                    <span class="ml-2"
+                        >{{
+                            option.size >= 1000
+                                ? option.size / 1000 + " TB"
+                                : option.size + " GB"
+                        }}
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-medium mb-1"
+                >Armazenamento ( Capacidade)</label
+            >
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueArmazenamento"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.size"
+                        v-model="selectedFilters.armazenamento"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{
+                        option.size >= 1000
+                            ? option.size / 1000 + " TB"
+                            : option.size + " GB"
+                    }}</span>
                 </label>
             </div>
         </div>

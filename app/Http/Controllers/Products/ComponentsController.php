@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Models\Armazenamento;
 use App\Models\Button;
 use App\Models\Category;
 use App\Models\Manufacturer;
@@ -61,6 +62,12 @@ class ComponentsController extends Controller
                     $q->where('size', '=', $value);
                 });
             }),
+
+            AllowedFilter::callback('capacidade_armazenamento', function($query, $value){
+                $query->whereHas('armazenamento', function($q) use ($value){
+                    $q->where('size', '=', $value);
+                });
+            })
             
         ])
         ->defaultSort('-created_at')
@@ -76,6 +83,7 @@ class ComponentsController extends Controller
         })->select('id', 'name')->get();
 
         $ram = Ram::select('id', 'type', 'size', 'frequency', 'latency')->get();
+        $armazenamento = Armazenamento::select('id', 'size', 'type', 'writing_speed', 'reading_speed')->get();
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
 
@@ -88,6 +96,7 @@ class ComponentsController extends Controller
             'category' => $category,
             'subcategory' => $subCategory,
             'ram' => $ram,
+            'armazenamento' => $armazenamento
         ]);
     }
 
