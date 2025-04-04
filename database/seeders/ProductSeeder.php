@@ -138,7 +138,6 @@ class ProductSeeder extends Seeder
             'category_id' => 4,  
             'subcategory_id' => 13,
             'ram_id' => 5,
-            'armazenamento_id' => null,
             'stock' => 60,
             'image_path' => "images/corsair_vengeance.jpeg"
         ]);
@@ -153,7 +152,6 @@ class ProductSeeder extends Seeder
             'category_id' => 4,  
             'subcategory_id' => 13,
             'ram_id' => 9,
-            'armazenamento_id' => null,
             'stock' => 60,
             'image_path' => "images/corsaira.jpg"
         ]);
@@ -168,7 +166,6 @@ class ProductSeeder extends Seeder
             'category_id' => 4,  
             'subcategory_id' => 13,
             'ram_id' => 8,
-            'armazenamento_id' => null,
             'stock' => 60,
             'image_path' => "images/corsair_vengeance.jpeg"
         ]);

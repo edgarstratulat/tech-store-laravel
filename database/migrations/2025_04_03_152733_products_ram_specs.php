@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create("ram_specs", function (Blueprint $table) {
             $table->id();
-            $table->string("size");
+            $table->integer("size");
             $table->string('type');
             $table->integer("frequency");
-            $table->string("latency");
+            $table->integer("latency");
             $table->timestamps();
         });
     }
