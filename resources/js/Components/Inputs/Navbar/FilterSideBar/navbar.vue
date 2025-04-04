@@ -15,7 +15,6 @@ const selectedFilters = ref({
     promotion: "",
     reconditioned: "",
 
-    //RAM
     memoria_ram: [],
 });
 
@@ -64,9 +63,9 @@ const applyFilters = () => {
             selectedFilters.value.reconditioned;
     }
 
-    //RAM
     if (selectedFilters.value.memoria_ram) {
-        queryParams["filter[memoria_ram]"] = selectedFilters.value.memoria_ram;
+        queryParams["filter[capacidade_ram]"] =
+            selectedFilters.value.memoria_ram;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -97,6 +96,18 @@ export default {
             default: () => [],
         },
     },
+    computed: {
+        uniqueSizesRam() {
+            const sizeRAM = new Set();
+            return this.ram.filter((ram) => {
+                if (!sizeRAM.has(ram.size)) {
+                    sizeRAM.add(ram.size);
+                    return true;
+                }
+                return false;
+            });
+        },
+    },
 };
 </script>
 
@@ -105,26 +116,26 @@ export default {
         <h2 class="text-lg font-semibold mb-4">Filtros</h2>
 
         <div>
-            <label class="block text-sm font-medium mb-1">Ordenar por:</label>
+            <label class="block text-md font-medium mb-1">Ordenar por:</label>
             <select
                 v-model="selectedFilters.sort"
                 class="w-full border p-1 rounded"
             >
-                <option value="-created_at">Mais Recentes</option>
+                <option value="created_at">Mais Recentes</option>
                 <option value="price">Preço mais baixo</option>
                 <option value="-price">Preço mais alto</option>
             </select>
         </div>
 
         <div class="mt-4">
-            <label class="block text-sm font-medium mb-1">Stock</label>
+            <label class="block text-md font-medium mb-1">Stock</label>
             <div class="flex items-center space-x-4">
                 <label class="inline-flex items-center">
                     <input
                         type="checkbox"
                         value="min"
                         v-model="selectedFilters.stock"
-                        class="form-checkbox"
+                        class="form-checkbox size-4"
                     />
                     <span class="ml-2">Em stock</span>
                 </label>
@@ -133,7 +144,7 @@ export default {
                         type="checkbox"
                         value="max"
                         v-model="selectedFilters.nostock"
-                        class="form-checkbox"
+                        class="form-checkbox size-4"
                     />
                     <span class="ml-2">Sem Stock</span>
                 </label>
@@ -141,7 +152,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-sm font-medium mb-1">Preço</label>
+            <label class="block text-md font-medium mb-1">Preço</label>
             <div class="flex items-center space-x-4">
                 <input
                     type="number"
@@ -159,7 +170,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-sm font-medium mb-1">Categoria</label>
+            <label class="block text-md font-medium mb-1">Categoria</label>
             <select
                 v-model="selectedFilters.subcategory"
                 class="w-full border p-1 rounded"
@@ -175,7 +186,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-sm font-medium mb-1">Fabricante</label>
+            <label class="block text-md font-medium mb-1">Fabricante</label>
             <select
                 v-model="selectedFilters.manufacturer"
                 class="w-full border p-1 rounded"
@@ -191,7 +202,7 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-sm font-medium mb-1"
+            <label class="block text-md font-medium mb-1"
                 >Estado do produto</label
             >
             <div class="flex items-center space-x-4">
@@ -200,7 +211,7 @@ export default {
                         type="checkbox"
                         value="min"
                         v-model="selectedFilters.promotion"
-                        class="form-checkbox"
+                        class="form-checkbox size-4"
                     />
                     <span class="ml-2">Promoções</span>
                 </label>
@@ -209,7 +220,7 @@ export default {
                         type="checkbox"
                         value="min"
                         v-model="selectedFilters.reconditioned"
-                        class="form-checkbox"
+                        class="form-checkbox size-4"
                     />
                     <span class="ml-2">Recondicionados</span>
                 </label>
@@ -217,21 +228,22 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-sm font-medium mb-1"
+            <label class="block text-md font-medium mb-1"
                 >Memória RAM ( Capacidade)</label
             >
             <div
                 class="flex items-center space-x-4"
-                v-for="ramOption in ram"
-                :key="ramOption.id"
+                v-for="option in uniqueSizesRam"
+                :key="option.id"
             >
                 <label class="inline-flex items-center">
                     <input
                         type="checkbox"
-                        :value="ramOption.id"
+                        :value="option.size"
                         v-model="selectedFilters.memoria_ram"
+                        class="form-checkbox size-4"
                     />
-                    <span class="ml-2">{{ ramOption.size }}</span>
+                    <span class="ml-2">{{ option.size }}</span>
                 </label>
             </div>
         </div>

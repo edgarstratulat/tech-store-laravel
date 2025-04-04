@@ -56,15 +56,16 @@ class ComponentsController extends Controller
                 $query->where('reconditioned', '=', true);
             }),
 
-            //RAM
-            AllowedFilter::callback('memoria_ram', function ($query, $value) {
-                $query->where('ram_id', '=', $value);
+            AllowedFilter::callback('capacidade_ram', function($query, $value){
+                $query->whereHas('ram', function($q) use ($value){
+                    $q->where('size', '=', $value);
+                });
             }),
             
         ])
-        ->defaultSort('created_at')
+        ->defaultSort('-created_at')
         ->allowedSorts([
-            'price', '-price', '-created_at'
+            'price', '-price', 'created_at'
         ])
         ->with(['category', 'subcategory'])
         ->where('category_id', 4)
@@ -74,7 +75,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4);
         })->select('id', 'name')->get();
 
-        $ram = Ram::select('id', 'size', 'type', 'speed')->get();
+        $ram = Ram::select('id', 'type', 'size', 'frequency', 'latency')->get();
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
 
@@ -86,7 +87,7 @@ class ComponentsController extends Controller
             'manufacturer' => $manufacturer,
             'category' => $category,
             'subcategory' => $subCategory,
-            'ram' => $ram
+            'ram' => $ram,
         ]);
     }
 

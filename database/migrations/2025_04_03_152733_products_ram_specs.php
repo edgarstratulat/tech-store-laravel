@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create("ram_specs", function (Blueprint $table) {
             $table->id();
             $table->string("size");
-            $table->enum('type', ['DDR3', 'DDR4', 'DDR5']);
-            $table->integer("speed");
+            $table->string('type');
+            $table->integer("frequency");
+            $table->string("latency");
             $table->timestamps();
         });
     }

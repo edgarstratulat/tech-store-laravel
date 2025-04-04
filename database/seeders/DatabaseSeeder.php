@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use League\CommonMark\Util\SpecReader;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,8 +21,8 @@ class DatabaseSeeder extends Seeder
             ManufacturerSeeder::class,
             CategorySeeder::class,
             SubcategorySeeder::class,
-            //ProductSeeder::class
-            RamSeeder::class
+            SpecsSeeder::class,
+            ProductSeeder::class
         ]);
     }
 }
