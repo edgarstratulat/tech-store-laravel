@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <Navbar
+        <navbar
             :Utilizador="Utilizador"
             :Buttons="buttons"
             :isAdmin="isAdmin"
@@ -10,38 +10,47 @@
         >
             Memórias RAM
         </h1>
-        <Product
-            :products="products.data"
-            :category="category"
-            :subcategory="subcategory"
-        />
+        <div class="flex gap-5 px-8">
+            <div class="w-1/4">
+                <FilterSideBar
+                    :manufacturer="manufacturer"
+                    :products="products.data"
+                    :category="category"
+                    :subcategory="subcategory"
+                    :ram="ram"
+                />
+            </div>
+
+            <div class="w-3/4">
+                <Product
+                    :products="products.data"
+                    :category="category"
+                    :subcategory="subcategory"
+                    :manufacturer="manufacturer"
+                />
+            </div>
+        </div>
         <Pagination :links="products.links" />
     </div>
 </template>
 
 <script>
-import Navbar from "../../Components/navbar.vue";
+import navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
 import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
+import FilterSideBar from "../../Components/Inputs/Navbar/FilterSideBar/categories/PcComponents/RAM/navbar.vue";
 
 export default {
     components: {
-        Navbar,
+        navbar,
         Product,
         Pagination,
+        FilterSideBar,
     },
     props: {
         products: {
-            type: Array,
-            required: true,
-        },
-        category: {
-            type: Array,
-            required: true,
-        },
-        subcategory: {
-            type: Array,
-            required: true,
+            type: [Array, Object],
+            default: () => [],
         },
         Utilizador: {
             type: Object,
@@ -52,6 +61,22 @@ export default {
         },
         isAdmin: {
             type: Boolean,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
+            type: Array,
+            required: true,
+        },
+        manufacturer: {
+            type: Array,
+            required: true,
+        },
+        ram: {
+            type: Array,
+            default: () => [],
         },
     },
 };

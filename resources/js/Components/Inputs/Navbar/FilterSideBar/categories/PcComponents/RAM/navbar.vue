@@ -16,6 +16,9 @@ const selectedFilters = ref({
     reconditioned: "",
 
     memoria_ram: [],
+    type_ram: [],
+    frequecy_ram: [],
+    latency_ram: [],
 });
 
 const closeSidebar = (event) => {
@@ -62,10 +65,19 @@ const applyFilters = () => {
         queryParams["filter[reconditioned]"] =
             selectedFilters.value.reconditioned;
     }
-
     if (selectedFilters.value.memoria_ram) {
         queryParams["filter[capacidade_ram]"] =
             selectedFilters.value.memoria_ram;
+    }
+    if (selectedFilters.value.type_ram) {
+        queryParams["filter[tipo_ram]"] = selectedFilters.value.type_ram;
+    }
+    if (selectedFilters.value.frequecy_ram) {
+        queryParams["filter[velocidade_ram]"] =
+            selectedFilters.value.frequecy_ram;
+    }
+    if (selectedFilters.value.latency_ram) {
+        queryParams["filter[latencia_ram]"] = selectedFilters.value.latency_ram;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -102,6 +114,36 @@ export default {
             return this.ram.filter((ram) => {
                 if (!sizeRAM.has(ram.size)) {
                     sizeRAM.add(ram.size);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueTypesRam() {
+            const sizeRAM = new Set();
+            return this.ram.filter((ram) => {
+                if (!sizeRAM.has(ram.type)) {
+                    sizeRAM.add(ram.type);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueFrequencyRam() {
+            const sizeRAM = new Set();
+            return this.ram.filter((ram) => {
+                if (!sizeRAM.has(ram.frequency)) {
+                    sizeRAM.add(ram.frequency);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueLatencyRam() {
+            const sizeRAM = new Set();
+            return this.ram.filter((ram) => {
+                if (!sizeRAM.has(ram.latency)) {
+                    sizeRAM.add(ram.latency);
                     return true;
                 }
                 return false;
@@ -172,22 +214,6 @@ export default {
         </div>
 
         <div class="mt-4">
-            <label class="block text-md font-medium mb-1">Categoria</label>
-            <select
-                v-model="selectedFilters.subcategory"
-                class="w-full border p-1 rounded"
-            >
-                <option
-                    v-for="manu in subcategory"
-                    :value="manu.id"
-                    :key="manu.id"
-                >
-                    {{ manu.name }}
-                </option>
-            </select>
-        </div>
-
-        <div class="mt-4">
             <label class="block text-md font-medium mb-1">Fabricante</label>
             <select
                 v-model="selectedFilters.manufacturer"
@@ -231,7 +257,7 @@ export default {
 
         <div class="mt-4">
             <label class="block text-md font-medium mb-1"
-                >Memória RAM ( Capacidade)</label
+                >Memória RAM (Capacidade)</label
             >
             <div
                 class="flex items-center space-x-4"
@@ -246,6 +272,69 @@ export default {
                         class="form-checkbox size-4"
                     />
                     <span class="ml-2">{{ option.size }}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-medium mb-1"
+                >Memória RAM (Tipo)
+            </label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueTypesRam"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.type"
+                        v-model="selectedFilters.type_ram"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.type }}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-medium mb-1"
+                >Memória RAM (Velocidade)
+            </label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueFrequencyRam"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.frequency"
+                        v-model="selectedFilters.frequecy_ram"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.frequency }} Mhz</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-medium mb-1"
+                >Memória RAM (Latência)
+            </label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueLatencyRam"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.latency"
+                        v-model="selectedFilters.latency_ram"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.latency }}</span>
                 </label>
             </div>
         </div>

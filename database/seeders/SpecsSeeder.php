@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Armazenamento;
 use App\Models\Ram;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,18 +26,5 @@ class SpecsSeeder extends Seeder
         ] as $ram)
 
         Ram::create($ram);
-
-        foreach([
-            ['size' => '1TB', 'type' => 'SSD M.2', 'speed' => 6000],
-            ['size' => '1TB', 'type' => 'SSD SATA', 'speed' => 1000],
-            ['size' => '2TB', 'type' => 'SSD M.2', 'speed' => 6000],
-            ['size' => '4TB', 'type' => 'HDD', 'speed' => 500],
-            ['size' => '500GB', 'type' => 'SSD SATA', 'speed' => 1000],
-            ['size' => '480GB', 'type' => 'SSD SATA', 'speed' => 1000],
-            ['size' => '256GB', 'type' => 'SSD M.2', 'speed' => 6000],
-        ] as $armazenamento)
-
-        
-        Armazenamento::create($armazenamento);
     }
 }
