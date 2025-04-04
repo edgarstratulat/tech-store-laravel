@@ -170,6 +170,7 @@ class ProductSeeder extends Seeder
             'image_path' => "images/corsair_vengeance.jpeg"
         ]);
 
+        ////
         Product::create([
             'name' => 'SSD M.2 Samsung 970 EVO 1TB',
             'manufacturer_id' => 2,
@@ -180,7 +181,7 @@ class ProductSeeder extends Seeder
             'category_id' => 4, 
             'subcategory_id' => 14,
             'ram_id' => null,
-            'armazenamento_id' => 5, 
+            'armazenamento_id' => 8, 
             'stock' => 35,
             'image_path' => "images/samsung_970_evo.jpeg"
         ]);
@@ -195,7 +196,7 @@ class ProductSeeder extends Seeder
             'category_id' => 4, 
             'subcategory_id' => 14,
             'ram_id' => null,
-            'armazenamento_id' => 2,
+            'armazenamento_id' => 5,
             'stock' => 35,
             'image_path' => "images/sata.jpeg"
         ]);
@@ -210,7 +211,7 @@ class ProductSeeder extends Seeder
             'category_id' => 4, 
             'subcategory_id' => 14,
             'ram_id' => null,
-            'armazenamento_id' => 6,
+            'armazenamento_id' => 9,
             'stock' => 35,
             'image_path' => "images/samsung_970_evo.jpeg"
         ]);
@@ -225,9 +226,24 @@ class ProductSeeder extends Seeder
             'category_id' => 4, 
             'subcategory_id' => 14,
             'ram_id' => null,
-            'armazenamento_id' => 3,
+            'armazenamento_id' => 6,
             'stock' => 35,
             'image_path' => "images/sata.jpeg"
+        ]);
+
+        Product::create([
+            'name' => 'HDD 3.5" Seagate IronWolf 4TB 5400RPM 256MB Cache 202MB/s SATA 6Gb/s',
+            'manufacturer_id' => 25,
+            'price' => 121.99,
+            'sale_price' => 0,
+            'description' => 'HDD',
+            'reconditioned' => 0,
+            'category_id' => 4, 
+            'subcategory_id' => 14,
+            'ram_id' => null,
+            'armazenamento_id' => 3,
+            'stock' => 35,
+            'image_path' => "images/hdd.jpg"
         ]);
     
 

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer("size");
             $table->string('type');
-            $table->integer("writing_speed");
-            $table->integer("reading_speed");
+            $table->integer('rotation_speed')->nullable();
+            $table->integer("writing_speed")->nullable();
+            $table->integer("reading_speed")->nullable();
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@ class Armazenamento extends Model
     protected $fillable = [
         'size',
         'type',
+        'rotation_speed',
         'writing_speed',
         'reading_speed',
     ];

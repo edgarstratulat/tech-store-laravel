@@ -38,6 +38,7 @@ class ManufacturerSeeder extends Seeder
             ['name' => 'Raspberry Pi Foundation'],
             ['name' => 'Beelink'],
             ['name' => 'MiniForum'],
+            ['name' => 'Seagate'],
         ] as $manufacturer)
 
         Manufacturer::create($manufacturer);
