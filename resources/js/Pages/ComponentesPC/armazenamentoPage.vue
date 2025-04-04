@@ -28,9 +28,9 @@
                     :subcategory="subcategory"
                     :manufacturer="manufacturer"
                 />
+                <Pagination :links="products.links" />
             </div>
         </div>
-        <Pagination :links="products.links" />
     </div>
 </template>
 

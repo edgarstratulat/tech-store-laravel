@@ -315,7 +315,7 @@ export default {
 
         <div class="mt-4">
             <label class="block text-md font-medium mb-1"
-                >Armazenamento (Velocidade de Escrita & Leitura)</label
+                >SSD (Velocidade de Escrita & Leitura)</label
             >
             <div
                 class="flex items-center space-x-4"
@@ -336,7 +336,7 @@ export default {
 
         <div class="mt-4">
             <label class="block text-md font-medium mb-1"
-                >Armazenamento (Velocidade do HDD)</label
+                >HDD (Velocidade Rotações)</label
             >
             <div
                 class="flex items-center space-x-4"
