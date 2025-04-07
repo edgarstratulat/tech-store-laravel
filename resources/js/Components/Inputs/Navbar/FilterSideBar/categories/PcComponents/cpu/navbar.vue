@@ -19,6 +19,7 @@ const selectedFilters = ref({
     cores: [],
     threads: [],
     tdp: [],
+    socket: [],
 });
 
 const closeSidebar = (event) => {
@@ -73,6 +74,9 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.tdp) {
         queryParams["filter[cpu_tdp]"] = selectedFilters.value.tdp;
+    }
+    if (selectedFilters.value.socket) {
+        queryParams["filter[cpu_socket]"] = selectedFilters.value.socket;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -139,6 +143,16 @@ export default {
             return this.cpu.filter((ram) => {
                 if (!sizeRAM.has(ram.tdp)) {
                     sizeRAM.add(ram.tdp);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueSocket() {
+            const sizeRAM = new Set();
+            return this.cpu.filter((ram) => {
+                if (!sizeRAM.has(ram.socket)) {
+                    sizeRAM.add(ram.socket);
                     return true;
                 }
                 return false;
@@ -309,6 +323,27 @@ export default {
                         class="form-checkbox size-4"
                     />
                     <span class="ml-2">{{ option.threads }} threads</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1"
+                >Socket Processador</label
+            >
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueSocket"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.socket"
+                        v-model="selectedFilters.socket"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">{{ option.socket }}</span>
                 </label>
             </div>
         </div>

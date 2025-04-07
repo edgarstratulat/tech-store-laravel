@@ -169,6 +169,13 @@ class ComponentsController extends Controller
                     $q->where('tdp', '=', $value);
                 });
             }),
+
+            AllowedFilter::callback('cpu_socket', function($query, $value){
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('socket', '=', $value);
+                });
+            }),
+
             
         ])
         ->defaultSort('-created_at')
