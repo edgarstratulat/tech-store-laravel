@@ -42,7 +42,7 @@
                             :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
                             <h2
-                                class="text-sm font-semibold mb-2 hover:text-blue-600"
+                                class="truncate text-sm font-semibold mb-2 hover:text-blue-600"
                             >
                                 {{ promo.name }}
                             </h2>

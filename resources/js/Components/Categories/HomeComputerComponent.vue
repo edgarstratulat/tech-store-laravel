@@ -43,7 +43,7 @@
                             :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
                             <h2
-                                class="text-md font-semibold mb-2 hover:text-blue-600"
+                                class="truncate text-md font-semibold mb-2 hover:text-blue-600"
                             >
                                 {{ promo.name }}
                             </h2>
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="flex-grow">
-                        <h2 class="text-xs text-neutral-500">
+                        <h2 class="truncate text-xs text-neutral-500">
                             {{ promo.description }}
                         </h2>
                     </div>
