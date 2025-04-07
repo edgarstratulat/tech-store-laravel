@@ -16,6 +16,7 @@ use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
+
 class ComponentsController extends Controller
 {
     public function showComponents()
@@ -59,20 +60,26 @@ class ComponentsController extends Controller
             }),
 
             AllowedFilter::callback('capacidade_ram', function($query, $value){
-                $query->whereHas('ram', function($q) use ($value){
-                    $q->where('size', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                    $q->whereIn('size', $models);
                 });
             }),
 
             AllowedFilter::callback('capacidade_armazenamento', function($query, $value){
-                $query->whereHas('armazenamento', function($q) use ($value){
-                    $q->where('size', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('size', $models);
                 });
             }),
             
             AllowedFilter::callback('cpu', function($query, $value){
-                $query->whereHas('cpu', function($q) use ($value){
-                    $q->where('model', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('model', $models);
                 });
             })
             
@@ -149,30 +156,40 @@ class ComponentsController extends Controller
                 $query->where('reconditioned', '=', true);
             }),
             AllowedFilter::callback('cpu', function($query, $value){
-                $query->whereHas('cpu', function($q) use ($value){
-                    $q->where('model', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('model', $models);
                 });
             }),
             AllowedFilter::callback('cpu_cores', function($query, $value){
-                $query->whereHas('cpu', function($q) use ($value){
-                    $q->where('cores', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('cores', $models);
                 });
             }),
             AllowedFilter::callback('cpu_threads', function($query, $value){
-                $query->whereHas('cpu', function($q) use ($value){
-                    $q->where('threads', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('threads',  $models);
                 });
             }),
 
             AllowedFilter::callback('cpu_tdp', function($query, $value){
-                $query->whereHas('cpu', function($q) use ($value){
-                    $q->where('tdp', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('tdp',  $models);
                 });
             }),
 
             AllowedFilter::callback('cpu_socket', function($query, $value){
-                $query->whereHas('cpu', function($q) use ($value){
-                    $q->where('socket', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('socket', $models);
                 });
             }),
 
@@ -246,23 +263,31 @@ class ComponentsController extends Controller
             }),
 
             AllowedFilter::callback('capacidade_ram', function($query, $value){
-                $query->whereHas('ram', function($q) use ($value){
-                    $q->where('size', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                    $q->whereIn('size', $models);
                 });
             }),
             AllowedFilter::callback('tipo_ram', function($query, $value){
-                $query->whereHas('ram', function($q) use ($value){
-                    $q->where('type', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                $q->whereIn('type', $models);
                 });
             }),
             AllowedFilter::callback('velocidade_ram', function($query, $value){
-                $query->whereHas('ram', function($q) use ($value){
-                    $q->where('frequency', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                    $q->whereIn('frequency', $models);
                 });
             }),
             AllowedFilter::callback('latencia_ram', function($query, $value){
-                $query->whereHas('ram', function($q) use ($value){
-                    $q->where('latency', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                    $q->whereIn('latency', $models);
                 });
             }),
             
@@ -337,23 +362,31 @@ class ComponentsController extends Controller
                 $query->where('reconditioned', '=', true);
             }),
             AllowedFilter::callback('capacidade_drive', function($query, $value){
-                $query->whereHas('armazenamento', function($q) use ($value){
-                    $q->where('size', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('size', $models);
                 });
             }),
             AllowedFilter::callback('type_drive', function($query, $value){
-                $query->whereHas('armazenamento', function($q) use ($value){
-                    $q->where('type', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('type', $models);
                 });
             }),
             AllowedFilter::callback('writing_speed_drive', function($query, $value){
-                $query->whereHas('armazenamento', function($q) use ($value){
-                    $q->where('writing_speed', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('writing_speed', $models);
                 });
             }),
             AllowedFilter::callback('rotation_speed_drive', function($query, $value){
-                $query->whereHas('armazenamento', function($q) use ($value){
-                    $q->where('rotation_speed', '=', $value);
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('rotation_speed', $models);
                 });
             }),
             
