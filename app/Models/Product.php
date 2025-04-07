@@ -24,8 +24,15 @@ class Product extends Model
         'category_id',
         'subcategory_id',
         'included_cooler',
+        'bluetooth',
+        'wifi',
         'stock',
-        'image_path'
+        'image_path',
+
+        'ram_id',
+        'motherboard_id',
+        'armazenamento_id',
+        'cpu_id'
     ];
 
     public function sluggable(): array
@@ -72,6 +79,11 @@ class Product extends Model
     public function cpu()
     {
         return $this->belongsTo(Processor::class);
+    }
+
+    public function motherboard()
+    {
+        return $this->belongsTo(Motherboard::class);
     }
 
 }

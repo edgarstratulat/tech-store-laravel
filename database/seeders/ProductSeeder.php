@@ -212,6 +212,44 @@ class ProductSeeder extends Seeder
                 'image_path' => $ssd['image_path'],
             ]);
         }
+
+        $moboProducts = [
+            [
+                'name' => 'Motherboard ATX Asus ROG Strix Z790-F Gaming WiFi II Skt1700',
+                'manufacturer_id' => 12,
+                'price' => 499.99,
+                'motherboard_id' => 1,
+                'bluetooth' => true,
+                'wifi' => true,
+                'image_path' => "images/mobo1.jpeg"
+            ],
+            [
+                'name' => 'Motherboard ATX MSI MAG B850 Tomahawk Max WiFi SktAM5',
+                'manufacturer_id' => 11,
+                'price' => 279.99,
+                'motherboard_id' => 2,
+                'bluetooth' => true,
+                'wifi' => true,
+                'image_path' => "images/mobo2.jpeg"
+            ],              
+        ];
+        
+        foreach ($moboProducts as $mobo) {
+            Product::create([
+                'name' => $mobo['name'],
+                'manufacturer_id' => $mobo['manufacturer_id'],
+                'price' => $mobo['price'],
+                'sale_price' => rand(0,30),
+                'description' => $mobo['name'],
+                'category_id' => 4, 
+                'subcategory_id' => 15,
+                'motherboard_id' => $mobo['motherboard_id'],
+                'bluetooth' => $mobo['bluetooth'],
+                'wifi' => $mobo['wifi'],
+                'stock' => rand(0, 50),
+                'image_path' => $mobo['image_path'],
+            ]);
+        }
             
     }
 }

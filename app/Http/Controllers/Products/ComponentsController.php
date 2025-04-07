@@ -7,6 +7,7 @@ use App\Models\Armazenamento;
 use App\Models\Button;
 use App\Models\Category;
 use App\Models\Manufacturer;
+use App\Models\Motherboard;
 use App\Models\Processor;
 use App\Models\Product;
 use App\Models\Ram;
@@ -14,6 +15,7 @@ use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
 
 
@@ -421,10 +423,79 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('motherboard_format', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('motherboard', function($q) use ($models){
+                    $q->whereIn('format', $models);
+                });
+            }),
+            AllowedFilter::callback('motherboard_chipset', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('motherboard', function($q) use ($models){
+                    $q->whereIn('chipset', $models);
+                });
+            }),
+            AllowedFilter::callback('motherboard_cpu_socket', function($query, $value){
+                $models = is_bool($value) ? $value : [$value];
+
+                $query->whereHas('motherboard', function($q) use ($models){
+                    $q->whereIn('cpu_socket', $models);
+                });
+            }),
+            AllowedFilter::callback('motherboard_bluetooth', function($query, $value){
+
+                $query->whereHas('motherboard', function($q) use ($value){
+                    $q->where('bluetooth', $value);
+                });
+            }),
+            AllowedFilter::callback('motherboard_wifi', function($query, $value){
+
+                $query->whereHas('motherboard', function($q) use ($value){
+                    $q->where('wifi', $value);
+                });
+            }),
+        ])
+        ->defaultSort('-created_at')
+        ->allowedSorts([
+            'price', '-price', 'created_at'
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
+
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 15);
+        })->select('id', 'name')->get();
+
+        $motherboard = Motherboard::select('id', 'format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
 
         return Inertia::render('ComponentesPC/motherboardsPage', [
             'buttons' => $buttons,
@@ -432,7 +503,9 @@ class ComponentsController extends Controller
             'isAdmin' => $isAdmin,
             'products' => $products,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'motherboard' => $motherboard
         ]);
     }
 

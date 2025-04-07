@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Armazenamento;
+use App\Models\Motherboard;
 use App\Models\Processor;
 use App\Models\Ram;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -60,5 +61,15 @@ class SpecsSeeder extends Seeder
         ] as $cpu)
 
         Processor::create($cpu);
+
+        foreach([
+            ['format' => 'ATX', 'chipset' => 'Intel Z790', 'cpu_socket' => 'LGA 1700', 'ram_support' => 'DDR5', 'max_ram' => 192],
+            ['format' => 'ATX', 'chipset' => 'AMD B850', 'cpu_socket' => 'AM5', 'ram_support' => 'DDR5', 'max_ram' => 256],
+            ['format' => 'ATX', 'chipset' => 'AMD X570', 'cpu_socket' => 'AM4', 'ram_support' => 'DDR4', 'max_ram' => 64],
+            ['format' => 'ATX', 'chipset' => 'Intel Z490', 'cpu_socket' => 'LGA 1200', 'ram_support' => 'DDR4', 'max_ram' => 64],
+            ['format' => 'ATX', 'chipset' => 'AMD B550', 'cpu_socket' => 'AM4', 'ram_support' => 'DDR4', 'max_ram' => 64],
+        ] as $motherboard)
+
+        Motherboard::create($motherboard);
     }
 }

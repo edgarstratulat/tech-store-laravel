@@ -25,7 +25,10 @@ return new class extends Migration
             $table->foreignId('ram_id')->nullable()->constrained('ram_specs');
             $table->foreignId('armazenamento_id')->nullable()->constrained('storage_specs');
             $table->foreignId('cpu_id')->nullable()->constrained('processor_specs');
+            $table->foreignId('motherboard_id')->nullable()->constrained('motherboard_specs');
             $table->boolean('included_cooler')->default(false);
+            $table->boolean('bluetooth')->default(false);
+            $table->boolean('wifi')->default(false);
             $table->integer('stock');
             $table->string('image_path')->nullable();
             $table->timestamps();
