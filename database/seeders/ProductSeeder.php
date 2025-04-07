@@ -13,8 +13,6 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-
-        //CPU's
         $cpuProducts = [
             [
                 'name' => 'Intel Core i5-10400F',
@@ -122,112 +120,98 @@ class ProductSeeder extends Seeder
             ]);
         }
 
-        //RAM's
-        Product::create([
-            'name' => 'Memória RAM Corsair Vengeance LPX 16GB',
-            'manufacturer_id' => 8,
-            'price' => 79.99,
-            'sale_price' => 5,
-            'description' => '16GB DDR4 RAM for gaming',
-            'category_id' => 4,  
-            'subcategory_id' => 13,
-            'ram_id' => 5,
-            'stock' => 60,
-            'image_path' => "images/corsair_vengeance.jpeg"
-        ]);
-
-        Product::create([
-            'name' => 'Memória RAM UDIMM Corsair Vengeance 32GB',
-            'manufacturer_id' => 8,
-            'price' => 99.99,
-            'sale_price' => 5,
-            'description' => '32GB DDR5 5600mhz RAM for gaming',
-            'category_id' => 4,  
-            'subcategory_id' => 13,
-            'ram_id' => 9,
-            'stock' => 60,
-            'image_path' => "images/corsaira.jpg"
-        ]);
-
-        Product::create([
-            'name' => 'Memória RAM Corsair Vengeance LPX 32GB',
-            'manufacturer_id' => 8,
-            'price' => 99.99,
-            'sale_price' => 5,
-            'description' => '32GB DDR4 RAM for gaming',
-            'category_id' => 4,  
-            'subcategory_id' => 13,
-            'ram_id' => 8,
-            'stock' => 60,
-            'image_path' => "images/corsair_vengeance.jpeg"
-        ]);
-
-        Product::create([
-            'name' => 'SSD M.2 Samsung 970 EVO 1TB',
-            'manufacturer_id' => 2,
-            'price' => 129.99,
-            'sale_price' => 10,
-            'description' => 'High-speed solid-state drive',
-            'category_id' => 4, 
-            'subcategory_id' => 14,
-            'armazenamento_id' => 8, 
-            'stock' => 35,
-            'image_path' => "images/samsung_970_evo.jpeg"
-        ]);
-
-        Product::create([
-            'name' => 'SSD 2.5" Samsung 870 EVO 500GB MLC V-NAND SATA',
-            'manufacturer_id' => 2,
-            'price' => 64.99,
-            'sale_price' => 0,
-            'description' => 'High-speed solid-state drive',
-            'category_id' => 4, 
-            'subcategory_id' => 14,
-            'armazenamento_id' => 5,
-            'stock' => 35,
-            'image_path' => "images/sata.jpeg"
-        ]);
-    
-        Product::create([
-            'name' => 'SSD M.2 Samsung 970 EVO 2TB',
-            'manufacturer_id' => 2,
-            'price' => 149.99,
-            'sale_price' => 10,
-            'description' => 'High-speed solid-state drive',
-            'category_id' => 4, 
-            'subcategory_id' => 14,
-            'armazenamento_id' => 9,
-            'stock' => 35,
-            'image_path' => "images/samsung_970_evo.jpeg"
-        ]);
-    
-        Product::create([
-            'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
-            'manufacturer_id' => 2,
-            'price' => 84.99,
-            'sale_price' => 0,
-            'description' => 'High-speed solid-state drive SATA',
-            'category_id' => 4, 
-            'subcategory_id' => 14,
-            'armazenamento_id' => 6,
-            'stock' => 35,
-            'image_path' => "images/sata.jpeg"
-        ]);
-
-        Product::create([
-            'name' => 'HDD 3.5" Seagate IronWolf 4TB 5400RPM 256MB Cache 202MB/s SATA 6Gb/s',
-            'manufacturer_id' => 25,
-            'price' => 121.99,
-            'sale_price' => 0,
-            'description' => 'HDD',
-            'category_id' => 4, 
-            'subcategory_id' => 14,
-            'armazenamento_id' => 3,
-            'stock' => 35,
-            'image_path' => "images/hdd.jpg"
-        ]);
-    
-
+        $ramProducts = [
+            [
+                'name' => 'Memória RAM Corsair Vengeance LPX 16GB',
+                'manufacturer_id' => 8,
+                'price' => 79.99,
+                'ram_id' => 5,
+                'image_path' => "images/corsair_vengeance.jpeg"
+            ],
+            [
+                'name' => 'Memória RAM UDIMM Corsair Vengeance 32GB',
+                'manufacturer_id' => 8,
+                'price' => 99.99,
+                'ram_id' => 9,
+                'image_path' => "images/corsaira.jpg"
+            ],
+            [
+                'name' => 'Memória RAM Corsair Vengeance LPX 32GB',
+                'manufacturer_id' => 8,
+                'price' => 99.99,
+                'ram_id' => 8,
+                'image_path' => "images/corsair_vengeance.jpeg"
+            ],
+            
+        ];
         
+        foreach ($ramProducts as $ram) {
+            Product::create([
+                'name' => $ram['name'],
+                'manufacturer_id' => $ram['manufacturer_id'],
+                'price' => $ram['price'],
+                'sale_price' => rand(0,30),
+                'description' => $ram['name'] . ' oferece frequências mais rápidas, maiores capacidades e melhor desempenho',
+                'category_id' => 4, 
+                'subcategory_id' => 13,
+                'ram_id' => $ram['ram_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $ram['image_path'],
+            ]);
+        }
+
+        $armProducts = [
+            [
+                'name' => 'SSD M.2 Samsung 970 EVO 1TB',
+                'manufacturer_id' => 2,
+                'price' => 129.99,
+                'armazenamento_id' => 8,
+                'image_path' => "images/samsung_970_evo.jpeg"
+            ],
+            [
+                'name' => 'SSD 2.5" Samsung 870 EVO 500GB MLC V-NAND SATA',
+                'manufacturer_id' => 2,
+                'price' => 64.99,
+                'armazenamento_id' => 5,
+                'image_path' => "images/sata.jpeg"
+            ],
+            [
+                'name' => 'SSD M.2 Samsung 970 EVO 2TB',
+                'manufacturer_id' => 2,
+                'price' => 149.99,
+                'armazenamento_id' => 9,
+                'image_path' => "images/samsung_970_evo.jpeg"
+            ],
+            [
+                'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
+                'manufacturer_id' => 2,
+                'price' => 84.99,
+                'armazenamento_id' => 6,
+                'image_path' => "images/sata.jpeg"
+            ],
+            [
+                'name' => 'HDD 3.5" Seagate IronWolf 4TB 5400RPM 256MB Cache 202MB/s SATA 6Gb/s',
+                'manufacturer_id' => 25,
+                'price' => 121.99,
+                'armazenamento_id' => 3,
+                'image_path' => "images/hdd.jpg"
+            ],
+        ];
+        
+        foreach ($armProducts as $ssd) {
+            Product::create([
+                'name' => $ssd['name'],
+                'manufacturer_id' => $ssd['manufacturer_id'],
+                'price' => $ssd['price'],
+                'sale_price' => rand(0,30),
+                'description' => $ssd['name'] . ' oferece frequências mais rápidas, maiores capacidades e melhor desempenho',
+                'category_id' => 4, 
+                'subcategory_id' => 14,
+                'armazenamento_id' => $ssd['armazenamento_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $ssd['image_path'],
+            ]);
+        }
+            
     }
 }
