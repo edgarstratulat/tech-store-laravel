@@ -86,4 +86,9 @@ class Product extends Model
         return $this->belongsTo(Motherboard::class);
     }
 
+    public function gpu()
+    {
+        return $this->belongsTo(GPU::class);
+    }
+
 }

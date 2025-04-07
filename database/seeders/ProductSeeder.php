@@ -125,23 +125,24 @@ class ProductSeeder extends Seeder
                 'name' => 'Memória RAM Corsair Vengeance LPX 16GB',
                 'manufacturer_id' => 8,
                 'price' => 79.99,
-                'ram_id' => 5,
+                'ram_id' => 1,
+                'image_path' => "images/corsair_vengeance.jpeg"
+            ],
+            [
+                'name' => 'Memória RAM Corsair Vengeance LPX 32GB',
+                'manufacturer_id' => 8,
+                'price' => 99.99,
+                'ram_id' => 2,
                 'image_path' => "images/corsair_vengeance.jpeg"
             ],
             [
                 'name' => 'Memória RAM UDIMM Corsair Vengeance 32GB',
                 'manufacturer_id' => 8,
                 'price' => 99.99,
-                'ram_id' => 9,
+                'ram_id' => 3,
                 'image_path' => "images/corsaira.jpg"
             ],
-            [
-                'name' => 'Memória RAM Corsair Vengeance LPX 32GB',
-                'manufacturer_id' => 8,
-                'price' => 99.99,
-                'ram_id' => 8,
-                'image_path' => "images/corsair_vengeance.jpeg"
-            ],
+            
             
         ];
         
@@ -162,40 +163,40 @@ class ProductSeeder extends Seeder
 
         $armProducts = [
             [
+                'name' => 'HDD 3.5" Seagate IronWolf 4TB 5400RPM 256MB Cache 202MB/s SATA 6Gb/s',
+                'manufacturer_id' => 25,
+                'price' => 121.99,
+                'armazenamento_id' => 1,
+                'image_path' => "images/hdd.jpg"
+            ],
+            [
                 'name' => 'SSD M.2 Samsung 970 EVO 1TB',
                 'manufacturer_id' => 2,
                 'price' => 129.99,
-                'armazenamento_id' => 8,
+                'armazenamento_id' => 2,
                 'image_path' => "images/samsung_970_evo.jpeg"
             ],
             [
                 'name' => 'SSD 2.5" Samsung 870 EVO 500GB MLC V-NAND SATA',
                 'manufacturer_id' => 2,
                 'price' => 64.99,
-                'armazenamento_id' => 5,
+                'armazenamento_id' => 3,
+                'image_path' => "images/sata.jpeg"
+            ],
+            [
+                'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
+                'manufacturer_id' => 2,
+                'price' => 84.99,
+                'armazenamento_id' => 4,
                 'image_path' => "images/sata.jpeg"
             ],
             [
                 'name' => 'SSD M.2 Samsung 970 EVO 2TB',
                 'manufacturer_id' => 2,
                 'price' => 149.99,
-                'armazenamento_id' => 9,
+                'armazenamento_id' => 5,
                 'image_path' => "images/samsung_970_evo.jpeg"
-            ],
-            [
-                'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
-                'manufacturer_id' => 2,
-                'price' => 84.99,
-                'armazenamento_id' => 6,
-                'image_path' => "images/sata.jpeg"
-            ],
-            [
-                'name' => 'HDD 3.5" Seagate IronWolf 4TB 5400RPM 256MB Cache 202MB/s SATA 6Gb/s',
-                'manufacturer_id' => 25,
-                'price' => 121.99,
-                'armazenamento_id' => 3,
-                'image_path' => "images/hdd.jpg"
-            ],
+            ],     
         ];
         
         foreach ($armProducts as $ssd) {
@@ -248,6 +249,45 @@ class ProductSeeder extends Seeder
                 'wifi' => $mobo['wifi'],
                 'stock' => rand(0, 50),
                 'image_path' => $mobo['image_path'],
+            ]);
+        }
+
+        $gpuProducts = [
+            [
+                'name' => 'Placa Gráfica Asus NVIDIA GeForce RTX 4090 "Ada Lovelace" ROG Strix OC 24GB GDDR6X DLSS3 White Edition',
+                'manufacturer_id' => 12,
+                'price' => 2259.99,
+                'gpu_id' => 1,
+                'image_path' => "images/gpu1.jpg"
+            ],
+            [
+                'name' => 'Placa Gráfica Sapphire AMD Radeon RX 9070 XT "RDNA 4" Pure OC 16GB GDDR6',
+                'manufacturer_id' => 27,
+                'price' => 769.99,
+                'gpu_id' => 2,
+                'image_path' => "images/gpu2.jpg"
+            ], 
+            [
+                'name' => 'Placa Gráfica MSI NVIDIA GeForce RTX 5090 "Blackwell" Suprim SOC 32G GDDR7 DLSS4',
+                'manufacturer_id' => 11,
+                'price' => 3059.99,
+                'gpu_id' => 3,
+                'image_path' => "images/gpu3.jpg"
+            ],              
+        ];
+        
+        foreach ($gpuProducts as $gpu) {
+            Product::create([
+                'name' => $gpu['name'],
+                'manufacturer_id' => $gpu['manufacturer_id'],
+                'price' => $gpu['price'],
+                'sale_price' => rand(0,30),
+                'description' => $gpu['name'],
+                'category_id' => 4, 
+                'subcategory_id' => 16,
+                'gpu_id' => $gpu['gpu_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $gpu['image_path'],
             ]);
         }
             

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Armazenamento;
 use App\Models\Button;
 use App\Models\Category;
+use App\Models\GPU;
 use App\Models\Manufacturer;
 use App\Models\Motherboard;
 use App\Models\Processor;
@@ -521,10 +522,82 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('gpu_category', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('category', $models);
+                });
+            }),
+            AllowedFilter::callback('gpu_model', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('model', $models);
+                });
+            }),
+            AllowedFilter::callback('gpu_vram', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('vram', $models);
+                });
+            }),
+            AllowedFilter::callback('gpu_type_vram', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('type_vram', $models);
+                });
+            }),
+            AllowedFilter::callback('gpu_interface', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('interface', $models);
+                });
+            }),
+            
+        ])
+        ->defaultSort('-created_at')
+        ->allowedSorts([
+            'price', '-price', 'created_at'
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
+
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 16);
+        })->select('id', 'name')->get();
+
+        $gpu = GPU::select('category', 'model','vram','type_vram','interface','tdp')->get();
 
         return Inertia::render('ComponentesPC/gpuPage', [
             'buttons' => $buttons,
@@ -532,7 +605,9 @@ class ComponentsController extends Controller
             'isAdmin' => $isAdmin,
             'products' => $products,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'gpu' => $gpu
         ]);
     }
 

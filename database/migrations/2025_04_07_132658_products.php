@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreignId('armazenamento_id')->nullable()->constrained('storage_specs');
             $table->foreignId('cpu_id')->nullable()->constrained('processor_specs');
             $table->foreignId('motherboard_id')->nullable()->constrained('motherboard_specs');
+            $table->foreignId('gpu_id')->nullable()->constrained('gpu_specs');
             $table->boolean('included_cooler')->default(false);
             $table->boolean('bluetooth')->default(false);
             $table->boolean('wifi')->default(false);
