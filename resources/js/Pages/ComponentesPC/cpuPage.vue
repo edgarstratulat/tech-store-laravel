@@ -17,8 +17,6 @@
                     :products="products.data"
                     :category="category"
                     :subcategory="subcategory"
-                    :ram="ram"
-                    :armazenamento="armazenamento"
                     :cpu="cpu"
                 />
             </div>
@@ -75,14 +73,6 @@ export default {
         manufacturer: {
             type: Array,
             required: true,
-        },
-        ram: {
-            type: Array,
-            default: () => [],
-        },
-        armazenamento: {
-            type: Array,
-            default: () => [],
         },
         cpu: {
             type: Array,

@@ -67,12 +67,6 @@ const applyFilters = () => {
     if (selectedFilters.value.cpu) {
         queryParams["filter[cpu]"] = selectedFilters.value.cpu;
     }
-    if (selectedFilters.value.cores) {
-        queryParams["filter[cpu_cores]"] = selectedFilters.value.cores;
-    }
-    if (selectedFilters.value.threads) {
-        queryParams["filter[cpu_threads]"] = selectedFilters.value.threads;
-    }
     if (selectedFilters.value.tdp) {
         queryParams["filter[cpu_tdp]"] = selectedFilters.value.tdp;
     }
@@ -118,26 +112,6 @@ export default {
             return this.cpu.filter((ram) => {
                 if (!sizeRAM.has(ram.model)) {
                     sizeRAM.add(ram.model);
-                    return true;
-                }
-                return false;
-            });
-        },
-        uniqueCores() {
-            const sizeRAM = new Set();
-            return this.cpu.filter((ram) => {
-                if (!sizeRAM.has(ram.cores)) {
-                    sizeRAM.add(ram.cores);
-                    return true;
-                }
-                return false;
-            });
-        },
-        uniqueThreads() {
-            const sizeRAM = new Set();
-            return this.cpu.filter((ram) => {
-                if (!sizeRAM.has(ram.threads)) {
-                    sizeRAM.add(ram.threads);
                     return true;
                 }
                 return false;
@@ -312,48 +286,6 @@ export default {
                         class="form-checkbox size-4"
                     />
                     <span class="ml-2">{{ option.model }}</span>
-                </label>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label class="block text-md font-semibold mb-1"
-                >Núcleos Processador</label
-            >
-            <div
-                class="flex items-center space-x-4"
-                v-for="option in uniqueCores"
-                :key="option.id"
-            >
-                <label class="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        :value="option.cores"
-                        v-model="selectedFilters.cores"
-                        class="form-checkbox size-4"
-                    />
-                    <span class="ml-2">{{ option.cores }} núcleos</span>
-                </label>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label class="block text-md font-semibold mb-1"
-                >Threads Processador</label
-            >
-            <div
-                class="flex items-center space-x-4"
-                v-for="option in uniqueThreads"
-                :key="option.id"
-            >
-                <label class="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        :value="option.threads"
-                        v-model="selectedFilters.threads"
-                        class="form-checkbox size-4"
-                    />
-                    <span class="ml-2">{{ option.threads }} threads</span>
                 </label>
             </div>
         </div>
