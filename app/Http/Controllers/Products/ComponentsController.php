@@ -162,20 +162,6 @@ class ComponentsController extends Controller
                     $q->whereIn('model', $models);
                 });
             }),
-            AllowedFilter::callback('cpu_cores', function($query, $value){
-                $models = is_array($value) ? $value : [$value];
-
-                $query->whereHas('cpu', function($q) use ($models){
-                    $q->whereIn('cores', $models);
-                });
-            }),
-            AllowedFilter::callback('cpu_threads', function($query, $value){
-                $models = is_array($value) ? $value : [$value];
-
-                $query->whereHas('cpu', function($q) use ($models){
-                    $q->whereIn('threads',  $models);
-                });
-            }),
 
             AllowedFilter::callback('cpu_tdp', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
@@ -207,7 +193,7 @@ class ComponentsController extends Controller
         ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate(12)->appends(request()->query());
 
 
-        $cpu = Processor::select('id', 'model', 'cores', 'threads', 'tdp', 'socket')->get();
+        $cpu = Processor::select('id', 'model', 'tdp', 'socket')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 12);
