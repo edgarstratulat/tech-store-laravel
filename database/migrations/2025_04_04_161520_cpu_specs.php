@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('model');
             $table->integer("cores");
             $table->integer("threads");
-            $table->decimal("base_clock", 5,2);
-            $table->decimal("boost_clock", 5,2);
             $table->integer('tdp');
             $table->string('socket');
             $table->timestamps();

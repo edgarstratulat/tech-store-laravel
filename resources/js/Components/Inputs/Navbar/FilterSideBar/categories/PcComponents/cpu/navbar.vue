@@ -20,6 +20,7 @@ const selectedFilters = ref({
     threads: [],
     tdp: [],
     socket: [],
+    included_cooler: [],
 });
 
 const closeSidebar = (event) => {
@@ -77,6 +78,10 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.socket) {
         queryParams["filter[cpu_socket]"] = selectedFilters.value.socket;
+    }
+    if (selectedFilters.value.included_cooler) {
+        queryParams["filter[included_cooler]"] =
+            selectedFilters.value.included_cooler;
     }
 
     router.get(window.location.pathname, queryParams);
@@ -200,6 +205,32 @@ export default {
                         class="form-checkbox size-4"
                     />
                     <span class="ml-2">Sem Stock</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-md font-medium mb-1"
+                >Cooler Incluído</label
+            >
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="true"
+                        v-model="selectedFilters.included_cooler"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">Sim</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="false"
+                        v-model="selectedFilters.included_cooler"
+                        class="form-checkbox size-4"
+                    />
+                    <span class="ml-2">Não</span>
                 </label>
             </div>
         </div>

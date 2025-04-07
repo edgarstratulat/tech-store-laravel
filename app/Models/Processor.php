@@ -13,8 +13,6 @@ class Processor extends Model
         'model',
         'cores',
         'threads',
-        'base_clock',
-        'boost_clock',
         'tdp',
         'socket'
     ];

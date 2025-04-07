@@ -23,6 +23,7 @@ class Product extends Model
         'reconditioned',
         'category_id',
         'subcategory_id',
+        'included_cooler',
         'stock',
         'image_path'
     ];

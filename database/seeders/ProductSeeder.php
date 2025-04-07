@@ -14,12 +14,22 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
 
+        //CPU's
         $cpuProducts = [
             [
                 'name' => 'Intel Core i5-10400F',
                 'manufacturer_id' => 7,
                 'price' => 129.99,
                 'cpu_id' => 1,
+                'included_cooler' => true,
+                'image_path' => 'images/intel_i5_10400f.jpeg'
+            ],
+            [
+                'name' => 'Intel Core i5-14400F',
+                'manufacturer_id' => 7,
+                'price' => 329.99,
+                'cpu_id' => 1,
+                'included_cooler' => true,
                 'image_path' => 'images/intel_i5_10400f.jpeg'
             ],
             [
@@ -27,6 +37,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 7,
                 'price' => 339.99,
                 'cpu_id' => 2,
+                'included_cooler' => false,
                 'image_path' => 'images/intel_i7_11700k.jpeg'
             ],
             [
@@ -34,6 +45,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 26,
                 'price' => 189.99,
                 'cpu_id' => 3,
+                'included_cooler' => true,
                 'image_path' => 'images/ryzen_5_5600x.jpeg'
             ],
             [
@@ -41,6 +53,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 26,
                 'price' => 289.99,
                 'cpu_id' => 4,
+                'included_cooler' => false,
                 'image_path' => 'images/ryzen_7_5800x.jpeg'
             ],
             [
@@ -48,6 +61,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 7,
                 'price' => 549.99,
                 'cpu_id' => 5,
+                'included_cooler' => false,
                 'image_path' => 'images/intel_i9_12900k.jpeg'
             ],
             [
@@ -55,6 +69,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 26,
                 'price' => 649.99,
                 'cpu_id' => 6,
+                'included_cooler' => false,
                 'image_path' => 'images/ryzen_9_5950x.jpeg'
             ],
             [
@@ -62,6 +77,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 7,
                 'price' => 99.99,
                 'cpu_id' => 7,
+                'included_cooler' => false,
                 'image_path' => 'images/intel_i3_12100f.jpeg'
             ],
             [
@@ -69,6 +85,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 26,
                 'price' => 89.99,
                 'cpu_id' => 8,
+                'included_cooler' => true,
                 'image_path' => 'images/ryzen_3_3100.jpeg'
             ],
             [
@@ -76,6 +93,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 7,
                 'price' => 209.99,
                 'cpu_id' => 9,
+                'included_cooler' => true,
                 'image_path' => 'images/intel_i5_13400f.jpeg'
             ],
             [
@@ -83,6 +101,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 26,
                 'price' => 249.99,
                 'cpu_id' => 10,
+                'included_cooler' => false,
                 'image_path' => 'images/ryzen_5_7600x.jpeg'
             ]
         ];
@@ -92,26 +111,24 @@ class ProductSeeder extends Seeder
                 'name' => $cpu['name'],
                 'manufacturer_id' => $cpu['manufacturer_id'],
                 'price' => $cpu['price'],
-                'sale_price' => 0,
+                'sale_price' => rand(0,30),
                 'description' => $cpu['name'] . ' - Processador potente para gaming e produtividade.',
-                'reconditioned' => 0,
                 'category_id' => 4, 
                 'subcategory_id' => 12,
                 'cpu_id' => $cpu['cpu_id'],
-                'ram_id' => null,
-                'armazenamento_id' => null,
+                'included_cooler' => $cpu['included_cooler'],
                 'stock' => rand(0, 50),
                 'image_path' => $cpu['image_path'],
             ]);
         }
 
+        //RAM's
         Product::create([
             'name' => 'Memória RAM Corsair Vengeance LPX 16GB',
             'manufacturer_id' => 8,
             'price' => 79.99,
             'sale_price' => 5,
             'description' => '16GB DDR4 RAM for gaming',
-            'reconditioned' => 0,
             'category_id' => 4,  
             'subcategory_id' => 13,
             'ram_id' => 5,
@@ -125,7 +142,6 @@ class ProductSeeder extends Seeder
             'price' => 99.99,
             'sale_price' => 5,
             'description' => '32GB DDR5 5600mhz RAM for gaming',
-            'reconditioned' => 0,
             'category_id' => 4,  
             'subcategory_id' => 13,
             'ram_id' => 9,
@@ -139,7 +155,6 @@ class ProductSeeder extends Seeder
             'price' => 99.99,
             'sale_price' => 5,
             'description' => '32GB DDR4 RAM for gaming',
-            'reconditioned' => 0,
             'category_id' => 4,  
             'subcategory_id' => 13,
             'ram_id' => 8,
@@ -153,10 +168,8 @@ class ProductSeeder extends Seeder
             'price' => 129.99,
             'sale_price' => 10,
             'description' => 'High-speed solid-state drive',
-            'reconditioned' => 0,
             'category_id' => 4, 
             'subcategory_id' => 14,
-            'ram_id' => null,
             'armazenamento_id' => 8, 
             'stock' => 35,
             'image_path' => "images/samsung_970_evo.jpeg"
@@ -168,10 +181,8 @@ class ProductSeeder extends Seeder
             'price' => 64.99,
             'sale_price' => 0,
             'description' => 'High-speed solid-state drive',
-            'reconditioned' => 0,
             'category_id' => 4, 
             'subcategory_id' => 14,
-            'ram_id' => null,
             'armazenamento_id' => 5,
             'stock' => 35,
             'image_path' => "images/sata.jpeg"
@@ -183,10 +194,8 @@ class ProductSeeder extends Seeder
             'price' => 149.99,
             'sale_price' => 10,
             'description' => 'High-speed solid-state drive',
-            'reconditioned' => 0,
             'category_id' => 4, 
             'subcategory_id' => 14,
-            'ram_id' => null,
             'armazenamento_id' => 9,
             'stock' => 35,
             'image_path' => "images/samsung_970_evo.jpeg"
@@ -198,10 +207,8 @@ class ProductSeeder extends Seeder
             'price' => 84.99,
             'sale_price' => 0,
             'description' => 'High-speed solid-state drive SATA',
-            'reconditioned' => 0,
             'category_id' => 4, 
             'subcategory_id' => 14,
-            'ram_id' => null,
             'armazenamento_id' => 6,
             'stock' => 35,
             'image_path' => "images/sata.jpeg"
@@ -213,10 +220,8 @@ class ProductSeeder extends Seeder
             'price' => 121.99,
             'sale_price' => 0,
             'description' => 'HDD',
-            'reconditioned' => 0,
             'category_id' => 4, 
             'subcategory_id' => 14,
-            'ram_id' => null,
             'armazenamento_id' => 3,
             'stock' => 35,
             'image_path' => "images/hdd.jpg"

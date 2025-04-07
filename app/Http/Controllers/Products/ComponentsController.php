@@ -74,7 +74,7 @@ class ComponentsController extends Controller
                     $q->whereIn('size', $models);
                 });
             }),
-            
+
             AllowedFilter::callback('cpu', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
@@ -90,7 +90,7 @@ class ComponentsController extends Controller
         ])
         ->with(['category', 'subcategory'])
         ->where('category_id', 4)
-        ->paginate(12)->appends(request()->query());;
+        ->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4);
@@ -193,15 +193,21 @@ class ComponentsController extends Controller
                 });
             }),
 
-            
+            AllowedFilter::callback('included_cooler', function($query, $value){
+
+                $query->whereHas('cpu', function($q) use ($value){
+                    $q->where('included_cooler', $value);
+                });
+            }),
+
         ])
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate();
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate(12)->appends(request()->query());
 
 
-        $cpu = Processor::select('id', 'model', 'cores', 'threads', 'base_clock', 'boost_clock', 'tdp', 'socket')->get();
+        $cpu = Processor::select('id', 'model', 'cores', 'threads', 'tdp', 'socket')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 12);

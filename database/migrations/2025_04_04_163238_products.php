@@ -18,13 +18,14 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('sale_price');
             $table->text('description');
-            $table->boolean('reconditioned');
+            $table->boolean('reconditioned')->default(false);
             $table->foreignId('manufacturer_id')->constrained('manufacturer');
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('subcategory_id')->constrained('subCategories');
             $table->foreignId('ram_id')->nullable()->constrained('ram_specs');
             $table->foreignId('armazenamento_id')->nullable()->constrained('storage_specs');
             $table->foreignId('cpu_id')->nullable()->constrained('processor_specs');
+            $table->boolean('included_cooler')->default(false);
             $table->integer('stock');
             $table->string('image_path')->nullable();
             $table->timestamps();

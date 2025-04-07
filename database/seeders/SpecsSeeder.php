@@ -47,16 +47,16 @@ class SpecsSeeder extends Seeder
         Armazenamento::create($armazenamento);
 
         foreach([
-            ['model' => 'Intel Core i5', 'cores' => 6,  'threads' => 12, 'base_clock' => 2.90, 'boost_clock' => 4.30, 'tdp' => 65,  'socket' => 'LGA1200'],
-            ['model' => 'Intel Core i7', 'cores' => 8,  'threads' => 16, 'base_clock' => 3.60, 'boost_clock' => 5.00, 'tdp' => 125, 'socket' => 'LGA1200'],
-            ['model' => 'AMD Ryzen 5',    'cores' => 6,  'threads' => 12, 'base_clock' => 3.70, 'boost_clock' => 4.60, 'tdp' => 65,  'socket' => 'AM4'],
-            ['model' => 'AMD Ryzen 7',    'cores' => 8,  'threads' => 16, 'base_clock' => 3.80, 'boost_clock' => 4.70, 'tdp' => 105, 'socket' => 'AM4'],
-            ['model' => 'Intel Core i9', 'cores' => 16, 'threads' => 24, 'base_clock' => 3.20, 'boost_clock' => 5.20, 'tdp' => 125, 'socket' => 'LGA1700'],
-            ['model' => 'AMD Ryzen 9 ',    'cores' => 16, 'threads' => 32, 'base_clock' => 3.40, 'boost_clock' => 4.90, 'tdp' => 105, 'socket' => 'AM4'],
-            ['model' => 'Intel Core i3', 'cores' => 4,  'threads' => 8,  'base_clock' => 3.30, 'boost_clock' => 4.30, 'tdp' => 58,  'socket' => 'LGA1700'],
-            ['model' => 'AMD Ryzen 3',     'cores' => 4,  'threads' => 8,  'base_clock' => 3.60, 'boost_clock' => 3.90, 'tdp' => 65,  'socket' => 'AM4'],
-            ['model' => 'Intel Core i5', 'cores' => 10, 'threads' => 16, 'base_clock' => 2.50, 'boost_clock' => 4.60, 'tdp' => 65,  'socket' => 'LGA1700'],
-            ['model' => 'AMD Ryzen 5',    'cores' => 6,  'threads' => 12, 'base_clock' => 4.70, 'boost_clock' => 5.30, 'tdp' => 105, 'socket' => 'AM5'], 
+            ['model' => 'Intel Core i5', 'cores' => 6,  'threads' => 12, 'tdp' => 65,  'socket' => 'LGA 1200'],
+            ['model' => 'Intel Core i7', 'cores' => 8,  'threads' => 16,  'tdp' => 125, 'socket' => 'LGA 1200'],
+            ['model' => 'AMD Ryzen 5',    'cores' => 6,  'threads' => 12,  'tdp' => 65,  'socket' => 'AM4'],
+            ['model' => 'AMD Ryzen 7',    'cores' => 8,  'threads' => 16,   'tdp' => 105, 'socket' => 'AM4'],
+            ['model' => 'Intel Core i9', 'cores' => 16, 'threads' => 24,  'tdp' => 125, 'socket' => 'LGA 1700'],
+            ['model' => 'AMD Ryzen 9',    'cores' => 16, 'threads' => 32,  'tdp' => 105, 'socket' => 'AM4'],
+            ['model' => 'Intel Core i3', 'cores' => 4,  'threads' => 8, 'tdp' => 58,  'socket' => 'LGA 1700'],
+            ['model' => 'AMD Ryzen 3',     'cores' => 4,  'threads' => 8,   'tdp' => 65,  'socket' => 'AM4'],
+            ['model' => 'Intel Core i5', 'cores' => 10, 'threads' => 16,  'tdp' => 65,  'socket' => 'LGA 1700'],
+            ['model' => 'AMD Ryzen 5',    'cores' => 6,  'threads' => 12,  'tdp' => 105, 'socket' => 'AM5'], 
         ] as $cpu)
 
         Processor::create($cpu);
