@@ -293,8 +293,7 @@ class ProductSeeder extends Seeder
 
         $powerSupplyProduts = [
             [
-                'name' => 'Fonte de Alimentação ATX Corsair RM750x Shift Series 750W 80 Plus Gold Full Modular
-',
+                'name' => 'Fonte de Alimentação ATX Corsair RM750x Shift Series 750W 80 Plus Gold Full Modular',
                 'manufacturer_id' => 8,
                 'price' => 157.99,
                 'powersupply_id' => 1,
@@ -314,6 +313,38 @@ class ProductSeeder extends Seeder
                 'powersupply_id' => $power['powersupply_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $power['image_path'],
+            ]);
+        }
+
+        $cpuCoolerProduts = [
+            [
+                'name' => 'Cooler Master Hyper 212 Black Edition',
+                'manufacturer_id' => 15,
+                'price' => 39.99,
+                'cpu_cooler_id' => 1,
+                'image_path' => "images/cooler1.jpg"
+            ],  
+            [
+                'name' => 'Corsair iCUE H150i Elite Capellix XT',
+                'manufacturer_id' => 8,
+                'price' => 179.99,
+                'cpu_cooler_id' => 2,
+                'image_path' => "images/cooler2.jpg"
+            ],          
+        ];
+        
+        foreach ($cpuCoolerProduts as $cooler) {
+            Product::create([
+                'name' => $cooler['name'],
+                'manufacturer_id' => $cooler['manufacturer_id'],
+                'price' => $cooler['price'],
+                'sale_price' => rand(0,30),
+                'description' => $cooler['name'],
+                'category_id' => 4, 
+                'subcategory_id' => 18,
+                'cpu_cooler_id' => $cooler['cpu_cooler_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $cooler['image_path'],
             ]);
         }
             

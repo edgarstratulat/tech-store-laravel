@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Armazenamento;
+use App\Models\cpuCooler;
 use App\Models\GPU;
 use App\Models\Motherboard;
 use App\Models\PowerSupply;
@@ -72,5 +73,13 @@ class SpecsSeeder extends Seeder
         ] as $power)
 
         PowerSupply::create($power);
+
+        foreach([
+            ['socket' => 'AMD & INTEL','type' => 'Air Cooler', 'fan_rpm' => 2000, 'air_flow' => 42, 'rgb' => false],
+            ['socket' => 'AMD & INTEL','type' => 'Water Cooler', 'fan_rpm' => 2100,  'air_flow' => 65.57, 'rgb' => true],
+
+        ] as $cooler)
+
+        cpuCooler::create($cooler);
     }
 }

@@ -28,12 +28,12 @@ class Product extends Model
         'wifi',
         'stock',
         'image_path',
-
         'ram_id',
         'motherboard_id',
         'armazenamento_id',
         'cpu_id',
-        'powersupply_id'
+        'powersupply_id',
+        'cpu_cooler_id'
     ];
 
     public function sluggable(): array
@@ -91,9 +91,15 @@ class Product extends Model
     {
         return $this->belongsTo(GPU::class, 'gpu_id');
     }
+
     public function powerSupply()
     {
         return $this->belongsTo(PowerSupply::class, 'powersupply_id');
+    }
+
+    public function cpu_cooler()
+    {
+        return $this->belongsTo(cpuCooler::class, 'cpu_cooler_id');    
     }
 
 }

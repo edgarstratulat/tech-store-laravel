@@ -23,6 +23,7 @@
                     :gpu="gpu"
                     :motherboard="motherboard"
                     :powersupply="powersupply"
+                    :cpuCooler="cpuCooler"
                 />
             </div>
 
@@ -100,6 +101,10 @@ export default {
             default: () => [],
         },
         powersupply: {
+            type: Array,
+            default: () => [],
+        },
+        cpuCooler: {
             type: Array,
             default: () => [],
         },

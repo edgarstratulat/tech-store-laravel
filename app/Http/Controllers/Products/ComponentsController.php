@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Armazenamento;
 use App\Models\Button;
 use App\Models\Category;
+use App\Models\cpuCooler;
 use App\Models\GPU;
 use App\Models\Manufacturer;
 use App\Models\Motherboard;
@@ -107,6 +108,13 @@ class ComponentsController extends Controller
                     $q->whereIn('efficiency', $models);
                 });
             }),
+            AllowedFilter::callback('fan_rpm', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu_cooler', function($q) use ($models){
+                    $q->whereIn('fan_rpm', $models);
+                });
+            }),
             
         ])
         ->defaultSort('-created_at')
@@ -127,6 +135,7 @@ class ComponentsController extends Controller
         $gpu = GPU::select('id', 'model')->get();
         $mobo = Motherboard::select('id', 'chipset')->get();
         $psu = PowerSupply::select('id', 'efficiency')->get();
+        $cpucooler = cpuCooler::select('id','fan_rpm')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
@@ -144,7 +153,8 @@ class ComponentsController extends Controller
             'cpu' => $cpu,
             'gpu' => $gpu,
             'motherboard' => $mobo,
-            'powersupply' => $psu
+            'powersupply' => $psu,
+            'cpuCooler' => $cpucooler
         ]);
     }
 
@@ -743,10 +753,74 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 18)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('fan_rpm', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu_cooler', function($q) use ($models){
+                    $q->whereIn('fan_rpm', $models);
+                });
+            }),
+            AllowedFilter::callback('fan_type', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu_cooler', function($q) use ($models){
+                    $q->whereIn('type', $models);
+                });
+            }),
+            AllowedFilter::callback('fan_socket', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu_cooler', function($q) use ($models){
+                    $q->whereIn('socket', $models);
+                });
+            }),
+            AllowedFilter::callback('fan_rgb', function($query, $value){
+
+                $query->whereHas('cpu_cooler', function($q) use ($value){
+                    $q->where('rgb', $value);
+                });
+            }),
+
+        ])
+        ->defaultSort('-created_at')
+        ->allowedSorts([
+            'price', '-price', 'created_at'
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 18)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
+
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 18);
+        })->select('id', 'name')->get();
+
+        $cpucooler = cpuCooler::select('id', 'socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
 
         return Inertia::render('ComponentesPC/cpu-coolPage', [
             'buttons' => $buttons,
@@ -754,7 +828,9 @@ class ComponentsController extends Controller
             'isAdmin' => $isAdmin,
             'products' => $products,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'cpuCooler' => $cpucooler
         ]);
     }
 

@@ -11,6 +11,7 @@ const armazenamentoPage = currentPath.includes("/componentes/armazenamento");
 const gpuPage = currentPath.includes("/componentes/placas-graficas");
 const moboPage = currentPath.includes("/componentes/motherboards");
 const psuPage = currentPath.includes("/componentes/fontes-de-alimentacao");
+const coolerPage = currentPath.includes("/componentes/cpu-coolers");
 
 const isOpen = ref(false);
 const selectedFilters = ref({
@@ -55,6 +56,11 @@ const selectedFilters = ref({
     wattage: [],
     type_psu: [],
     modular: [],
+
+    fan_rpm: [],
+    fan_type: [],
+    fan_socket: [],
+    fan_rgb: [],
 });
 
 const closeSidebar = (event) => {
@@ -205,6 +211,20 @@ const applyFilters = () => {
             selectedFilters.value.modular;
     }
 
+    //Coolers
+    if (selectedFilters.value.fan_rpm) {
+        queryParams["filter[fan_rpm]"] = selectedFilters.value.fan_rpm;
+    }
+    if (selectedFilters.value.fan_type) {
+        queryParams["filter[fan_type]"] = selectedFilters.value.fan_type;
+    }
+    if (selectedFilters.value.fan_socket) {
+        queryParams["filter[fan_socket]"] = selectedFilters.value.fan_socket;
+    }
+    if (selectedFilters.value.fan_rgb) {
+        queryParams["filter[fan_rgb]"] = selectedFilters.value.fan_rgb;
+    }
+
     router.get(window.location.pathname, queryParams);
 };
 </script>
@@ -249,6 +269,10 @@ export default {
             default: () => [],
         },
         powersupply: {
+            type: Array,
+            default: () => [],
+        },
+        cpuCooler: {
             type: Array,
             default: () => [],
         },
@@ -492,6 +516,36 @@ export default {
                 return false;
             });
         },
+        uniqueRPM() {
+            const sizeRAM = new Set();
+            return this.cpuCooler.filter((ram) => {
+                if (!sizeRAM.has(ram.fan_rpm)) {
+                    sizeRAM.add(ram.fan_rpm);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueFanType() {
+            const sizeRAM = new Set();
+            return this.cpuCooler.filter((ram) => {
+                if (!sizeRAM.has(ram.type)) {
+                    sizeRAM.add(ram.type);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueFanSocket() {
+            const sizeRAM = new Set();
+            return this.cpuCooler.filter((ram) => {
+                if (!sizeRAM.has(ram.socket)) {
+                    sizeRAM.add(ram.socket);
+                    return true;
+                }
+                return false;
+            });
+        },
     },
 };
 </script>
@@ -563,7 +617,8 @@ export default {
                 !gpuPage &&
                 !moboPage &&
                 !ramPage &&
-                !psuPage
+                !psuPage &&
+                !coolerPage
             "
             class="mt-4"
         >
@@ -632,7 +687,8 @@ export default {
                 !armazenamentoPage &&
                 !gpuPage &&
                 !moboPage &&
-                !psuPage
+                !psuPage &&
+                !coolerPage
             "
             class="mt-4"
         >
@@ -663,7 +719,14 @@ export default {
         </div>
 
         <div
-            v-if="!cpuPage && !ramPage && !gpuPage && !moboPage && !psuPage"
+            v-if="
+                !cpuPage &&
+                !ramPage &&
+                !gpuPage &&
+                !moboPage &&
+                !psuPage &&
+                !coolerPage
+            "
             class="mt-4"
         >
             <label class="block text-md font-semibold mb-1"
@@ -696,7 +759,8 @@ export default {
                 !armazenamentoPage &&
                 !gpuPage &&
                 !moboPage &&
-                !psuPage
+                !psuPage &&
+                !coolerPage
             "
             class="mt-4"
         >
@@ -726,7 +790,8 @@ export default {
                 !armazenamentoPage &&
                 !gpuPage &&
                 !cpuPage &&
-                !psuPage
+                !psuPage &&
+                !coolerPage
             "
         >
             <div class="mt-4">
@@ -757,11 +822,12 @@ export default {
                 !armazenamentoPage &&
                 !gpuPage &&
                 !cpuPage &&
-                !moboPage
+                !moboPage &&
+                !coolerPage
             "
         >
             <div class="mt-4">
-                <label class="block text-md font-medium mb-1"
+                <label class="block text-md font-semibold mb-1"
                     >Certificação 80 PLUS</label
                 >
                 <div
@@ -966,7 +1032,8 @@ export default {
                 !armazenamentoPage &&
                 !ramPage &&
                 !moboPage &&
-                !psuPage
+                !psuPage &&
+                !coolerPage
             "
             class="mt-4"
         >
@@ -1121,6 +1188,7 @@ export default {
             </div>
         </div>
 
+        <!--PSU Page-->
         <div v-if="psuPage">
             <div class="mt-4">
                 <label class="block text-md font-medium mb-1"
@@ -1179,6 +1247,92 @@ export default {
                             class="form-checkbox size-4"
                         />
                         <span class="ml-2">{{ option.modular }} </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!--CPU Coolers-->
+        <div v-if="coolerPage">
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1">Categoria</label>
+                <select
+                    v-model="selectedFilters.fan_type"
+                    class="w-full border p-1 rounded"
+                >
+                    <option
+                        v-for="manu in uniqueFanType"
+                        :value="manu.type"
+                        :key="manu.id"
+                    >
+                        {{ manu.type }}
+                    </option>
+                </select>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-semibold mb-1"
+                    >Compatibilidade
+                </label>
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueFanSocket"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.socket"
+                            v-model="selectedFilters.fan_socket"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2">{{ option.socket }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1">RGB</label>
+                <div class="flex items-center space-x-4">
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            value="true"
+                            v-model="selectedFilters.fan_rgb"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2">Sim</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!--CPU Cooler Component-->
+        <div
+            v-if="
+                !ramPage &&
+                !armazenamentoPage &&
+                !gpuPage &&
+                !cpuPage &&
+                !moboPage &&
+                !psuPage
+            "
+        >
+            <div class="mt-4">
+                <label class="block text-md font-semibold mb-1"
+                    >Velocidade de Rotação (máx.)</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueRPM"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.fan_rpm"
+                            v-model="selectedFilters.fan_rpm"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2">{{ option.fan_rpm }} RPM</span>
                     </label>
                 </div>
             </div>
