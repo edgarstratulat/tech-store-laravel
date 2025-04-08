@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\GPU;
 use App\Models\Manufacturer;
 use App\Models\Motherboard;
+use App\Models\PowerSupply;
 use App\Models\Processor;
 use App\Models\Product;
 use App\Models\Ram;
@@ -583,7 +584,6 @@ class ComponentsController extends Controller
                     $q->whereIn('interface', $models);
                 });
             }),
-            
         ])
         ->defaultSort('-created_at')
         ->allowedSorts([
@@ -623,11 +623,74 @@ class ComponentsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('efficiency_80_plus', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('efficiency', $models);
+                });
+            }),
+            AllowedFilter::callback('powersupply_wattage', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('wattage', $models);
+                });
+            }),
+            AllowedFilter::callback('powersupply_format', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('format', $models);
+                });
+            }),
+            AllowedFilter::callback('powersupply_modular', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('modular', $models);
+                });
+            }),
+        ])
+        ->defaultSort('-created_at')
+        ->allowedSorts([
+            'price', '-price', 'created_at'
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 17);
+        })->select('id', 'name')->get();
+
+        $powersupply = PowerSupply::select('format', 'wattage','efficiency','modular')->get();
 
         return Inertia::render('ComponentesPC/fontePage', [
             'buttons' => $buttons,
@@ -635,7 +698,9 @@ class ComponentsController extends Controller
             'isAdmin' => $isAdmin,
             'products' => $products,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'powersupply' => $powersupply
         ]);
     }
 

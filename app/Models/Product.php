@@ -32,7 +32,8 @@ class Product extends Model
         'ram_id',
         'motherboard_id',
         'armazenamento_id',
-        'cpu_id'
+        'cpu_id',
+        'powersupply_id'
     ];
 
     public function sluggable(): array
@@ -53,42 +54,46 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function subcategory()
     {
-        return $this->belongsTo(SubCategory::class);
+        return $this->belongsTo(SubCategory::class, 'subcategory_id');
     }
 
     public function manufacturer()
     {
-        return $this->belongsTo(Manufacturer::class);
+        return $this->belongsTo(Manufacturer::class, 'manufacturer_id');
     }
 
     public function ram()
     {
-        return $this->belongsTo(Ram::class);
+        return $this->belongsTo(Ram::class, 'ram_id');
     }
 
     public function armazenamento()
     {
-        return $this->belongsTo(Armazenamento::class);
+        return $this->belongsTo(Armazenamento::class, 'armazenamento_id');
     }
 
     public function cpu()
     {
-        return $this->belongsTo(Processor::class);
+        return $this->belongsTo(Processor::class, 'cpu_id');
     }
 
     public function motherboard()
     {
-        return $this->belongsTo(Motherboard::class);
+        return $this->belongsTo(Motherboard::class, 'motherboard_id');
     }
 
     public function gpu()
     {
-        return $this->belongsTo(GPU::class);
+        return $this->belongsTo(GPU::class, 'gpu_id');
+    }
+    public function powerSupply()
+    {
+        return $this->belongsTo(PowerSupply::class, 'powersupply_id');
     }
 
 }

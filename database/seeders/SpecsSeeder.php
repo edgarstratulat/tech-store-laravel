@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Armazenamento;
 use App\Models\GPU;
 use App\Models\Motherboard;
+use App\Models\PowerSupply;
 use App\Models\Processor;
 use App\Models\Ram;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -65,5 +66,11 @@ class SpecsSeeder extends Seeder
 
         GPU::create($gpu);
 
+
+        foreach([
+            ['wattage' => 750, 'efficiency' => '80+ Gold','modular' => 'Full Modular',  'format' => 'ATX'],
+        ] as $power)
+
+        PowerSupply::create($power);
     }
 }

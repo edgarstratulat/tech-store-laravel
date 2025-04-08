@@ -290,6 +290,32 @@ class ProductSeeder extends Seeder
                 'image_path' => $gpu['image_path'],
             ]);
         }
+
+        $powerSupplyProduts = [
+            [
+                'name' => 'Fonte de Alimentação ATX Corsair RM750x Shift Series 750W 80 Plus Gold Full Modular
+',
+                'manufacturer_id' => 8,
+                'price' => 157.99,
+                'powersupply_id' => 1,
+                'image_path' => "images/fonte1.jpg"
+            ],            
+        ];
+        
+        foreach ($powerSupplyProduts as $power) {
+            Product::create([
+                'name' => $power['name'],
+                'manufacturer_id' => $power['manufacturer_id'],
+                'price' => $power['price'],
+                'sale_price' => rand(0,30),
+                'description' => $power['name'],
+                'category_id' => 4, 
+                'subcategory_id' => 17,
+                'powersupply_id' => $power['powersupply_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $power['image_path'],
+            ]);
+        }
             
     }
 }
