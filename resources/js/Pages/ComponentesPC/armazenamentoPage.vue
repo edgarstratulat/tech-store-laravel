@@ -38,7 +38,7 @@
 import Navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
 import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
-import FilterSideBar from "../../Components/Inputs/Navbar/FilterSideBar/categories/PcComponents/Storage/navbar.vue";
+import FilterSideBar from "../../Components/Inputs/Navbar/FilterSideBar/navbar.vue";
 
 export default {
     components: {

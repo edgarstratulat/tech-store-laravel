@@ -85,7 +85,28 @@ class ComponentsController extends Controller
                 $query->whereHas('cpu', function($q) use ($models){
                     $q->whereIn('model', $models);
                 });
-            })
+            }),
+            AllowedFilter::callback('gpu_model', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('model', $models);
+                });
+            }),
+            AllowedFilter::callback('motherboard_chipset', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('motherboard', function($q) use ($models){
+                    $q->whereIn('chipset', $models);
+                });
+            }),
+            AllowedFilter::callback('efficiency_80_plus', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('efficiency', $models);
+                });
+            }),
             
         ])
         ->defaultSort('-created_at')
@@ -103,6 +124,9 @@ class ComponentsController extends Controller
         $ram = Ram::select('id', 'size')->get();
         $armazenamento = Armazenamento::select('id', 'size')->get();
         $cpu = Processor::select('id', 'model')->get();
+        $gpu = GPU::select('id', 'model')->get();
+        $mobo = Motherboard::select('id', 'chipset')->get();
+        $psu = PowerSupply::select('id', 'efficiency')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
@@ -117,7 +141,10 @@ class ComponentsController extends Controller
             'subcategory' => $subCategory,
             'ram' => $ram,
             'armazenamento' => $armazenamento,
-            'cpu' => $cpu
+            'cpu' => $cpu,
+            'gpu' => $gpu,
+            'motherboard' => $mobo,
+            'powersupply' => $psu
         ]);
     }
 

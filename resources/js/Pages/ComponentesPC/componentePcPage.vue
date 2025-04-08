@@ -20,6 +20,9 @@
                     :ram="ram"
                     :armazenamento="armazenamento"
                     :cpu="cpu"
+                    :gpu="gpu"
+                    :motherboard="motherboard"
+                    :powersupply="powersupply"
                 />
             </div>
 
@@ -85,6 +88,18 @@ export default {
             default: () => [],
         },
         cpu: {
+            type: Array,
+            default: () => [],
+        },
+        gpu: {
+            type: Array,
+            default: () => [],
+        },
+        motherboard: {
+            type: Array,
+            default: () => [],
+        },
+        powersupply: {
             type: Array,
             default: () => [],
         },
