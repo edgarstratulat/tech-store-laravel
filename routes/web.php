@@ -55,7 +55,7 @@ Route::get('/componentes', [ComponentsController::class, 'showComponents']);
 Route::get('/componentes/processadores', [ComponentsController::class, 'showCPU']);
 Route::get('/componentes/motherboards', [ComponentsController::class, 'showMotherboards']);
 Route::get('/componentes/placas-graficas', [ComponentsController::class, 'showGPU']);
-Route::get('/componentes/memorias-ram', [ComponentsController::class, 'showRAM']);
+Route::get('/componentes/memoria-ram', [ComponentsController::class, 'showRAM']);
 Route::get('/componentes/armazenamento', [ComponentsController::class, 'showArmazenamento']);
 Route::get('/componentes/fontes-de-alimentacao', [ComponentsController::class, 'showFontes']);
 Route::get('/componentes/caixas-de-computadores', [ComponentsController::class, 'showCaixas']);

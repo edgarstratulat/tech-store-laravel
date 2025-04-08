@@ -41,7 +41,13 @@
                     <div class="flex-grow">
                         <h2 class="text-xs mb-2 text-gray-400">
                             {{ showCategories(promo.category_id) }}
-                            {{ showSubcategories(promo.subcategory_id) }}
+                            <a
+                                :href="`/${promo.category.slug}/${promo.subcategory.slug}`"
+                                class="cursor-pointer hover:text-gray-500"
+                                >{{
+                                    showSubcategories(promo.subcategory_id)
+                                }}</a
+                            >
                         </h2>
                     </div>
 
