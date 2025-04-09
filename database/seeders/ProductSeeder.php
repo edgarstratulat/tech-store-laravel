@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use Carbon\Carbon;
 
 class ProductSeeder extends Seeder
 {
@@ -117,6 +118,7 @@ class ProductSeeder extends Seeder
                 'included_cooler' => $cpu['included_cooler'],
                 'stock' => rand(0, 50),
                 'image_path' => $cpu['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -158,6 +160,7 @@ class ProductSeeder extends Seeder
                 'ram_id' => $ram['ram_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $ram['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -211,6 +214,7 @@ class ProductSeeder extends Seeder
                 'armazenamento_id' => $ssd['armazenamento_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $ssd['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -249,6 +253,7 @@ class ProductSeeder extends Seeder
                 'wifi' => $mobo['wifi'],
                 'stock' => rand(0, 50),
                 'image_path' => $mobo['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -288,6 +293,7 @@ class ProductSeeder extends Seeder
                 'gpu_id' => $gpu['gpu_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $gpu['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -313,6 +319,7 @@ class ProductSeeder extends Seeder
                 'powersupply_id' => $power['powersupply_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $power['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -345,6 +352,7 @@ class ProductSeeder extends Seeder
                 'cpu_cooler_id' => $cooler['cpu_cooler_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $cooler['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
 
@@ -384,6 +392,7 @@ class ProductSeeder extends Seeder
                 'pc_case_id' => $case['pc_case_id'],
                 'stock' => rand(0, 50),
                 'image_path' => $case['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
         
