@@ -52,9 +52,6 @@ const applyFilters = () => {
     if (selectedFilters.value.category) {
         queryParams["filter[category]"] = selectedFilters.value.category;
     }
-    if (selectedFilters.value.subcategory) {
-        queryParams["filter[subcategory]"] = selectedFilters.value.subcategory;
-    }
 
     if (selectedFilters.value.reconditioned) {
         queryParams["filter[reconditioned]"] =
@@ -149,11 +146,11 @@ export default {
         <div class="mt-4">
             <label class="block text-sm font-medium mb-1">Categoria</label>
             <select
-                v-model="selectedFilters.subcategory"
+                v-model="selectedFilters.category"
                 class="w-full border p-1 rounded"
             >
                 <option
-                    v-for="manu in subcategory"
+                    v-for="manu in category"
                     :value="manu.id"
                     :key="manu.id"
                 >
