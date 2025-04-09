@@ -65,8 +65,8 @@ class DiscountProductsController extends Controller
             $query->where('sale_price', '>', 1);
         })->select('id', 'name')->get();
 
-        $category = Category::select('id', 'name', 'slug')->get();
-        $subCategory = subCategory::select('id', 'name', 'slug')->get();
+        $category = Category::select('id', 'name')->get();
+        $subCategory = subCategory::select('id', 'name')->get();
 
         return Inertia::render('promoPage', [
             'products' => $products,

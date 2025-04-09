@@ -335,7 +335,7 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 13)->paginate(12);
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 13)->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 13);
@@ -434,7 +434,7 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 14)->paginate(12);
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 14)->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 14);
@@ -532,7 +532,7 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12);
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -632,7 +632,7 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12);
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -725,7 +725,7 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12);
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -818,7 +818,7 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 18)->paginate(12);
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 18)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -940,7 +940,7 @@ class ComponentsController extends Controller
         ->allowedSorts([
             'price', '-price', 'created_at'
         ])
-        ->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 19)->paginate(12);
+        ->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 19)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
