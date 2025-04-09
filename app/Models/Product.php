@@ -33,7 +33,9 @@ class Product extends Model
         'armazenamento_id',
         'cpu_id',
         'powersupply_id',
-        'cpu_cooler_id'
+        'cpu_cooler_id',
+        'pc_case_id',
+        'smartphone_id'
     ];
 
     public function sluggable(): array
@@ -104,6 +106,10 @@ class Product extends Model
     public function pc_case()
     {
         return $this->belongsTo(ComputerCase::class, 'pc_case_id');
+    }
+    public function smartphone()
+    {
+        return $this->belongsTo(Smartphone::class, ' smartphone_id');
     }
 
 }

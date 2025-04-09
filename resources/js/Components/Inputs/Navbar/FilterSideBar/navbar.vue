@@ -14,6 +14,8 @@ const psuPage = currentPath.includes("/componentes/fontes-de-alimentacao");
 const coolerPage = currentPath.includes("/componentes/cpu-coolers");
 const casePage = currentPath.includes("/componentes/caixas-para-computadores");
 
+const phonePage = currentPath.includes("/telemoveis");
+
 const isOpen = ref(false);
 const selectedFilters = ref({
     manufacturer: "",
@@ -803,7 +805,8 @@ export default {
                 !moboPage &&
                 !psuPage &&
                 !coolerPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
             class="mt-4"
         >
@@ -841,7 +844,8 @@ export default {
                 !moboPage &&
                 !psuPage &&
                 !coolerPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
             class="mt-4"
         >
@@ -877,7 +881,8 @@ export default {
                 !moboPage &&
                 !psuPage &&
                 !coolerPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
             class="mt-4"
         >
@@ -909,7 +914,8 @@ export default {
                 !cpuPage &&
                 !psuPage &&
                 !coolerPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
         >
             <div class="mt-4">
@@ -942,7 +948,8 @@ export default {
                 !cpuPage &&
                 !moboPage &&
                 !coolerPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
         >
             <div class="mt-4">
@@ -975,7 +982,8 @@ export default {
                 !cpuPage &&
                 !moboPage &&
                 !coolerPage &&
-                !psuPage
+                !psuPage &&
+                !phonePage
             "
         >
             <div class="mt-4">
@@ -1182,7 +1190,8 @@ export default {
                 !moboPage &&
                 !psuPage &&
                 !coolerPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
             class="mt-4"
         >
@@ -1463,7 +1472,8 @@ export default {
                 !cpuPage &&
                 !moboPage &&
                 !psuPage &&
-                !casePage
+                !casePage &&
+                !phonePage
             "
         >
             <div class="mt-4">

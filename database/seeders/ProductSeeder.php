@@ -395,6 +395,49 @@ class ProductSeeder extends Seeder
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
+
+        $phoneProducts = [
+            [
+                'name' => 'Smartphone Apple iPhone 16 Pro Max 6.9" 256GB Titânio Deserto',
+                'manufacturer_id' => 1,
+                'price' => 1399.99,
+                'smartphone_id' => 1,
+                'subcategory_id' => 10,
+                'image_path' => "images/phone1.jpg"
+            ],
+            [
+                'name' => 'Smartphone Samsung Galaxy S25 Ultra 6.9" 12GB/512GB Dual SIM Preto Titânio',
+                'manufacturer_id' => 2,
+                'price' => 1619.99,
+                'smartphone_id' => 2,
+                'subcategory_id' => 11,
+                'image_path' => "images/phone2.jpg"
+            ],
+            [
+                'name' => 'Smartphone Google Pixel 9 Pro 6.8" 16GB/128GB Dual SIM Preto - Obsidian',
+                'manufacturer_id' => 29,
+                'price' => 999.99,
+                'smartphone_id' => 3,
+                'subcategory_id' => 11,
+                'image_path' => "images/phone3.jpg"
+            ],
+        ];
+        
+        foreach ($phoneProducts as $phone) {
+            Product::create([
+                'name' => $phone['name'],
+                'manufacturer_id' => $phone['manufacturer_id'],
+                'price' => $phone['price'],
+                'sale_price' => rand(0, 30),
+                'description' => $phone['name'],
+                'category_id' => 3,
+                'subcategory_id' => $phone['subcategory_id'], 
+                'smartphone_id' => $phone['smartphone_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $phone['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
         
             
     }
