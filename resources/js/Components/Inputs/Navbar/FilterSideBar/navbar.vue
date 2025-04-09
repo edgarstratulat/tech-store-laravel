@@ -266,6 +266,8 @@ const applyFilters = () => {
             selectedFilters.value.max_cooler_height;
     }
 
+    console.log(queryParams);
+
     router.get(window.location.pathname, queryParams);
 };
 </script>
