@@ -675,7 +675,7 @@ export default {
                 v-model="selectedFilters.sort"
                 class="w-full border p-1 rounded"
             >
-                <option value="created_at">Mais Recentes</option>
+                <option value="-created_at">Mais Recentes</option>
                 <option value="price">Preço mais baixo</option>
                 <option value="-price">Preço mais alto</option>
             </select>
