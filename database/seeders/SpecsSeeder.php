@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Armazenamento;
+use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
 use App\Models\Motherboard;
@@ -38,48 +39,200 @@ class SpecsSeeder extends Seeder
         Armazenamento::create($armazenamento);
 
         foreach([
-            ['model' => 'Intel Core i5', 'cores' => 6,  'threads' => 12, 'tdp' => 65,  'socket' => 'LGA 1200'],
-            ['model' => 'Intel Core i7', 'cores' => 8,  'threads' => 16,  'tdp' => 125, 'socket' => 'LGA 1200'],
-            ['model' => 'AMD Ryzen 5',    'cores' => 6,  'threads' => 12,  'tdp' => 65,  'socket' => 'AM4'],
-            ['model' => 'AMD Ryzen 7',    'cores' => 8,  'threads' => 16,   'tdp' => 105, 'socket' => 'AM4'],
-            ['model' => 'Intel Core i9', 'cores' => 16, 'threads' => 24,  'tdp' => 125, 'socket' => 'LGA 1700'],
-            ['model' => 'AMD Ryzen 9',    'cores' => 16, 'threads' => 32,  'tdp' => 105, 'socket' => 'AM4'],
-            ['model' => 'Intel Core i3', 'cores' => 4,  'threads' => 8, 'tdp' => 58,  'socket' => 'LGA 1700'],
-            ['model' => 'AMD Ryzen 3',     'cores' => 4,  'threads' => 8,   'tdp' => 65,  'socket' => 'AM4'],
-            ['model' => 'Intel Core i5', 'cores' => 10, 'threads' => 16,  'tdp' => 65,  'socket' => 'LGA 1700'],
-            ['model' => 'AMD Ryzen 5',    'cores' => 6,  'threads' => 12,  'tdp' => 105, 'socket' => 'AM5'], 
+            [
+                'model' => 'Intel Core i5',
+                'cores' => 6, 
+                'threads' => 12,
+                'tdp' => 65, 
+                'socket' => 'LGA 1200'
+            ],
+            [
+                'model' => 'Intel Core i7',
+                'cores' => 8, 
+                'threads' => 16, 
+                'tdp' => 125,
+                'socket' => 'LGA 1200'
+            ],
+            [
+                'model' => 'AMD Ryzen 5',
+                'cores' => 6, 
+                'threads' => 12,
+                'tdp' => 65,
+                'socket' => 'AM4'
+            ],
+            [
+                'model' => 'AMD Ryzen 7',
+                'cores' => 8,
+                'threads' => 16,
+                'tdp' => 105,
+                'socket' => 'AM4'
+            ],
+            [
+                'model' => 'Intel Core i9',
+                'cores' => 16,
+                'threads' => 24,
+                'tdp' => 125,
+                'socket' =>
+                'LGA 1700'
+            ],
+            [
+                'model' => 'AMD Ryzen 9',
+                'cores' => 16,
+                'threads' => 32,
+                'tdp' => 105,
+                'socket' => 'AM4'
+            ],
+            [
+                'model' => 'Intel Core i3',
+                'cores' => 4, 
+                'threads' => 8,
+                'tdp' => 58,
+                'socket' => 'LGA 1700'
+            ],
+            [
+                'model' => 'AMD Ryzen 3',
+                'cores' => 4,  'threads' => 8,
+                'tdp' => 65,
+                'socket' => 'AM4'
+            ],
+            [
+                'model' => 'Intel Core i5',
+                'cores' => 10,
+                'threads' => 16,
+                'tdp' => 65,
+                'socket' => 'LGA 1700'
+            ],
+            [
+                'model' => 'AMD Ryzen 5',
+                'cores' => 6,
+                'threads' => 12,
+                'tdp' => 105,
+                'socket' => 'AM5'
+            ], 
         ] as $cpu)
 
         Processor::create($cpu);
 
         foreach([
-            ['format' => 'ATX', 'chipset' => 'Intel Z790', 'cpu_socket' => 'LGA 1700', 'ram_support' => 'DDR5', 'max_ram' => 192],
-            ['format' => 'ATX', 'chipset' => 'AMD B850', 'cpu_socket' => 'AM5', 'ram_support' => 'DDR5', 'max_ram' => 256],
+            [
+                'format' => 'ATX',
+                'chipset' => 'Intel Z790',
+                'cpu_socket' => 'LGA 1700',
+                'ram_support' => 'DDR5', 
+                'max_ram' => 192
+            ],
+            [
+                'format' => 'ATX',
+                'chipset' => 'AMD B850',
+                'cpu_socket' => 'AM5',
+                'ram_support' => 'DDR5',
+                'max_ram' => 256
+            ],
         ] as $motherboard)
 
         Motherboard::create($motherboard);
 
         foreach([
-            ['category' => 'Placas gráficas Nvidia','model' => 'GeForce RTX 4090',   'vram' => 24, 'type_vram' => 'GDDR6X', 'interface' => 'PCIe 4.0 x16', 'tdp' => 450],
-            ['category' => 'Placas gráficas AMD','model' => 'Radeon RX 9070XT',   'vram' => 16, 'type_vram' => 'GDDR6', 'interface' => 'PCIe 5.0 x16', 'tdp' => 317],
-            ['category' => 'Placas gráficas Nvidia','model' => 'GeForce RTX 5090',   'vram' => 32, 'type_vram' => 'GDDR7', 'interface' => 'PCIe 5.0 x16', 'tdp' => 575],
+            [
+                'category' => 'Placas gráficas Nvidia',
+                'model' => 'GeForce RTX 4090',
+                'vram' => 24,
+                'type_vram' => 'GDDR6X',
+                'interface' => 'PCIe 4.0 x16',
+                'tdp' => 450
+            ],
+            [
+                'category' => 'Placas gráficas AMD',
+                'model' => 'Radeon RX 9070XT',
+                'vram' => 16,
+                'type_vram' => 'GDDR6',
+                'interface' => 'PCIe 5.0 x16',
+                'tdp' => 317
+            ],
+            [
+                'category' => 'Placas gráficas Nvidia',
+                'model' => 'GeForce RTX 5090',
+                'vram' => 32,
+                'type_vram' => 'GDDR7',
+                'interface' => 'PCIe 5.0 x16',
+                'tdp' => 575
+            ],
         ] as $gpu)
 
         GPU::create($gpu);
 
 
         foreach([
-            ['wattage' => 750, 'efficiency' => '80+ Gold','modular' => 'Full Modular',  'format' => 'ATX'],
+            [
+                'wattage' => 750,
+                'efficiency' => '80+ Gold',
+                'modular' => 'Full Modular',
+                'format' => 'ATX'
+            ],
         ] as $power)
 
         PowerSupply::create($power);
 
         foreach([
-            ['socket' => 'AMD & INTEL','type' => 'Air Cooler', 'fan_rpm' => 2000, 'air_flow' => 42, 'rgb' => false],
-            ['socket' => 'AMD & INTEL','type' => 'Water Cooler', 'fan_rpm' => 2100,  'air_flow' => 65.57, 'rgb' => true],
+            [
+                'socket' => json_encode(['AMD', 'INTEL']),
+                'type' => 'Air Cooler',
+                'fan_rpm' => 2000,
+                'air_flow' => 42,
+                'rgb' => false
+            ],
+            [
+                'socket' => json_encode(['AMD', 'INTEL']),
+                'type' => 'Water Cooler',
+                'fan_rpm' => 2100,
+                'air_flow' => 65.57,
+                'rgb' => true
+            ],
 
         ] as $cooler)
 
         cpuCooler::create($cooler);
+
+            
+        foreach([
+            [
+                'format' => 'Mid Tower',
+                'motherboard_supported' => json_encode(['ATX', 'micro-ATX', 'ITX']),
+                'number_front_fans' => 3,
+                'number_lower_fans' => 0,
+                'number_upper_fans' => 2,
+                'number_rear_fans' => 1,
+                'max_gpu_length' => 360,
+                'max_cooler_height' => 165,
+                'tempered_glass' => true,
+                'rgb' => true,
+            ],
+            [
+                'format' => 'Mini Tower',
+                'motherboard_supported' => json_encode(['micro-ATX', 'ITX']),
+                'number_front_fans' => 2,
+                'number_lower_fans' => 3,
+                'number_upper_fans' => 3,
+                'number_rear_fans' => 1,
+                'max_gpu_length' => 370,
+                'max_cooler_height' => 170,
+                'tempered_glass' => true,
+                'rgb' => false,
+            ],
+            [
+                'format' => 'Full Tower',
+                'motherboard_supported' => json_encode(['EATX', 'ATX', 'micro-ATX', 'ITX']),
+                'number_front_fans' => 3,
+                'number_lower_fans' => 2,
+                'number_upper_fans' => 3,
+                'number_rear_fans' => 1,
+                'max_gpu_length' => 420,
+                'max_cooler_height' => 185,
+                'tempered_glass' => true,
+                'rgb' => true,
+            ],
+        ] as $pc_case)
+
+        ComputerCase::create($pc_case);
     }
 }
