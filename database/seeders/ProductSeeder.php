@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     {
         $cpuProducts = [
             [
-                'name' => 'Intel Core i5-10400F',
+                'name' => 'Processador Intel Core i5-10400F',
                 'manufacturer_id' => 7,
                 'price' => 129.99,
                 'cpu_id' => 1,
@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/intel_i5_10400f.jpeg'
             ],
             [
-                'name' => 'Intel Core i5-14400F',
+                'name' => 'Processador Intel Core i5-14400F',
                 'manufacturer_id' => 7,
                 'price' => 329.99,
                 'cpu_id' => 1,
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/intel_i5_10400f.jpeg'
             ],
             [
-                'name' => 'Intel Core i7-11700K',
+                'name' => 'Processador Intel Core i7-11700K',
                 'manufacturer_id' => 7,
                 'price' => 339.99,
                 'cpu_id' => 2,
@@ -40,7 +40,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/intel_i7_11700k.jpeg'
             ],
             [
-                'name' => 'AMD Ryzen 5 5600X',
+                'name' => 'Processador AMD Ryzen 5 5600X',
                 'manufacturer_id' => 26,
                 'price' => 189.99,
                 'cpu_id' => 3,
@@ -48,7 +48,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/ryzen_5_5600x.jpeg'
             ],
             [
-                'name' => 'AMD Ryzen 7 5800X',
+                'name' => 'Processador AMD Ryzen 7 5800X',
                 'manufacturer_id' => 26,
                 'price' => 289.99,
                 'cpu_id' => 4,
@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/ryzen_7_5800x.jpeg'
             ],
             [
-                'name' => 'Intel Core i9-12900K',
+                'name' => 'Processador Intel Core i9-12900K',
                 'manufacturer_id' => 7,
                 'price' => 549.99,
                 'cpu_id' => 5,
@@ -64,7 +64,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/intel_i9_12900k.jpeg'
             ],
             [
-                'name' => 'AMD Ryzen 9 5950X',
+                'name' => 'Processador AMD Ryzen 9 5950X',
                 'manufacturer_id' => 26,
                 'price' => 649.99,
                 'cpu_id' => 6,
@@ -72,7 +72,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/ryzen_9_5950x.jpeg'
             ],
             [
-                'name' => 'Intel Core i3-12100F',
+                'name' => 'Processador Intel Core i3-12100F',
                 'manufacturer_id' => 7,
                 'price' => 99.99,
                 'cpu_id' => 7,
@@ -80,7 +80,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/intel_i3_12100f.jpeg'
             ],
             [
-                'name' => 'AMD Ryzen 3 3100',
+                'name' => 'Processador AMD Ryzen 3 3100',
                 'manufacturer_id' => 26,
                 'price' => 89.99,
                 'cpu_id' => 8,
@@ -88,7 +88,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/ryzen_3_3100.jpeg'
             ],
             [
-                'name' => 'Intel Core i5-13400F',
+                'name' => 'Processador Intel Core i5-13400F',
                 'manufacturer_id' => 7,
                 'price' => 209.99,
                 'cpu_id' => 9,
@@ -96,7 +96,7 @@ class ProductSeeder extends Seeder
                 'image_path' => 'images/intel_i5_13400f.jpeg'
             ],
             [
-                'name' => 'AMD Ryzen 5 7600X',
+                'name' => 'Processador AMD Ryzen 5 7600X',
                 'manufacturer_id' => 26,
                 'price' => 249.99,
                 'cpu_id' => 10,
@@ -325,14 +325,14 @@ class ProductSeeder extends Seeder
 
         $cpuCoolerProduts = [
             [
-                'name' => 'Cooler Master Hyper 212 Black Edition',
+                'name' => 'Air Cooler CPU Cooler Master Hyper 212 Black Edition',
                 'manufacturer_id' => 15,
                 'price' => 39.99,
                 'cpu_cooler_id' => 1,
                 'image_path' => "images/cooler1.jpg"
             ],  
             [
-                'name' => 'Corsair iCUE H150i Elite Capellix XT',
+                'name' => 'Water Cooler Corsair iCUE H150i Elite Capellix XT',
                 'manufacturer_id' => 8,
                 'price' => 179.99,
                 'cpu_cooler_id' => 2,
