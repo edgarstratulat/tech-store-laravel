@@ -58,7 +58,7 @@ Route::get('/componentes/placas-graficas', [ComponentsController::class, 'showGP
 Route::get('/componentes/memoria-ram', [ComponentsController::class, 'showRAM']);
 Route::get('/componentes/armazenamento', [ComponentsController::class, 'showArmazenamento']);
 Route::get('/componentes/fontes-de-alimentacao', [ComponentsController::class, 'showFontes']);
-Route::get('/componentes/caixas-de-computadores', [ComponentsController::class, 'showCaixas']);
+Route::get('/componentes/caixas-para-computadores', [ComponentsController::class, 'showCaixas']);
 Route::get('/componentes/cpu-coolers', [ComponentsController::class, 'showCPUCoolers']);
 
 //Perifericos

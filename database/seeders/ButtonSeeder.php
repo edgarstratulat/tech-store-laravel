@@ -67,13 +67,13 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => json_encode([
                     ["button_name" => "Componentes para PC","icon" => null, "route" => "/componentes"],
                     ["button_name" => "Processadores","icon" => null, "route" => "/componentes/processadores"],
-                    ["button_name" => "Memória RAM","icon" => null, "route" => "/componentes/memorias-ram"],
+                    ["button_name" => "Memória RAM","icon" => null, "route" => "/componentes/memoria-ram"],
                     ["button_name" => "Armazenamento","icon" => null, "route" => "/componentes/armazenamento"],
                     ["button_name" => "Motherboards","icon" => null, "route" => "/componentes/motherboards"],
                     ["button_name" => "Placas Gráficas","icon" => null, "route" => "/componentes/placas-graficas"],
                     ["button_name" => "Fontes de Alimentação","icon" => null, "route" => "/componentes/fontes-de-alimentacao"],
                     ["button_name" => "CPU Coolers","icon" => null, "route" => "/componentes/cpu-coolers"],
-                    ["button_name" => "Caixas para Computadores","icon" => null, "route" => "/componentes/caixas-de-computadores"],
+                    ["button_name" => "Caixas para Computadores","icon" => null, "route" => "/componentes/caixas-para-computadores"],
                 ]), 
             ],
             [
