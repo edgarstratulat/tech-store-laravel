@@ -5,13 +5,14 @@ import { router, usePage } from "@inertiajs/vue3";
 const page = usePage();
 const currentPath = page.url;
 
-const ramPage = currentPath.includes("/componentes/memorias-ram");
+const ramPage = currentPath.includes("/componentes/memoria-ram");
 const cpuPage = currentPath.includes("/componentes/processadores");
 const armazenamentoPage = currentPath.includes("/componentes/armazenamento");
 const gpuPage = currentPath.includes("/componentes/placas-graficas");
 const moboPage = currentPath.includes("/componentes/motherboards");
 const psuPage = currentPath.includes("/componentes/fontes-de-alimentacao");
 const coolerPage = currentPath.includes("/componentes/cpu-coolers");
+const casePage = currentPath.includes("/componentes/caixas-para-computadores");
 
 const isOpen = ref(false);
 const selectedFilters = ref({
@@ -61,6 +62,15 @@ const selectedFilters = ref({
     fan_type: [],
     fan_socket: [],
     fan_rgb: [],
+
+    tempered_glass: [],
+    case_format: [],
+    number_front_fans: [],
+    number_rear_fans: [],
+    number_upper_fans: [],
+    number_lower_fans: [],
+    max_gpu_length: [],
+    max_cooler_height: [],
 });
 
 const closeSidebar = (event) => {
@@ -225,6 +235,35 @@ const applyFilters = () => {
         queryParams["filter[fan_rgb]"] = selectedFilters.value.fan_rgb;
     }
 
+    //PC Cases
+    if (selectedFilters.value.tempered_glass) {
+        queryParams["filter[tempered_glass]"] =
+            selectedFilters.value.tempered_glass;
+    }
+    if (selectedFilters.value.case_format) {
+        queryParams["filter[case_format]"] = selectedFilters.value.case_format;
+    }
+    if (selectedFilters.value.number_front_fans) {
+        queryParams["filter[case_number_front_fans]"] =
+            selectedFilters.value.number_front_fans;
+    }
+    if (selectedFilters.value.number_upper_fans) {
+        queryParams["filter[case_number_upper_fans]"] =
+            selectedFilters.value.number_upper_fans;
+    }
+    if (selectedFilters.value.number_lower_fans) {
+        queryParams["filter[case_number_lower_fans]"] =
+            selectedFilters.value.number_lower_fans;
+    }
+    if (selectedFilters.value.max_gpu_length) {
+        queryParams["filter[max_gpu_length]"] =
+            selectedFilters.value.max_gpu_length;
+    }
+    if (selectedFilters.value.max_cooler_height) {
+        queryParams["filter[max_cooler_height]"] =
+            selectedFilters.value.max_cooler_height;
+    }
+
     router.get(window.location.pathname, queryParams);
 };
 </script>
@@ -273,6 +312,10 @@ export default {
             default: () => [],
         },
         cpuCooler: {
+            type: Array,
+            default: () => [],
+        },
+        PCcases: {
             type: Array,
             default: () => [],
         },
@@ -546,6 +589,76 @@ export default {
                 return false;
             });
         },
+        uniqueCaseFormat() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.format)) {
+                    sizeRAM.add(ram.format);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueFrontFans() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.number_front_fans)) {
+                    sizeRAM.add(ram.number_front_fans);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueLowerFans() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.number_lower_fans)) {
+                    sizeRAM.add(ram.number_lower_fans);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueUpperFans() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.number_upper_fans)) {
+                    sizeRAM.add(ram.number_upper_fans);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueRearFans() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.number_rear_fans)) {
+                    sizeRAM.add(ram.number_rear_fans);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueMaxGpu() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.max_gpu_length)) {
+                    sizeRAM.add(ram.max_gpu_length);
+                    return true;
+                }
+                return false;
+            });
+        },
+        uniqueMaxCooler() {
+            const sizeRAM = new Set();
+            return this.PCcases.filter((ram) => {
+                if (!sizeRAM.has(ram.max_cooler_height)) {
+                    sizeRAM.add(ram.max_cooler_height);
+                    return true;
+                }
+                return false;
+            });
+        },
     },
 };
 </script>
@@ -618,7 +731,8 @@ export default {
                 !moboPage &&
                 !ramPage &&
                 !psuPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
             class="mt-4"
         >
@@ -688,7 +802,8 @@ export default {
                 !gpuPage &&
                 !moboPage &&
                 !psuPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
             class="mt-4"
         >
@@ -725,7 +840,8 @@ export default {
                 !gpuPage &&
                 !moboPage &&
                 !psuPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
             class="mt-4"
         >
@@ -760,7 +876,8 @@ export default {
                 !gpuPage &&
                 !moboPage &&
                 !psuPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
             class="mt-4"
         >
@@ -791,7 +908,8 @@ export default {
                 !gpuPage &&
                 !cpuPage &&
                 !psuPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
         >
             <div class="mt-4">
@@ -823,7 +941,8 @@ export default {
                 !gpuPage &&
                 !cpuPage &&
                 !moboPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
         >
             <div class="mt-4">
@@ -843,6 +962,35 @@ export default {
                             class="form-checkbox size-4"
                         />
                         <span class="ml-2">{{ option.efficiency }} </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div
+            v-if="
+                !ramPage &&
+                !armazenamentoPage &&
+                !gpuPage &&
+                !cpuPage &&
+                !moboPage &&
+                !coolerPage &&
+                !psuPage
+            "
+        >
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Vidro Temperado</label
+                >
+                <div class="flex items-center space-x-4">
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            value="true"
+                            v-model="selectedFilters.tempered_glass"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2">Sim</span>
                     </label>
                 </div>
             </div>
@@ -1033,7 +1181,8 @@ export default {
                 !ramPage &&
                 !moboPage &&
                 !psuPage &&
-                !coolerPage
+                !coolerPage &&
+                !casePage
             "
             class="mt-4"
         >
@@ -1313,7 +1462,8 @@ export default {
                 !gpuPage &&
                 !cpuPage &&
                 !moboPage &&
-                !psuPage
+                !psuPage &&
+                !casePage
             "
         >
             <div class="mt-4">
@@ -1333,6 +1483,160 @@ export default {
                             class="form-checkbox size-4"
                         />
                         <span class="ml-2">{{ option.fan_rpm }} RPM</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!--PC Case Page-->
+        <div v-if="casePage">
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Formato da Caixa</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueCaseFormat"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.format"
+                            v-model="selectedFilters.case_format"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2">{{ option.format }} </span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Nº ventoinhas frontais</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueFrontFans"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.number_front_fans"
+                            v-model="selectedFilters.number_front_fans"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2"
+                            >{{ option.number_front_fans }}
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Nº ventoinhas traseiras</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueRearFans"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.number_rear_fans"
+                            v-model="selectedFilters.number_rear_fans"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2">{{ option.number_rear_fans }} </span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Nº ventoinhas superiores</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueUpperFans"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.number_upper_fans"
+                            v-model="selectedFilters.number_upper_fans"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2"
+                            >{{ option.number_upper_fans }}
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Nº ventoinhas inferiores</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueLowerFans"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.number_lower_fans"
+                            v-model="selectedFilters.number_lower_fans"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2"
+                            >{{ option.number_lower_fans }}
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Comprimento máximo placa gráfica</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueMaxGpu"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.max_gpu_length"
+                            v-model="selectedFilters.max_gpu_length"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2"
+                            >{{ option.max_gpu_length }} mm
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-md font-medium mb-1"
+                    >Altura máxima CPU Cooler</label
+                >
+                <div
+                    class="flex items-center space-x-4"
+                    v-for="option in uniqueMaxCooler"
+                    :key="option.id"
+                >
+                    <label class="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            :value="option.max_cooler_height"
+                            v-model="selectedFilters.max_cooler_height"
+                            class="form-checkbox size-4"
+                        />
+                        <span class="ml-2"
+                            >{{ option.max_cooler_height }} mm
+                        </span>
                     </label>
                 </div>
             </div>

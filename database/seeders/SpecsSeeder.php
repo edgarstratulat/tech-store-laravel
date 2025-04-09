@@ -175,14 +175,14 @@ class SpecsSeeder extends Seeder
 
         foreach([
             [
-                'socket' => json_encode(['AMD', 'INTEL']),
+                'socket' => 'AMD',
                 'type' => 'Air Cooler',
                 'fan_rpm' => 2000,
                 'air_flow' => 42,
                 'rgb' => false
             ],
             [
-                'socket' => json_encode(['AMD', 'INTEL']),
+                'socket' => 'Intel',
                 'type' => 'Water Cooler',
                 'fan_rpm' => 2100,
                 'air_flow' => 65.57,
@@ -205,7 +205,6 @@ class SpecsSeeder extends Seeder
                 'max_gpu_length' => 360,
                 'max_cooler_height' => 165,
                 'tempered_glass' => true,
-                'rgb' => true,
             ],
             [
                 'format' => 'Mini Tower',
@@ -217,7 +216,6 @@ class SpecsSeeder extends Seeder
                 'max_gpu_length' => 370,
                 'max_cooler_height' => 170,
                 'tempered_glass' => true,
-                'rgb' => false,
             ],
             [
                 'format' => 'Full Tower',
@@ -229,7 +227,6 @@ class SpecsSeeder extends Seeder
                 'max_gpu_length' => 420,
                 'max_cooler_height' => 185,
                 'tempered_glass' => true,
-                'rgb' => true,
             ],
         ] as $pc_case)
 

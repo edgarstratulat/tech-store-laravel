@@ -41,6 +41,7 @@ class ManufacturerSeeder extends Seeder
             ['name' => 'Seagate'],
             ['name' => 'AMD'],
             ['name' => 'Sapphire'],
+            ['name' => 'Lian Li'],
         ] as $manufacturer)
 
         Manufacturer::create($manufacturer);

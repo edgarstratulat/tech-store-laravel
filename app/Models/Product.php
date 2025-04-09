@@ -101,5 +101,9 @@ class Product extends Model
     {
         return $this->belongsTo(cpuCooler::class, 'cpu_cooler_id');    
     }
+    public function pc_case()
+    {
+        return $this->belongsTo(ComputerCase::class, 'pc_case_id');
+    }
 
 }

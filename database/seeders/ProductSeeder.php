@@ -347,6 +347,46 @@ class ProductSeeder extends Seeder
                 'image_path' => $cooler['image_path'],
             ]);
         }
+
+        $caseProducts = [
+            [
+                'name' => 'Caixa ATX NZXT H510 Flow RGB Vidro Temperado Branca',
+                'manufacturer_id' => 16,
+                'price' => 144.99,
+                'pc_case_id' => 1,
+                'image_path' => "images/caixa1.jpg"
+            ],
+            [
+                'name' => 'Caixa ATX Lian Li O11D Dynamic Mini Vidro Temperado Preta',
+                'manufacturer_id' => 28,
+                'price' => 119.99,
+                'pc_case_id' => 2,
+                'image_path' => "images/caixa2.jpg"
+            ],
+            [
+                'name' => 'Caixa Extended-ATX Lian Li PC-O11 Dynamic',
+                'manufacturer_id' => 28,
+                'price' => 169.99,
+                'pc_case_id' => 3,
+                'image_path' => "images/caixa3.jpg"
+            ],
+        ];
+        
+        foreach ($caseProducts as $case) {
+            Product::create([
+                'name' => $case['name'],
+                'manufacturer_id' => $case['manufacturer_id'],
+                'price' => $case['price'],
+                'sale_price' => rand(0, 30),
+                'description' => $case['name'],
+                'category_id' => 4,
+                'subcategory_id' => 19, 
+                'pc_case_id' => $case['pc_case_id'],
+                'stock' => rand(0, 50),
+                'image_path' => $case['image_path'],
+            ]);
+        }
+        
             
     }
 }

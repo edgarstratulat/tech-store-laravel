@@ -24,6 +24,7 @@
                     :motherboard="motherboard"
                     :powersupply="powersupply"
                     :cpuCooler="cpuCooler"
+                    :PCcase="PCcase"
                 />
             </div>
 
@@ -105,6 +106,10 @@ export default {
             default: () => [],
         },
         cpuCooler: {
+            type: Array,
+            default: () => [],
+        },
+        PCcase: {
             type: Array,
             default: () => [],
         },
