@@ -57,7 +57,7 @@
                             :href="`/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`"
                         >
                             <h2
-                                class="truncate text-sm font-semibold mb-2 hover:text-blue-600"
+                                class="line-clamp-2 text-sm font-semibold mb-2 hover:text-blue-600"
                             >
                                 {{ promo.name }}
                             </h2>
