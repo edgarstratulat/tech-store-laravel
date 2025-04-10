@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('cpu_socket');
             $table->string('ram_support');
             $table->integer('max_ram');
+            $table->boolean('wifi')->default(false);
+            $table->boolean('bluetooth')->default(false);
             $table->timestamps();
         });
     }

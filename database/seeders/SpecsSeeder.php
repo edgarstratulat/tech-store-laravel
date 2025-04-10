@@ -120,14 +120,18 @@ class SpecsSeeder extends Seeder
                 'chipset' => 'Intel Z790',
                 'cpu_socket' => 'LGA 1700',
                 'ram_support' => 'DDR5', 
-                'max_ram' => 192
+                'max_ram' => 192,
+                'wifi' => true,
+                'bluetooth' => true,
             ],
             [
                 'format' => 'ATX',
                 'chipset' => 'AMD B850',
                 'cpu_socket' => 'AM5',
                 'ram_support' => 'DDR5',
-                'max_ram' => 256
+                'max_ram' => 256,
+                'wifi' => true,
+                'bluetooth' => true
             ],
         ] as $motherboard)
 

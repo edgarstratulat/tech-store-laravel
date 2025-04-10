@@ -16,7 +16,6 @@
                     :manufacturer="manufacturer"
                     :products="products.data"
                     :subcategory="subcategory"
-                    :ram="ram"
                 />
 
                 <!-- :ram="ram" :armazenamento="armazenamento" :cpu="cpu" :gpu="gpu"

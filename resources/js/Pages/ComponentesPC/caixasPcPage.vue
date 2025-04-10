@@ -15,8 +15,6 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :products="products.data"
-                    :category="category"
-                    :subcategory="subcategory"
                     :PCcases="PCcases"
                 />
             </div>
@@ -38,7 +36,7 @@
 import navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
 import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
-import FilterSideBar from "../../Components/Inputs/Navbar/FilterSideBar/navbar.vue";
+import FilterSideBar from "../../Components/Filters/FilterBar.vue";
 
 export default {
     components: {
