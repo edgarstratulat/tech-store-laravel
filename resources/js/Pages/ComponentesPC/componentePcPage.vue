@@ -17,10 +17,6 @@
                     :products="products.data"
                     :subcategory="subcategory"
                 />
-
-                <!-- :ram="ram" :armazenamento="armazenamento" :cpu="cpu" :gpu="gpu"
-                :motherboard="motherboard" :powersupply="powersupply"
-                :cpuCooler="cpuCooler" :PCcase="PCcase" -->
             </div>
 
             <div class="w-3/4">

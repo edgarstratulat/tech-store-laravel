@@ -6,7 +6,7 @@ import ManufacturerFilter from "./ManufacturerFilter.vue";
 import StockFilter from "./StockFilter.vue";
 import SortFilter from "./SortFilter.vue";
 import MaxMinPriceFilter from "./Max&MinPriceFilter.vue";
-import CategoryFilter from "./CategoryFilter.vue";
+import SubCategoryFilter from "./SubcategoryFilter.vue";
 import ProductStatusFilter from "./ProductStatusFilter.vue";
 import MemoryRamFilter from "./MemoryRamFilter.vue";
 import ProcessorFilter from "./ProcessorFilter.vue";
@@ -16,6 +16,7 @@ import GraphicsCardFilter from "./GraphicsCardFilter.vue";
 import PowerSupplyFilter from "./PowerSupplyFilter.vue";
 import CpuCoolersFilter from "./CpuCoolersFilter.vue";
 import ComputerCasesFilter from "./ComputerCasesFilter.vue";
+import CategoryFilter from "./CategoryFilter.vue";
 
 const page = usePage();
 const currentPath = page.url;
@@ -30,10 +31,12 @@ const cpuCoolerPage = currentPath.includes("/componentes/cpu-coolers");
 const pcCasesPage = currentPath.includes(
     "/componentes/caixas-para-computadores"
 );
+const discountPage = currentPath.includes("/promocoes");
 
 const props = defineProps({
     manufacturer: Array,
     subcategory: Array,
+    category: Array,
     ram: Array,
     cpu: Array,
     armazenamento: Array,
@@ -125,6 +128,9 @@ const applyFilters = () => {
     }
     if (selectedFilters.value.max_price) {
         queryParams["filter[max_price]"] = selectedFilters.value.max_price;
+    }
+    if (selectedFilters.value.category) {
+        queryParams["filter[category]"] = selectedFilters.value.category;
     }
     if (selectedFilters.value.subcategory) {
         queryParams["filter[subcategory]"] = selectedFilters.value.subcategory;
@@ -317,6 +323,12 @@ const applyFilters = () => {
         />
 
         <CategoryFilter
+            v-if="discountPage"
+            :category="category"
+            v-model="selectedFilters.category"
+        ></CategoryFilter>
+
+        <SubCategoryFilter
             v-if="
                 !ramPage &&
                 !cpuPage &&
@@ -325,11 +337,12 @@ const applyFilters = () => {
                 !gpuPage &&
                 !psuPage &&
                 !cpuCoolerPage &&
-                !pcCasesPage
+                !pcCasesPage &&
+                !discountPage
             "
             v-model="selectedFilters.subcategory"
             :subcategory="subcategory"
-        ></CategoryFilter>
+        ></SubCategoryFilter>
 
         <ProductStatusFilter
             v-model:discount="selectedFilters.promotion"

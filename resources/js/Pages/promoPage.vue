@@ -18,7 +18,6 @@
                     :manufacturer="manufacturer"
                     :products="products.data"
                     :category="category"
-                    :subcategory="subcategory"
                 />
             </div>
 
@@ -39,7 +38,7 @@
 import Navbar from "../Components/navbar.vue";
 import Products from "../Components/Categories/productComponent.vue";
 import Pagination from "../Components/Inputs/Pagination/paginate.vue";
-import discountFilterNavbar from "../Components/Inputs/Navbar/FilterSideBar/discountNavbar.vue";
+import discountFilterNavbar from "../Components/Filters/FilterBar.vue";
 
 export default {
     components: {

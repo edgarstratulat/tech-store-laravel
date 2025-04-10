@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
     modelValue: String,
-    category: Array,
+    subcategory: Array,
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -19,7 +19,7 @@ function updateManufacturer(event) {
             :value="modelValue"
             @change="updateManufacturer"
         >
-            <option v-for="manu in category" :value="manu.id" :key="manu.id">
+            <option v-for="manu in subcategory" :value="manu.id" :key="manu.id">
                 {{ manu.name }}
             </option>
         </select>
