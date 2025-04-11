@@ -248,7 +248,7 @@ const applyFilters = () => {
         queryParams["filter[cooler_socket]"] =
             selectedFilters.value.cooler_socket;
     }
-    if (selectedFilters.value.cooler_type.length > 0) {
+    if (selectedFilters.value.cooler_type) {
         queryParams["filter[tipo_cooler]"] = selectedFilters.value.cooler_type;
     }
     if (selectedFilters.value.cooler_fan_rpm.length > 0) {
@@ -352,7 +352,16 @@ const applyFilters = () => {
         <!--PC Components Filter-->
 
         <MemoryRamFilter
-            v-if="ramPage"
+            v-if="
+                !cpuPage &&
+                !motherboardPage &&
+                !storagePage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :ram="ram"
             v-model:capacityRam="selectedFilters.memoria_ram"
             v-model:typeRam="selectedFilters.type_ram"
@@ -361,15 +370,33 @@ const applyFilters = () => {
         ></MemoryRamFilter>
 
         <ProcessorFilter
-            v-if="cpuPage"
+            v-if="
+                !ramPage &&
+                !motherboardPage &&
+                !storagePage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :cpu="cpu"
             v-model:modelCPU="selectedFilters.cpu"
-            v-model:socketCPU="selectedFilters.socket_cpu"
-            v-model:tdpCPU="selectedFilters.tdp_cpu"
+            v-model:socketCPU="selectedFilters.cpu_socket"
+            v-model:tdpCPU="selectedFilters.cpu_tdp"
         ></ProcessorFilter>
 
         <StorageFilter
-            v-if="storagePage"
+            v-if="
+                !ramPage &&
+                !motherboardPage &&
+                !cpuPage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :armazenamento="armazenamento"
             v-model:capacityDrive="selectedFilters.storage"
             v-model:typeDrive="selectedFilters.storage_type"
@@ -378,7 +405,16 @@ const applyFilters = () => {
         ></StorageFilter>
 
         <MotherboardFilter
-            v-if="motherboardPage"
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :motherboard="motherboard"
             v-model:motherboardFormat="selectedFilters.motherboard_format"
             v-model:motherboardChipset="selectedFilters.motherboard_chipset"
@@ -390,7 +426,16 @@ const applyFilters = () => {
         ></MotherboardFilter>
 
         <GraphicsCardFilter
-            v-if="gpuPage"
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :gpu="gpu"
             v-model:modelGPU="selectedFilters.gpu_model"
             v-model:categoryGPU="selectedFilters.gpu_category"
@@ -400,7 +445,16 @@ const applyFilters = () => {
         ></GraphicsCardFilter>
 
         <PowerSupplyFilter
-            v-if="psuPage"
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !gpuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :powersupply="powersupply"
             v-model:psuFormat="selectedFilters.psu_format"
             v-model:psuWattage="selectedFilters.psu_wattage"
@@ -409,7 +463,16 @@ const applyFilters = () => {
         ></PowerSupplyFilter>
 
         <CpuCoolersFilter
-            v-if="cpuCoolerPage"
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !gpuPage &&
+                !psuPage &&
+                !pcCasesPage &&
+                !discountPage
+            "
             :cpuCooler="cpuCooler"
             v-model:socketCooler="selectedFilters.cooler_socket"
             v-model:typeCooler="selectedFilters.cooler_type"
@@ -418,7 +481,16 @@ const applyFilters = () => {
         ></CpuCoolersFilter>
 
         <ComputerCasesFilter
-            v-if="pcCasesPage"
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !discountPage
+            "
             :PCcases="PCcases"
             v-model:casesFormat="selectedFilters.case_format"
             v-model:casesNumberLowerFans="

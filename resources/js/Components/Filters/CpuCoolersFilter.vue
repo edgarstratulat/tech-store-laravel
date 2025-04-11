@@ -97,8 +97,12 @@ const uniqueFanRPM = () => {
 
 <template>
     <div class="mt-4">
-        <label class="block text-md font-medium mb-1">Categoria</label>
-        <select class="w-full border p-1 rounded" @change="updateTypeCooler">
+        <label class="block text-md font-semibold mb-1">Categoria</label>
+        <select
+            :value="typeCooler"
+            @change="updateTypeCooler"
+            class="w-full border p-1 rounded"
+        >
             <option
                 v-for="manu in uniqueType()"
                 :value="manu.type"

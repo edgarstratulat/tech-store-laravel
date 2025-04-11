@@ -16,6 +16,14 @@
                     :manufacturer="manufacturer"
                     :products="products.data"
                     :subcategory="subcategory"
+                    :ram="ram"
+                    :cpu="cpu"
+                    :armazenamento="armazenamento"
+                    :motherboard="motherboard"
+                    :gpu="gpu"
+                    :powersupply="powersupply"
+                    :cpuCooler="cpuCooler"
+                    :PCcases="PCcase"
                 />
             </div>
 

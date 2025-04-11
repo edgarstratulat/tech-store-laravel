@@ -135,10 +135,14 @@ const uniqueInterface = () => {
 <template>
     <div class="mt-4">
         <label class="block text-md font-semibold mb-1">Categoria</label>
-        <select class="w-full border p-1 rounded" @change="updateCategoryGPU">
+        <select
+            :value="categoryGPU"
+            @change="updateCategoryGPU"
+            class="w-full border p-1 rounded"
+        >
             <option
                 v-for="manu in uniqueCategory()"
-                :value="manu.category"
+                :value="manu.id"
                 :key="manu.id"
             >
                 {{ manu.category }}

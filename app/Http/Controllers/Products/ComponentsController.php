@@ -70,12 +70,53 @@ class ComponentsController extends Controller
                     $q->whereIn('size', $models);
                 });
             }),
+            AllowedFilter::callback('tipo_ram', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
 
-            AllowedFilter::callback('capacidade_armazenamento', function($query, $value){
+                $query->whereHas('ram', function($q) use ($models){
+                $q->whereIn('type', $models);
+                });
+            }),
+            AllowedFilter::callback('velocidade_ram', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                    $q->whereIn('frequency', $models);
+                });
+            }),
+            AllowedFilter::callback('latencia_ram', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('ram', function($q) use ($models){
+                    $q->whereIn('latency', $models);
+                });
+            }),
+            AllowedFilter::callback('capacidade_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
                 $query->whereHas('armazenamento', function($q) use ($models){
                     $q->whereIn('size', $models);
+                });
+            }),
+            AllowedFilter::callback('tipo_drive', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('type', $models);
+                });
+            }),
+            AllowedFilter::callback('velocidade_escrita_drive', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('writing_speed', $models);
+                });
+            }),
+            AllowedFilter::callback('velocidade_rotacao_drive', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('armazenamento', function($q) use ($models){
+                    $q->whereIn('rotation_speed', $models);
                 });
             }),
 
@@ -86,18 +127,100 @@ class ComponentsController extends Controller
                     $q->whereIn('model', $models);
                 });
             }),
-            AllowedFilter::callback('gpu_model', function($query, $value){
+            AllowedFilter::callback('cpu_socket', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('socket', $models);
+                });
+            }),
+            AllowedFilter::callback('cpu_tdp', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu', function($q) use ($models){
+                    $q->whereIn('tdp',  $models);
+                });
+            }),
+            AllowedFilter::callback('categoria_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('category', $models);
+                });
+            }),
+            AllowedFilter::callback('modelo_gpu', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
                 $query->whereHas('gpu', function($q) use ($models){
                     $q->whereIn('model', $models);
                 });
             }),
-            AllowedFilter::callback('motherboard_chipset', function($query, $value){
+            AllowedFilter::callback('vram_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('vram', $models);
+                });
+            }),
+            AllowedFilter::callback('tipo_vram_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('type_vram', $models);
+                });
+            }),
+            AllowedFilter::callback('interface_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('gpu', function($q) use ($models){
+                    $q->whereIn('interface', $models);
+                });
+            }),
+            AllowedFilter::callback('formato_motherboard', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('motherboard', function($q) use ($models){
+                    $q->whereIn('format', $models);
+                });
+            }),
+            AllowedFilter::callback('chipset_motherboard', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
                 $query->whereHas('motherboard', function($q) use ($models){
                     $q->whereIn('chipset', $models);
+                });
+            }),
+            AllowedFilter::callback('cpu_socket_motherboard', function($query, $value){
+                $models = is_bool($value) ? $value : [$value];
+
+                $query->whereHas('motherboard', function($q) use ($models){
+                    $q->whereIn('cpu_socket', $models);
+                });
+            }),
+            AllowedFilter::callback('motherboard_bluetooth', function($query, $value){
+
+                $query->whereHas('motherboard', function($q) use ($value){
+                    $q->where('bluetooth', $value);
+                });
+            }),
+            AllowedFilter::callback('motherboard_wifi', function($query, $value){
+
+                $query->whereHas('motherboard', function($q) use ($value){
+                    $q->where('wifi', $value);
+                });
+            }),
+            AllowedFilter::callback('formato_psu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('format', $models);
+                });
+            }),
+            AllowedFilter::callback('watts_psu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('wattage', $models);
                 });
             }),
             AllowedFilter::callback('efficiency_80_plus', function($query, $value){
@@ -107,17 +230,98 @@ class ComponentsController extends Controller
                     $q->whereIn('efficiency', $models);
                 });
             }),
-            AllowedFilter::callback('fan_rpm', function($query, $value){
+            AllowedFilter::callback('modular_psu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('powerSupply', function($q) use ($models){
+                    $q->whereIn('modular', $models);
+                });
+            }),
+            AllowedFilter::callback('tipo_cooler', function($query, $value){
+                $query->whereHas('cpu_cooler', function($q) use ($value){
+                    $q->where('type', $value);
+                });
+            }),
+            AllowedFilter::callback('cooler_socket', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('cpu_cooler', function($q) use ($models){
+                    $q->whereIn('socket', $models);
+                });
+            }),
+            AllowedFilter::callback('cooler_fan_rpm', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
                 $query->whereHas('cpu_cooler', function($q) use ($models){
                     $q->whereIn('fan_rpm', $models);
                 });
             }),
+            AllowedFilter::callback('fan_rgb', function($query, $value){
+
+                $query->whereHas('cpu_cooler', function($q) use ($value){
+                    $q->where('rgb', $value);
+                });
+            }),
+            AllowedFilter::callback('case_format', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('format', $models);
+                });
+            }),
             AllowedFilter::callback('tempered_glass', function($query, $value){
 
                 $query->whereHas('pc_case', function($q) use ($value){
                     $q->where('tempered_glass', $value);
+                });
+            }),
+            AllowedFilter::callback('case_number_upper_fans', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('number_upper_fans', $models);
+                });
+            }),
+            AllowedFilter::callback('case_number_lower_fans', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('number_lower_fans', $models);
+                });
+            }),
+            AllowedFilter::callback('case_number_front_fans', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('number_front_fans', $models);
+                });
+            }),
+            AllowedFilter::callback('case_number_rear_fans', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('number_rear_fans', $models);
+                });
+            }),
+            AllowedFilter::callback('case_number_upper_fans', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('number_upper_fans', $models);
+                });
+            }),
+            AllowedFilter::callback('case_max_gpu_length', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('max_gpu_length', $models);
+                });
+            }),
+            AllowedFilter::callback('case_max_cooler_height', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('pc_case', function($q) use ($models){
+                    $q->whereIn('max_cooler_height', $models);
                 });
             }),
             
@@ -134,14 +338,24 @@ class ComponentsController extends Controller
             $query->where('category_id', 4);
         })->select('id', 'name')->get();
 
-        $ram = Ram::select('id', 'size')->get();
-        $armazenamento = Armazenamento::select('id', 'size')->get();
-        $cpu = Processor::select('id', 'model')->get();
-        $gpu = GPU::select('id', 'model')->get();
-        $mobo = Motherboard::select('id', 'chipset')->get();
-        $psu = PowerSupply::select('id', 'efficiency')->get();
-        $cpucooler = cpuCooler::select('id','fan_rpm')->get();
-        $case = ComputerCase::select('id','tempered_glass')->get();
+        $ram = Ram::select('type','size','frequency','latency')->get();
+        $armazenamento = Armazenamento::select('size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get(); 
+        $cpu = Processor::select('model', 'tdp', 'socket')->get();
+        $gpu = GPU::select('category', 'model','vram','type_vram','interface','tdp')->get();
+        $motherboard = Motherboard::select('format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
+        $powersupply = PowerSupply::select('format', 'wattage','efficiency','modular')->get();
+        $cpucooler = cpuCooler::select('socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
+
+        $case = ComputerCase::select(
+            'format',
+            'motherboard_supported',
+            'number_front_fans',
+            'number_lower_fans',
+            'number_upper_fans',
+            'number_rear_fans',
+            'max_gpu_length',
+            'max_cooler_height',
+            'tempered_glass')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
@@ -158,8 +372,8 @@ class ComponentsController extends Controller
             'armazenamento' => $armazenamento,
             'cpu' => $cpu,
             'gpu' => $gpu,
-            'motherboard' => $mobo,
-            'powersupply' => $psu,
+            'motherboard' => $motherboard,
+            'powersupply' => $powersupply,
             'cpuCooler' => $cpucooler,
             'PCcase' => $case
         ]);
@@ -594,10 +808,8 @@ class ComponentsController extends Controller
                 $query->where('reconditioned', '=', true);
             }),
             AllowedFilter::callback('categoria_gpu', function($query, $value){
-                $models = is_array($value) ? $value : [$value];
-
-                $query->whereHas('gpu', function($q) use ($models){
-                    $q->whereIn('category', $models);
+                $query->whereHas('gpu', function($q) use ($value){
+                    $q->where('category', '=', $value);
                 });
             }),
             AllowedFilter::callback('modelo_gpu', function($query, $value){
@@ -794,10 +1006,8 @@ class ComponentsController extends Controller
                 });
             }),
             AllowedFilter::callback('tipo_cooler', function($query, $value){
-                $models = is_array($value) ? $value : [$value];
-
-                $query->whereHas('cpu_cooler', function($q) use ($models){
-                    $q->whereIn('type', $models);
+                $query->whereHas('cpu_cooler', function($q) use ($value){
+                    $q->where('type', '=', $value);
                 });
             }),
             AllowedFilter::callback('cooler_socket', function($query, $value){
