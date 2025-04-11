@@ -1,13 +1,226 @@
+<template>
+    <div
+        class="overflow-y-auto mt-8 h-screen w-full bg-white shadow-lg p-4 rounded-lg"
+    >
+        <h2 class="text-2xl font-bold mb-4">Filtros</h2>
+
+        <!--Default-->
+        <DefaultFilter
+            :manufacturer="manufacturer"
+            v-model:manufacturerValue="selectedFilters.manufacturer"
+            :subcategory="subcategory"
+            v-model:subcategoryValue="selectedFilters.subcategory"
+            v-model:sort="selectedFilters.sort"
+            v-model:stock="selectedFilters.stock"
+            v-model:nostock="selectedFilters.nostock"
+            v-model:minPrice="selectedFilters.min_price"
+            v-model:maxPrice="selectedFilters.max_price"
+            v-model:manufacturer="selectedFilters.manufacturer"
+        ></DefaultFilter>
+
+        <!--PC Components Filter-->
+
+        <MemoryRamFilter
+            v-if="
+                !cpuPage &&
+                !motherboardPage &&
+                !storagePage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :ram="ram"
+            v-model:capacityRam="selectedFilters.memoria_ram"
+            v-model:typeRam="selectedFilters.type_ram"
+            v-model:frequencyRam="selectedFilters.frequecy_ram"
+            v-model:latencyRam="selectedFilters.latency_ram"
+        ></MemoryRamFilter>
+
+        <ProcessorFilter
+            v-if="
+                !ramPage &&
+                !motherboardPage &&
+                !storagePage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :cpu="cpu"
+            v-model:modelCPU="selectedFilters.cpu"
+            v-model:socketCPU="selectedFilters.cpu_socket"
+            v-model:tdpCPU="selectedFilters.cpu_tdp"
+        ></ProcessorFilter>
+
+        <StorageFilter
+            v-if="
+                !ramPage &&
+                !motherboardPage &&
+                !cpuPage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :armazenamento="armazenamento"
+            v-model:capacityDrive="selectedFilters.storage"
+            v-model:typeDrive="selectedFilters.storage_type"
+            v-model:writingSpeedDrive="selectedFilters.writing_speed_storage"
+            v-model:rotationSpeedDrive="selectedFilters.rotation_speed_storage"
+        ></StorageFilter>
+
+        <MotherboardFilter
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :motherboard="motherboard"
+            v-model:motherboardFormat="selectedFilters.motherboard_format"
+            v-model:motherboardChipset="selectedFilters.motherboard_chipset"
+            v-model:motherboardCpuSocket="
+                selectedFilters.motherboard_cpu_socket
+            "
+            v-model:motherboardBluetooth="selectedFilters.motherboard_bluetooth"
+            v-model:motherboardWifi="selectedFilters.motherboard_wifi"
+        ></MotherboardFilter>
+
+        <GraphicsCardFilter
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :gpu="gpu"
+            v-model:modelGPU="selectedFilters.gpu_model"
+            v-model:categoryGPU="selectedFilters.gpu_category"
+            v-model:vramGPU="selectedFilters.gpu_vram"
+            v-model:typeVramGPU="selectedFilters.gpu_type_vram"
+            v-model:interfaceGPU="selectedFilters.gpu_interface"
+        ></GraphicsCardFilter>
+
+        <PowerSupplyFilter
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !gpuPage &&
+                !cpuCoolerPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :powersupply="powersupply"
+            v-model:psuFormat="selectedFilters.psu_format"
+            v-model:psuWattage="selectedFilters.psu_wattage"
+            v-model:psuEfficiency="selectedFilters.psu_efficiency"
+            v-model:psuModular="selectedFilters.psu_modular"
+        ></PowerSupplyFilter>
+
+        <CpuCoolersFilter
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !gpuPage &&
+                !psuPage &&
+                !pcCasesPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :cpuCooler="cpuCooler"
+            v-model:socketCooler="selectedFilters.cooler_socket"
+            v-model:typeCooler="selectedFilters.cooler_type"
+            v-model:fanRPMCooler="selectedFilters.cooler_fan_rpm"
+            v-model:rgbCooler="selectedFilters.cooler_rgb"
+        ></CpuCoolersFilter>
+
+        <ComputerCasesFilter
+            v-if="
+                !ramPage &&
+                !storagePage &&
+                !cpuPage &&
+                !motherboardPage &&
+                !gpuPage &&
+                !psuPage &&
+                !cpuCoolerPage &&
+                !discountPage &&
+                !smartphonePage
+            "
+            :PCcases="PCcases"
+            v-model:casesFormat="selectedFilters.case_format"
+            v-model:casesNumberLowerFans="
+                selectedFilters.case_number_lower_fans
+            "
+            v-model:casesNumberUpperFans="
+                selectedFilters.case_number_upper_fans
+            "
+            v-model:casesNumberFrontFans="
+                selectedFilters.case_number_front_fans
+            "
+            v-model:casesNumberRearFans="selectedFilters.case_number_rear_fans"
+            v-model:temperedGlass="selectedFilters.case_tempered_glass"
+            v-model:casesGpuLength="selectedFilters.case_max_gpu_length"
+            v-model:casesCoolerHeight="selectedFilters.case_max_cooler_height"
+        ></ComputerCasesFilter>
+
+        <SmartphoneFilter
+            v-if="smartphonePage"
+            :smartphone="smartphone"
+            v-model:capacityStorage="selectedFilters.smartphone_storage"
+            v-model:SIM="selectedFilters.smartphone_SIM"
+            v-model:familyCPU="selectedFilters.smartphone_family_cpu"
+            v-model:CPU="selectedFilters.smartphone_cpu"
+            v-model:operating_system="selectedFilters.smartphone_os"
+            v-model:screen_resolution="
+                selectedFilters.smartphone_screen_resolution
+            "
+            v-model:screen_inches="selectedFilters.smartphones_screen_inches"
+            v-model:screen_hz="selectedFilters.smartphones_screen_hz"
+            v-model:screen_type="selectedFilters.smartphones_screen_type"
+        ></SmartphoneFilter>
+
+        <button
+            @click="applyFilters"
+            class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
+        >
+            Aplicar Filtros
+        </button>
+    </div>
+</template>
+
 <script setup>
 import { ref } from "vue";
 import { router, usePage } from "@inertiajs/vue3";
 
-import ManufacturerFilter from "./ManufacturerFilter.vue";
-import StockFilter from "./StockFilter.vue";
-import SortFilter from "./SortFilter.vue";
-import MaxMinPriceFilter from "./Max&MinPriceFilter.vue";
-import SubCategoryFilter from "./SubcategoryFilter.vue";
-import ProductStatusFilter from "./ProductStatusFilter.vue";
+// import ManufacturerFilter from "./ManufacturerFilter.vue";
+// import StockFilter from "./StockFilter.vue";
+// import SortFilter from "./SortFilter.vue";
+// import MaxMinPriceFilter from "./Max&MinPriceFilter.vue";
+// import SubCategoryFilter from "./SubcategoryFilter.vue";
+// import ProductStatusFilter from "./ProductStatusFilter.vue";
+// import CategoryFilter from "./CategoryFilter.vue";
 import MemoryRamFilter from "./MemoryRamFilter.vue";
 import ProcessorFilter from "./ProcessorFilter.vue";
 import StorageFilter from "./StorageFilter.vue";
@@ -16,8 +229,8 @@ import GraphicsCardFilter from "./GraphicsCardFilter.vue";
 import PowerSupplyFilter from "./PowerSupplyFilter.vue";
 import CpuCoolersFilter from "./CpuCoolersFilter.vue";
 import ComputerCasesFilter from "./ComputerCasesFilter.vue";
-import CategoryFilter from "./CategoryFilter.vue";
 import SmartphoneFilter from "./SmartphonesFilter.vue";
+import DefaultFilter from "./DefaultFilters.vue";
 
 const page = usePage();
 const currentPath = page.url;
@@ -351,247 +564,3 @@ const applyFilters = () => {
     router.get(window.location.pathname, queryParams);
 };
 </script>
-
-<template>
-    <div
-        class="overflow-y-auto mt-8 h-screen w-full bg-white shadow-lg p-4 rounded-lg"
-    >
-        <h2 class="text-2xl font-bold mb-4">Filtros</h2>
-
-        <!--Default-->
-
-        <SortFilter v-model="selectedFilters.sort"></SortFilter>
-        <StockFilter
-            v-model:stock="selectedFilters.stock"
-            v-model:nostock="selectedFilters.nostock"
-        ></StockFilter>
-
-        <MaxMinPriceFilter
-            v-model:minPrice="selectedFilters.min_price"
-            v-model:maxPrice="selectedFilters.max_price"
-        ></MaxMinPriceFilter>
-
-        <ManufacturerFilter
-            v-model="selectedFilters.manufacturer"
-            :manufacturer="manufacturer"
-        />
-
-        <CategoryFilter
-            v-if="discountPage"
-            :category="category"
-            v-model="selectedFilters.category"
-        ></CategoryFilter>
-
-        <SubCategoryFilter
-            v-if="
-                !ramPage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !storagePage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            v-model="selectedFilters.subcategory"
-            :subcategory="subcategory"
-        ></SubCategoryFilter>
-
-        <ProductStatusFilter
-            v-model:discount="selectedFilters.promotion"
-            v-model:reconditioned="selectedFilters.reconditioned"
-        ></ProductStatusFilter>
-
-        <!--PC Components Filter-->
-
-        <MemoryRamFilter
-            v-if="
-                !cpuPage &&
-                !motherboardPage &&
-                !storagePage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :ram="ram"
-            v-model:capacityRam="selectedFilters.memoria_ram"
-            v-model:typeRam="selectedFilters.type_ram"
-            v-model:frequencyRam="selectedFilters.frequecy_ram"
-            v-model:latencyRam="selectedFilters.latency_ram"
-        ></MemoryRamFilter>
-
-        <ProcessorFilter
-            v-if="
-                !ramPage &&
-                !motherboardPage &&
-                !storagePage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :cpu="cpu"
-            v-model:modelCPU="selectedFilters.cpu"
-            v-model:socketCPU="selectedFilters.cpu_socket"
-            v-model:tdpCPU="selectedFilters.cpu_tdp"
-        ></ProcessorFilter>
-
-        <StorageFilter
-            v-if="
-                !ramPage &&
-                !motherboardPage &&
-                !cpuPage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :armazenamento="armazenamento"
-            v-model:capacityDrive="selectedFilters.storage"
-            v-model:typeDrive="selectedFilters.storage_type"
-            v-model:writingSpeedDrive="selectedFilters.writing_speed_storage"
-            v-model:rotationSpeedDrive="selectedFilters.rotation_speed_storage"
-        ></StorageFilter>
-
-        <MotherboardFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :motherboard="motherboard"
-            v-model:motherboardFormat="selectedFilters.motherboard_format"
-            v-model:motherboardChipset="selectedFilters.motherboard_chipset"
-            v-model:motherboardCpuSocket="
-                selectedFilters.motherboard_cpu_socket
-            "
-            v-model:motherboardBluetooth="selectedFilters.motherboard_bluetooth"
-            v-model:motherboardWifi="selectedFilters.motherboard_wifi"
-        ></MotherboardFilter>
-
-        <GraphicsCardFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :gpu="gpu"
-            v-model:modelGPU="selectedFilters.gpu_model"
-            v-model:categoryGPU="selectedFilters.gpu_category"
-            v-model:vramGPU="selectedFilters.gpu_vram"
-            v-model:typeVramGPU="selectedFilters.gpu_type_vram"
-            v-model:interfaceGPU="selectedFilters.gpu_interface"
-        ></GraphicsCardFilter>
-
-        <PowerSupplyFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !gpuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :powersupply="powersupply"
-            v-model:psuFormat="selectedFilters.psu_format"
-            v-model:psuWattage="selectedFilters.psu_wattage"
-            v-model:psuEfficiency="selectedFilters.psu_efficiency"
-            v-model:psuModular="selectedFilters.psu_modular"
-        ></PowerSupplyFilter>
-
-        <CpuCoolersFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !gpuPage &&
-                !psuPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :cpuCooler="cpuCooler"
-            v-model:socketCooler="selectedFilters.cooler_socket"
-            v-model:typeCooler="selectedFilters.cooler_type"
-            v-model:fanRPMCooler="selectedFilters.cooler_fan_rpm"
-            v-model:rgbCooler="selectedFilters.cooler_rgb"
-        ></CpuCoolersFilter>
-
-        <ComputerCasesFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !discountPage &&
-                !smartphonePage
-            "
-            :PCcases="PCcases"
-            v-model:casesFormat="selectedFilters.case_format"
-            v-model:casesNumberLowerFans="
-                selectedFilters.case_number_lower_fans
-            "
-            v-model:casesNumberUpperFans="
-                selectedFilters.case_number_upper_fans
-            "
-            v-model:casesNumberFrontFans="
-                selectedFilters.case_number_front_fans
-            "
-            v-model:casesNumberRearFans="selectedFilters.case_number_rear_fans"
-            v-model:temperedGlass="selectedFilters.case_tempered_glass"
-            v-model:casesGpuLength="selectedFilters.case_max_gpu_length"
-            v-model:casesCoolerHeight="selectedFilters.case_max_cooler_height"
-        ></ComputerCasesFilter>
-
-        <SmartphoneFilter
-            v-if="smartphonePage"
-            :smartphone="smartphone"
-            v-model:capacityStorage="selectedFilters.smartphone_storage"
-            v-model:SIM="selectedFilters.smartphone_SIM"
-            v-model:familyCPU="selectedFilters.smartphone_family_cpu"
-            v-model:CPU="selectedFilters.smartphone_cpu"
-            v-model:operating_system="selectedFilters.smartphone_os"
-            v-model:screen_resolution="
-                selectedFilters.smartphone_screen_resolution
-            "
-            v-model:screen_inches="selectedFilters.smartphones_screen_inches"
-            v-model:screen_hz="selectedFilters.smartphones_screen_hz"
-            v-model:screen_type="selectedFilters.smartphones_screen_type"
-        ></SmartphoneFilter>
-
-        <button
-            @click="applyFilters"
-            class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
-        >
-            Aplicar Filtros
-        </button>
-    </div>
-</template>
