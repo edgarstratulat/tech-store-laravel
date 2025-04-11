@@ -20,69 +20,68 @@ use App\Http\Controllers\SearchController;
 Route::get('/', [HomeController::class, 'showProductsHome']);
 Route::get('/search', [SearchController::class, 'SearchProduct']);
 
+Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::class, 'ProductSlug']);
+
 //Promocoes
 Route::get('/promocoes', [DiscountProductsController::class, 'showDiscountProducts']);
 
-//Admin Dashboard
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard', [AdminController::class, 'showAdminPanel']);
-
-//Show Products
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos', [ProductsController::class, 'showProducts']);
-
-//Add produtos
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos/adicionar', [CreateProductController::class, 'showProducts']);
-Route::middleware(['auth', 'permission:Manage Store'])->post('/dashboard/produtos/adicionar', [CreateProductController::class, 'createProducts']);
-
-//Change Products
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
-Route::middleware(['auth', 'permission:Manage Store'])->put('/dashboard/produtos/atualizar', [UpdateProductController::class, 'updateProduct']);
-
-//Delete Products
-Route::middleware(['auth', 'permission:Manage Store'])->get('/dashboard/produtos/eliminar', [DeleteProductController::class,'showDeleteForm']);
-Route::middleware(['auth', 'permission:Manage Store'])->delete('/dashboard/produtos/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
-
-
-Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::class, 'ProductSlug']);
-
+Route::middleware(['auth', 'permission:Manage Store',])->group(function () {
+    Route::get('dashboard', [AdminController::class, 'showAdminPanel']);
+    Route::get('dashboard/produtos', [ProductsController::class, 'showProducts']);
+    Route::get('dashboard/produtos/adicionar', [CreateProductController::class, 'showProducts']);
+    Route::post('dashboard/produtos/adicionar', [CreateProductController::class, 'createProducts']);
+    Route::get('dashboard/produtos/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
+    Route::put('dashboard/produtos/atualizar', [UpdateProductController::class, 'updateProduct']);
+    Route::get('dashboard/produtos/eliminar', [DeleteProductController::class, 'showDeleteForm']);
+    Route::delete('dashboard/produtos/eliminar', [DeleteProductController::class, 'DeleteProducts']);
+});
 
 // Telemoveis
-Route::get('/telemoveis', [SmartphonesController::class, 'showSmartphones']);
-Route::get('/telemoveis/iphone', [SmartphonesController::class, 'showIphoneSmartphone']);
-Route::get('/telemoveis/android', [SmartphonesController::class, 'showAndroidSmartphone']);
+Route::prefix('telemoveis')->group(function () {
+    Route::get('/', [SmartphonesController::class, 'showSmartphones'])->name('telemoveis');
+    Route::get('iphone', [SmartphonesController::class, 'showIphoneSmartphone'])->name('iphone');
+    Route::get('android', [SmartphonesController::class, 'showAndroidSmartphone'])->name('android');
+});
 
 //Componentes PC
-Route::get('/componentes', [ComponentsController::class, 'showComponents']);
-Route::get('/componentes/processadores', [ComponentsController::class, 'showCPU']);
-Route::get('/componentes/motherboards', [ComponentsController::class, 'showMotherboards']);
-Route::get('/componentes/placas-graficas', [ComponentsController::class, 'showGPU']);
-Route::get('/componentes/memoria-ram', [ComponentsController::class, 'showRAM']);
-Route::get('/componentes/armazenamento', [ComponentsController::class, 'showArmazenamento']);
-Route::get('/componentes/fontes-de-alimentacao', [ComponentsController::class, 'showFontes']);
-Route::get('/componentes/caixas-para-computadores', [ComponentsController::class, 'showCaixas']);
-Route::get('/componentes/cpu-coolers', [ComponentsController::class, 'showCPUCoolers']);
+Route::prefix('components')->group(function () {
+    Route::get('/', [ComponentsController::class, 'showComponents'])->name('componentes');
+    Route::get('processadores', [ComponentsController::class, 'showCPU'])->name('processadores');
+    Route::get('motherboards', [ComponentsController::class, 'showMotherboards'])->name('motherboards');
+    Route::get('placas-graficas', [ComponentsController::class, 'showGPU'])->name('placas-graficas');
+    Route::get('memoria-ram', [ComponentsController::class, 'showRAM'])->name('memoria-ram');
+    Route::get('armazenamento', [ComponentsController::class, 'showArmazenamento'])->name('armazenamento');
+    Route::get('fontes-de-alimentacao', [ComponentsController::class, 'showFontes'])->name('fontes-de-alimentacao');
+    Route::get('caixas-para-computadores', [ComponentsController::class, 'showCaixas'])->name('caixas-para-computadores');
+    Route::get('cpu-coolers', [ComponentsController::class, 'showCPUCoolers'])->name('cpu-coolers');
+});
 
 //Perifericos
-Route::get('/perifericos', [PeripheralsController::class, 'showPeripherals']);
-Route::get('/perifericos/ratos-e-teclados', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard']);
-Route::get('/perifericos/audio', [PeripheralsController::class, 'showPeripheralsAudio']);
-Route::get('/perifericos/monitores', [PeripheralsController::class, 'showPeripheralsMonitor']);
-Route::get('/perifericos/video', [PeripheralsController::class, 'showPeripheralsVideo']);
+Route::prefix('perifericos')->group(function () {
+    Route::get('/', [PeripheralsController::class, 'showPeripherals'])->name('perifericos');
+    Route::get('ratos-e-teclados', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard'])->name('ratos-e-teclados');
+    Route::get('audio', [PeripheralsController::class, 'showPeripheralsAudio'])->name('audio');
+    Route::get('monitores', [PeripheralsController::class, 'showPeripheralsMonitor'])->name('monitores');
+    Route::get('video', [PeripheralsController::class, 'showPeripheralsVideo'])->name('video');
+});
 
 //Acessorios
-Route::get('/acessorios', [AccessoriesController::class, 'showAccessories']);
-Route::get('/acessorios/acessorios-para-computador', [AccessoriesController::class, 'showAccessoriesForComputer']);
-Route::get('/acessorios/acessorios-para-casa', [AccessoriesController::class, 'showAccessoriesForHome']);
-Route::get('/acessorios/acessorios-para-telemovel', [AccessoriesController::class, 'showAccessoriesForSmartphone']);
-
+Route::prefix('acessorios')->group(function () {
+    Route::get('/', [AccessoriesController::class, 'showAccessories'])->name('acessorios');
+    Route::get('acessorios-para-computador', [AccessoriesController::class, 'showAccessoriesForComputer'])->name('acessorios-para-computador');
+    Route::get('acessorios-para-casa', [AccessoriesController::class, 'showAccessoriesForHome'])->name('acessorios-para-casa');
+    Route::get('acessorios-para-telemovel', [AccessoriesController::class, 'showAccessoriesForSmartphone'])->name('acessorios-para-telemovel');
+});
 
 //Computador
-Route::get('/computadores', [ComputersController::class, 'showComputers']);
-Route::get('/computadores/gaming', [ComputersController::class, 'showGamingComputers']);
-Route::get('/computadores/portateis', [ComputersController::class, 'showLaptopsComputers']);
-Route::get('/computadores/workstations', [ComputersController::class, 'showWorkStationComputers']);
-Route::get('/computadores/micro-computadores', [ComputersController::class, 'showMicroComputers']);
-Route::get('/computadores/desktop', [ComputersController::class, 'showDesktopComputers']);
-
+Route::prefix('computadores')->group(function () {
+    Route::get('/', [ComputersController::class, 'showComputers']);
+    Route::get('gaming', [ComputersController::class, 'showGamingComputers']);
+    Route::get('portateis', [ComputersController::class, 'showLaptopsComputers']);
+    Route::get('workstations', [ComputersController::class, 'showWorkStationComputers']);
+    Route::get('micro-computadores', [ComputersController::class, 'showMicroComputers']);
+    Route::get('desktop', [ComputersController::class, 'showDesktopComputers']);
+});
 
 //Registo
 Route::get('/registo', [LoginRegisterController::class, 'showPageRegister']);
