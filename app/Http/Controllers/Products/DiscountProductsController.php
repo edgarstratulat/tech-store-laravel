@@ -58,11 +58,11 @@ class DiscountProductsController extends Controller
             'price', '-price', '-created_at'
         ])
         ->with(['category', 'subcategory'])
-        ->where('sale_price', '>', 1)
+        ->where('sale_price', '>', 0)
         ->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('sale_price', '>', 1);
+            $query->where('sale_price', '>', 0);
         })->select('id', 'name')->get();
 
         $category = Category::select('id', 'name')->get();
