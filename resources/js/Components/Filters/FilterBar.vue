@@ -17,9 +17,12 @@ import PowerSupplyFilter from "./PowerSupplyFilter.vue";
 import CpuCoolersFilter from "./CpuCoolersFilter.vue";
 import ComputerCasesFilter from "./ComputerCasesFilter.vue";
 import CategoryFilter from "./CategoryFilter.vue";
+import SmartphoneFilter from "./SmartphonesFilter.vue";
 
 const page = usePage();
 const currentPath = page.url;
+
+const discountPage = currentPath.includes("/promocoes");
 
 const ramPage = currentPath.includes("/componentes/memoria-ram");
 const cpuPage = currentPath.includes("/componentes/processadores");
@@ -31,7 +34,8 @@ const cpuCoolerPage = currentPath.includes("/componentes/cpu-coolers");
 const pcCasesPage = currentPath.includes(
     "/componentes/caixas-para-computadores"
 );
-const discountPage = currentPath.includes("/promocoes");
+
+const smartphonePage = currentPath.includes("/telemoveis");
 
 const props = defineProps({
     manufacturer: Array,
@@ -45,6 +49,7 @@ const props = defineProps({
     powersupply: Array,
     cpuCooler: Array,
     PCcases: Array,
+    smartphone: Array,
 });
 
 const selectedFilters = ref({
@@ -103,6 +108,16 @@ const selectedFilters = ref({
     case_tempered_glass: [],
     case_max_gpu_length: [],
     case_max_cooler_height: [],
+
+    smartphone_storage: [],
+    smartphone_SIM: [],
+    smartphone_family_cpu: [],
+    smartphone_cpu: [],
+    smartphone_os: [],
+    smartphone_screen_resolution: [],
+    smartphones_screen_inches: [],
+    smartphones_screen_hz: [],
+    smartphones_screen_type: [],
 });
 
 const applyFilters = () => {
@@ -292,6 +307,45 @@ const applyFilters = () => {
             selectedFilters.value.case_max_cooler_height;
     }
 
+    // Smartphones
+
+    if (selectedFilters.value.smartphone_storage.length > 0) {
+        queryParams["filter[smartphone_capacity]"] =
+            selectedFilters.value.smartphone_storage;
+    }
+    if (selectedFilters.value.smartphone_SIM.length > 0) {
+        queryParams["filter[smartphone_sim]"] =
+            selectedFilters.value.smartphone_SIM;
+    }
+    if (selectedFilters.value.smartphone_family_cpu.length > 0) {
+        queryParams["filter[group_processor]"] =
+            selectedFilters.value.smartphone_family_cpu;
+    }
+    if (selectedFilters.value.smartphone_cpu.length > 0) {
+        queryParams["filter[smartphone_processor]"] =
+            selectedFilters.value.smartphone_cpu;
+    }
+    if (selectedFilters.value.smartphone_os.length > 0) {
+        queryParams["filter[smartphone_operating_system]"] =
+            selectedFilters.value.smartphone_os;
+    }
+    if (selectedFilters.value.smartphone_screen_resolution.length > 0) {
+        queryParams["filter[smartphone_screen_resolution]"] =
+            selectedFilters.value.smartphone_screen_resolution;
+    }
+    if (selectedFilters.value.smartphones_screen_inches.length > 0) {
+        queryParams["filter[smartphone_screen_inches]"] =
+            selectedFilters.value.smartphones_screen_inches;
+    }
+    if (selectedFilters.value.smartphones_screen_hz.length > 0) {
+        queryParams["filter[smartphone_screen_hz]"] =
+            selectedFilters.value.smartphones_screen_hz;
+    }
+    if (selectedFilters.value.smartphones_screen_type.length > 0) {
+        queryParams["filter[smartphone_screen_type]"] =
+            selectedFilters.value.smartphones_screen_type;
+    }
+
     console.log(queryParams);
 
     router.get(window.location.pathname, queryParams);
@@ -338,7 +392,8 @@ const applyFilters = () => {
                 !psuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             v-model="selectedFilters.subcategory"
             :subcategory="subcategory"
@@ -360,7 +415,8 @@ const applyFilters = () => {
                 !psuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :ram="ram"
             v-model:capacityRam="selectedFilters.memoria_ram"
@@ -378,7 +434,8 @@ const applyFilters = () => {
                 !psuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :cpu="cpu"
             v-model:modelCPU="selectedFilters.cpu"
@@ -395,7 +452,8 @@ const applyFilters = () => {
                 !psuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :armazenamento="armazenamento"
             v-model:capacityDrive="selectedFilters.storage"
@@ -413,7 +471,8 @@ const applyFilters = () => {
                 !psuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :motherboard="motherboard"
             v-model:motherboardFormat="selectedFilters.motherboard_format"
@@ -434,7 +493,8 @@ const applyFilters = () => {
                 !psuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :gpu="gpu"
             v-model:modelGPU="selectedFilters.gpu_model"
@@ -453,7 +513,8 @@ const applyFilters = () => {
                 !gpuPage &&
                 !cpuCoolerPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :powersupply="powersupply"
             v-model:psuFormat="selectedFilters.psu_format"
@@ -471,7 +532,8 @@ const applyFilters = () => {
                 !gpuPage &&
                 !psuPage &&
                 !pcCasesPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :cpuCooler="cpuCooler"
             v-model:socketCooler="selectedFilters.cooler_socket"
@@ -489,7 +551,8 @@ const applyFilters = () => {
                 !gpuPage &&
                 !psuPage &&
                 !cpuCoolerPage &&
-                !discountPage
+                !discountPage &&
+                !smartphonePage
             "
             :PCcases="PCcases"
             v-model:casesFormat="selectedFilters.case_format"
@@ -507,6 +570,22 @@ const applyFilters = () => {
             v-model:casesGpuLength="selectedFilters.case_max_gpu_length"
             v-model:casesCoolerHeight="selectedFilters.case_max_cooler_height"
         ></ComputerCasesFilter>
+
+        <SmartphoneFilter
+            v-if="smartphonePage"
+            :smartphone="smartphone"
+            v-model:capacityStorage="selectedFilters.smartphone_storage"
+            v-model:SIM="selectedFilters.smartphone_SIM"
+            v-model:familyCPU="selectedFilters.smartphone_family_cpu"
+            v-model:CPU="selectedFilters.smartphone_cpu"
+            v-model:operating_system="selectedFilters.smartphone_os"
+            v-model:screen_resolution="
+                selectedFilters.smartphone_screen_resolution
+            "
+            v-model:screen_inches="selectedFilters.smartphones_screen_inches"
+            v-model:screen_hz="selectedFilters.smartphones_screen_hz"
+            v-model:screen_type="selectedFilters.smartphones_screen_type"
+        ></SmartphoneFilter>
 
         <button
             @click="applyFilters"

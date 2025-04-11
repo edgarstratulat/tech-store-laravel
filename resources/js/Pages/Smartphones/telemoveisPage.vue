@@ -15,6 +15,7 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :subcategory="subcategory"
+                    :smartphone="smartphone"
                 />
             </div>
 
@@ -70,6 +71,10 @@ export default {
         manufacturer: {
             type: Array,
             required: true,
+        },
+        smartphone: {
+            type: Array,
+            default: () => [],
         },
     },
 };

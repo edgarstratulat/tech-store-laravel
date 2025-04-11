@@ -7,6 +7,7 @@ use App\Models\Button;
 use App\Models\Category;
 use App\Models\Manufacturer;
 use App\Models\Product;
+use App\Models\Smartphone;
 use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -49,10 +50,73 @@ class SmartphonesController extends Controller
                 $query->where('subcategory_id', '=', $value);
             }),
             AllowedFilter::callback('promotion', function ($query) {
-                $query->where('sale_price', '>', 1);
+                $query->where('sale_price', '>', 0);
             }),
             AllowedFilter::callback('reconditioned', function ($query) {
                 $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('smartphone_capacity', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('storage', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_sim', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('SIM', $models);
+                });
+            }),
+            AllowedFilter::callback('group_processor', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('family_processor', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_processor', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('processor', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_operating_system', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('operating_system', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_resolution', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_resolution', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_inches', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_inches', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_hz', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_hz', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_type', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_type', $models);
+                });
             }),
             
         ])
@@ -62,11 +126,13 @@ class SmartphonesController extends Controller
         ])
         ->with(['category', 'subcategory'])
         ->where('category_id', 3)
-        ->paginate(12)->appends(request()->query());;
+        ->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 3);
         })->select('id', 'name')->get();
+
+        $smartphone = Smartphone::select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 3)->get();
@@ -78,7 +144,8 @@ class SmartphonesController extends Controller
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'smartphone' => $smartphone
         ]);
     }
 
@@ -94,10 +161,113 @@ class SmartphonesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 3)->where('subcategory_id', 10)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 0);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('smartphone_capacity', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('storage', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_sim', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('SIM', $models);
+                });
+            }),
+            AllowedFilter::callback('group_processor', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('family_processor', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_processor', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('processor', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_operating_system', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('operating_system', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_resolution', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_resolution', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_inches', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_inches', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_hz', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_hz', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_type', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_type', $models);
+                });
+            }),
+            
+        ])
+        ->defaultSort('created_at')
+        ->allowedSorts([
+            'price', '-price', '-created_at'
+        ])
+        ->with('category', 'subcategory')->where('category_id', 3)->where('subcategory_id', 10)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
+
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 3)->where('subcategory_id', 10);
+        })->select('id', 'name')->get();
+
+        $smartphone = Smartphone::whereHas('product', function($query) {
+            $query->where('category_id', 3)->where('subcategory_id', 10);
+        })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
         return Inertia::render('Smartphones/iphonePage', [
             'buttons' => $buttons,
@@ -105,7 +275,9 @@ class SmartphonesController extends Controller
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'smartphone' => $smartphone
         ]);
     }
 
@@ -121,11 +293,114 @@ class SmartphonesController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 3)->where('subcategory_id', 11)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 0);
+            }),
+            AllowedFilter::callback('reconditioned', function ($query) {
+                $query->where('reconditioned', '=', true);
+            }),
+            AllowedFilter::callback('smartphone_capacity', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('storage', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_sim', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('SIM', $models);
+                });
+            }),
+            AllowedFilter::callback('group_processor', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('family_processor', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_processor', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('processor', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_operating_system', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('operating_system', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_resolution', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_resolution', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_inches', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_inches', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_hz', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_hz', $models);
+                });
+            }),
+            AllowedFilter::callback('smartphone_screen_type', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('smartphone', function($q) use ($models){
+                    $q->whereIn('screen_type', $models);
+                });
+            }),
+            
+        ])
+        ->defaultSort('created_at')
+        ->allowedSorts([
+            'price', '-price', '-created_at'
+        ])
+        ->with('category', 'subcategory')->where('category_id', 3)->where('subcategory_id', 11)->paginate(12);
 
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
+
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 3)->where('subcategory_id', 11);
+        })->select('id', 'name')->get();
+
+        $smartphone = Smartphone::whereHas('product', function($query) {
+            $query->where('category_id', 3)->where('subcategory_id', 11);
+        })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
         return Inertia::render('Smartphones/androidPage', [
             'buttons' => $buttons,
@@ -133,7 +408,9 @@ class SmartphonesController extends Controller
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer,
+            'smartphone' => $smartphone
         ]);
     }
 }
