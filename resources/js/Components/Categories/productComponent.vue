@@ -65,7 +65,9 @@
                     </div>
 
                     <div class="flex-grow">
-                        <h2 class="truncate text-xs max-w-100 text-neutral-500">
+                        <h2
+                            class="line-clamp-2 text-xs max-w-100 text-neutral-500"
+                        >
                             {{ promo.description }}
                         </h2>
                     </div>
