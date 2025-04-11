@@ -109,7 +109,7 @@ class Product extends Model
     }
     public function smartphone()
     {
-        return $this->belongsTo(Smartphone::class, ' smartphone_id');
+        return $this->belongsTo(Smartphone::class, 'smartphone_id');
     }
 
 }
