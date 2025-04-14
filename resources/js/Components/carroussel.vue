@@ -1,7 +1,7 @@
 <template>
     <div class="bg-zinc-100">
         <section
-            class="bg-cyan-900 text-white py-16 sm:m-12 lg:m-12 mb-5 rounded-lg"
+            class="bg-gradient-to-r from-cyan-500 from- via-indigo-500 via- to-violet-700 to- text-white py-16 sm:m-12 lg:m-12 mb-5 rounded-lg"
         >
             <div class="container mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-4 drop-shadow-md">
