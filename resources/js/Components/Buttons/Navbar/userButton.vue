@@ -125,21 +125,25 @@ export default {
     },
     computed: {
         filterButtonsDropDownMenuNotLogged() {
-            const DropdownButtons = [10, 11];
+            const DropdownButtons = ["login", "register"];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
+                DropdownButtons.includes(btn.button_name)
             );
         },
         filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = [8, 9, 12];
+            const DropdownButtons = [
+                "account-settings",
+                "view-orders",
+                "logout",
+            ];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
+                DropdownButtons.includes(btn.button_name)
             );
         },
         filterButtonsDropDownMenuAdmin() {
-            const DropdownButtons = [7, 12];
+            const DropdownButtons = ["admin-panel", "logout"];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.id)
+                DropdownButtons.includes(btn.button_name)
             );
         },
     },
