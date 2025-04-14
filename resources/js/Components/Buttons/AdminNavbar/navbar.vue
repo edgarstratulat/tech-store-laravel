@@ -7,7 +7,7 @@
         <div class="relative flex flex-col h-full max-h-full">
             <header class="p-4 flex items-center gap-x-2">
                 <a
-                    class="flex-none font-semibold text-xl text-blue-600 focus:outline-hidden focus:opacity-80"
+                    class="flex-none font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-indigo-500 to-violet-700 focus:outline-hidden focus:opacity-80"
                     href="/"
                     aria-label="Brand"
                     >{{ t("title") }}</a

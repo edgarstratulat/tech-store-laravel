@@ -6,9 +6,10 @@
                 <div class="flex items-center">
                     <!-- Logo -->
                     <a href="http://localhost:8000/" class="flex items-center">
-                        <span class="font-semibold text-blue-600 text-2xl">{{
-                            t("title")
-                        }}</span>
+                        <span
+                            class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-indigo-500 to-violet-700 text-2xl"
+                            >{{ t("title") }}</span
+                        >
                     </a>
 
                     <!-- Links do Menu (Desktop) -->
