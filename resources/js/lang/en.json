@@ -203,5 +203,14 @@
     "case-front-fans": "No. of front fans",
     "case-rear-fans": "No. of rear fans",
     "case-gpu-max": "Maximum graphics card length",
-    "case-cooler-max": "Maximum CPU Cooler height"
+    "case-cooler-max": "Maximum CPU Cooler height",
+
+    "login-title": "Login",
+    "register-title": "Register",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "login-button": "Login",
+    "register-button": "Register",
+    "home-button": "Home page"
 }

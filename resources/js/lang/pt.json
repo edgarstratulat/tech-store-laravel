@@ -203,5 +203,14 @@
     "case-front-fans": "N.º de ventoinhas frontais",
     "case-rear-fans": "N.º de ventoinhas traseiras",
     "case-gpu-max": "Comprimento máximo da placa gráfica",
-    "case-cooler-max": "Altura máxima do cooler de CPU"
+    "case-cooler-max": "Altura máxima do cooler de CPU",
+
+    "login-title": "Iniciar sessão",
+    "register-title": "Criar conta",
+    "name": "Nome",
+    "email": "Email",
+    "password": "Password",
+    "login-button": "Iniciar sessão",
+    "register-button": "Criar conta",
+    "home-button": "Páginal inicial"
 }

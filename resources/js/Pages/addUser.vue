@@ -1,22 +1,7 @@
-<script setup>
-import { reactive } from "vue";
-import { router } from "@inertiajs/vue3";
-
-const form = reactive({
-    name: null,
-    email: null,
-    password: null,
-});
-
-function submit() {
-    router.post("/registo", form);
-}
-</script>
-
 <template>
     <div class="max-w-2xl mx-auto p-6 mt-5">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">
-            Registo
+            {{ t("register-title") }}
         </h1>
         <form @submit.prevent="submit" class="space-y-4">
             <div>
@@ -24,7 +9,7 @@ function submit() {
                     for="name"
                     class="block mb-2 text-sm font-medium text-gray-700"
                 >
-                    Nome
+                    {{ t("name") }}
                 </label>
                 <input
                     id="name"
@@ -38,7 +23,7 @@ function submit() {
                     for="price"
                     class="block mb-2 text-sm font-medium text-gray-700"
                 >
-                    Email:
+                    {{ t("email") }}
                 </label>
                 <input
                     id="price"
@@ -52,7 +37,7 @@ function submit() {
                     for="pass"
                     class="block mb-2 text-sm font-medium text-gray-700"
                 >
-                    Password:
+                    {{ t("password") }}
                 </label>
                 <input
                     id="pass"
@@ -64,14 +49,32 @@ function submit() {
                 type="submit"
                 class="w-full bg-gray-700 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
             >
-                Registar
+                {{ t("register-button") }}
             </button>
 
             <a href="/">
                 <h1 class="font-bold mb-6 text-gray-800 text-center mt-5">
-                    Página Inicial
+                    {{ t("home-button") }}
                 </h1>
             </a>
         </form>
     </div>
 </template>
+
+<script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
+import { reactive } from "vue";
+import { router } from "@inertiajs/vue3";
+
+const form = reactive({
+    name: null,
+    email: null,
+    password: null,
+});
+
+function submit() {
+    router.post("/registo", form);
+}
+</script>
