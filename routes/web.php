@@ -37,22 +37,22 @@ Route::middleware(['auth', 'permission:Manage Store',])->group(function () {
 });
 
 // Telemoveis
-Route::prefix('telemoveis')->group(function () {
+Route::prefix('smartphones')->group(function () {
     Route::get('/', [SmartphonesController::class, 'showSmartphones'])->name('telemoveis');
-    Route::get('iphone', [SmartphonesController::class, 'showIphoneSmartphone'])->name('iphone');
-    Route::get('android', [SmartphonesController::class, 'showAndroidSmartphone'])->name('android');
+    Route::get('smartphones-iphone', [SmartphonesController::class, 'showIphoneSmartphone'])->name('iphone');
+    Route::get('smartphones-android', [SmartphonesController::class, 'showAndroidSmartphone'])->name('android');
 });
 
 //Componentes PC
 Route::prefix('components')->group(function () {
     Route::get('/', [ComponentsController::class, 'showComponents'])->name('componentes');
-    Route::get('processadores', [ComponentsController::class, 'showCPU'])->name('processadores');
+    Route::get('processors', [ComponentsController::class, 'showCPU'])->name('processadores');
     Route::get('motherboards', [ComponentsController::class, 'showMotherboards'])->name('motherboards');
-    Route::get('placas-graficas', [ComponentsController::class, 'showGPU'])->name('placas-graficas');
-    Route::get('memoria-ram', [ComponentsController::class, 'showRAM'])->name('memoria-ram');
-    Route::get('armazenamento', [ComponentsController::class, 'showArmazenamento'])->name('armazenamento');
-    Route::get('fontes-de-alimentacao', [ComponentsController::class, 'showFontes'])->name('fontes-de-alimentacao');
-    Route::get('caixas-para-computadores', [ComponentsController::class, 'showCaixas'])->name('caixas-para-computadores');
+    Route::get('graphic-cards', [ComponentsController::class, 'showGPU'])->name('placas-graficas');
+    Route::get('ram-memory', [ComponentsController::class, 'showRAM'])->name('memoria-ram');
+    Route::get('storage', [ComponentsController::class, 'showArmazenamento'])->name('armazenamento');
+    Route::get('power-supplies', [ComponentsController::class, 'showFontes'])->name('fontes-de-alimentacao');
+    Route::get('computer-cases', [ComponentsController::class, 'showCaixas'])->name('caixas-para-computadores');
     Route::get('cpu-coolers', [ComponentsController::class, 'showCPUCoolers'])->name('cpu-coolers');
 });
 

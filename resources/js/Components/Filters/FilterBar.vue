@@ -8,8 +8,6 @@
         <DefaultFilter
             :manufacturer="manufacturer"
             v-model:manufacturerValue="selectedFilters.manufacturer"
-            :subcategory="subcategory"
-            v-model:subcategoryValue="selectedFilters.subcategory"
             v-model:sort="selectedFilters.sort"
             v-model:stock="selectedFilters.stock"
             v-model:nostock="selectedFilters.nostock"
@@ -214,13 +212,6 @@
 import { ref } from "vue";
 import { router, usePage } from "@inertiajs/vue3";
 
-// import ManufacturerFilter from "./ManufacturerFilter.vue";
-// import StockFilter from "./StockFilter.vue";
-// import SortFilter from "./SortFilter.vue";
-// import MaxMinPriceFilter from "./Max&MinPriceFilter.vue";
-// import SubCategoryFilter from "./SubcategoryFilter.vue";
-// import ProductStatusFilter from "./ProductStatusFilter.vue";
-// import CategoryFilter from "./CategoryFilter.vue";
 import MemoryRamFilter from "./MemoryRamFilter.vue";
 import ProcessorFilter from "./ProcessorFilter.vue";
 import StorageFilter from "./StorageFilter.vue";
@@ -237,18 +228,16 @@ const currentPath = page.url;
 
 const discountPage = currentPath.includes("/promocoes");
 
-const ramPage = currentPath.includes("/componentes/memoria-ram");
-const cpuPage = currentPath.includes("/componentes/processadores");
-const storagePage = currentPath.includes("/componentes/armazenamento");
-const motherboardPage = currentPath.includes("/componentes/motherboards");
-const gpuPage = currentPath.includes("/componentes/placas-graficas");
-const psuPage = currentPath.includes("/componentes/fontes-de-alimentacao");
-const cpuCoolerPage = currentPath.includes("/componentes/cpu-coolers");
-const pcCasesPage = currentPath.includes(
-    "/componentes/caixas-para-computadores"
-);
+const ramPage = currentPath.includes("/components/ram-memory");
+const cpuPage = currentPath.includes("/components/processors");
+const storagePage = currentPath.includes("/components/storage");
+const motherboardPage = currentPath.includes("/components/motherboards");
+const gpuPage = currentPath.includes("/components/graphic-cards");
+const psuPage = currentPath.includes("/components/power-supplies");
+const cpuCoolerPage = currentPath.includes("/components/cpu-coolers");
+const pcCasesPage = currentPath.includes("/components/computer-cases");
 
-const smartphonePage = currentPath.includes("/telemoveis");
+const smartphonePage = currentPath.includes("/smartphones");
 
 const props = defineProps({
     manufacturer: Array,
