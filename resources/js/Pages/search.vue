@@ -8,7 +8,7 @@
         <h1
             class="m-8 text-center text-xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
-            Resultados da pesquisa: {{ query }}
+            {{ t("search-query") }} {{ query }}
         </h1>
         <Product
             :products="searchProducts.data"
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
 import Product from "../Components/Categories/productComponent.vue";
 import Navbar from "../Components/navbar.vue";
 import Pagination from "../Components/Inputs/Pagination/paginate.vue";
@@ -56,6 +57,10 @@ export default {
             type: String,
             required: true,
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

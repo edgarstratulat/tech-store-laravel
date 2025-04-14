@@ -212,5 +212,7 @@
     "password": "Password",
     "login-button": "Iniciar sessão",
     "register-button": "Criar conta",
-    "home-button": "Páginal inicial"
+    "home-button": "Páginal inicial",
+
+    "search-query": "Resultados da pesquisa:"
 }

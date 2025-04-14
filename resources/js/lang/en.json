@@ -212,5 +212,7 @@
     "password": "Password",
     "login-button": "Login",
     "register-button": "Register",
-    "home-button": "Home page"
+    "home-button": "Home page",
+
+    "search-query": "Search results:"
 }
