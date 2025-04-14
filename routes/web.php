@@ -39,8 +39,8 @@ Route::middleware(['auth', 'permission:Manage Store',])->group(function () {
 // Telemoveis
 Route::prefix('smartphones')->group(function () {
     Route::get('/', [SmartphonesController::class, 'showSmartphones'])->name('telemoveis');
-    Route::get('smartphones-iphone', [SmartphonesController::class, 'showIphoneSmartphone'])->name('iphone');
-    Route::get('smartphones-android', [SmartphonesController::class, 'showAndroidSmartphone'])->name('android');
+    Route::get('iphone', [SmartphonesController::class, 'showIphoneSmartphone'])->name('iphone');
+    Route::get('android', [SmartphonesController::class, 'showAndroidSmartphone'])->name('android');
 });
 
 //Componentes PC
@@ -49,7 +49,7 @@ Route::prefix('components')->group(function () {
     Route::get('processors', [ComponentsController::class, 'showCPU'])->name('processadores');
     Route::get('motherboards', [ComponentsController::class, 'showMotherboards'])->name('motherboards');
     Route::get('graphic-cards', [ComponentsController::class, 'showGPU'])->name('placas-graficas');
-    Route::get('ram-memory', [ComponentsController::class, 'showRAM'])->name('memoria-ram');
+    Route::get('ram-memories', [ComponentsController::class, 'showRAM'])->name('memoria-ram');
     Route::get('storage', [ComponentsController::class, 'showArmazenamento'])->name('armazenamento');
     Route::get('power-supplies', [ComponentsController::class, 'showFontes'])->name('fontes-de-alimentacao');
     Route::get('computer-cases', [ComponentsController::class, 'showCaixas'])->name('caixas-para-computadores');

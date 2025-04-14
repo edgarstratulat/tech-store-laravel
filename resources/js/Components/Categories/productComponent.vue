@@ -46,9 +46,7 @@
                                 :href="`/${promo.category.slug}/${promo.subcategory.slug}`"
                                 class="cursor-pointer hover:text-gray-500"
                             >
-                                {{
-                                    t(showSubcategories(promo.subcategory_id))
-                                }}</a
+                                {{ showSubcategories(promo.subcategory_id) }}</a
                             >
                         </h2>
                     </div>

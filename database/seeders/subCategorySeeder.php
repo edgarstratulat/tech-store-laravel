@@ -33,7 +33,7 @@ class subCategorySeeder extends Seeder
             ['name' => 'graphic-cards', 'category_id' => 4],  
             ['name' => 'power-supplies', 'category_id' => 4],  
             ['name' => 'cpu-coolers', 'category_id' => 4],  
-            ['name' => 'computers-cases', 'category_id' => 4],
+            ['name' => 'computer-cases', 'category_id' => 4],
             ['name' => 'acessories-pc', 'category_id' => 5],  
             ['name' => 'acessories-smartphones', 'category_id' => 5],  
             ['name' => 'acessories-home', 'category_id' => 5],
