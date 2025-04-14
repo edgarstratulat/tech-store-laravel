@@ -9,7 +9,7 @@
                 "
                 class="text-gray-500 hover:text-blue-600 transition duration-300"
             >
-                {{ btn.button_name }}
+                {{ t(`buttons.${btn.button_name}`) }}
             </button>
 
             <ul
@@ -22,7 +22,7 @@
                     :key="option.id"
                     @click="redirect(option.route)"
                 >
-                    {{ option.button_name }}
+                    {{ t(`buttons_options.${option.button_name}`) }}
                 </li>
             </ul>
         </div>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
     data() {
         return {
@@ -64,6 +66,10 @@ export default {
         redirect(route) {
             this.$inertia.visit(route);
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

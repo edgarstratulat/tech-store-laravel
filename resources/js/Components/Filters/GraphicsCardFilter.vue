@@ -1,4 +1,108 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("gpu-category")
+        }}</label>
+        <select
+            :value="categoryGPU"
+            @change="updateCategoryGPU"
+            class="w-full border p-1 rounded"
+        >
+            <option
+                v-for="manu in uniqueCategory()"
+                :value="manu.id"
+                :key="manu.id"
+            >
+                {{ manu.category }}
+            </option>
+        </select>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("gpu-model")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueGPU()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.model"
+                    class="form-checkbox size-4"
+                    @change="updateModelGPU"
+                />
+                <span class="ml-2">{{ option.model }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("gpu-memory")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueVRAM()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.vram"
+                    class="form-checkbox size-4"
+                    @change="updateVramGPU"
+                />
+                <span class="ml-2">{{ option.vram }} GB</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("gpu-type-memory")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueTypeVram()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.type_vram"
+                    class="form-checkbox size-4"
+                    @change="updateTypeVramGPU"
+                />
+                <span class="ml-2">{{ option.type_vram }} </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("gpu-interface")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueInterface()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.interface"
+                    class="form-checkbox size-4"
+                    @change="updateInterface"
+                />
+                <span class="ml-2">{{ option.interface }} </span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     modelGPU: Array,
     categoryGPU: String,
@@ -131,100 +235,3 @@ const uniqueInterface = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Categoria</label>
-        <select
-            :value="categoryGPU"
-            @change="updateCategoryGPU"
-            class="w-full border p-1 rounded"
-        >
-            <option
-                v-for="manu in uniqueCategory()"
-                :value="manu.id"
-                :key="manu.id"
-            >
-                {{ manu.category }}
-            </option>
-        </select>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Modelo placa gráfica</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueGPU()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.model"
-                    class="form-checkbox size-4"
-                    @change="updateModelGPU"
-                />
-                <span class="ml-2">{{ option.model }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Memória placa gráfica</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueVRAM()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.vram"
-                    class="form-checkbox size-4"
-                    @change="updateVramGPU"
-                />
-                <span class="ml-2">{{ option.vram }} GB</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Tipo de memória</label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueTypeVram()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.type_vram"
-                    class="form-checkbox size-4"
-                    @change="updateTypeVramGPU"
-                />
-                <span class="ml-2">{{ option.type_vram }} </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Tipo de interface</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueInterface()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.interface"
-                    class="form-checkbox size-4"
-                    @change="updateInterface"
-                />
-                <span class="ml-2">{{ option.interface }} </span>
-            </label>
-        </div>
-    </div>
-</template>

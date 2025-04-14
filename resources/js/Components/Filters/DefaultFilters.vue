@@ -1,14 +1,18 @@
 <template>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Ordenar por:</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("filters-sort-by")
+        }}</label>
         <select class="w-full border p-1 rounded" @change="updateSort">
-            <option value="-created_at">Mais Recentes</option>
-            <option value="price">Preço mais baixo</option>
-            <option value="-price">Preço mais alto</option>
+            <option value="-created_at">{{ t("filters-most-recent") }}</option>
+            <option value="price">{{ t("filters-lowest-price") }}</option>
+            <option value="-price">{{ t("filters-highest-price") }}</option>
         </select>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Stock</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("filters-stock")
+        }}</label>
         <div class="flex items-center space-x-4">
             <label class="inline-flex items-center">
                 <input
@@ -16,7 +20,7 @@
                     class="form-checkbox size-4"
                     @change="updateStock"
                 />
-                <span class="ml-2">Em stock</span>
+                <span class="ml-2">{{ t("filters-in-stock") }}</span>
             </label>
             <label class="inline-flex items-center">
                 <input
@@ -24,12 +28,14 @@
                     class="form-checkbox size-4"
                     @change="updateNoStock"
                 />
-                <span class="ml-2">Sem stock</span>
+                <span class="ml-2">{{ t("filters-out-of-stock") }}</span>
             </label>
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Preço</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("filters-price")
+        }}</label>
         <div class="flex items-center space-x-4">
             <input
                 type="number"
@@ -46,7 +52,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Fabricante</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("filters-manufacturer")
+        }}</label>
         <select
             :value="manufacturerValue"
             @change="updateManufacturer"
@@ -62,9 +70,9 @@
         </select>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Estado do produto</label
-        >
+        <label class="block text-md font-semibold mb-1">{{
+            t("filters-product-status")
+        }}</label>
         <div class="flex items-center space-x-4">
             <label class="inline-flex items-center">
                 <input
@@ -72,7 +80,7 @@
                     class="form-checkbox size-4"
                     @change="updateDiscount"
                 />
-                <span class="ml-2">Promoções</span>
+                <span class="ml-2">{{ t("filters-discount") }}</span>
             </label>
             <label class="inline-flex items-center">
                 <input
@@ -80,13 +88,16 @@
                     class="form-checkbox size-4"
                     @change="updateReconditioned"
                 />
-                <span class="ml-2">Recondicionados</span>
+                <span class="ml-2">{{ t("filters-reconditioned") }}</span>
             </label>
         </div>
     </div>
 </template>
 
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     sort: String,
     stock: String,

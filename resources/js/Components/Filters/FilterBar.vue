@@ -2,7 +2,7 @@
     <div
         class="overflow-y-auto mt-8 h-screen w-full bg-white shadow-lg p-4 rounded-lg"
     >
-        <h2 class="text-2xl font-bold mb-4">Filtros</h2>
+        <h2 class="text-2xl font-bold mb-4">{{ t("filters-page-title") }}</h2>
 
         <!--Default-->
         <DefaultFilter
@@ -203,7 +203,7 @@
             @click="applyFilters"
             class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
         >
-            Aplicar Filtros
+            {{ t("filters-apply-filters") }}
         </button>
     </div>
 </template>
@@ -211,6 +211,8 @@
 <script setup>
 import { ref } from "vue";
 import { router, usePage } from "@inertiajs/vue3";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 import MemoryRamFilter from "./MemoryRamFilter.vue";
 import ProcessorFilter from "./ProcessorFilter.vue";

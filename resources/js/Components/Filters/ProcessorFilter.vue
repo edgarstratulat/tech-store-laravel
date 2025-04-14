@@ -1,4 +1,70 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("processor-family")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueCPU()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.model"
+                    class="form-checkbox size-4"
+                    @change="updateModelCPU"
+                />
+                <span class="ml-2">{{ option.model }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("processor-socket")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueSocket()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.socket"
+                    class="form-checkbox size-4"
+                    @change="updateSocketCPU"
+                />
+                <span class="ml-2">{{ option.socket }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("processor-tdp")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueTDP()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.tdp"
+                    class="form-checkbox size-4"
+                    @change="updateTDPcpu"
+                />
+                <span class="ml-2">{{ option.tdp }} W</span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     modelCPU: Array,
     socketCPU: Array,
@@ -86,64 +152,3 @@ const uniqueTDP = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Família Processador</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueCPU()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.model"
-                    class="form-checkbox size-4"
-                    @change="updateModelCPU"
-                />
-                <span class="ml-2">{{ option.model }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Socket Processador</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueSocket()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.socket"
-                    class="form-checkbox size-4"
-                    @change="updateSocketCPU"
-                />
-                <span class="ml-2">{{ option.socket }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">TDP Processador</label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueTDP()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.tdp"
-                    class="form-checkbox size-4"
-                    @change="updateTDPcpu"
-                />
-                <span class="ml-2">{{ option.tdp }} W</span>
-            </label>
-        </div>
-    </div>
-</template>

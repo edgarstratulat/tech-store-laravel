@@ -14,11 +14,11 @@ class CategorySeeder extends Seeder
     {
 
         foreach([
-            ['name' => 'Computadores'],
-            ['name' => 'Periféricos'],
-            ['name' => 'Telemóveis'],
-            ['name' => 'Componentes'],
-            ['name' => 'Acessórios'],
+            ['name' => 'computers'],
+            ['name' => 'peripherals'],
+            ['name' => 'smartphones'],
+            ['name' => 'components'],
+            ['name' => 'acessories'],
         ] as $category)
 
         Category::create($category);

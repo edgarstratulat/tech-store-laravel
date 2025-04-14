@@ -1,4 +1,94 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("storage-capacity")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueSizesDrive()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.size"
+                    class="form-checkbox size-4"
+                    @change="updateDriveCapacity"
+                />
+                <span class="ml-2">{{
+                    option.size >= 1000
+                        ? option.size / 1000 + " TB"
+                        : option.size + " GB"
+                }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-medium mb-1">{{
+            t("storage-type")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueTypeDrive()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.type"
+                    class="form-checkbox size-4"
+                    @change="updateDriveType"
+                />
+                <span class="ml-2">{{ option.type }} </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-medium mb-1">{{
+            t("storage-ssd")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueWritingSpeedDrive()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.writing_speed"
+                    class="form-checkbox size-4"
+                    @change="updateWritingSpeedDrive"
+                />
+                <span class="ml-2">{{ option.writing_speed }} MB/s</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-medium mb-1">{{
+            t("storage-hdd")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueRotationArmazenamento()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.rotation_speed"
+                    class="form-checkbox size-4"
+                    @change="updateRotationSpeedDrive"
+                />
+                <span class="ml-2">{{ option.rotation_speed }} RPM</span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     capacityDrive: Array,
     typeDrive: Array,
@@ -123,90 +213,3 @@ const uniqueRotationArmazenamento = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Capacidade Armazenamento</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueSizesDrive()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.size"
-                    class="form-checkbox size-4"
-                    @change="updateDriveCapacity"
-                />
-                <span class="ml-2">{{
-                    option.size >= 1000
-                        ? option.size / 1000 + " TB"
-                        : option.size + " GB"
-                }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-medium mb-1"
-            >Tipo de Armazenamento</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueTypeDrive()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.type"
-                    class="form-checkbox size-4"
-                    @change="updateDriveType"
-                />
-                <span class="ml-2">{{ option.type }} </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-medium mb-1"
-            >SSD (Velocidade de Escrita & Leitura)</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueWritingSpeedDrive()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.writing_speed"
-                    class="form-checkbox size-4"
-                    @change="updateWritingSpeedDrive"
-                />
-                <span class="ml-2">{{ option.writing_speed }} MB/s</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-medium mb-1"
-            >HDD (Velocidade Rotações)</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueRotationArmazenamento()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.rotation_speed"
-                    class="form-checkbox size-4"
-                    @change="updateRotationSpeedDrive"
-                />
-                <span class="ml-2">{{ option.rotation_speed }} RPM</span>
-            </label>
-        </div>
-    </div>
-</template>

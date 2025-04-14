@@ -35,13 +35,14 @@
                 @click="redirect(btn.route)"
                 class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded text-center"
             >
-                {{ btn.button_name }}
+                {{ t(`buttons.${btn.button_name}`) }}
             </a>
         </div>
     </div>
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
 import NavbarSearchMobile from "../../Inputs/Navbar/navbarSearchMobile.vue";
 
 export default {
@@ -72,6 +73,10 @@ export default {
             const navbarButtons = [1, 2, 3, 4, 5, 6];
             return this.Buttons.filter((btn) => navbarButtons.includes(btn.id));
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

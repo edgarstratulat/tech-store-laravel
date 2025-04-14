@@ -31,7 +31,9 @@
                     <li
                         class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
                     >
-                        <span class="text-center">Olá, Visitante</span>
+                        <span class="text-center"
+                            >{{ t("hi") }}, {{ t("guest") }}</span
+                        >
                         <hr class="my-2 border-slate-200" />
                     </li>
                 </a>
@@ -47,7 +49,7 @@
                             :icon="btn.icon"
                             class="text-lg"
                         ></fa>
-                        <span>{{ btn.button_name }} </span>
+                        <span> {{ t(`buttons.${btn.button_name}`) }} </span>
                     </span>
                 </button>
             </li>
@@ -60,7 +62,7 @@
                         class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
                     >
                         <span class="text-center"
-                            >Olá, {{ Utilizador.name }}</span
+                            >{{ t("hi") }}, {{ Utilizador.name }}</span
                         >
                         <hr class="my-2 border-slate-200" />
                     </li>
@@ -77,7 +79,7 @@
                             :icon="btn.icon"
                             class="text-lg"
                         ></fa>
-                        <span>{{ btn.button_name }} </span>
+                        <span>{{ t(`buttons.${btn.button_name}`) }} </span>
                     </span>
                 </button>
             </li>
@@ -87,7 +89,7 @@
                         class="cursor-pointer text-slate-800 px-2 pt-2 font-bold"
                     >
                         <span class="text-center"
-                            >Olá, {{ Utilizador.name }}</span
+                            >{{ t("hi") }}, {{ Utilizador.name }}</span
                         >
                         <hr class="my-2 border-slate-200" />
                     </li>
@@ -104,7 +106,7 @@
                             :icon="btn.icon"
                             class="text-lg"
                         ></fa>
-                        <span>{{ btn.button_name }} </span>
+                        <span>{{ t(`buttons.${btn.button_name}`) }} </span>
                     </span>
                 </button>
             </li>
@@ -113,6 +115,8 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
     data() {
         return {
@@ -121,28 +125,21 @@ export default {
     },
     computed: {
         filterButtonsDropDownMenuNotLogged() {
-            const DropdownButtons = ["Iniciar Sessão", "Criar Conta"];
+            const DropdownButtons = [10, 11];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.button_name)
+                DropdownButtons.includes(btn.id)
             );
         },
         filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = [
-                "Definições da Conta",
-                "Ver Pedidos",
-                "Terminar Sessão",
-            ];
+            const DropdownButtons = [8, 9, 12];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.button_name)
+                DropdownButtons.includes(btn.id)
             );
         },
         filterButtonsDropDownMenuAdmin() {
-            const DropdownButtons = [
-                "Painel Administrativo",
-                "Terminar Sessão",
-            ];
+            const DropdownButtons = [7, 12];
             return this.Buttons.filter((btn) =>
-                DropdownButtons.includes(btn.button_name)
+                DropdownButtons.includes(btn.id)
             );
         },
     },
@@ -164,6 +161,10 @@ export default {
         isAdmin: {
             type: Boolean,
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

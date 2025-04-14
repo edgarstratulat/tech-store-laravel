@@ -5,17 +5,19 @@
         >
             <div class="container mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-4 drop-shadow-md">
-                    BLACK FRIDAY
+                    {{ t("carroussel-h1") }}
                 </h2>
-                <p class="text-2xl mb-4">OFERTA LIMITADA</p>
+                <p class="text-2xl mb-4">{{ t("carroussel-h2") }}</p>
                 <p class="text-6xl font-bold text-white mb-4 drop-shadow-md">
-                    -50%
+                    {{ t("carroussel-discount") }}
                 </p>
-                <p class="text-xl mb-8 drop-shadow-md">EM TODOS OS PRODUTOS</p>
+                <p class="text-xl mb-8 drop-shadow-md">
+                    {{ t("carroussel-products") }}
+                </p>
                 <button
                     class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300"
                 >
-                    VER CAMPANHA
+                    {{ t("carroussel-p") }}
                 </button>
             </div>
         </section>
@@ -23,5 +25,12 @@
 </template>
 
 <script>
-export default {};
+import { useI18n } from "vue-i18n";
+
+export default {
+    setup() {
+        const { t } = useI18n();
+        return { t };
+    },
+};
 </script>

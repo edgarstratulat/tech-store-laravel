@@ -77,7 +77,7 @@
                         </span>
                     </div>
 
-                    <div class="flex gap-5 items-center">
+                    <div class="flex gap-4 items-center">
                         <span
                             class="text-md mb-1 font-bold text-red-600"
                             v-if="promo.stock <= 0"
@@ -86,20 +86,20 @@
                                 <fa
                                     icon="fa-solid fa-xmark"
                                     class="text-red-600 mr-1"
-                                ></fa
-                                >Sem Stock
+                                ></fa>
+                                {{ t("product-nostock") }}
                             </p>
                         </span>
                         <span
-                            class="text-md font-bold text-yellow-600"
+                            class="text-md mb-1 font-bold text-yellow-600"
                             v-else-if="promo.stock <= 10"
                         >
                             <p>
                                 <fa
                                     icon="fa-solid fa-check"
                                     class="text-yellow-600 mr-1"
-                                ></fa
-                                >Poucas unidades
+                                ></fa>
+                                {{ t("product-few-units") }}
                             </p>
                         </span>
                         <span
@@ -110,8 +110,8 @@
                                 <fa
                                     icon="fa-solid fa-check"
                                     class="text-emerald-400 mr-1"
-                                ></fa
-                                >Em Stock
+                                ></fa>
+                                {{ t("product-stock") }}
                             </p>
                         </span>
                     </div>
@@ -144,6 +144,8 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
     props: {
         computers: {
@@ -159,6 +161,10 @@ export default {
 
             return FinalDiscount.toFixed(2);
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

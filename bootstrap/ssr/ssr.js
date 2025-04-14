@@ -1,12 +1,13 @@
-import { ref, mergeProps, useSSRContext, resolveComponent, onMounted, onUnmounted, reactive, createSSRApp, h } from "vue";
+import { ref, mergeProps, useSSRContext, resolveComponent, unref, reactive, createSSRApp, h } from "vue";
 import { ssrRenderAttrs, ssrRenderAttr, ssrRenderList, ssrInterpolate, ssrRenderComponent, ssrGetDynamicModelProps, ssrIncludeBooleanAttr, ssrLooseContain, ssrLooseEqual } from "vue/server-renderer";
-import { Link, createInertiaApp } from "@inertiajs/vue3";
+import { Link, usePage, createInertiaApp } from "@inertiajs/vue3";
+import { useI18n } from "vue-i18n";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-const _sfc_main$O = {
+const _sfc_main$Y = {
   __name: "navbarSearch",
   __ssrInlineRender: true,
   setup(__props) {
@@ -16,11 +17,11 @@ const _sfc_main$O = {
     };
   }
 };
-const _sfc_setup$O = _sfc_main$O.setup;
-_sfc_main$O.setup = (props, ctx) => {
+const _sfc_setup$Y = _sfc_main$Y.setup;
+_sfc_main$Y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Inputs/Navbar/navbarSearch.vue");
-  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
+  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -29,7 +30,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$N = {
+const _sfc_main$X = {
   data() {
     return {
       dropdownNavbarStates: {}
@@ -82,14 +83,14 @@ function _sfc_ssrRender$G(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]--></div>`);
 }
-const _sfc_setup$N = _sfc_main$N.setup;
-_sfc_main$N.setup = (props, ctx) => {
+const _sfc_setup$X = _sfc_main$X.setup;
+_sfc_main$X.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/Navbar/navbarButtons.vue");
-  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
 };
-const navbarButtons = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["ssrRender", _sfc_ssrRender$G]]);
-const _sfc_main$M = {
+const navbarButtons = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["ssrRender", _sfc_ssrRender$G]]);
+const _sfc_main$W = {
   data() {
     return {
       isDropdownOpen: false
@@ -207,15 +208,15 @@ function _sfc_ssrRender$F(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }
   _push(`</div>`);
 }
-const _sfc_setup$M = _sfc_main$M.setup;
-_sfc_main$M.setup = (props, ctx) => {
+const _sfc_setup$W = _sfc_main$W.setup;
+_sfc_main$W.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Buttons/Navbar/userButton.vue");
-  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
 };
-const userButton = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["ssrRender", _sfc_ssrRender$F]]);
-const __default__$4 = {};
-const _sfc_main$L = /* @__PURE__ */ Object.assign(__default__$4, {
+const userButton = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["ssrRender", _sfc_ssrRender$F]]);
+const __default__$3 = {};
+const _sfc_main$V = /* @__PURE__ */ Object.assign(__default__$3, {
   __name: "navbarSearchMobile",
   __ssrInlineRender: true,
   setup(__props) {
@@ -231,15 +232,15 @@ const _sfc_main$L = /* @__PURE__ */ Object.assign(__default__$4, {
     };
   }
 });
-const _sfc_setup$L = _sfc_main$L.setup;
-_sfc_main$L.setup = (props, ctx) => {
+const _sfc_setup$V = _sfc_main$V.setup;
+_sfc_main$V.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Inputs/Navbar/navbarSearchMobile.vue");
-  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
 };
-const _sfc_main$K = {
+const _sfc_main$U = {
   components: {
-    NavbarSearchMobile: _sfc_main$L
+    NavbarSearchMobile: _sfc_main$V
   },
   props: {
     Buttons: {
@@ -283,17 +284,17 @@ function _sfc_ssrRender$E(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }
   _push(`<!--]-->`);
 }
-const _sfc_setup$K = _sfc_main$K.setup;
-_sfc_main$K.setup = (props, ctx) => {
+const _sfc_setup$U = _sfc_main$U.setup;
+_sfc_main$U.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Menu/Mobile/navbarMenuMobile.vue");
-  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
 };
-const NavbarMenuMobile = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["ssrRender", _sfc_ssrRender$E]]);
-const _sfc_main$J = {
+const NavbarMenuMobile = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["ssrRender", _sfc_ssrRender$E]]);
+const _sfc_main$T = {
   components: {
-    NavbarSearch: _sfc_main$O,
-    NavbarSearchMobile: _sfc_main$L,
+    NavbarSearch: _sfc_main$Y,
+    NavbarSearchMobile: _sfc_main$V,
     navbarButtons,
     userButton,
     NavbarMenuMobile
@@ -348,14 +349,14 @@ function _sfc_ssrRender$D(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_NavbarMenuMobile, { Buttons: $props.Buttons }, null, _parent));
   _push(`</div></div></div></div></nav>`);
 }
-const _sfc_setup$J = _sfc_main$J.setup;
-_sfc_main$J.setup = (props, ctx) => {
+const _sfc_setup$T = _sfc_main$T.setup;
+_sfc_main$T.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/navbar.vue");
-  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
 };
-const Navbar = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["ssrRender", _sfc_ssrRender$D]]);
-const _sfc_main$I = {
+const Navbar = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["ssrRender", _sfc_ssrRender$D]]);
+const _sfc_main$S = {
   props: {
     products: {
       type: Array,
@@ -395,40 +396,62 @@ const _sfc_main$I = {
   }
 };
 function _sfc_ssrRender$C(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<div${ssrRenderAttrs(mergeProps({ class: "mt-8 flex justify-center items-center ml-5 p-5" }, _attrs))}><div class="w-full max-w-6xl max-h-6xl mx-auto"><ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><!--[-->`);
+  const _component_fa = resolveComponent("fa");
+  _push(`<div${ssrRenderAttrs(mergeProps({ class: "mt-8 flex justify-center items-center ml-5" }, _attrs))}><div class="w-full max-w-6xl max-h-6xl mx-auto"><ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><!--[-->`);
   ssrRenderList($props.products, (promo) => {
-    _push(`<li class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-6"><div class="mb-4"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><img${ssrRenderAttr("src", `/storage/${promo.image_path}`)}${ssrRenderAttr("alt", promo.name)} class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"></a>`);
+    _push(`<li class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-6"><div class="mb-4"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><div>`);
+    if (promo.reconditioned == true) {
+      _push(`<div class="z-10 text-sm font-bold text-purple-500 m-0"><h1>Recondicionado</h1></div>`);
+    } else {
+      _push(`<!---->`);
+    }
+    _push(`<img${ssrRenderAttr("src", `/storage/${promo.image_path}`)}${ssrRenderAttr("alt", promo.name)} class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"></div></a>`);
     if (promo.sale_price > 0) {
       _push(`<div class="text-right text-sm font-semibold text-red-500 lg:text-lg"> -${ssrInterpolate(promo.sale_price)}% </div>`);
     } else {
       _push(`<div class="invisible">${ssrInterpolate(promo.sale_price)}</div>`);
     }
-    _push(`</div><div class="flex-grow"><h2 class="text-xs mb-2 text-gray-400">${ssrInterpolate($options.showCategories(promo.category_id))} ${ssrInterpolate($options.showSubcategories(promo.subcategory_id))}</h2></div><div class="flex-grow"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><h2 class="text-sm font-semibold mb-2 hover:text-blue-600">${ssrInterpolate(promo.name)}</h2></a></div><div class="flex-grow"><h2 class="truncate text-xs max-w-100 text-neutral-500">${ssrInterpolate(promo.description)}</h2></div><div class="mt-4 flex gap-5 items-center">`);
+    _push(`</div><div class="flex-grow"><h2 class="text-[0.70rem] mb-2 text-gray-400">${ssrInterpolate($options.showCategories(promo.category_id))} <a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}`)} class="cursor-pointer hover:text-gray-500">${ssrInterpolate($options.showSubcategories(promo.subcategory_id))}</a></h2></div><div class="flex-grow"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><h2 class="line-clamp-2 text-sm font-semibold mb-2 hover:text-blue-600">${ssrInterpolate(promo.name)}</h2></a></div><div class="flex-grow"><h2 class="line-clamp-2 text-xs max-w-100 text-neutral-500">${ssrInterpolate(promo.description)}</h2></div><div class="mt-4 flex gap-5 items-center">`);
     if (promo.sale_price <= 0) {
       _push(`<span class="text-2xl mb-1 font-bold text-blue-600">${ssrInterpolate(promo.price)}€ </span>`);
     } else {
       _push(`<span class="text-2xl mb-1 font-bold text-red-600">${ssrInterpolate($options.Desconto(promo))}€ <span class="text-sm mb-1 text-neutral-400 line-through">${ssrInterpolate(promo.price)}€ </span></span>`);
     }
-    _push(`</div><div class="flex gap-5 items-center">`);
+    _push(`</div><div class="flex gap-4 items-center">`);
     if (promo.stock <= 0) {
-      _push(`<span class="text-md mb-1 font-bold text-red-600"><p>Sem Stock</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-red-600"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-xmark",
+        class: "text-red-600 mr-1"
+      }, null, _parent));
+      _push(` Sem Stock </p></span>`);
     } else if (promo.stock <= 10) {
-      _push(`<span class="text-md font-bold text-yellow-600"><p>Poucas unidades</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-yellow-600"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-check",
+        class: "text-yellow-600 mr-1"
+      }, null, _parent));
+      _push(` Poucas unidades </p></span>`);
     } else {
-      _push(`<span class="text-md mb-1 font-bold text-emerald-400"><p>Em Stock</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-emerald-400"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-check",
+        class: "text-emerald-400 mr-1"
+      }, null, _parent));
+      _push(` Em Stock </p></span>`);
     }
     _push(`</div><div class="flex items-center gap-2"><button class="bg-neutral-800 text-white px-4 py-2 hover:bg-blue-600 transition-colors duration-300 w-5/6"> Adicionar </button><button class="bg-neutral-400 text-white px-4 py-2 hover:bg-blue-700 transition-colors duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></button></div></li>`);
   });
   _push(`<!--]--></ul></div></div>`);
 }
-const _sfc_setup$I = _sfc_main$I.setup;
-_sfc_main$I.setup = (props, ctx) => {
+const _sfc_setup$S = _sfc_main$S.setup;
+_sfc_main$S.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Categories/productComponent.vue");
-  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
 };
-const Product$1 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["ssrRender", _sfc_ssrRender$C]]);
-const _sfc_main$H = {
+const Product$1 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["ssrRender", _sfc_ssrRender$C]]);
+const _sfc_main$R = {
   components: {
     Link
   },
@@ -449,7 +472,7 @@ function _sfc_ssrRender$B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push(ssrRenderComponent(_component_Link, {
           href: link.url,
           class: ["px-4 py-2 text-sm text-black font-medium bg-white border border-gray-300 rounded-sm", {
-            "bg-blue-400 text-white hover:bg-blue-500 ": link.active
+            "bg-blue-700 text-white hover:bg-blue-500 ": link.active
           }]
         }, null, _parent));
       } else {
@@ -462,14 +485,14 @@ function _sfc_ssrRender$B(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _push(`<!---->`);
   }
 }
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$R = _sfc_main$R.setup;
+_sfc_main$R.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Inputs/Pagination/paginate.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
-const Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["ssrRender", _sfc_ssrRender$B]]);
-const _sfc_main$G = {
+const Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["ssrRender", _sfc_ssrRender$B]]);
+const _sfc_main$Q = {
   components: {
     Navbar,
     Product: Product$1,
@@ -521,18 +544,18 @@ function _sfc_ssrRender$A(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$G = _sfc_main$G.setup;
-_sfc_main$G.setup = (props, ctx) => {
+const _sfc_setup$Q = _sfc_main$Q.setup;
+_sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Acessorios/AcessoriosPcPage.vue");
-  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
-const AcessoriosPcPage = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["ssrRender", _sfc_ssrRender$A]]);
+const AcessoriosPcPage = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["ssrRender", _sfc_ssrRender$A]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: AcessoriosPcPage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$F = {
+const _sfc_main$P = {
   components: {
     Navbar,
     Product: Product$1,
@@ -584,18 +607,18 @@ function _sfc_ssrRender$z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$F = _sfc_main$F.setup;
-_sfc_main$F.setup = (props, ctx) => {
+const _sfc_setup$P = _sfc_main$P.setup;
+_sfc_main$P.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Acessorios/AcessoriosSmartPhonePage.vue");
-  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
-const AcessoriosSmartPhonePage = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["ssrRender", _sfc_ssrRender$z]]);
+const AcessoriosSmartPhonePage = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["ssrRender", _sfc_ssrRender$z]]);
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: AcessoriosSmartPhonePage
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$E = {
+const _sfc_main$O = {
   components: {
     Navbar,
     Product: Product$1,
@@ -647,62 +670,1207 @@ function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
 }
-const _sfc_setup$E = _sfc_main$E.setup;
-_sfc_main$E.setup = (props, ctx) => {
+const _sfc_setup$O = _sfc_main$O.setup;
+_sfc_main$O.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Acessorios/AcessorioscasaPage.vue");
-  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
-const AcessorioscasaPage = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["ssrRender", _sfc_ssrRender$y]]);
+const AcessorioscasaPage = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["ssrRender", _sfc_ssrRender$y]]);
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: AcessorioscasaPage
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$3 = {
+const _sfc_main$N = {
+  __name: "MemoryRamFilter",
+  __ssrInlineRender: true,
   props: {
-    manufacturer: {
-      type: Array,
-      required: true
-    },
-    products: {
-      type: Array,
-      required: true
-    }
+    capacityRam: Array,
+    typeRam: Array,
+    frequencyRam: Array,
+    latencyRam: Array,
+    ram: Array
+  },
+  emits: [
+    "update:capacityRam",
+    "update:typeRam",
+    "update:frequencyRam",
+    "update:latencyRam"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueSizesRam = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.ram.filter((ram) => {
+        if (!sizeRAM.has(ram.size)) {
+          sizeRAM.add(ram.size);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueTypeRam = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.ram.filter((ram) => {
+        if (!sizeRAM.has(ram.type)) {
+          sizeRAM.add(ram.type);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueFrequencyRam = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.ram.filter((ram) => {
+        if (!sizeRAM.has(ram.frequency)) {
+          sizeRAM.add(ram.frequency);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueLatencyRam = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.ram.filter((ram) => {
+        if (!sizeRAM.has(ram.latency)) {
+          sizeRAM.add(ram.latency);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("ram-capacity"))}</label><!--[-->`);
+      ssrRenderList(uniqueSizesRam(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.size)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.size >= 1e3 ? option.size / 1e3 + " TB" : option.size + " GB")}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("ram-type"))}</label><!--[-->`);
+      ssrRenderList(uniqueTypeRam(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.type)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.type)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("ram-speed"))}</label><!--[-->`);
+      ssrRenderList(uniqueFrequencyRam(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.frequency)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.frequency)} Mhz</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("ram-latency"))}</label><!--[-->`);
+      ssrRenderList(uniqueLatencyRam(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.latency)} class="form-checkbox size-4"><span class="ml-2">CL${ssrInterpolate(option.latency)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
   }
 };
-const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$3, {
-  __name: "navbar",
+const _sfc_setup$N = _sfc_main$N.setup;
+_sfc_main$N.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/MemoryRamFilter.vue");
+  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+};
+const _sfc_main$M = {
+  __name: "ProcessorFilter",
   __ssrInlineRender: true,
+  props: {
+    modelCPU: Array,
+    socketCPU: Array,
+    tdpCPU: Array,
+    cpu: Array
+  },
+  emits: [
+    "update:modelCPU",
+    "update:socketCPU",
+    "update:tdpCPU"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueCPU = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.cpu.filter((ram) => {
+        if (!sizeRAM.has(ram.model)) {
+          sizeRAM.add(ram.model);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueSocket = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.cpu.filter((ram) => {
+        if (!sizeRAM.has(ram.socket)) {
+          sizeRAM.add(ram.socket);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueTDP = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.cpu.filter((ram) => {
+        if (!sizeRAM.has(ram.tdp)) {
+          sizeRAM.add(ram.tdp);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("processor-family"))}</label><!--[-->`);
+      ssrRenderList(uniqueCPU(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.model)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.model)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("processor-socket"))}</label><!--[-->`);
+      ssrRenderList(uniqueSocket(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.socket)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.socket)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("processor-tdp"))}</label><!--[-->`);
+      ssrRenderList(uniqueTDP(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.tdp)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.tdp)} W</span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/ProcessorFilter.vue");
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+};
+const _sfc_main$L = {
+  __name: "StorageFilter",
+  __ssrInlineRender: true,
+  props: {
+    capacityDrive: Array,
+    typeDrive: Array,
+    writingSpeedDrive: Array,
+    rotationSpeedDrive: Array,
+    armazenamento: Array
+  },
+  emits: [
+    "update:capacityDrive",
+    "update:typeDrive",
+    "update:writingSpeedDrive",
+    "update:rotationSpeedDrive"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueSizesDrive = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.armazenamento.filter((ram) => {
+        if (!sizeRAM.has(ram.size)) {
+          sizeRAM.add(ram.size);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueTypeDrive = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.armazenamento.filter((ram) => {
+        if (!sizeRAM.has(ram.type)) {
+          sizeRAM.add(ram.type);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueWritingSpeedDrive = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.armazenamento.filter((ram) => {
+        if (ram.writing_speed && ram.type !== "HDD" && !sizeRAM.has(ram.writing_speed)) {
+          sizeRAM.add(ram.writing_speed);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueRotationArmazenamento = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.armazenamento.filter((ram) => {
+        if (ram.rotation_speed && ram.type === "HDD" && !sizeRAM.has(ram.rotation_speed)) {
+          sizeRAM.add(ram.rotation_speed);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("storage-capacity"))}</label><!--[-->`);
+      ssrRenderList(uniqueSizesDrive(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.size)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.size >= 1e3 ? option.size / 1e3 + " TB" : option.size + " GB")}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("storage-type"))}</label><!--[-->`);
+      ssrRenderList(uniqueTypeDrive(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.type)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.type)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("storage-ssd"))}</label><!--[-->`);
+      ssrRenderList(uniqueWritingSpeedDrive(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.writing_speed)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.writing_speed)} MB/s</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("storage-hdd"))}</label><!--[-->`);
+      ssrRenderList(uniqueRotationArmazenamento(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.rotation_speed)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.rotation_speed)} RPM</span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/StorageFilter.vue");
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+};
+const _sfc_main$K = {
+  __name: "MotherboardFilter",
+  __ssrInlineRender: true,
+  props: {
+    motherboardFormat: Array,
+    motherboardChipset: Array,
+    motherboardCpuSocket: Array,
+    motherboardBluetooth: Array,
+    motherboardWifi: Array,
+    motherboard: Array
+  },
+  emits: [
+    "update:motherboardFormat",
+    "update:motherboardChipset",
+    "update:motherboardCpuSocket",
+    "update:motherboardBluetooth",
+    "update:motherboardWifi"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueFormat = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.motherboard.filter((ram) => {
+        if (!sizeRAM.has(ram.format)) {
+          sizeRAM.add(ram.format);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueChipset = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.motherboard.filter((ram) => {
+        if (!sizeRAM.has(ram.chipset)) {
+          sizeRAM.add(ram.chipset);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueCpuSocket = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.motherboard.filter((ram) => {
+        if (!sizeRAM.has(ram.cpu_socket)) {
+          sizeRAM.add(ram.cpu_socket);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("motherboard-format"))}</label><!--[-->`);
+      ssrRenderList(uniqueFormat(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.format)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.format)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("motherboard-chipset"))}</label><!--[-->`);
+      ssrRenderList(uniqueChipset(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.chipset)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.chipset)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("motherboard-cpu-socket"))}</label><!--[-->`);
+      ssrRenderList(uniqueCpuSocket(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.cpu_socket)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.cpu_socket)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("motherboard-wifi"))}</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" value="true" class="form-checkbox size-4"><span class="ml-2">Sim</span></label></div></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("motherboard-bluetooth"))}</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" value="true" class="form-checkbox size-4"><span class="ml-2">Sim</span></label></div></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/MotherboardFilter.vue");
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+};
+const _sfc_main$J = {
+  __name: "GraphicsCardFilter",
+  __ssrInlineRender: true,
+  props: {
+    modelGPU: Array,
+    categoryGPU: String,
+    vramGPU: Array,
+    typeVramGPU: Array,
+    interfaceGPU: Array,
+    gpu: Array
+  },
+  emits: [
+    "update:modelGPU",
+    "update:categoryGPU",
+    "update:vramGPU",
+    "update:typeVramGPU",
+    "update:interfaceGPU"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueGPU = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.gpu.filter((ram) => {
+        if (!sizeRAM.has(ram.model)) {
+          sizeRAM.add(ram.model);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueCategory = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.gpu.filter((ram) => {
+        if (!sizeRAM.has(ram.category)) {
+          sizeRAM.add(ram.category);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueVRAM = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.gpu.filter((ram) => {
+        if (!sizeRAM.has(ram.vram)) {
+          sizeRAM.add(ram.vram);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueTypeVram = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.gpu.filter((ram) => {
+        if (!sizeRAM.has(ram.type_vram)) {
+          sizeRAM.add(ram.type_vram);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueInterface = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.gpu.filter((ram) => {
+        if (!sizeRAM.has(ram.interface)) {
+          sizeRAM.add(ram.interface);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("gpu-category"))}</label><select${ssrRenderAttr("value", __props.categoryGPU)} class="w-full border p-1 rounded"><!--[-->`);
+      ssrRenderList(uniqueCategory(), (manu) => {
+        _push(`<option${ssrRenderAttr("value", manu.id)}>${ssrInterpolate(manu.category)}</option>`);
+      });
+      _push(`<!--]--></select></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("gpu-model"))}</label><!--[-->`);
+      ssrRenderList(uniqueGPU(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.model)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.model)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("gpu-memory"))}</label><!--[-->`);
+      ssrRenderList(uniqueVRAM(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.vram)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.vram)} GB</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("gpu-type-memory"))}</label><!--[-->`);
+      ssrRenderList(uniqueTypeVram(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.type_vram)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.type_vram)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("gpu-interface"))}</label><!--[-->`);
+      ssrRenderList(uniqueInterface(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.interface)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.interface)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/GraphicsCardFilter.vue");
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+};
+const _sfc_main$I = {
+  __name: "PowerSupplyFilter",
+  __ssrInlineRender: true,
+  props: {
+    psuFormat: Array,
+    psuWattage: Array,
+    psuEfficiency: Array,
+    psuModular: Array,
+    powersupply: Array
+  },
+  emits: [
+    "update:psuFormat",
+    "update:psuWattage",
+    "update:psuEfficiency",
+    "update:psuModular"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueFormat = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.powersupply.filter((ram) => {
+        if (!sizeRAM.has(ram.format)) {
+          sizeRAM.add(ram.format);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueWattage = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.powersupply.filter((ram) => {
+        if (!sizeRAM.has(ram.wattage)) {
+          sizeRAM.add(ram.wattage);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueEfficiency = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.powersupply.filter((ram) => {
+        if (!sizeRAM.has(ram.efficiency)) {
+          sizeRAM.add(ram.efficiency);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueModular = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.powersupply.filter((ram) => {
+        if (!sizeRAM.has(ram.modular)) {
+          sizeRAM.add(ram.modular);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("psu-format"))}</label><!--[-->`);
+      ssrRenderList(uniqueFormat(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.format)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.format)}</span></label></div>`);
+      });
+      _push(`<!--]--></div></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("psu-wattage"))}</label><!--[-->`);
+      ssrRenderList(uniqueWattage(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.wattage)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.wattage)} W </span></label></div>`);
+      });
+      _push(`<!--]--></div><div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("psu-efficiency"))}</label><!--[-->`);
+      ssrRenderList(uniqueEfficiency(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.efficiency)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.efficiency)}</span></label></div>`);
+      });
+      _push(`<!--]--></div></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("psu-modular"))}</label><!--[-->`);
+      ssrRenderList(uniqueModular(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.modular)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.modular)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/PowerSupplyFilter.vue");
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+};
+const _sfc_main$H = {
+  __name: "CpuCoolersFilter",
+  __ssrInlineRender: true,
+  props: {
+    socketCooler: Array,
+    typeCooler: String,
+    fanRPMCooler: Array,
+    rgbCooler: Array,
+    cpuCooler: Array
+  },
+  emits: [
+    "update:socketCooler",
+    "update:typeCooler",
+    "update:fanRPMCooler",
+    "update:rgbCooler"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueSocket = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.cpuCooler.filter((ram) => {
+        if (!sizeRAM.has(ram.socket)) {
+          sizeRAM.add(ram.socket);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueType = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.cpuCooler.filter((ram) => {
+        if (!sizeRAM.has(ram.type)) {
+          sizeRAM.add(ram.type);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueFanRPM = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.cpuCooler.filter((ram) => {
+        if (!sizeRAM.has(ram.fan_rpm)) {
+          sizeRAM.add(ram.fan_rpm);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("coolers-category"))}</label><select${ssrRenderAttr("value", __props.typeCooler)} class="w-full border p-1 rounded"><!--[-->`);
+      ssrRenderList(uniqueType(), (manu) => {
+        _push(`<option${ssrRenderAttr("value", manu.type)}>${ssrInterpolate(manu.type)}</option>`);
+      });
+      _push(`<!--]--></select></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("coolers-compatibility"))}</label><!--[-->`);
+      ssrRenderList(uniqueSocket(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.socket)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.socket)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("coolers-speed"))}</label><!--[-->`);
+      ssrRenderList(uniqueFanRPM(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.fan_rpm)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.fan_rpm)} RPM</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-medium mb-1">${ssrInterpolate(unref(t)("coolers-rgb"))}</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox size-4"><span class="ml-2">Sim</span></label></div></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/CpuCoolersFilter.vue");
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+};
+const _sfc_main$G = {
+  __name: "ComputerCasesFilter",
+  __ssrInlineRender: true,
+  props: {
+    casesFormat: Array,
+    casesNumberLowerFans: Array,
+    casesNumberUpperFans: Array,
+    casesNumberFrontFans: Array,
+    casesNumberRearFans: Array,
+    temperedGlass: Array,
+    casesGpuLength: Array,
+    casesCoolerHeight: Array,
+    PCcases: Array
+  },
+  emits: [
+    "update:casesFormat",
+    "update:casesNumberLowerFans",
+    "update:casesNumberUpperFans",
+    "update:casesNumberFrontFans",
+    "update:casesNumberRearFans",
+    "update:temperedGlass",
+    "update:casesGpuLength",
+    "update:casesCoolerHeight"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueFormat = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.format)) {
+          sizeRAM.add(ram.format);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueLowerFans = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.number_lower_fans)) {
+          sizeRAM.add(ram.number_lower_fans);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueUpperFans = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.number_upper_fans)) {
+          sizeRAM.add(ram.number_upper_fans);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueFrontFans = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.number_front_fans)) {
+          sizeRAM.add(ram.number_front_fans);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueRearFans = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.number_rear_fans)) {
+          sizeRAM.add(ram.number_rear_fans);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueGPUlength = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.max_gpu_length)) {
+          sizeRAM.add(ram.max_gpu_length);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueCoolerHeight = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.PCcases.filter((ram) => {
+        if (!sizeRAM.has(ram.max_cooler_height)) {
+          sizeRAM.add(ram.max_cooler_height);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-format"))}</label><!--[-->`);
+      ssrRenderList(uniqueFormat(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.format)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.format)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-glass"))}</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" value="true" class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(unref(t)("case-glass-option"))}</span></label></div></div></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-top-fans"))}</label><!--[-->`);
+      ssrRenderList(uniqueUpperFans(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.number_upper_fans)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.number_upper_fans)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-lower-fans"))}</label><!--[-->`);
+      ssrRenderList(uniqueLowerFans(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.number_lower_fans)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.number_lower_fans)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-front-fans"))}</label><!--[-->`);
+      ssrRenderList(uniqueFrontFans(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.number_front_fans)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.number_front_fans)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-rear-fans"))}</label><!--[-->`);
+      ssrRenderList(uniqueRearFans(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.number_rear_fans)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.number_rear_fans)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-gpu-max"))}</label><!--[-->`);
+      ssrRenderList(uniqueGPUlength(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.max_gpu_length)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.max_gpu_length)} mm </span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("case-cooler-max"))}</label><!--[-->`);
+      ssrRenderList(uniqueCoolerHeight(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.max_cooler_height)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.max_cooler_height)} mm </span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$G = _sfc_main$G.setup;
+_sfc_main$G.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/ComputerCasesFilter.vue");
+  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+};
+const _sfc_main$F = {
+  __name: "SmartphonesFilter",
+  __ssrInlineRender: true,
+  props: {
+    capacityStorage: Array,
+    SIM: Array,
+    familyCPU: Array,
+    CPU: Array,
+    operating_system: Array,
+    screen_resolution: Array,
+    screen_inches: Array,
+    screen_hz: Array,
+    screen_type: Array,
+    smartphone: Array
+  },
+  emits: [
+    "update:capacityStorage",
+    "update:SIM",
+    "update:familyCPU",
+    "update:CPU",
+    "update:operating_system",
+    "update:screen_resolution",
+    "update:screen_inches",
+    "update:screen_hz",
+    "update:screen_type"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    const props = __props;
+    const uniqueSmartphoneStorage = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.storage)) {
+          sizeRAM.add(ram.storage);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueSIM = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.SIM)) {
+          sizeRAM.add(ram.SIM);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueFamilyCPU = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.family_processor)) {
+          sizeRAM.add(ram.family_processor);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueCPU = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.processor)) {
+          sizeRAM.add(ram.processor);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueOS = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.operating_system)) {
+          sizeRAM.add(ram.operating_system);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueResolution = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.screen_resolution)) {
+          sizeRAM.add(ram.screen_resolution);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueInches = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.screen_inches)) {
+          sizeRAM.add(ram.screen_inches);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueHz = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.screen_hz)) {
+          sizeRAM.add(ram.screen_hz);
+          return true;
+        }
+        return false;
+      });
+    };
+    const uniqueType = () => {
+      const sizeRAM = /* @__PURE__ */ new Set();
+      return props.smartphone.filter((ram) => {
+        if (!sizeRAM.has(ram.screen_type)) {
+          sizeRAM.add(ram.screen_type);
+          return true;
+        }
+        return false;
+      });
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">Capacidade de Armazenamento</label><!--[-->`);
+      ssrRenderList(uniqueSmartphoneStorage(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.storage)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.storage)} GB</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Capacidade cartão SIM</label><!--[-->`);
+      ssrRenderList(uniqueSIM(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.SIM)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.SIM)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Família Processador</label><!--[-->`);
+      ssrRenderList(uniqueFamilyCPU(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.family_processor)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.family_processor)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Processador</label><!--[-->`);
+      ssrRenderList(uniqueCPU(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.processor)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.processor)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Sistema Operativo</label><!--[-->`);
+      ssrRenderList(uniqueOS(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.operating_system)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.operating_system)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Resolução</label><!--[-->`);
+      ssrRenderList(uniqueResolution(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.screen_resolution)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.screen_resolution)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Polegadas</label><!--[-->`);
+      ssrRenderList(uniqueInches(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.screen_inches)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.screen_inches)}&quot;</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Taxa de atualização</label><!--[-->`);
+      ssrRenderList(uniqueHz(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.screen_hz)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.screen_hz)} Hz</span></label></div>`);
+      });
+      _push(`<!--]--></div><div class="mt-4"><label class="block text-md font-semibold mb-1">Tipo de Painel</label><!--[-->`);
+      ssrRenderList(uniqueType(), (option) => {
+        _push(`<div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox"${ssrRenderAttr("value", option.screen_type)} class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(option.screen_type)}</span></label></div>`);
+      });
+      _push(`<!--]--></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$F = _sfc_main$F.setup;
+_sfc_main$F.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/SmartphonesFilter.vue");
+  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+};
+const _sfc_main$E = {
+  __name: "DefaultFilters",
+  __ssrInlineRender: true,
+  props: {
+    sort: String,
+    stock: String,
+    nostock: String,
+    minPrice: String,
+    maxPrice: String,
+    manufacturerValue: String,
+    manufacturer: Array,
+    discount: String,
+    reconditioned: String
+  },
+  emits: [
+    "update:sort",
+    "update:stock",
+    "update:nostock",
+    "update:minPrice",
+    "update:maxPrice",
+    "update:manufacturer",
+    "update:discount",
+    "update:reconditioned",
+    "update:subcategory"
+  ],
+  setup(__props, { emit: __emit }) {
+    const { t } = useI18n();
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[--><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("filters-sort-by"))}</label><select class="w-full border p-1 rounded"><option value="-created_at">${ssrInterpolate(unref(t)("filters-most-recent"))}</option><option value="price">${ssrInterpolate(unref(t)("filters-lowest-price"))}</option><option value="-price">${ssrInterpolate(unref(t)("filters-highest-price"))}</option></select></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("filters-stock"))}</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(unref(t)("filters-in-stock"))}</span></label><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(unref(t)("filters-out-of-stock"))}</span></label></div></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("filters-price"))}</label><div class="flex items-center space-x-4"><input type="number" placeholder="min" class="w-1/3 border p-1 rounded"><input type="number" placeholder="max" class="w-1/3 border p-1 rounded"></div></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("filters-manufacturer"))}</label><select${ssrRenderAttr("value", __props.manufacturerValue)} class="w-full border p-1 rounded"><!--[-->`);
+      ssrRenderList(__props.manufacturer, (manu) => {
+        _push(`<option${ssrRenderAttr("value", manu.id)}>${ssrInterpolate(manu.name)}</option>`);
+      });
+      _push(`<!--]--></select></div><div class="mt-4"><label class="block text-md font-semibold mb-1">${ssrInterpolate(unref(t)("filters-product-status"))}</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(unref(t)("filters-discount"))}</span></label><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox size-4"><span class="ml-2">${ssrInterpolate(unref(t)("filters-reconditioned"))}</span></label></div></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$E = _sfc_main$E.setup;
+_sfc_main$E.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/DefaultFilters.vue");
+  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+};
+const _sfc_main$D = {
+  __name: "FilterBar",
+  __ssrInlineRender: true,
+  props: {
+    manufacturer: Array,
+    subcategory: Array,
+    category: Array,
+    ram: Array,
+    cpu: Array,
+    armazenamento: Array,
+    motherboard: Array,
+    gpu: Array,
+    powersupply: Array,
+    cpuCooler: Array,
+    PCcases: Array,
+    smartphone: Array
+  },
   setup(__props) {
-    const isOpen = ref(false);
+    const { t } = useI18n();
+    const page = usePage();
+    const currentPath = page.url;
+    const discountPage = currentPath.includes("/promocoes");
+    const ramPage2 = currentPath.includes("/components/ram-memory");
+    const cpuPage2 = currentPath.includes("/components/processors");
+    const storagePage = currentPath.includes("/components/storage");
+    const motherboardPage = currentPath.includes("/components/motherboards");
+    const gpuPage2 = currentPath.includes("/components/graphic-cards");
+    const psuPage = currentPath.includes("/components/power-supplies");
+    const cpuCoolerPage = currentPath.includes("/components/cpu-coolers");
+    const pcCasesPage = currentPath.includes("/components/computer-cases");
+    const smartphonePage = currentPath.includes("/smartphones");
     const selectedFilters = ref({
       manufacturer: "",
       stock: "",
       nostock: "",
       sort: "",
       max_price: "",
-      min_price: ""
+      min_price: "",
+      category: "",
+      subcategory: "",
+      promotion: "",
+      reconditioned: "",
+      memoria_ram: [],
+      type_ram: [],
+      frequecy_ram: [],
+      latency_ram: [],
+      cpu: [],
+      cpu_socket: [],
+      cpu_tdp: [],
+      storage: [],
+      storage_type: [],
+      writing_speed_storage: [],
+      rotation_speed_storage: [],
+      motherboard_format: [],
+      motherboard_chipset: [],
+      motherboard_cpu_socket: [],
+      motherboard_bluetooth: [],
+      motherboard_wifi: [],
+      gpu_model: [],
+      gpu_category: "",
+      gpu_vram: [],
+      gpu_type_vram: [],
+      gpu_interface: [],
+      psu_format: [],
+      psu_wattage: [],
+      psu_efficiency: [],
+      psu_modular: [],
+      cooler_socket: [],
+      cooler_type: "",
+      cooler_fan_rpm: [],
+      cooler_rgb: [],
+      case_format: [],
+      case_number_lower_fans: [],
+      case_number_upper_fans: [],
+      case_number_front_fans: [],
+      case_number_rear_fans: [],
+      case_tempered_glass: [],
+      case_max_gpu_length: [],
+      case_max_cooler_height: [],
+      smartphone_storage: [],
+      smartphone_SIM: [],
+      smartphone_family_cpu: [],
+      smartphone_cpu: [],
+      smartphone_os: [],
+      smartphone_screen_resolution: [],
+      smartphones_screen_inches: [],
+      smartphones_screen_hz: [],
+      smartphones_screen_type: []
     });
-    const closeSidebar = (event) => {
-      if (!event.target.closest(".sidebar") && window.innerWidth < 1024) {
-        isOpen.value = false;
-      }
-    };
-    onMounted(() => document.addEventListener("click", closeSidebar));
-    onUnmounted(() => document.removeEventListener("click", closeSidebar));
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "mt-8 h-screen w-full bg-white shadow-lg p-4" }, _attrs))}><h2 class="text-lg font-semibold mb-4">Filtros</h2><div><label class="block text-sm font-medium mb-1">Ordenar por:</label><select class="w-full border p-1 rounded"><option value="-created_at"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.sort) ? ssrLooseContain(selectedFilters.value.sort, "-created_at") : ssrLooseEqual(selectedFilters.value.sort, "-created_at")) ? " selected" : ""}>Mais Recentes</option><option value="price"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.sort) ? ssrLooseContain(selectedFilters.value.sort, "price") : ssrLooseEqual(selectedFilters.value.sort, "price")) ? " selected" : ""}>Preço mais baixo</option><option value="-price"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.sort) ? ssrLooseContain(selectedFilters.value.sort, "-price") : ssrLooseEqual(selectedFilters.value.sort, "-price")) ? " selected" : ""}>Preço mais alto</option></select></div><div class="mt-4"><label class="block text-sm font-medium mb-1">Stock</label><div class="flex items-center space-x-4"><label class="inline-flex items-center"><input type="checkbox" value="min"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.stock) ? ssrLooseContain(selectedFilters.value.stock, "min") : selectedFilters.value.stock) ? " checked" : ""} class="form-checkbox"><span class="ml-2">Em stock</span></label><label class="inline-flex items-center"><input type="checkbox" value="max"${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.nostock) ? ssrLooseContain(selectedFilters.value.nostock, "max") : selectedFilters.value.nostock) ? " checked" : ""} class="form-checkbox"><span class="ml-2">Sem Stock</span></label></div></div><div class="mt-4"><label class="block text-sm font-medium mb-1">Preço</label><div class="flex items-center space-x-4"><input type="number" placeholder="min"${ssrRenderAttr("value", selectedFilters.value.min_price)} class="w-1/3 border p-1 rounded" min="0"><input type="number" placeholder="max"${ssrRenderAttr("value", selectedFilters.value.max_price)} class="w-1/3 border p-1 rounded"${ssrRenderAttr("min", selectedFilters.value.min_price)}></div></div><div class="mt-4"><label class="block text-sm font-medium mb-1">Fabricante</label><select class="w-full border p-2 rounded"><!--[-->`);
-      ssrRenderList(__props.manufacturer, (manu) => {
-        _push(`<option${ssrRenderAttr("value", manu.id)}${ssrIncludeBooleanAttr(Array.isArray(selectedFilters.value.manufacturer) ? ssrLooseContain(selectedFilters.value.manufacturer, manu.id) : ssrLooseEqual(selectedFilters.value.manufacturer, manu.id)) ? " selected" : ""}>${ssrInterpolate(manu.name)}</option>`);
-      });
-      _push(`<!--]--></select></div><button class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"> Aplicar Filtros </button></div>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "overflow-y-auto mt-8 h-screen w-full bg-white shadow-lg p-4 rounded-lg" }, _attrs))}><h2 class="text-2xl font-bold mb-4">${ssrInterpolate(unref(t)("filters-page-title"))}</h2>`);
+      _push(ssrRenderComponent(_sfc_main$E, {
+        manufacturer: __props.manufacturer,
+        manufacturerValue: selectedFilters.value.manufacturer,
+        "onUpdate:manufacturerValue": ($event) => selectedFilters.value.manufacturer = $event,
+        sort: selectedFilters.value.sort,
+        "onUpdate:sort": ($event) => selectedFilters.value.sort = $event,
+        stock: selectedFilters.value.stock,
+        "onUpdate:stock": ($event) => selectedFilters.value.stock = $event,
+        nostock: selectedFilters.value.nostock,
+        "onUpdate:nostock": ($event) => selectedFilters.value.nostock = $event,
+        minPrice: selectedFilters.value.min_price,
+        "onUpdate:minPrice": ($event) => selectedFilters.value.min_price = $event,
+        maxPrice: selectedFilters.value.max_price,
+        "onUpdate:maxPrice": ($event) => selectedFilters.value.max_price = $event,
+        "onUpdate:manufacturer": ($event) => selectedFilters.value.manufacturer = $event
+      }, null, _parent));
+      if (!unref(cpuPage2) && !unref(motherboardPage) && !unref(storagePage) && !unref(gpuPage2) && !unref(psuPage) && !unref(cpuCoolerPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$N, {
+          ram: __props.ram,
+          capacityRam: selectedFilters.value.memoria_ram,
+          "onUpdate:capacityRam": ($event) => selectedFilters.value.memoria_ram = $event,
+          typeRam: selectedFilters.value.type_ram,
+          "onUpdate:typeRam": ($event) => selectedFilters.value.type_ram = $event,
+          frequencyRam: selectedFilters.value.frequecy_ram,
+          "onUpdate:frequencyRam": ($event) => selectedFilters.value.frequecy_ram = $event,
+          latencyRam: selectedFilters.value.latency_ram,
+          "onUpdate:latencyRam": ($event) => selectedFilters.value.latency_ram = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(motherboardPage) && !unref(storagePage) && !unref(gpuPage2) && !unref(psuPage) && !unref(cpuCoolerPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$M, {
+          cpu: __props.cpu,
+          modelCPU: selectedFilters.value.cpu,
+          "onUpdate:modelCPU": ($event) => selectedFilters.value.cpu = $event,
+          socketCPU: selectedFilters.value.cpu_socket,
+          "onUpdate:socketCPU": ($event) => selectedFilters.value.cpu_socket = $event,
+          tdpCPU: selectedFilters.value.cpu_tdp,
+          "onUpdate:tdpCPU": ($event) => selectedFilters.value.cpu_tdp = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(motherboardPage) && !unref(cpuPage2) && !unref(gpuPage2) && !unref(psuPage) && !unref(cpuCoolerPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$L, {
+          armazenamento: __props.armazenamento,
+          capacityDrive: selectedFilters.value.storage,
+          "onUpdate:capacityDrive": ($event) => selectedFilters.value.storage = $event,
+          typeDrive: selectedFilters.value.storage_type,
+          "onUpdate:typeDrive": ($event) => selectedFilters.value.storage_type = $event,
+          writingSpeedDrive: selectedFilters.value.writing_speed_storage,
+          "onUpdate:writingSpeedDrive": ($event) => selectedFilters.value.writing_speed_storage = $event,
+          rotationSpeedDrive: selectedFilters.value.rotation_speed_storage,
+          "onUpdate:rotationSpeedDrive": ($event) => selectedFilters.value.rotation_speed_storage = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(storagePage) && !unref(cpuPage2) && !unref(gpuPage2) && !unref(psuPage) && !unref(cpuCoolerPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$K, {
+          motherboard: __props.motherboard,
+          motherboardFormat: selectedFilters.value.motherboard_format,
+          "onUpdate:motherboardFormat": ($event) => selectedFilters.value.motherboard_format = $event,
+          motherboardChipset: selectedFilters.value.motherboard_chipset,
+          "onUpdate:motherboardChipset": ($event) => selectedFilters.value.motherboard_chipset = $event,
+          motherboardCpuSocket: selectedFilters.value.motherboard_cpu_socket,
+          "onUpdate:motherboardCpuSocket": ($event) => selectedFilters.value.motherboard_cpu_socket = $event,
+          motherboardBluetooth: selectedFilters.value.motherboard_bluetooth,
+          "onUpdate:motherboardBluetooth": ($event) => selectedFilters.value.motherboard_bluetooth = $event,
+          motherboardWifi: selectedFilters.value.motherboard_wifi,
+          "onUpdate:motherboardWifi": ($event) => selectedFilters.value.motherboard_wifi = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(storagePage) && !unref(cpuPage2) && !unref(motherboardPage) && !unref(psuPage) && !unref(cpuCoolerPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$J, {
+          gpu: __props.gpu,
+          modelGPU: selectedFilters.value.gpu_model,
+          "onUpdate:modelGPU": ($event) => selectedFilters.value.gpu_model = $event,
+          categoryGPU: selectedFilters.value.gpu_category,
+          "onUpdate:categoryGPU": ($event) => selectedFilters.value.gpu_category = $event,
+          vramGPU: selectedFilters.value.gpu_vram,
+          "onUpdate:vramGPU": ($event) => selectedFilters.value.gpu_vram = $event,
+          typeVramGPU: selectedFilters.value.gpu_type_vram,
+          "onUpdate:typeVramGPU": ($event) => selectedFilters.value.gpu_type_vram = $event,
+          interfaceGPU: selectedFilters.value.gpu_interface,
+          "onUpdate:interfaceGPU": ($event) => selectedFilters.value.gpu_interface = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(storagePage) && !unref(cpuPage2) && !unref(motherboardPage) && !unref(gpuPage2) && !unref(cpuCoolerPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$I, {
+          powersupply: __props.powersupply,
+          psuFormat: selectedFilters.value.psu_format,
+          "onUpdate:psuFormat": ($event) => selectedFilters.value.psu_format = $event,
+          psuWattage: selectedFilters.value.psu_wattage,
+          "onUpdate:psuWattage": ($event) => selectedFilters.value.psu_wattage = $event,
+          psuEfficiency: selectedFilters.value.psu_efficiency,
+          "onUpdate:psuEfficiency": ($event) => selectedFilters.value.psu_efficiency = $event,
+          psuModular: selectedFilters.value.psu_modular,
+          "onUpdate:psuModular": ($event) => selectedFilters.value.psu_modular = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(storagePage) && !unref(cpuPage2) && !unref(motherboardPage) && !unref(gpuPage2) && !unref(psuPage) && !unref(pcCasesPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$H, {
+          cpuCooler: __props.cpuCooler,
+          socketCooler: selectedFilters.value.cooler_socket,
+          "onUpdate:socketCooler": ($event) => selectedFilters.value.cooler_socket = $event,
+          typeCooler: selectedFilters.value.cooler_type,
+          "onUpdate:typeCooler": ($event) => selectedFilters.value.cooler_type = $event,
+          fanRPMCooler: selectedFilters.value.cooler_fan_rpm,
+          "onUpdate:fanRPMCooler": ($event) => selectedFilters.value.cooler_fan_rpm = $event,
+          rgbCooler: selectedFilters.value.cooler_rgb,
+          "onUpdate:rgbCooler": ($event) => selectedFilters.value.cooler_rgb = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (!unref(ramPage2) && !unref(storagePage) && !unref(cpuPage2) && !unref(motherboardPage) && !unref(gpuPage2) && !unref(psuPage) && !unref(cpuCoolerPage) && !unref(discountPage) && !unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$G, {
+          PCcases: __props.PCcases,
+          casesFormat: selectedFilters.value.case_format,
+          "onUpdate:casesFormat": ($event) => selectedFilters.value.case_format = $event,
+          casesNumberLowerFans: selectedFilters.value.case_number_lower_fans,
+          "onUpdate:casesNumberLowerFans": ($event) => selectedFilters.value.case_number_lower_fans = $event,
+          casesNumberUpperFans: selectedFilters.value.case_number_upper_fans,
+          "onUpdate:casesNumberUpperFans": ($event) => selectedFilters.value.case_number_upper_fans = $event,
+          casesNumberFrontFans: selectedFilters.value.case_number_front_fans,
+          "onUpdate:casesNumberFrontFans": ($event) => selectedFilters.value.case_number_front_fans = $event,
+          casesNumberRearFans: selectedFilters.value.case_number_rear_fans,
+          "onUpdate:casesNumberRearFans": ($event) => selectedFilters.value.case_number_rear_fans = $event,
+          temperedGlass: selectedFilters.value.case_tempered_glass,
+          "onUpdate:temperedGlass": ($event) => selectedFilters.value.case_tempered_glass = $event,
+          casesGpuLength: selectedFilters.value.case_max_gpu_length,
+          "onUpdate:casesGpuLength": ($event) => selectedFilters.value.case_max_gpu_length = $event,
+          casesCoolerHeight: selectedFilters.value.case_max_cooler_height,
+          "onUpdate:casesCoolerHeight": ($event) => selectedFilters.value.case_max_cooler_height = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      if (unref(smartphonePage)) {
+        _push(ssrRenderComponent(_sfc_main$F, {
+          smartphone: __props.smartphone,
+          capacityStorage: selectedFilters.value.smartphone_storage,
+          "onUpdate:capacityStorage": ($event) => selectedFilters.value.smartphone_storage = $event,
+          SIM: selectedFilters.value.smartphone_SIM,
+          "onUpdate:SIM": ($event) => selectedFilters.value.smartphone_SIM = $event,
+          familyCPU: selectedFilters.value.smartphone_family_cpu,
+          "onUpdate:familyCPU": ($event) => selectedFilters.value.smartphone_family_cpu = $event,
+          CPU: selectedFilters.value.smartphone_cpu,
+          "onUpdate:CPU": ($event) => selectedFilters.value.smartphone_cpu = $event,
+          operating_system: selectedFilters.value.smartphone_os,
+          "onUpdate:operating_system": ($event) => selectedFilters.value.smartphone_os = $event,
+          screen_resolution: selectedFilters.value.smartphone_screen_resolution,
+          "onUpdate:screen_resolution": ($event) => selectedFilters.value.smartphone_screen_resolution = $event,
+          screen_inches: selectedFilters.value.smartphones_screen_inches,
+          "onUpdate:screen_inches": ($event) => selectedFilters.value.smartphones_screen_inches = $event,
+          screen_hz: selectedFilters.value.smartphones_screen_hz,
+          "onUpdate:screen_hz": ($event) => selectedFilters.value.smartphones_screen_hz = $event,
+          screen_type: selectedFilters.value.smartphones_screen_type,
+          "onUpdate:screen_type": ($event) => selectedFilters.value.smartphones_screen_type = $event
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<button class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded">${ssrInterpolate(unref(t)("filters-apply-filters"))}</button></div>`);
     };
   }
-});
+};
 const _sfc_setup$D = _sfc_main$D.setup;
 _sfc_main$D.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Inputs/Navbar/FilterSideBar/navbar.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Filters/FilterBar.vue");
   return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
 const _sfc_main$C = {
@@ -755,7 +1923,9 @@ function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Acessórios </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data
+    products: $props.products.data,
+    category: $props.category,
+    subcategory: $props.subcategory
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
@@ -764,11 +1934,10 @@ function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     subcategory: $props.subcategory,
     manufacturer: $props.manufacturer
   }, null, _parent));
-  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$C = _sfc_main$C.setup;
 _sfc_main$C.setup = (props, ctx) => {
@@ -1246,11 +2415,12 @@ const _sfc_main$v = {
   components: {
     Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
+      type: [Array, Object],
       required: true
     },
     category: {
@@ -1270,11 +2440,24 @@ const _sfc_main$v = {
     },
     isAdmin: {
       type: Boolean
+    },
+    armazenamento: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Navbar = resolveComponent("Navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
@@ -1283,16 +2466,23 @@ function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Armazenamento </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-storage-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    armazenamento: $props.armazenamento
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$v = _sfc_main$v.setup;
 _sfc_main$v.setup = (props, ctx) => {
@@ -1307,22 +2497,15 @@ const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$u = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1333,29 +2516,57 @@ const _sfc_main$u = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    PCcases: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Caixas de Computadores </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-cases-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    PCcases: $props.PCcases
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$u = _sfc_main$u.setup;
 _sfc_main$u.setup = (props, ctx) => {
@@ -1401,7 +2612,43 @@ const _sfc_main$t = {
     manufacturer: {
       type: Array,
       required: true
+    },
+    ram: {
+      type: Array,
+      default: () => []
+    },
+    armazenamento: {
+      type: Array,
+      default: () => []
+    },
+    cpu: {
+      type: Array,
+      default: () => []
+    },
+    gpu: {
+      type: Array,
+      default: () => []
+    },
+    motherboard: {
+      type: Array,
+      default: () => []
+    },
+    powersupply: {
+      type: Array,
+      default: () => []
+    },
+    cpuCooler: {
+      type: Array,
+      default: () => []
+    },
+    PCcase: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
@@ -1415,10 +2662,19 @@ function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Componentes para Computadores </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-page-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data
+    products: $props.products.data,
+    subcategory: $props.subcategory,
+    ram: $props.ram,
+    cpu: $props.cpu,
+    armazenamento: $props.armazenamento,
+    motherboard: $props.motherboard,
+    gpu: $props.gpu,
+    powersupply: $props.powersupply,
+    cpuCooler: $props.cpuCooler,
+    PCcases: $props.PCcase
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
@@ -1427,11 +2683,10 @@ function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     subcategory: $props.subcategory,
     manufacturer: $props.manufacturer
   }, null, _parent));
-  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$t = _sfc_main$t.setup;
 _sfc_main$t.setup = (props, ctx) => {
@@ -1446,22 +2701,15 @@ const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$s = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1472,29 +2720,57 @@ const _sfc_main$s = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    cpuCooler: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> CPU Coolers </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-cpu-coolers-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    cpuCooler: $props.cpuCooler
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$s = _sfc_main$s.setup;
 _sfc_main$s.setup = (props, ctx) => {
@@ -1509,22 +2785,15 @@ const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$r = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1535,29 +2804,57 @@ const _sfc_main$r = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    cpu: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Processadores </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-processor-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    cpu: $props.cpu
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$r = _sfc_main$r.setup;
 _sfc_main$r.setup = (props, ctx) => {
@@ -1572,22 +2869,15 @@ const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$q = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1598,29 +2888,57 @@ const _sfc_main$q = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    powersupply: {
+      type: Array,
+      required: true
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Fontes de alimentação </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-psu-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    powersupply: $props.powersupply
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$q = _sfc_main$q.setup;
 _sfc_main$q.setup = (props, ctx) => {
@@ -1635,22 +2953,15 @@ const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$p = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1661,29 +2972,57 @@ const _sfc_main$p = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    gpu: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Placas Gráficas </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-gpu-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    gpu: $props.gpu
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$p = _sfc_main$p.setup;
 _sfc_main$p.setup = (props, ctx) => {
@@ -1698,22 +3037,15 @@ const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$o = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1724,29 +3056,57 @@ const _sfc_main$o = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    motherboard: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Motherboards </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-motherboards-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    motherboard: $props.motherboard
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$o = _sfc_main$o.setup;
 _sfc_main$o.setup = (props, ctx) => {
@@ -1761,22 +3121,15 @@ const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$n = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -1787,25 +3140,54 @@ const _sfc_main$n = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    ram: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Memórias RAM </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("components-memory-ram-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    products: $props.products.data,
+    ram: $props.ram
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
+  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
@@ -2124,7 +3506,9 @@ function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Computadores MaRca </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data
+    products: $props.products.data,
+    category: $props.category,
+    subcategory: $props.subcategory
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
@@ -2133,11 +3517,10 @@ function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     subcategory: $props.subcategory,
     manufacturer: $props.manufacturer
   }, null, _parent));
-  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$i = _sfc_main$i.setup;
 _sfc_main$i.setup = (props, ctx) => {
@@ -2515,7 +3898,9 @@ function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Periféricos </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data
+    products: $props.products.data,
+    category: $props.category,
+    subcategory: $props.subcategory
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
@@ -2524,11 +3909,10 @@ function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     subcategory: $props.subcategory,
     manufacturer: $props.manufacturer
   }, null, _parent));
-  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$c = _sfc_main$c.setup;
 _sfc_main$c.setup = (props, ctx) => {
@@ -2543,22 +3927,15 @@ const __vite_glob_0_28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$b = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -2569,29 +3946,57 @@ const _sfc_main$b = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    smartphone: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Telemóveis Android </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("smartphones-android-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    subcategory: $props.subcategory,
+    smartphone: $props.smartphone
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$b = _sfc_main$b.setup;
 _sfc_main$b.setup = (props, ctx) => {
@@ -2606,22 +4011,15 @@ const __vite_glob_0_29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$a = {
   components: {
-    Navbar,
+    navbar: Navbar,
     Product: Product$1,
-    Pagination
+    Pagination,
+    FilterSideBar: _sfc_main$D
   },
   props: {
     products: {
-      type: Array,
-      required: true
-    },
-    category: {
-      type: Array,
-      required: true
-    },
-    subcategory: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      default: () => []
     },
     Utilizador: {
       type: Object
@@ -2632,29 +4030,57 @@ const _sfc_main$a = {
     },
     isAdmin: {
       type: Boolean
+    },
+    category: {
+      type: Array,
+      required: true
+    },
+    subcategory: {
+      type: Array,
+      required: true
+    },
+    manufacturer: {
+      type: Array,
+      required: true
+    },
+    smartphone: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Navbar = resolveComponent("Navbar");
+  const _component_navbar = resolveComponent("navbar");
+  const _component_FilterSideBar = resolveComponent("FilterSideBar");
   const _component_Product = resolveComponent("Product");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100" }, _attrs))}>`);
-  _push(ssrRenderComponent(_component_Navbar, {
+  _push(ssrRenderComponent(_component_navbar, {
     Utilizador: $props.Utilizador,
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Telemóveis Iphone </h1>`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("smartphones-iphone-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(ssrRenderComponent(_component_FilterSideBar, {
+    manufacturer: $props.manufacturer,
+    subcategory: $props.subcategory,
+    smartphone: $props.smartphone
+  }, null, _parent));
+  _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
     products: $props.products.data,
     category: $props.category,
-    subcategory: $props.subcategory
+    subcategory: $props.subcategory,
+    manufacturer: $props.manufacturer
   }, null, _parent));
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$a = _sfc_main$a.setup;
 _sfc_main$a.setup = (props, ctx) => {
@@ -2700,7 +4126,15 @@ const _sfc_main$9 = {
     manufacturer: {
       type: Array,
       required: true
+    },
+    smartphone: {
+      type: Array,
+      default: () => []
     }
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   }
 };
 function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
@@ -2714,10 +4148,11 @@ function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     Buttons: $props.buttons,
     isAdmin: $props.isAdmin
   }, null, _parent));
-  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Telemóveis </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
+  _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800">${ssrInterpolate($setup.t("smartphones-page-title"))}</h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
   _push(ssrRenderComponent(_component_FilterSideBar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data
+    subcategory: $props.subcategory,
+    smartphone: $props.smartphone
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Product, {
@@ -2726,11 +4161,10 @@ function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     subcategory: $props.subcategory,
     manufacturer: $props.manufacturer
   }, null, _parent));
-  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$9 = _sfc_main$9.setup;
 _sfc_main$9.setup = (props, ctx) => {
@@ -2867,6 +4301,7 @@ const _sfc_main$5 = {
   }
 };
 function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_fa = resolveComponent("fa");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "flex justify-center items-center p-5" }, _attrs))}><div class="w-full max-w-6xl max-h-6xl mx-auto"><ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><!--[-->`);
   ssrRenderList($props.products, (promo) => {
     _push(`<li class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-6"><div class="mb-4"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><img${ssrRenderAttr("src", `/storage/${promo.image_path}`)}${ssrRenderAttr("alt", promo.name)} class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"></a>`);
@@ -2875,7 +4310,7 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     } else {
       _push(`<div class="invisible">${ssrInterpolate(promo.sale_price)}</div>`);
     }
-    _push(`</div><div class="flex-grow"><h2 class="text-xs mb-2 text-gray-400">${ssrInterpolate($options.showCategories(promo.category_id))} ${ssrInterpolate($options.showSubcategories(promo.subcategory_id))}</h2></div><div class="flex-grow"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><h2 class="text-sm font-semibold mb-2 hover:text-blue-600">${ssrInterpolate(promo.name)}</h2></a></div><div class="flex-grow"><h2 class="truncate text-xs max-w-100 text-neutral-500">${ssrInterpolate(promo.description)}</h2></div><div class="mt-4 flex gap-5 items-center">`);
+    _push(`</div><div class="flex-grow"><h2 class="text-xs mb-2 text-gray-400">${ssrInterpolate($options.showCategories(promo.category_id))} ${ssrInterpolate($options.showSubcategories(promo.subcategory_id))}</h2></div><div class="flex-grow"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><h2 class="truncate text-sm font-semibold mb-2 hover:text-blue-600">${ssrInterpolate(promo.name)}</h2></a></div><div class="flex-grow"><h2 class="truncate text-xs max-w-100 text-neutral-500">${ssrInterpolate(promo.description)}</h2></div><div class="mt-4 flex gap-5 items-center">`);
     if (promo.sale_price <= 0) {
       _push(`<span class="text-2xl mb-1 font-bold text-blue-600">${ssrInterpolate(promo.price)}€ </span>`);
     } else {
@@ -2883,11 +4318,26 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }
     _push(`</div><div class="flex gap-5 items-center">`);
     if (promo.stock <= 0) {
-      _push(`<span class="text-md mb-1 font-bold text-red-600"><p>Sem Stock</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-red-600"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-xmark",
+        class: "text-red-600 mr-1"
+      }, null, _parent));
+      _push(`Sem Stock </p></span>`);
     } else if (promo.stock <= 10) {
-      _push(`<span class="text-md font-bold text-yellow-600"><p>Poucas unidades</p></span>`);
+      _push(`<span class="text-md font-bold text-yellow-600"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-check",
+        class: "text-yellow-600 mr-1"
+      }, null, _parent));
+      _push(`Poucas unidades </p></span>`);
     } else {
-      _push(`<span class="text-md mb-1 font-bold text-emerald-400"><p>Em Stock</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-emerald-400"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-check",
+        class: "text-emerald-400 mr-1"
+      }, null, _parent));
+      _push(`Em Stock </p></span>`);
     }
     _push(`</div><div class="flex items-center gap-2"><button class="bg-neutral-800 text-white px-4 py-2 hover:bg-blue-600 transition-colors duration-300 w-5/6"> Adicionar </button><button class="bg-neutral-400 text-white px-4 py-2 hover:bg-blue-700 transition-colors duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></button></div></li>`);
   });
@@ -2916,6 +4366,7 @@ const _sfc_main$4 = {
   }
 };
 function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_fa = resolveComponent("fa");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "flex justify-center items-center p-5" }, _attrs))}><div class="w-full max-w-6xl max-h-6xl mx-auto"><ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><!--[-->`);
   ssrRenderList($props.computers, (promo) => {
     _push(`<li class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-6"><div class="mb-4"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><img${ssrRenderAttr("src", `/storage/${promo.image_path}`)}${ssrRenderAttr("alt", promo.name)} class="w-full h-56 object-contain rounded-lg transition delay-50 hover:scale-105"></a>`);
@@ -2924,7 +4375,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     } else {
       _push(`<div class="relative text-right px-2.5 py-1.5 rounded-r3 font-black text-sm text-red-500 lg:text-lg p-0"> -${ssrInterpolate(promo.sale_price)}% </div>`);
     }
-    _push(`</div><div class="flex-grow"><h2 class="text-md mb-2 text-neutral-300">${ssrInterpolate(promo.category_id.name)} ${ssrInterpolate(promo.subcategory_id.name)}</h2></div><div class="flex-grow"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><h2 class="text-md font-semibold mb-2 hover:text-blue-600">${ssrInterpolate(promo.name)}</h2></a></div><div class="flex-grow"><h2 class="text-xs text-neutral-500">${ssrInterpolate(promo.description)}</h2></div><div class="mt-4 flex gap-5 items-center">`);
+    _push(`</div><div class="flex-grow"><h2 class="text-md mb-2 text-neutral-300">${ssrInterpolate(promo.category_id.name)} ${ssrInterpolate(promo.subcategory_id.name)}</h2></div><div class="flex-grow"><a${ssrRenderAttr("href", `/${promo.category.slug}/${promo.subcategory.slug}/${promo.slug}`)}><h2 class="truncate text-md font-semibold mb-2 hover:text-blue-600">${ssrInterpolate(promo.name)}</h2></a></div><div class="flex-grow"><h2 class="truncate text-xs text-neutral-500">${ssrInterpolate(promo.description)}</h2></div><div class="mt-4 flex gap-5 items-center">`);
     if (promo.sale_price <= 0) {
       _push(`<span class="text-2xl mb-1 font-bold text-blue-600">${ssrInterpolate(promo.price)}€ </span>`);
     } else {
@@ -2932,11 +4383,26 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }
     _push(`</div><div class="flex gap-5 items-center">`);
     if (promo.stock <= 0) {
-      _push(`<span class="text-md mb-1 font-bold text-red-600"><p>Sem Stock</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-red-600"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-xmark",
+        class: "text-red-600 mr-1"
+      }, null, _parent));
+      _push(`Sem Stock </p></span>`);
     } else if (promo.stock <= 10) {
-      _push(`<span class="text-md font-bold text-yellow-600"><p>Poucas unidades</p></span>`);
+      _push(`<span class="text-md font-bold text-yellow-600"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-check",
+        class: "text-yellow-600 mr-1"
+      }, null, _parent));
+      _push(`Poucas unidades </p></span>`);
     } else {
-      _push(`<span class="text-md mb-1 font-bold text-emerald-400"><p>Em Stock</p></span>`);
+      _push(`<span class="text-md mb-1 font-bold text-emerald-400"><p>`);
+      _push(ssrRenderComponent(_component_fa, {
+        icon: "fa-solid fa-check",
+        class: "text-emerald-400 mr-1"
+      }, null, _parent));
+      _push(`Em Stock </p></span>`);
     }
     _push(`</div><div class="flex items-center gap-2"><button class="bg-neutral-800 text-white px-4 py-2 hover:bg-blue-600 transition-colors duration-300 w-5/6"> Adicionar </button><button class="bg-neutral-400 text-white px-4 py-2 hover:bg-blue-700 transition-colors duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></button></div></li>`);
   });
@@ -3061,7 +4527,7 @@ const _sfc_main$1 = {
     Navbar,
     Products: Product$1,
     Pagination,
-    FilterSideBar: _sfc_main$D
+    discountFilterNavbar: _sfc_main$D
   },
   props: {
     products: {
@@ -3094,7 +4560,7 @@ const _sfc_main$1 = {
 };
 function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_navbar = resolveComponent("navbar");
-  const _component_FilterSideBar = resolveComponent("FilterSideBar");
+  const _component_discountFilterNavbar = resolveComponent("discountFilterNavbar");
   const _component_Products = resolveComponent("Products");
   const _component_Pagination = resolveComponent("Pagination");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-zinc-100 min-h-screen" }, _attrs))}>`);
@@ -3104,9 +4570,10 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     isAdmin: $props.isAdmin
   }, null, _parent));
   _push(`<h1 class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"> Promoções </h1><div class="flex gap-5 px-8"><div class="w-1/4">`);
-  _push(ssrRenderComponent(_component_FilterSideBar, {
+  _push(ssrRenderComponent(_component_discountFilterNavbar, {
     manufacturer: $props.manufacturer,
-    products: $props.products.data
+    products: $props.products.data,
+    category: $props.category
   }, null, _parent));
   _push(`</div><div class="w-3/4">`);
   _push(ssrRenderComponent(_component_Products, {
@@ -3115,11 +4582,10 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     subcategory: $props.subcategory,
     manufacturer: $props.manufacturer
   }, null, _parent));
-  _push(`</div></div>`);
   _push(ssrRenderComponent(_component_Pagination, {
     links: $props.products.links
   }, null, _parent));
-  _push(`</div>`);
+  _push(`</div></div></div>`);
 }
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {

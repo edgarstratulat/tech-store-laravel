@@ -17,7 +17,7 @@
                                     v-if="promo.reconditioned == true"
                                     class="z-10 text-sm font-bold text-purple-500 m-0"
                                 >
-                                    <h1>Recondicionado</h1>
+                                    <h1>{{ t("product-reconditioned") }}</h1>
                                 </div>
                                 <img
                                     :src="`/storage/${promo.image_path}`"
@@ -41,11 +41,13 @@
                     <div class="flex-grow">
                         <h2 class="text-[0.70rem] mb-2 text-gray-400">
                             {{ showCategories(promo.category_id) }}
+
                             <a
                                 :href="`/${promo.category.slug}/${promo.subcategory.slug}`"
                                 class="cursor-pointer hover:text-gray-500"
-                                >{{
-                                    showSubcategories(promo.subcategory_id)
+                            >
+                                {{
+                                    t(showSubcategories(promo.subcategory_id))
                                 }}</a
                             >
                         </h2>
@@ -102,7 +104,7 @@
                                     icon="fa-solid fa-xmark"
                                     class="text-red-600 mr-1"
                                 ></fa>
-                                Sem Stock
+                                {{ t("product-nostock") }}
                             </p>
                         </span>
                         <span
@@ -114,7 +116,7 @@
                                     icon="fa-solid fa-check"
                                     class="text-yellow-600 mr-1"
                                 ></fa>
-                                Poucas unidades
+                                {{ t("product-few-units") }}
                             </p>
                         </span>
                         <span
@@ -126,7 +128,7 @@
                                     icon="fa-solid fa-check"
                                     class="text-emerald-400 mr-1"
                                 ></fa>
-                                Em Stock
+                                {{ t("product-stock") }}
                             </p>
                         </span>
                     </div>
@@ -135,7 +137,7 @@
                         <button
                             class="bg-neutral-800 text-white px-4 py-2 hover:bg-blue-600 transition-colors duration-300 w-5/6"
                         >
-                            Adicionar
+                            {{ t("product-add") }}
                         </button>
                         <button
                             class="bg-neutral-400 text-white px-4 py-2 hover:bg-blue-700 transition-colors duration-300"
@@ -159,6 +161,8 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
     props: {
         products: {
@@ -191,7 +195,7 @@ export default {
                 (cate) => cate.id === category_id
             );
 
-            return category.name;
+            return this.t(`category.${category.name}`);
         },
 
         showSubcategories(subcategory_id) {
@@ -199,8 +203,12 @@ export default {
                 (subcate) => subcate.id === subcategory_id
             );
 
-            return subcategory.name;
+            return this.t(`subcategory.${subcategory.name}`);
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

@@ -1,4 +1,102 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("motherboard-format")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueFormat()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.format"
+                    class="form-checkbox size-4"
+                    @change="updateMotherboardFormat"
+                />
+                <span class="ml-2">{{ option.format }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("motherboard-chipset")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueChipset()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.chipset"
+                    class="form-checkbox size-4"
+                    @change="updateMotherboardChipset"
+                />
+                <span class="ml-2">{{ option.chipset }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("motherboard-cpu-socket")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueCpuSocket()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.cpu_socket"
+                    class="form-checkbox size-4"
+                    @change="updateMotherboardCpuSocket"
+                />
+                <span class="ml-2">{{ option.cpu_socket }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-medium mb-1">{{
+            t("motherboard-wifi")
+        }}</label>
+        <div class="flex items-center space-x-4">
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    value="true"
+                    class="form-checkbox size-4"
+                    @change="updateMotherboardWifi"
+                />
+                <span class="ml-2">Sim</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-medium mb-1">{{
+            t("motherboard-bluetooth")
+        }}</label>
+        <div class="flex items-center space-x-4">
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    value="true"
+                    class="form-checkbox size-4"
+                    @change="updateMotherboardBluetooth"
+                />
+                <span class="ml-2">Sim</span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     motherboardFormat: Array,
     motherboardChipset: Array,
@@ -120,94 +218,3 @@ const uniqueCpuSocket = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Formato da Motherboard</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueFormat()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.format"
-                    class="form-checkbox size-4"
-                    @change="updateMotherboardFormat"
-                />
-                <span class="ml-2">{{ option.format }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Chipset da Motherboard</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueChipset()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.chipset"
-                    class="form-checkbox size-4"
-                    @change="updateMotherboardChipset"
-                />
-                <span class="ml-2">{{ option.chipset }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Socket do Processador</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueCpuSocket()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.cpu_socket"
-                    class="form-checkbox size-4"
-                    @change="updateMotherboardCpuSocket"
-                />
-                <span class="ml-2">{{ option.cpu_socket }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-medium mb-1">Wifi</label>
-        <div class="flex items-center space-x-4">
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    value="true"
-                    class="form-checkbox size-4"
-                    @change="updateMotherboardWifi"
-                />
-                <span class="ml-2">Sim</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-medium mb-1">Bluetooth</label>
-        <div class="flex items-center space-x-4">
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    value="true"
-                    class="form-checkbox size-4"
-                    @change="updateMotherboardBluetooth"
-                />
-                <span class="ml-2">Sim</span>
-            </label>
-        </div>
-    </div>
-</template>

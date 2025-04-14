@@ -10,7 +10,7 @@
                     class="flex-none font-semibold text-xl text-blue-600 focus:outline-hidden focus:opacity-80"
                     href="/"
                     aria-label="Brand"
-                    >MaRca</a
+                    >{{ t("title") }}</a
                 >
             </header>
             <nav
@@ -121,6 +121,8 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
     data() {
         return {
@@ -165,6 +167,10 @@ export default {
         redirect(route) {
             this.$inertia.visit(route);
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

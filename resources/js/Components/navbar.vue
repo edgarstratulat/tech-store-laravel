@@ -6,9 +6,9 @@
                 <div class="flex items-center">
                     <!-- Logo -->
                     <a href="http://localhost:8000/" class="flex items-center">
-                        <span class="font-semibold text-blue-600 text-2xl"
-                            >MaRca</span
-                        >
+                        <span class="font-semibold text-blue-600 text-2xl">{{
+                            t("title")
+                        }}</span>
                     </a>
 
                     <!-- Links do Menu (Desktop) -->
@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
 import NavbarSearch from "./Inputs/Navbar/navbarSearch.vue";
 import navbarButtons from "./Buttons/Navbar/navbarButtons.vue";
 import userButton from "./Buttons/Navbar/userButton.vue";
@@ -101,6 +102,10 @@ export default {
             const navbarButtons = [1, 2, 3, 4, 5, 6];
             return this.Buttons.filter((btn) => navbarButtons.includes(btn.id));
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

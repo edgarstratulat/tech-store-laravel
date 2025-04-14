@@ -10,7 +10,7 @@
         <h1
             class="flex text-3xl mb-5 ml-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
-            Promoções
+            {{ t("promotions-page-title") }}
         </h1>
         <Product
             :products="discountProductsShow()"
@@ -23,24 +23,24 @@
                 <button
                     class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300"
                 >
-                    Ver todas as ofertas
+                    {{ t("home-offers-button") }}
                 </button>
             </a>
         </div>
         <div class="w-full bg-neutral-800">
             <div class="flex justify-center pt-20 mt-24">
-                <h1 class="text-3xl font-bold text-white">Os nossos PC's</h1>
+                <h1 class="text-3xl font-bold text-white">
+                    {{ t("home-pc-title") }}
+                </h1>
             </div>
             <div>
                 <p class="flex justify-center text-neutral-400 mt-2">
-                    Preparado para levar o teu jogo ao proximo nível? Conhece os
-                    nossos PC's, com componentes cuidadosamente selecionados por
-                    nós.
+                    {{ t("home-pc-h1") }}
                 </p>
             </div>
             <div>
                 <span class="flex justify-center font-bold text-white"
-                    >Desempenho extremo para jogadores exigentes
+                    >{{ t("home-pc-h2") }}
                 </span>
             </div>
             <div class="flex justify-center m-4">
@@ -48,7 +48,7 @@
                     <button
                         class="bg-white text-black px-6 py-4 rounded-sm hover:bg-gray-300 transition-colors duration-300 justify-center"
                     >
-                        Ver todos
+                        {{ t("home-pc-button") }}
                     </button>
                 </a>
             </div>
@@ -62,7 +62,7 @@
                     <button
                         class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300"
                     >
-                        Ver todas as ofertas
+                        {{ t("home-offers-button") }}
                     </button>
                 </a>
             </div>
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
 import navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
 import Product from "../Components/Categories/HomeProductComponent.vue";
@@ -125,6 +126,10 @@ export default {
 
             return discountItems;
         },
+    },
+    setup() {
+        const { t } = useI18n();
+        return { t };
     },
 };
 </script>

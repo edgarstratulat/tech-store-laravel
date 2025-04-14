@@ -1,4 +1,83 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("coolers-category")
+        }}</label>
+        <select
+            :value="typeCooler"
+            @change="updateTypeCooler"
+            class="w-full border p-1 rounded"
+        >
+            <option
+                v-for="manu in uniqueType()"
+                :value="manu.type"
+                :key="manu.id"
+            >
+                {{ manu.type }}
+            </option>
+        </select>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("coolers-compatibility")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueSocket()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.socket"
+                    class="form-checkbox size-4"
+                    @change="updateSocketCooler"
+                />
+                <span class="ml-2">{{ option.socket }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("coolers-speed")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueFanRPM()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.fan_rpm"
+                    class="form-checkbox size-4"
+                    @change="updateFanRPMCooler"
+                />
+                <span class="ml-2">{{ option.fan_rpm }} RPM</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-medium mb-1">{{
+            t("coolers-rgb")
+        }}</label>
+        <div class="flex items-center space-x-4">
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    class="form-checkbox size-4"
+                    @change="updateRGBCooler"
+                />
+                <span class="ml-2">Sim</span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     socketCooler: Array,
     typeCooler: String,
@@ -94,73 +173,3 @@ const uniqueFanRPM = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Categoria</label>
-        <select
-            :value="typeCooler"
-            @change="updateTypeCooler"
-            class="w-full border p-1 rounded"
-        >
-            <option
-                v-for="manu in uniqueType()"
-                :value="manu.type"
-                :key="manu.id"
-            >
-                {{ manu.type }}
-            </option>
-        </select>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Compatibilidade</label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueSocket()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.socket"
-                    class="form-checkbox size-4"
-                    @change="updateSocketCooler"
-                />
-                <span class="ml-2">{{ option.socket }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Velocidade de Rotação (máx.)</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueFanRPM()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.fan_rpm"
-                    class="form-checkbox size-4"
-                    @change="updateFanRPMCooler"
-                />
-                <span class="ml-2">{{ option.fan_rpm }} RPM</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-medium mb-1">RGB</label>
-        <div class="flex items-center space-x-4">
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    class="form-checkbox size-4"
-                    @change="updateRGBCooler"
-                />
-                <span class="ml-2">Sim</span>
-            </label>
-        </div>
-    </div>
-</template>

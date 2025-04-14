@@ -1,4 +1,96 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("ram-capacity")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueSizesRam()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.size"
+                    class="form-checkbox size-4"
+                    @change="updateMemoryCapacity"
+                />
+                <span class="ml-2"
+                    >{{
+                        option.size >= 1000
+                            ? option.size / 1000 + " TB"
+                            : option.size + " GB"
+                    }}
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1"
+            >{{ t("ram-type") }}
+        </label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueTypeRam()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.type"
+                    @change="updateMemoryType"
+                    class="form-checkbox size-4"
+                />
+                <span class="ml-2">{{ option.type }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1"
+            >{{ t("ram-speed") }}
+        </label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueFrequencyRam()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.frequency"
+                    class="form-checkbox size-4"
+                    @change="updateMemoryFrequency"
+                />
+                <span class="ml-2">{{ option.frequency }} Mhz</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1"
+            >{{ t("ram-latency") }}
+        </label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueLatencyRam()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.latency"
+                    class="form-checkbox size-4"
+                    @change="updateMemoryLatency"
+                />
+                <span class="ml-2">CL{{ option.latency }}</span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     capacityRam: Array,
     typeRam: Array,
@@ -112,92 +204,3 @@ const uniqueLatencyRam = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Capacidade da memória ram</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueSizesRam()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.size"
-                    class="form-checkbox size-4"
-                    @change="updateMemoryCapacity"
-                />
-                <span class="ml-2"
-                    >{{
-                        option.size >= 1000
-                            ? option.size / 1000 + " TB"
-                            : option.size + " GB"
-                    }}
-                </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Tipo de memória ram
-        </label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueTypeRam()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.type"
-                    @change="updateMemoryType"
-                    class="form-checkbox size-4"
-                />
-                <span class="ml-2">{{ option.type }}</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Velocidade memória ram
-        </label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueFrequencyRam()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.frequency"
-                    class="form-checkbox size-4"
-                    @change="updateMemoryFrequency"
-                />
-                <span class="ml-2">{{ option.frequency }} Mhz</span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Latência memória ram
-        </label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueLatencyRam()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.latency"
-                    class="form-checkbox size-4"
-                    @change="updateMemoryLatency"
-                />
-                <span class="ml-2">CL{{ option.latency }}</span>
-            </label>
-        </div>
-    </div>
-</template>

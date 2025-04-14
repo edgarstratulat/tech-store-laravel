@@ -4,6 +4,20 @@ import { createInertiaApp } from "@inertiajs/vue3";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import { createI18n } from "vue-i18n";
+
+import pt from "../js/lang/pt.json";
+import en from "../js/lang/en.json";
+
+const i18n = createI18n({
+    legacy: false,
+    locale: "en",
+    fallbackLocale: "pt",
+    messages: {
+        pt,
+        en,
+    },
+});
 
 library.add(fas);
 
@@ -17,6 +31,6 @@ createInertiaApp({
 
         app.component("fa", FontAwesomeIcon);
 
-        app.use(plugin).mount(el);
+        app.use(plugin).use(i18n).mount(el);
     },
 });

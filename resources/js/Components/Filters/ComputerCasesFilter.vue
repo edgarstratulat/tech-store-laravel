@@ -1,4 +1,168 @@
+<template>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-format")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueFormat()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.format"
+                    class="form-checkbox size-4"
+                    @change="updateCasesFormat"
+                />
+                <span class="ml-2">{{ option.format }} </span>
+            </label>
+        </div>
+    </div>
+    <div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("case-glass")
+            }}</label>
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="true"
+                        class="form-checkbox size-4"
+                        @change="updateCasesGlass"
+                    />
+                    <span class="ml-2">{{ t("case-glass-option") }}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-top-fans")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueUpperFans()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.number_upper_fans"
+                    class="form-checkbox size-4"
+                    @change="updateCasesUpperFans"
+                />
+                <span class="ml-2">{{ option.number_upper_fans }}</span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-lower-fans")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueLowerFans()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.number_lower_fans"
+                    class="form-checkbox size-4"
+                    @change="updateCasesLowerFans"
+                />
+                <span class="ml-2">{{ option.number_lower_fans }} </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-front-fans")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueFrontFans()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.number_front_fans"
+                    class="form-checkbox size-4"
+                    @change="updateCasesFrontFans"
+                />
+                <span class="ml-2">{{ option.number_front_fans }} </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-rear-fans")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueRearFans()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.number_rear_fans"
+                    class="form-checkbox size-4"
+                    @change="updateCasesRearFans"
+                />
+                <span class="ml-2">{{ option.number_rear_fans }} </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-gpu-max")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueGPUlength()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.max_gpu_length"
+                    class="form-checkbox size-4"
+                    @change="updateCasesGpuLength"
+                />
+                <span class="ml-2">{{ option.max_gpu_length }} mm </span>
+            </label>
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("case-cooler-max")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueCoolerHeight()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.max_cooler_height"
+                    class="form-checkbox size-4"
+                    @change="updateCasesCoolerHeight"
+                />
+                <span class="ml-2">{{ option.max_cooler_height }} mm </span>
+            </label>
+        </div>
+    </div>
+</template>
+
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     casesFormat: Array,
     casesNumberLowerFans: Array,
@@ -209,162 +373,3 @@ const uniqueCoolerHeight = () => {
     });
 };
 </script>
-
-<template>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Formato da Caixa</label>
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueFormat()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.format"
-                    class="form-checkbox size-4"
-                    @change="updateCasesFormat"
-                />
-                <span class="ml-2">{{ option.format }} </span>
-            </label>
-        </div>
-    </div>
-    <div>
-        <div class="mt-4">
-            <label class="block text-md font-semibold mb-1"
-                >Vidro Temperado</label
-            >
-            <div class="flex items-center space-x-4">
-                <label class="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        value="true"
-                        class="form-checkbox size-4"
-                        @change="updateCasesGlass"
-                    />
-                    <span class="ml-2">Sim</span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Nº ventoinhas superiores</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueUpperFans()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.number_upper_fans"
-                    class="form-checkbox size-4"
-                    @change="updateCasesUpperFans"
-                />
-                <span class="ml-2">{{ option.number_upper_fans }} </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Nº ventoinhas inferiores</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueLowerFans()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.number_lower_fans"
-                    class="form-checkbox size-4"
-                    @change="updateCasesLowerFans"
-                />
-                <span class="ml-2">{{ option.number_lower_fans }} </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Nº ventoinhas frontais</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueFrontFans()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.number_front_fans"
-                    class="form-checkbox size-4"
-                    @change="updateCasesFrontFans"
-                />
-                <span class="ml-2">{{ option.number_front_fans }} </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Nº ventoinhas traseiras</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueRearFans()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.number_rear_fans"
-                    class="form-checkbox size-4"
-                    @change="updateCasesRearFans"
-                />
-                <span class="ml-2">{{ option.number_rear_fans }} </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Comprimento máximo placa gráfica</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueGPUlength()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.max_gpu_length"
-                    class="form-checkbox size-4"
-                    @change="updateCasesGpuLength"
-                />
-                <span class="ml-2">{{ option.max_gpu_length }} mm </span>
-            </label>
-        </div>
-    </div>
-    <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Altura máxima CPU Cooler</label
-        >
-        <div
-            class="flex items-center space-x-4"
-            v-for="option in uniqueCoolerHeight()"
-            :key="option.id"
-        >
-            <label class="inline-flex items-center">
-                <input
-                    type="checkbox"
-                    :value="option.max_cooler_height"
-                    class="form-checkbox size-4"
-                    @change="updateCasesCoolerHeight"
-                />
-                <span class="ml-2">{{ option.max_cooler_height }} mm </span>
-            </label>
-        </div>
-    </div>
-</template>

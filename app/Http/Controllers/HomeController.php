@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function showProductsHome()
     {
-        $products = Product::with('category')->with('subcategory')->select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->orderBy('id', 'asc')->where('stock', '>', 0)->take(9)->get();
+        $products = Product::with('category')->with('subcategory')->select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->orderBy('id', 'asc')->where('stock', '>', 0)->take(8)->get();
 
         $computers = Product::with('category')->with('subcategory')->select('id', 'name', 'slug', 'price', 'sale_price', 'description', 'category_id', 'subcategory_id', 'image_path', 'stock')->where('category_id', 1)->orderBy('id', 'asc')->take(4)->get();
 

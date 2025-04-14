@@ -1,8 +1,8 @@
 <template>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Capacidade de Armazenamento</label
-        >
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-capacity")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueSmartphoneStorage()"
@@ -20,9 +20,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Capacidade cartão SIM</label
-        >
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-sim")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueSIM()"
@@ -40,9 +40,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Família Processador</label
-        >
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-family-processor")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueFamilyCPU()"
@@ -60,7 +60,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Processador</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-processor")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueCPU()"
@@ -78,9 +80,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Sistema Operativo</label
-        >
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-os")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueOS()"
@@ -98,7 +100,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Resolução</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-resolution")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueResolution()"
@@ -116,7 +120,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Polegadas</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-inches")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueInches()"
@@ -134,9 +140,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1"
-            >Taxa de atualização</label
-        >
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-hz")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueHz()"
@@ -154,7 +160,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <label class="block text-md font-semibold mb-1">Tipo de Painel</label>
+        <label class="block text-md font-semibold mb-1">{{
+            t("smartphones-type-screen")
+        }}</label>
         <div
             class="flex items-center space-x-4"
             v-for="option in uniqueType()"
@@ -174,6 +182,9 @@
 </template>
 
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 const props = defineProps({
     capacityStorage: Array,
     SIM: Array,
