@@ -20,6 +20,7 @@ const i18n = createI18n({
 });
 
 library.add(fas);
+i18n.global.locale.value = "pt";
 
 createInertiaApp({
     resolve: (name) => {

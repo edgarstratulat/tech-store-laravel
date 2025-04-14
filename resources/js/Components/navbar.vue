@@ -50,6 +50,8 @@
                             </svg>
                         </a>
 
+                        <ChangeLang></ChangeLang>
+
                         <!-- Hamburger Menu (moved to right side of the cart) -->
                         <NavbarMenuMobile :Buttons="Buttons"></NavbarMenuMobile>
                     </div>
@@ -68,6 +70,7 @@ import navbarButtons from "./Buttons/Navbar/navbarButtons.vue";
 import userButton from "./Buttons/Navbar/userButton.vue";
 import NavbarSearchMobile from "./Inputs/Navbar/navbarSearchMobile.vue";
 import NavbarMenuMobile from "./Menu/Mobile/navbarMenuMobile.vue";
+import ChangeLang from "./Inputs/language/changeLang.vue";
 
 export default {
     components: {
@@ -76,6 +79,7 @@ export default {
         navbarButtons,
         userButton,
         NavbarMenuMobile,
+        ChangeLang,
     },
     data() {
         return {
