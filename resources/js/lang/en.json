@@ -81,6 +81,21 @@
         "acessories-home": "For Home"
     },
 
+    "admin-buttons": {
+        "dashboard": "Dashboard",
+        "users": "Users",
+        "products": "Products",
+        "orders": "Orders",
+        "hi-admin": "Hi"
+    },
+    "admin-buttons-options": {
+        "view-products": "View products",
+        "add-products": "Add products",
+        "update-products": "Update products",
+        "delete-products": "Delete products",
+        "logout": "Logout"
+    },
+
     "hi": "Hi",
     "guest": "Guest",
     "looking-for": "What are you looking for?",

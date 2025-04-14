@@ -36,7 +36,9 @@
                                 class="text-lg"
                             ></fa>
 
-                            <span>{{ btn.button_name }} </span>
+                            <span>{{
+                                t(`admin-buttons.${btn.button_name}`)
+                            }}</span>
                         </span>
                     </button>
 
@@ -56,7 +58,11 @@
                                     :icon="option.icon"
                                     class="text-lg"
                                 ></fa>
-                                <span>{{ option.button_name }} </span>
+                                <span>{{
+                                    t(
+                                        `admin-buttons-options.${option.button_name}`
+                                    )
+                                }}</span>
                             </span>
                         </li>
                     </ul>
@@ -85,7 +91,9 @@
                                 ></fa>
 
                                 <span
-                                    >{{ btn.button_name }},
+                                    >{{
+                                        t(`admin-buttons.${btn.button_name}`)
+                                    }},
                                     {{ Utilizador.name }}
                                 </span>
                             </span>
@@ -109,7 +117,11 @@
                                         :icon="option.icon"
                                         class="text-lg"
                                     ></fa>
-                                    <span>{{ option.button_name }} </span>
+                                    <span>{{
+                                        t(
+                                            `admin-buttons-options.${option.button_name}`
+                                        )
+                                    }}</span>
                                 </span>
                             </li>
                         </ul>
@@ -141,13 +153,13 @@ export default {
     },
     computed: {
         filterButtonsNotDropDown() {
-            const DropdownButtons = ["Olá", "Terminar Sessão"];
+            const DropdownButtons = ["hi-admin", "logout"];
             return this.adminBtn.filter(
                 (btn) => !DropdownButtons.includes(btn.button_name)
             );
         },
         filterButtonsDropDownMenuLogged() {
-            const DropdownButtons = ["Olá", "Terminar Sessão"];
+            const DropdownButtons = ["hi-admin", "logout"];
             return this.adminBtn.filter((btn) =>
                 DropdownButtons.includes(btn.button_name)
             );

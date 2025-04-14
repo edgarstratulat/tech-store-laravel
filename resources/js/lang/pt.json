@@ -81,6 +81,21 @@
         "acessories-home": "Para Casa"
     },
 
+    "admin-buttons": {
+        "dashboard": "Dashboard",
+        "users": "Utilizadores",
+        "products": "Produtos",
+        "orders": "Pedidos",
+        "hi-admin": "Olá"
+    },
+    "admin-buttons-options": {
+        "view-products": "Visualizar produtos",
+        "add-products": "Adicionar produtos",
+        "update-products": "Atualizar produtos",
+        "delete-products": "Eliminar produtos",
+        "logout": "Terminar sessão"
+    },
+
     "hi": "Olá",
     "guest": "Visitante",
     "looking-for": "O que procuras?",

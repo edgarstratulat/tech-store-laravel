@@ -15,45 +15,45 @@ class AdminButtons extends Seeder
     {
         $buttons = [
             [
-                'button_name' => 'Dashboard',
+                'button_name' => 'dashboard',
                 'route' => '/dashboard',
                 'icon' => 'fa-home',
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
             [
-                'button_name' => 'Utilizadores',
+                'button_name' => 'users',
                 'route' => '/dashboard',
                 'icon' => 'fa-users',
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
             [
-                'button_name' => 'Produtos',
+                'button_name' => 'products',
                 'route' => '/dashboard/produtos',
                 'icon'=> 'fa-shopping-cart',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
-                    ["button_name" => "Visualizar Produtos", "icon" => "fa-eye", "route" => "/dashboard/produtos"],
-                    ["button_name" => "Adicionar Produtos", "icon" => "fa-plus", "route" => "/dashboard/produtos/adicionar"],
-                    ["button_name" => "Atualizar Produtos", "icon" => "fa-edit", "route" => "/dashboard/produtos/atualizar"],
-                    ["button_name" => "Eliminar Produtos", "icon" => "fa-trash", "route" => "/dashboard/produtos/eliminar"],
+                    ["button_name" => "view-products", "icon" => "fa-eye", "route" => "/dashboard/produtos"],
+                    ["button_name" => "add-products", "icon" => "fa-plus", "route" => "/dashboard/produtos/adicionar"],
+                    ["button_name" => "update-products", "icon" => "fa-edit", "route" => "/dashboard/produtos/atualizar"],
+                    ["button_name" => "delete-products", "icon" => "fa-trash", "route" => "/dashboard/produtos/eliminar"],
                 ]), 
             ],
             [
-                'button_name' => 'Pedidos',
+                'button_name' => 'orders',
                 'route' => '/dashboard',
                 'icon' => 'fa-box',
                 'dropdown' => false,
                 "dropdownOptions" => null
             ],
             [
-                'button_name' => 'Olá',
+                'button_name' => 'hi-admin',
                 'route' => '#',
                 'icon' => 'fa-user',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
-                    ["button_name" => "Terminar Sessão", "icon" => "fa-sign-out-alt", "route" => "/logout"],
+                    ["button_name" => "logout", "icon" => "fa-sign-out-alt", "route" => "/logout"],
                 ]), 
             ],
 
