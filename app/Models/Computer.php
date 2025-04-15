@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Computer extends Model
 {
-    protected $table = 'computers_specs';
+    protected $table = 'computer_specs';
 
     protected $fillable = [
         'processor',
