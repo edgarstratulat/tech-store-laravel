@@ -14,6 +14,8 @@
             v-model:minPrice="selectedFilters.min_price"
             v-model:maxPrice="selectedFilters.max_price"
             v-model:manufacturer="selectedFilters.manufacturer"
+            v-model:discount="selectedFilters.promotion"
+            v-model:reconditioned="selectedFilters.reconditioned"
         ></DefaultFilter>
 
         <!--PC Components Filter-->
@@ -207,6 +209,13 @@
             v-model:screen_type="selectedFilters.smartphones_screen_type"
         ></SmartphoneFilter>
 
+        <ComputersFilter
+            v-if="computerPage"
+            :computers="computers"
+            :cpu="cpu"
+            v-model:FamilyProcessor="selectedFilters.family_processor"
+        ></ComputersFilter>
+
         <button
             @click="applyFilters"
             class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
@@ -232,6 +241,7 @@ import CpuCoolersFilter from "./CpuCoolersFilter.vue";
 import ComputerCasesFilter from "./ComputerCasesFilter.vue";
 import SmartphoneFilter from "./SmartphonesFilter.vue";
 import DefaultFilter from "./DefaultFilters.vue";
+import ComputersFilter from "./ComputersFilter.vue";
 
 const page = usePage();
 const currentPath = page.url;
@@ -263,6 +273,7 @@ const props = defineProps({
     cpuCooler: Array,
     PCcases: Array,
     smartphone: Array,
+    computers: Array,
 });
 
 const selectedFilters = ref({
@@ -331,6 +342,8 @@ const selectedFilters = ref({
     smartphones_screen_inches: [],
     smartphones_screen_hz: [],
     smartphones_screen_type: [],
+
+    family_processor: [],
 });
 
 const applyFilters = () => {
@@ -557,6 +570,12 @@ const applyFilters = () => {
     if (selectedFilters.value.smartphones_screen_type.length > 0) {
         queryParams["filter[smartphone_screen_type]"] =
             selectedFilters.value.smartphones_screen_type;
+    }
+
+    //pc
+    if (selectedFilters.value.family_processor.length > 0) {
+        queryParams["filter[computer_processor]"] =
+            selectedFilters.value.family_processor;
     }
 
     console.log(queryParams);
