@@ -113,5 +113,9 @@ class Product extends Model
     {
         return $this->belongsTo(Smartphone::class, 'smartphone_id');
     }
+    public function computer()
+    {
+        return $this->belongsTo(Computer::class, 'computer_id');
+    }
 
 }
