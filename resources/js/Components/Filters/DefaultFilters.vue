@@ -147,7 +147,4 @@ function updateDiscount(event) {
 function updateReconditioned(event) {
     emit("update:reconditioned", event.target.value);
 }
-function updateSubcategory(event) {
-    emit("update:subcategory", event.target.value);
-}
 </script>
