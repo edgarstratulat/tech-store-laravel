@@ -8,7 +8,7 @@
         "acessories": "Acessórios"
     },
     "subcategory": {
-        "desktop": "Computador de secretária",
+        "desktop": "Desktop",
         "gaming": "Gaming",
         "laptops": "Portáteis",
         "workstation": "Workstations",
@@ -49,7 +49,7 @@
 
     "buttons_options": {
         "computers": "Computadores",
-        "desktop": "Computador de secretária",
+        "desktop": "Desktop",
         "gaming": "Gaming",
         "laptops": "Portáteis",
         "workstation": "Workstations",
