@@ -28,7 +28,8 @@
                 !cpuCoolerPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :ram="ram"
             v-model:capacityRam="selectedFilters.memoria_ram"
@@ -47,7 +48,8 @@
                 !cpuCoolerPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :cpu="cpu"
             v-model:modelCPU="selectedFilters.cpu"
@@ -65,7 +67,8 @@
                 !cpuCoolerPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :armazenamento="armazenamento"
             v-model:capacityDrive="selectedFilters.storage"
@@ -84,7 +87,8 @@
                 !cpuCoolerPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :motherboard="motherboard"
             v-model:motherboardFormat="selectedFilters.motherboard_format"
@@ -106,7 +110,8 @@
                 !cpuCoolerPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :gpu="gpu"
             v-model:modelGPU="selectedFilters.gpu_model"
@@ -126,7 +131,8 @@
                 !cpuCoolerPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :powersupply="powersupply"
             v-model:psuFormat="selectedFilters.psu_format"
@@ -145,7 +151,8 @@
                 !psuPage &&
                 !pcCasesPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :cpuCooler="cpuCooler"
             v-model:socketCooler="selectedFilters.cooler_socket"
@@ -164,7 +171,8 @@
                 !psuPage &&
                 !cpuCoolerPage &&
                 !discountPage &&
-                !smartphonePage
+                !smartphonePage &&
+                !computerPage
             "
             :PCcases="PCcases"
             v-model:casesFormat="selectedFilters.case_format"
@@ -240,6 +248,7 @@ const cpuCoolerPage = currentPath.includes("/components/cpu-coolers");
 const pcCasesPage = currentPath.includes("/components/computer-cases");
 
 const smartphonePage = currentPath.includes("/smartphones");
+const computerPage = currentPath.includes("/computers");
 
 const props = defineProps({
     manufacturer: Array,

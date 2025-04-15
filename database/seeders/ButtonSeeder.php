@@ -23,16 +23,16 @@ class ButtonSeeder extends Seeder
             ],
             [
                 'button_name' => 'computers',
-                'route' => '/computadores',
+                'route' => '/computers',
                 'dropdown' => true,
                 'icon' => null,
                 "dropdownOptions" => json_encode([
-                    ["button_name" => "computers", "icon" => null,  "route" => "/computadores"],
-                    ["button_name" => "desktop","icon" => null, "route" => "/computadores/desktop"],
-                    ["button_name" => "gaming","icon" => null, "route" => "/computadores/gaming"],
-                    ["button_name" => "laptops","icon" => null, "route" => "/computadores/portateis"],
-                    ["button_name" => "workstation","icon" => null, "route" => "/computadores/workstations"],
-                    ["button_name" => "micro-pc","icon" => null, "route" => "/computadores/micro-computadores"],
+                    ["button_name" => "computers", "icon" => null,  "route" => "/computers"],
+                    ["button_name" => "desktop","icon" => null, "route" => "/computers/desktop"],
+                    ["button_name" => "gaming","icon" => null, "route" => "/computers/gaming"],
+                    ["button_name" => "laptops","icon" => null, "route" => "/computers/portateis"],
+                    ["button_name" => "workstation","icon" => null, "route" => "/computers/workstations"],
+                    ["button_name" => "micro-pc","icon" => null, "route" => "/computers/micro-computadores"],
                 ]), 
             ],
             [

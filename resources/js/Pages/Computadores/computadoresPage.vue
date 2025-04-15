@@ -14,8 +14,6 @@
             <div class="w-1/4">
                 <FilterSideBar
                     :manufacturer="manufacturer"
-                    :products="products.data"
-                    :category="category"
                     :subcategory="subcategory"
                 />
             </div>

@@ -74,7 +74,7 @@ Route::prefix('acessorios')->group(function () {
 });
 
 //Computador
-Route::prefix('computadores')->group(function () {
+Route::prefix('computers')->group(function () {
     Route::get('/', [ComputersController::class, 'showComputers']);
     Route::get('gaming', [ComputersController::class, 'showGamingComputers']);
     Route::get('portateis', [ComputersController::class, 'showLaptopsComputers']);
