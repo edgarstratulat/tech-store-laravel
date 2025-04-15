@@ -241,7 +241,6 @@ import CpuCoolersFilter from "./CpuCoolersFilter.vue";
 import ComputerCasesFilter from "./ComputerCasesFilter.vue";
 import SmartphoneFilter from "./SmartphonesFilter.vue";
 import DefaultFilter from "./DefaultFilters.vue";
-import ComputersFilter from "./ComputersFilter.vue";
 
 const page = usePage();
 const currentPath = page.url;
