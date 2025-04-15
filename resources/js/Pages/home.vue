@@ -18,8 +18,8 @@
             :subcategory="subcategory"
             :manufacturer="manufacturer"
         />
-        <div class="flex justify-center">
-            <a href="http://localhost:8000/promocoes">
+        <div class="flex justify-center items-center p-5">
+            <a href="http://localhost:8000/promotions">
                 <button
                     class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300"
                 >
@@ -58,7 +58,7 @@
         </div>
         <div class="m-10">
             <div class="flex justify-center">
-                <a href="http://localhost:8000/promocoes">
+                <a href="http://localhost:8000/promotions">
                     <button
                         class="bg-blue-600 text-white px-6 py-4 rounded-sm hover:bg-blue-800 transition-colors duration-300"
                     >
@@ -74,7 +74,7 @@
 import { useI18n } from "vue-i18n";
 import navbar from "../Components/navbar.vue";
 import Carroussel from "../Components/carroussel.vue";
-import Product from "../Components/Categories/HomeProductComponent.vue";
+import Product from "../Components/Categories/productComponent.vue";
 import ComputerHome from "../Components/Categories/HomeComputerComponent.vue";
 
 export default {
