@@ -228,7 +228,7 @@ import DefaultFilter from "./DefaultFilters.vue";
 const page = usePage();
 const currentPath = page.url;
 
-const discountPage = currentPath.includes("/promocoes");
+const discountPage = currentPath.includes("/promotions");
 
 const ramPage = currentPath.includes("/components/ram-memory");
 const cpuPage = currentPath.includes("/components/processors");

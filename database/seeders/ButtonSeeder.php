@@ -16,7 +16,7 @@ class ButtonSeeder extends Seeder
         $buttons = [
             [
                 'button_name' => 'discount',
-                'route' => '/promocoes',
+                'route' => '/promotions',
                 'dropdown' => false,
                 'icon' => null,
                 "dropdownOptions" => null
