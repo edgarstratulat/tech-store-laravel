@@ -1,7 +1,7 @@
 <template>
     <div class="mt-4">
         <label class="block text-md font-semibold mb-1">{{
-            t("smartphones-capacity")
+            t("storage-capacity")
         }}</label>
         <div
             class="flex items-center space-x-4"
@@ -41,7 +41,7 @@
     </div>
     <div class="mt-4">
         <label class="block text-md font-semibold mb-1">{{
-            t("smartphones-family-processor")
+            t("processor-family")
         }}</label>
         <div
             class="flex items-center space-x-4"
