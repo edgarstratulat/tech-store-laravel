@@ -72,6 +72,12 @@
                         </h2>
                     </div>
 
+                    <div class="flex-grow">
+                        <h2 class="mt-1 text-sm">
+                            {{ promo.sku }}
+                        </h2>
+                    </div>
+
                     <!-- Price and Button -->
                     <div class="mt-4 flex gap-5 items-center">
                         <span

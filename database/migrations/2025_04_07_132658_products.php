@@ -34,6 +34,7 @@ return new class extends Migration
             $table->boolean('included_cooler')->default(false);
             $table->boolean('bluetooth')->default(false);
             $table->boolean('wifi')->default(false);
+            $table->string('sku');
             $table->integer('stock');
             $table->string('image_path')->nullable();
             $table->timestamps();

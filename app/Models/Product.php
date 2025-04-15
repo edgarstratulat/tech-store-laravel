@@ -27,6 +27,7 @@ class Product extends Model
         'bluetooth',
         'wifi',
         'stock',
+        'sku',
         'image_path',
         'ram_id',
         'motherboard_id',
@@ -42,7 +43,7 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'name',
             ]
         ];
     }
@@ -51,6 +52,7 @@ class Product extends Model
     {
         return [
             'name' => $this->name,
+            'sku' => $this->sku,
         ];
     }
 

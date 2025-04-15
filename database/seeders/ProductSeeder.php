@@ -117,6 +117,7 @@ class ProductSeeder extends Seeder
                 'cpu_id' => $cpu['cpu_id'],
                 'included_cooler' => $cpu['included_cooler'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $cpu['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -159,6 +160,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 13,
                 'ram_id' => $ram['ram_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $ram['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -213,6 +215,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 14,
                 'armazenamento_id' => $ssd['armazenamento_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $ssd['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -252,6 +255,7 @@ class ProductSeeder extends Seeder
                 'bluetooth' => $mobo['bluetooth'],
                 'wifi' => $mobo['wifi'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $mobo['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -292,6 +296,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 16,
                 'gpu_id' => $gpu['gpu_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $gpu['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -318,6 +323,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 17,
                 'powersupply_id' => $power['powersupply_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $power['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -351,6 +357,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 18,
                 'cpu_cooler_id' => $cooler['cpu_cooler_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $cooler['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -391,6 +398,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 19, 
                 'pc_case_id' => $case['pc_case_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $case['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
@@ -434,6 +442,7 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => $phone['subcategory_id'], 
                 'smartphone_id' => $phone['smartphone_id'],
                 'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $phone['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
