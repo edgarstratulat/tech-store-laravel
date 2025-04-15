@@ -214,5 +214,16 @@
     "register-button": "Criar conta",
     "home-button": "Páginal inicial",
 
-    "search-query": "Resultados da pesquisa:"
+    "search-query": "Resultados da pesquisa:",
+
+    "view-products-page-title": "Produtos",
+    "view-products-table-name": "Nome",
+    "view-products-table-price": "Preço",
+    "view-products-table-description": "Descrição",
+    "view-products-table-category": "Categoria",
+    "view-products-table-subcategory": "Subcategoria",
+    "view-products-table-stock": "Stock",
+    "view-products-table-actions": "Ações",
+    "view-products-table-update": "Atualizar",
+    "view-products-table-delete": "Eliminar"
 }

@@ -214,5 +214,16 @@
     "register-button": "Register",
     "home-button": "Home page",
 
-    "search-query": "Search results:"
+    "search-query": "Search results:",
+
+    "view-products-page-title": "Products",
+    "view-products-table-name": "Name",
+    "view-products-table-price": "Price",
+    "view-products-table-description": "Description",
+    "view-products-table-category": "Category",
+    "view-products-table-subcategory": "Subcategory",
+    "view-products-table-stock": "Stock",
+    "view-products-table-actions": "Actions",
+    "view-products-table-update": "Update",
+    "view-products-table-delete": "Delete"
 }
