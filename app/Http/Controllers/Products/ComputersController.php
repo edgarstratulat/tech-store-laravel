@@ -295,33 +295,6 @@ class ComputersController extends Controller
         ]);
     }
 
-    public function showGamingComputers()
-    {
-        $buttons = Button::select(
-            'id',
-            'button_name',
-            'route',
-            'icon',
-            'dropdown',
-            'dropdownOptions'
-        )->get();
-        $user = Auth::user();
-        $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 2)->paginate(12);
-
-        $category = Category::select('id', 'name')->get();
-        $subCategory = subCategory::select('id', 'name')->get();
-
-        return Inertia::render('Computadores/GamingPage', [
-            'buttons' => $buttons,
-            'Utilizador' => $user,
-            'isAdmin' => $isAdmin,
-            'products' => $products,
-            'category' => $category,
-            'subcategory' => $subCategory
-        ]);
-    }
-
     public function showLaptopsComputers()
     {
         $buttons = Button::select(
@@ -578,30 +551,4 @@ class ComputersController extends Controller
         ]);
     }
 
-    public function showMicroComputers()
-    {
-        $buttons = Button::select(
-            'id',
-            'button_name',
-            'route',
-            'icon',
-            'dropdown',
-            'dropdownOptions'
-        )->get();
-        $user = Auth::user();
-        $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 1)->where('subcategory_id', 5)->paginate(12);
-
-        $category = Category::select('id', 'name')->get();
-        $subCategory = subCategory::select('id', 'name')->get();
-
-        return Inertia::render('Computadores/MicroPcPage', [
-            'buttons' => $buttons,
-            'Utilizador' => $user,
-            'isAdmin' => $isAdmin,
-            'products' => $products,
-            'category' => $category,
-            'subcategory' => $subCategory
-        ]);
-    }
 }

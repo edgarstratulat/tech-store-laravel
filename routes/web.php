@@ -25,7 +25,7 @@ Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::clas
 //Promocoes
 Route::get('/promotions', [DiscountProductsController::class, 'showDiscountProducts']);
 
-Route::middleware(['auth', 'permission:Manage Store',])->group(function () {
+Route::middleware(['auth', 'permission:Manage Store'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'showAdminPanel']);
     Route::get('dashboard/produtos', [ProductsController::class, 'showProducts']);
     Route::get('dashboard/produtos/adicionar', [CreateProductController::class, 'showProducts']);
@@ -76,10 +76,8 @@ Route::prefix('acessorios')->group(function () {
 //Computador
 Route::prefix('computers')->group(function () {
     Route::get('/', [ComputersController::class, 'showComputers']);
-    Route::get('gaming', [ComputersController::class, 'showGamingComputers']);
     Route::get('portateis', [ComputersController::class, 'showLaptopsComputers']);
     Route::get('workstations', [ComputersController::class, 'showWorkStationComputers']);
-    Route::get('micro-computadores', [ComputersController::class, 'showMicroComputers']);
     Route::get('desktop', [ComputersController::class, 'showDesktopComputers']);
 });
 
