@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Armazenamento;
+use App\Models\Computer;
 use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
@@ -286,5 +287,19 @@ class SpecsSeeder extends Seeder
         ] as $phone)
 
         Smartphone::create($phone);
+
+        foreach([
+            [
+                'processor' => 1,
+                'motherboard' => 1,
+                'ram' => 3,
+                'storage' => 4,
+                'gpu' => 2,
+                'case' => 3,
+                'powersupply' => 1,
+            ],
+        ] as $pc)
+
+        Computer::create($pc);
     }
 }

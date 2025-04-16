@@ -44,7 +44,7 @@
                 </span>
             </div>
             <div class="flex justify-center m-4">
-                <a href="/computadores">
+                <a href="/computers">
                     <button
                         class="bg-white text-black px-6 py-4 rounded-sm hover:bg-gray-300 transition-colors duration-300 justify-center"
                     >

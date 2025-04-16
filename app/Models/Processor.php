@@ -19,6 +19,6 @@ class Processor extends Model
 
     public function product():HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'cpu_id');
     }
 }

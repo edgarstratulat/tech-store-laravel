@@ -447,6 +447,34 @@ class ProductSeeder extends Seeder
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
+
+        $pcProducts = [
+            [
+                'name' => 'Computador Desktop XPTO Série I by MaRca | Intel i5 | 32GB DDR5 | 9070XT | 1TB SSD',
+                'manufacturer_id' => 30,
+                'price' => 1399.99,
+                'computer_id' => 1,
+                'subcategory_id' => 1,
+                'image_path' => "images/pc1.jpg"
+            ],
+        ];
+        
+        foreach ($pcProducts as $pc) {
+            Product::create([
+                'name' => $pc['name'],
+                'manufacturer_id' => $pc['manufacturer_id'],
+                'price' => $pc['price'],
+                'sale_price' => 0,
+                'description' => $pc['name'],
+                'category_id' => 1,
+                'subcategory_id' => $pc['subcategory_id'], 
+                'computer_id' => $pc['computer_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $pc['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
         
             
     }

@@ -225,5 +225,10 @@
     "view-products-table-stock": "Stock",
     "view-products-table-actions": "Ações",
     "view-products-table-update": "Atualizar",
-    "view-products-table-delete": "Eliminar"
+    "view-products-table-delete": "Eliminar",
+
+    "computers-page-title": "Computadores",
+    "computers-desktop-page-title": "Computadores Desktop",
+    "computers-laptop-page-title": "Portáteis",
+    "computers-workstation-page-title": "Computadores Workstations"
 }

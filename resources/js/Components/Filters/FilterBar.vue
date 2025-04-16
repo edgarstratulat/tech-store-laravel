@@ -213,7 +213,19 @@
             v-if="computerPage"
             :computers="computers"
             :cpu="cpu"
-            v-model:FamilyProcessor="selectedFilters.family_processor"
+            :ram="ram"
+            :motherboard="motherboard"
+            :armazenamento="armazenamento"
+            :gpu="gpu"
+            :powersupply="powersupply"
+            :PCcases="PCcases"
+            v-model:cpu_family="selectedFilters.computer_processor"
+            v-model:ram_size="selectedFilters.computer_ram"
+            v-model:motherboard_chipset="selectedFilters.computer_motherboard"
+            v-model:storage_size="selectedFilters.computer_storage"
+            v-model:gpu_model="selectedFilters.computer_gpu"
+            v-model:psu_wattage="selectedFilters.computer_psu"
+            v-model:case_format="selectedFilters.computer_case"
         ></ComputersFilter>
 
         <button
@@ -343,7 +355,13 @@ const selectedFilters = ref({
     smartphones_screen_hz: [],
     smartphones_screen_type: [],
 
-    family_processor: [],
+    computer_processor: [],
+    computer_ram: [],
+    computer_motherboard: [],
+    computer_storage: [],
+    computer_gpu: [],
+    computer_psu: [],
+    computer_case: [],
 });
 
 const applyFilters = () => {
@@ -573,9 +591,33 @@ const applyFilters = () => {
     }
 
     //pc
-    if (selectedFilters.value.family_processor.length > 0) {
+    if (selectedFilters.value.computer_processor.length > 0) {
         queryParams["filter[computer_processor]"] =
-            selectedFilters.value.family_processor;
+            selectedFilters.value.computer_processor;
+    }
+    if (selectedFilters.value.computer_ram.length > 0) {
+        queryParams["filter[computer_memory_ram]"] =
+            selectedFilters.value.computer_ram;
+    }
+    if (selectedFilters.value.computer_motherboard.length > 0) {
+        queryParams["filter[computer_motherboard]"] =
+            selectedFilters.value.computer_motherboard;
+    }
+    if (selectedFilters.value.computer_storage.length > 0) {
+        queryParams["filter[computer_storage]"] =
+            selectedFilters.value.computer_storage;
+    }
+    if (selectedFilters.value.computer_gpu.length > 0) {
+        queryParams["filter[computer_gpu]"] =
+            selectedFilters.value.computer_gpu;
+    }
+    if (selectedFilters.value.computer_psu.length > 0) {
+        queryParams["filter[computer_powersupply]"] =
+            selectedFilters.value.computer_psu;
+    }
+    if (selectedFilters.value.computer_case.length > 0) {
+        queryParams["filter[computer_case]"] =
+            selectedFilters.value.computer_case;
     }
 
     console.log(queryParams);

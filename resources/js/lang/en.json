@@ -223,5 +223,10 @@
     "view-products-table-stock": "Stock",
     "view-products-table-actions": "Actions",
     "view-products-table-update": "Update",
-    "view-products-table-delete": "Delete"
+    "view-products-table-delete": "Delete",
+
+    "computers-page-title": "Computers",
+    "computers-desktop-page-title": "Desktop Computers",
+    "computers-laptop-page-title": "Laptops",
+    "computers-workstation-page-title": "Workstations Computers"
 }
