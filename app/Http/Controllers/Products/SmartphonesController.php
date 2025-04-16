@@ -256,17 +256,17 @@ class SmartphonesController extends Controller
         ->allowedSorts([
             'price', '-price', '-created_at'
         ])
-        ->with('category', 'subcategory')->where('category_id', 3)->where('subcategory_id', 10)->paginate(12);
+        ->with('category', 'subcategory')->where('category_id', 3)->where('subcategory_id', 8)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 3)->where('subcategory_id', 10);
+            $query->where('category_id', 3)->where('subcategory_id', 8);
         })->select('id', 'name')->get();
 
         $smartphone = Smartphone::whereHas('product', function($query) {
-            $query->where('category_id', 3)->where('subcategory_id', 10);
+            $query->where('category_id', 3)->where('subcategory_id', 8);
         })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
         return Inertia::render('Smartphones/iphonePage', [
@@ -388,18 +388,18 @@ class SmartphonesController extends Controller
         ->allowedSorts([
             'price', '-price', '-created_at'
         ])
-        ->with('category', 'subcategory')->where('category_id', 3)->where('subcategory_id', 11)->paginate(12);
+        ->with('category', 'subcategory')->where('category_id', 3)->where('subcategory_id', 9)->paginate(12);
 
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 3)->where('subcategory_id', 11);
+            $query->where('category_id', 3)->where('subcategory_id', 9);
         })->select('id', 'name')->get();
 
         $smartphone = Smartphone::whereHas('product', function($query) {
-            $query->where('category_id', 3)->where('subcategory_id', 11);
+            $query->where('category_id', 3)->where('subcategory_id', 9);
         })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
         return Inertia::render('Smartphones/androidPage', [

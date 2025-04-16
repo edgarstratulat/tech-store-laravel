@@ -16,10 +16,8 @@ class subCategorySeeder extends Seeder
     {
         foreach([
             ['name' => 'desktop', 'category_id' => 1],  
-            ['name' => 'gaming', 'category_id' => 1],  
             ['name' => 'laptops', 'category_id' => 1],  
             ['name' => 'workstation', 'category_id' => 1],  
-            ['name' => 'micro-pc', 'category_id' => 1],
             ['name' => 'mice-keyboard', 'category_id' => 2],  
             ['name' => 'monitors', 'category_id' => 2],  
             ['name' => 'audio', 'category_id' => 2],  

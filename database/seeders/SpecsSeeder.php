@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Armazenamento;
+use App\Models\Computer;
 use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
@@ -25,6 +26,7 @@ class SpecsSeeder extends Seeder
         ['size' => 16, 'type' => 'DDR4', 'frequency' => 3200, 'latency' => 16],
         ['size' => 32, 'type' => 'DDR4', 'frequency' => 3600, 'latency' => 18],
         ['size' => 32, 'type' => 'DDR5', 'frequency' => 5600, 'latency' => 40],
+        ['size' => 8, 'type' => 'DDR4', 'frequency' => 3200, 'latency' => 16],
         ] as $ram)
 
         Ram::create($ram);
@@ -109,6 +111,13 @@ class SpecsSeeder extends Seeder
                 'threads' => 12,
                 'tdp' => 105,
                 'socket' => 'AM5'
+            ],
+            [
+                'model' => 'Apple M',
+                'cores' => 8,
+                'threads' => 8,
+                'tdp' => 105,
+                'socket' => 'ARM'
             ], 
         ] as $cpu)
 
@@ -286,5 +295,24 @@ class SpecsSeeder extends Seeder
         ] as $phone)
 
         Smartphone::create($phone);
+
+        foreach([
+            [
+                'processor' => 1,
+                'motherboard' => 1,
+                'ram' => 3,
+                'storage' => 4,
+                'gpu' => 2,
+                'case' => 3,
+                'powersupply' => 1,
+            ],
+            [
+                'processor' => 11,
+                'ram' => 4,
+                'storage' => 3,
+            ],
+        ] as $pc)
+
+        Computer::create($pc);
     }
 }

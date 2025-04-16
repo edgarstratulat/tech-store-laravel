@@ -452,13 +452,13 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 10)->paginate(12)->appends(request()->query());
 
 
         $cpu = Processor::select('id', 'model', 'tdp', 'socket')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 12);
+            $query->where('category_id', 4)->where('subcategory_id', 10);
         })->select('id', 'name')->get();
 
         $category = Category::select('id', 'name')->get();
@@ -549,10 +549,10 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 13)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 11)->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 13);
+            $query->where('category_id', 4)->where('subcategory_id', 11);
         })->select('id', 'name')->get();
 
         $ram = Ram::select(
@@ -648,10 +648,10 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 14)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 12)->paginate(12)->appends(request()->query());
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 14);
+            $query->where('category_id', 4)->where('subcategory_id', 12);
         })->select('id', 'name')->get();
 
         $armazenamento = Armazenamento::select('id', 'size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get(); 
@@ -746,13 +746,13 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 13)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 15);
+            $query->where('category_id', 4)->where('subcategory_id', 13);
         })->select('id', 'name')->get();
 
         $motherboard = Motherboard::select('id', 'format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
@@ -844,13 +844,13 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 14)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 16);
+            $query->where('category_id', 4)->where('subcategory_id', 14);
         })->select('id', 'name')->get();
 
         $gpu = GPU::select('category', 'model','vram','type_vram','interface','tdp')->get();
@@ -937,13 +937,13 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 15)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 17);
+            $query->where('category_id', 4)->where('subcategory_id', 15);
         })->select('id', 'name')->get();
 
         $powersupply = PowerSupply::select('format', 'wattage','efficiency','modular')->get();
@@ -1028,13 +1028,13 @@ class ComponentsController extends Controller
         ->defaultSort('-created_at')
         ->allowedSorts([
             'price', '-price', 'created_at'
-        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 18)->paginate(12)->appends(request()->query());
+        ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 16)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 18);
+            $query->where('category_id', 4)->where('subcategory_id', 16);
         })->select('id', 'name')->get();
 
         $cpucooler = cpuCooler::select('id', 'socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
@@ -1150,13 +1150,13 @@ class ComponentsController extends Controller
         ->allowedSorts([
             'price', '-price', 'created_at'
         ])
-        ->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 19)->paginate(12)->appends(request()->query());
+        ->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 17)->paginate(12)->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 4)->where('subcategory_id', 19);
+            $query->where('category_id', 4)->where('subcategory_id', 17);
         })->select('id', 'name')->get();
 
         $case = ComputerCase::select(

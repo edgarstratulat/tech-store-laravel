@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('smartphone_specs', function(Blueprint $table){
             $table->id();
-            $table->string('model');
-            $table->integer('ram');
-            $table->integer('storage');
-            $table->string('family_processor');
-            $table->string('processor');
-            $table->string('SIM');
-            $table->string('operating_system');
-            $table->string('screen_resolution');
-            $table->float('screen_inches');
-            $table->integer('screen_hz');
-            $table->string('screen_type');
+            $table->string('model')->nullable();
+            $table->integer('ram')->nullable();
+            $table->integer('storage')->nullable();
+            $table->string('family_processor')->nullable();
+            $table->string('processor')->nullable();
+            $table->string('SIM')->nullable();
+            $table->string('operating_system')->nullable();
+            $table->string('screen_resolution')->nullable();
+            $table->float('screen_inches')->nullable();
+            $table->integer('screen_hz')->nullable();
+            $table->string('screen_type')->nullable();
             $table->boolean('5G')->default(false);
             $table->boolean('NFC')->default(false);
             $table->timestamps();

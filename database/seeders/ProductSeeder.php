@@ -113,7 +113,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $cpu['name'] . ' - Processador potente para gaming e produtividade.',
                 'category_id' => 4, 
-                'subcategory_id' => 12,
+                'subcategory_id' => 10,
                 'cpu_id' => $cpu['cpu_id'],
                 'included_cooler' => $cpu['included_cooler'],
                 'stock' => rand(0, 50),
@@ -157,7 +157,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $ram['name'] . ' oferece frequências mais rápidas, maiores capacidades e melhor desempenho',
                 'category_id' => 4, 
-                'subcategory_id' => 13,
+                'subcategory_id' => 11,
                 'ram_id' => $ram['ram_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
@@ -212,7 +212,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $ssd['name'] . ' oferece frequências mais rápidas, maiores capacidades e melhor desempenho',
                 'category_id' => 4, 
-                'subcategory_id' => 14,
+                'subcategory_id' => 12,
                 'armazenamento_id' => $ssd['armazenamento_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
@@ -250,7 +250,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $mobo['name'],
                 'category_id' => 4, 
-                'subcategory_id' => 15,
+                'subcategory_id' => 13,
                 'motherboard_id' => $mobo['motherboard_id'],
                 'bluetooth' => $mobo['bluetooth'],
                 'wifi' => $mobo['wifi'],
@@ -293,7 +293,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $gpu['name'],
                 'category_id' => 4, 
-                'subcategory_id' => 16,
+                'subcategory_id' => 14,
                 'gpu_id' => $gpu['gpu_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
@@ -320,7 +320,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $power['name'],
                 'category_id' => 4, 
-                'subcategory_id' => 17,
+                'subcategory_id' => 15,
                 'powersupply_id' => $power['powersupply_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
@@ -354,7 +354,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0,30),
                 'description' => $cooler['name'],
                 'category_id' => 4, 
-                'subcategory_id' => 18,
+                'subcategory_id' => 16,
                 'cpu_cooler_id' => $cooler['cpu_cooler_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
@@ -395,7 +395,7 @@ class ProductSeeder extends Seeder
                 'sale_price' => rand(0, 30),
                 'description' => $case['name'],
                 'category_id' => 4,
-                'subcategory_id' => 19, 
+                'subcategory_id' => 17, 
                 'pc_case_id' => $case['pc_case_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
@@ -410,7 +410,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 1,
                 'price' => 1399.99,
                 'smartphone_id' => 1,
-                'subcategory_id' => 10,
+                'subcategory_id' => 8,
                 'image_path' => "images/phone1.jpg"
             ],
             [
@@ -418,7 +418,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 2,
                 'price' => 1619.99,
                 'smartphone_id' => 2,
-                'subcategory_id' => 11,
+                'subcategory_id' => 9,
                 'image_path' => "images/phone2.jpg"
             ],
             [
@@ -426,7 +426,7 @@ class ProductSeeder extends Seeder
                 'manufacturer_id' => 29,
                 'price' => 999.99,
                 'smartphone_id' => 3,
-                'subcategory_id' => 11,
+                'subcategory_id' => 9,
                 'image_path' => "images/phone3.jpg"
             ],
         ];
@@ -444,6 +444,42 @@ class ProductSeeder extends Seeder
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $phone['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
+
+        $pcProducts = [
+            [
+                'name' => 'Computador Desktop XPTO Série I by MaRca | Intel i5 | 32GB DDR5 | 9070XT | 1TB SSD',
+                'manufacturer_id' => 30,
+                'price' => 1399.99,
+                'computer_id' => 1,
+                'subcategory_id' => 1,
+                'image_path' => "images/pc1.jpg"
+            ],
+            [
+                'name' => 'Apple MacBook Air 13.6" | M3 CPU 8-core, GPU 8-core | SSD 256GB | 8GB RAM | Meia-Noite + Adaptador USB-C 30W',
+                'manufacturer_id' => 1,
+                'price' => 1229.99,
+                'computer_id' => 2,
+                'subcategory_id' => 2,
+                'image_path' => "images/pc2.jpg"
+            ],
+        ];
+        
+        foreach ($pcProducts as $pc) {
+            Product::create([
+                'name' => $pc['name'],
+                'manufacturer_id' => $pc['manufacturer_id'],
+                'price' => $pc['price'],
+                'sale_price' => 0,
+                'description' => $pc['name'],
+                'category_id' => 1,
+                'subcategory_id' => $pc['subcategory_id'], 
+                'computer_id' => $pc['computer_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $pc['image_path'],
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }

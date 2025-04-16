@@ -1,7 +1,7 @@
 <template>
-    <div class="mt-8 flex justify-center items-center ml-5">
+    <div class="mt-8 flex justify-center items-center m-5">
         <div class="w-full max-w-6xl max-h-6xl mx-auto">
-            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ul class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <li
                     v-for="promo in products"
                     :key="promo.id"

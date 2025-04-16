@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('gpu_specs', function(Blueprint $table){
             $table->id();
-            $table->string('category');
-            $table->string('model');
-            $table->integer('vram');
-            $table->string('type_vram');
-            $table->string('interface');
-            $table->integer('tdp');
+            $table->string('category')->nullable();
+            $table->string('model')->nullable();
+            $table->integer('vram')->nullable();
+            $table->string('type_vram')->nullable();
+            $table->string('interface')->nullable();
+            $table->integer('tdp')->nullable();
             $table->timestamps();
         });
     }

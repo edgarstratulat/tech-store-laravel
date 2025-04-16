@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('motherboard_specs', function (Blueprint $table){
             $table->id();
-            $table->string('format');
-            $table->string('chipset');
-            $table->string('cpu_socket');
-            $table->string('ram_support');
-            $table->integer('max_ram');
+            $table->string('format')->nullable();
+            $table->string('chipset')->nullable();
+            $table->string('cpu_socket')->nullable();
+            $table->string('ram_support')->nullable();
+            $table->integer('max_ram')->nullable();
             $table->boolean('wifi')->default(false);
             $table->boolean('bluetooth')->default(false);
             $table->timestamps();

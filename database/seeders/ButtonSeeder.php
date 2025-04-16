@@ -29,10 +29,8 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => json_encode([
                     ["button_name" => "computers", "icon" => null,  "route" => "/computers"],
                     ["button_name" => "desktop","icon" => null, "route" => "/computers/desktop"],
-                    ["button_name" => "gaming","icon" => null, "route" => "/computers/gaming"],
                     ["button_name" => "laptops","icon" => null, "route" => "/computers/portateis"],
                     ["button_name" => "workstation","icon" => null, "route" => "/computers/workstations"],
-                    ["button_name" => "micro-pc","icon" => null, "route" => "/computers/micro-computadores"],
                 ]), 
             ],
             [
@@ -55,8 +53,8 @@ class ButtonSeeder extends Seeder
                 'icon' => null,
                 "dropdownOptions" => json_encode([
                     ["button_name" => "smartphones","icon" => null, "route" => "/smartphones"],
-                    ["button_name" => "iphone","icon" => null, "route" => "/smartphones/smartphones-iphone"],
-                    ["button_name" => "android","icon" => null, "route" => "/smartphones/smartphones-android"],
+                    ["button_name" => "iphone","icon" => null, "route" => "/smartphones/iphone"],
+                    ["button_name" => "android","icon" => null, "route" => "/smartphones/android"],
                 ]), 
             ],
             [
