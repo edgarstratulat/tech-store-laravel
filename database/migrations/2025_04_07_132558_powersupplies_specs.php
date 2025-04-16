@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('powersupply_specs', function(Blueprint $table){
             $table->id();
-            $table->string('format');
-            $table->integer('wattage');
-            $table->string('efficiency');
-            $table->string('modular');
+            $table->string('format')->nullable();
+            $table->integer('wattage')->nullable();
+            $table->string('efficiency')->nullable();
+            $table->string('modular')->nullable();
             $table->timestamps();            
         });
     }

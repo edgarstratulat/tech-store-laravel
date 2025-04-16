@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('cases_specs', function (Blueprint $table){
             $table->id();
-            $table->string('format');
-            $table->json('motherboard_supported');
+            $table->string('format')->nullable();
+            $table->json('motherboard_supported')->nullable();
             $table->integer('number_front_fans')->nullable();
             $table->integer('number_lower_fans')->nullable();
             $table->integer('number_upper_fans')->nullable();
             $table->integer('number_rear_fans')->nullable();
-            $table->integer('max_gpu_length');
-            $table->integer('max_cooler_height');
+            $table->integer('max_gpu_length')->nullable();
+            $table->integer('max_cooler_height')->nullable();
             $table->boolean('tempered_glass')->default(false);
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create("storage_specs", function (Blueprint $table) {
             $table->id();
             $table->integer("size");
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->integer('rotation_speed')->nullable();
             $table->integer("writing_speed")->nullable();
             $table->integer("reading_speed")->nullable();

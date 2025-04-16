@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('cpu_coolers_specs', function (Blueprint $table){
             $table->id();
-            $table->string('socket');
-            $table->string('type');
-            $table->integer('fan_rpm');
-            $table->float('air_flow');
+            $table->string('socket')->nullable();
+            $table->string('type')->nullable();
+            $table->integer('fan_rpm')->nullable();
+            $table->float('air_flow')->nullable();
             $table->boolean('rgb')->default(false);
             $table->timestamps();
         });

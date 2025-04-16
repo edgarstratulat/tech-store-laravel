@@ -262,7 +262,7 @@ class ComputersController extends Controller
         ->with('category', 'subcategory')->where('category_id', 1)->where('subcategory_id', 1)->paginate(12);
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 1);
+            $query->where('category_id', 1)->where('subcategory_id', 1);
         })->select('id', 'name')->get();
 
         $cpu = Processor::select('id', 'model')->get();
@@ -388,13 +388,13 @@ class ComputersController extends Controller
         ->allowedSorts([
             'price', '-price', 'created_at'
         ])
-        ->with('category', 'subcategory')->where('category_id', 1)->where('subcategory_id', 3)->paginate(12);
+        ->with('category', 'subcategory')->where('category_id', 1)->where('subcategory_id', 2)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 1)->where('subcategory_id', 3);
+            $query->where('category_id', 1)->where('subcategory_id', 2);
         })->select('id', 'name')->get();
 
         $cpu = Processor::select('id', 'model')->get();

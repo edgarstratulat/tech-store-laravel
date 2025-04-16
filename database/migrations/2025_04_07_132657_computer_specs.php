@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('computer_specs', function (Blueprint $table){
             $table->id();
-            $table->foreignId('processor')->constrained('processor_specs');
-            $table->foreignId('motherboard')->constrained('motherboard_specs');
-            $table->foreignId('ram')->constrained('ram_specs');
-            $table->foreignId('storage')->constrained('storage_specs');
-            $table->foreignId('gpu')->nullable()->constrained('gpu_specs');
-            $table->foreignId('case')->constrained('cases_specs');
-            $table->foreignId('powersupply')->constrained('powersupply_specs');
+            $table->foreignId('processor')->nullable()->constrained('processor_specs');
+            $table->foreignId('motherboard')->nullable()->constrained('motherboard_specs');
+            $table->foreignId('ram')->nullable()->constrained('ram_specs');
+            $table->foreignId('storage')->nullable()->constrained('storage_specs');
+            $table->foreignId('gpu')->nullable()->nullable()->constrained('gpu_specs');
+            $table->foreignId('case')->nullable()->constrained('cases_specs');
+            $table->foreignId('powersupply')->nullable()->constrained('powersupply_specs');
             $table->timestamps();
         });
     }

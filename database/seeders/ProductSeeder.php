@@ -457,6 +457,14 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 1,
                 'image_path' => "images/pc1.jpg"
             ],
+            [
+                'name' => 'Apple MacBook Air 13.6" | M3 CPU 8-core, GPU 8-core | SSD 256GB | 8GB RAM | Meia-Noite + Adaptador USB-C 30W',
+                'manufacturer_id' => 1,
+                'price' => 1229.99,
+                'computer_id' => 2,
+                'subcategory_id' => 2,
+                'image_path' => "images/pc2.jpg"
+            ],
         ];
         
         foreach ($pcProducts as $pc) {

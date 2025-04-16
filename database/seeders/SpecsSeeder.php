@@ -26,6 +26,7 @@ class SpecsSeeder extends Seeder
         ['size' => 16, 'type' => 'DDR4', 'frequency' => 3200, 'latency' => 16],
         ['size' => 32, 'type' => 'DDR4', 'frequency' => 3600, 'latency' => 18],
         ['size' => 32, 'type' => 'DDR5', 'frequency' => 5600, 'latency' => 40],
+        ['size' => 8, 'type' => 'DDR4', 'frequency' => 3200, 'latency' => 16],
         ] as $ram)
 
         Ram::create($ram);
@@ -110,6 +111,13 @@ class SpecsSeeder extends Seeder
                 'threads' => 12,
                 'tdp' => 105,
                 'socket' => 'AM5'
+            ],
+            [
+                'model' => 'Apple M',
+                'cores' => 8,
+                'threads' => 8,
+                'tdp' => 105,
+                'socket' => 'ARM'
             ], 
         ] as $cpu)
 
@@ -297,6 +305,11 @@ class SpecsSeeder extends Seeder
                 'gpu' => 2,
                 'case' => 3,
                 'powersupply' => 1,
+            ],
+            [
+                'processor' => 11,
+                'ram' => 4,
+                'storage' => 3,
             ],
         ] as $pc)
 

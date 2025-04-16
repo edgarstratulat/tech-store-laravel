@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create("processor_specs", function (Blueprint $table) {
             $table->id();
-            $table->string('model');
-            $table->integer("cores");
-            $table->integer("threads");
-            $table->integer('tdp');
-            $table->string('socket');
+            $table->string('model')->nullable();
+            $table->integer("cores")->nullable();
+            $table->integer("threads")->nullable();
+            $table->integer('tdp')->nullable();
+            $table->string('socket')->nullable();
             $table->timestamps();
 
         });
