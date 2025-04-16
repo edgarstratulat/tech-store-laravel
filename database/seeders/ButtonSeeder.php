@@ -53,8 +53,8 @@ class ButtonSeeder extends Seeder
                 'icon' => null,
                 "dropdownOptions" => json_encode([
                     ["button_name" => "smartphones","icon" => null, "route" => "/smartphones"],
-                    ["button_name" => "iphone","icon" => null, "route" => "/smartphones/smartphones-iphone"],
-                    ["button_name" => "android","icon" => null, "route" => "/smartphones/smartphones-android"],
+                    ["button_name" => "iphone","icon" => null, "route" => "/smartphones/iphone"],
+                    ["button_name" => "android","icon" => null, "route" => "/smartphones/android"],
                 ]), 
             ],
             [
