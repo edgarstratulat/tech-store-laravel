@@ -24,7 +24,7 @@ class ComputerCase extends Model
 
     public function product():HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'pc_case_id');
     }
 
     public function computers(): HasMany

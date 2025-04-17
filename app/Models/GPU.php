@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use PhpParser\Node\Stmt\Return_;
 
 class GPU extends Model
 {
@@ -21,7 +20,7 @@ class GPU extends Model
 
     public function product(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'gpu_id');
     }
 
     public function computers(): HasMany
