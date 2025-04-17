@@ -76,7 +76,7 @@ Route::prefix('acessorios')->group(function () {
 //Computador
 Route::prefix('computers')->group(function () {
     Route::get('/', [ComputersController::class, 'showComputers']);
-    Route::get('portateis', [ComputersController::class, 'showLaptopsComputers']);
+    Route::get('laptops', [ComputersController::class, 'showLaptopsComputers']);
     Route::get('workstations', [ComputersController::class, 'showWorkStationComputers']);
     Route::get('desktop', [ComputersController::class, 'showDesktopComputers']);
 });

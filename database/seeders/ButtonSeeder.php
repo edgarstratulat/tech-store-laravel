@@ -29,7 +29,7 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => json_encode([
                     ["button_name" => "computers", "icon" => null,  "route" => "/computers"],
                     ["button_name" => "desktop","icon" => null, "route" => "/computers/desktop"],
-                    ["button_name" => "laptops","icon" => null, "route" => "/computers/portateis"],
+                    ["button_name" => "laptops","icon" => null, "route" => "/computers/laptops"],
                     ["button_name" => "workstation","icon" => null, "route" => "/computers/workstations"],
                 ]), 
             ],
