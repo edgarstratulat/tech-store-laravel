@@ -313,7 +313,7 @@ class SpecsSeeder extends Seeder
                 'gpu' => 2,
                 'case' => 3,
                 'powersupply' => 1,
-                'integrated_gpu' => 'Não disponível',
+                'integrated_gpu' => 'notavailable',
             ],
             [
                 'processor' => 11,
@@ -326,7 +326,7 @@ class SpecsSeeder extends Seeder
                 'ram' => 5,
                 'storage' => 4,
                 'gpu' => 3,
-                'integrated_gpu' => 'Não disponível',
+                'integrated_gpu' => 'Apple GPU',
             ],
         ] as $pc)
 

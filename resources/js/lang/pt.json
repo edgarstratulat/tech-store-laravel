@@ -81,6 +81,10 @@
         "acessories-home": "Para Casa"
     },
 
+    "available_status": {
+        "notavailable": "Não disponível"
+    },
+
     "admin-buttons": {
         "dashboard": "Dashboard",
         "users": "Utilizadores",
@@ -181,6 +185,7 @@
 
     "gpu-category": "Categoria",
     "gpu-model": "Modelo de placa gráfica",
+    "gpu-integrated": "Modelo de placa gráfica integrada",
     "gpu-memory": "Memória da placa gráfica",
     "gpu-type-memory": "Tipo de memória",
     "gpu-interface": "Tipo de interface",

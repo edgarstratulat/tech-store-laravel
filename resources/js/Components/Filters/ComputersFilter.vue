@@ -119,7 +119,12 @@
                     class="form-checkbox size-4"
                     @change="updateIntegratedGPU"
                 />
-                <span class="ml-2">{{ option.integrated_gpu }}</span>
+                <span
+                    class="ml-2"
+                    v-if="option.integrated_gpu === 'notavailable'"
+                    >{{ t(`available_status.${option.integrated_gpu}`) }}</span
+                >
+                <span class="ml-2" v-else>{{ option.integrated_gpu }}</span>
             </label>
         </div>
     </div>
