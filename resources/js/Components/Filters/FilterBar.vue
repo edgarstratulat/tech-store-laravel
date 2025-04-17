@@ -20,78 +20,22 @@
 
         <!--PC Components Filter-->
 
-        <MemoryRamFilter
-            v-if="
-                !cpuPage &&
-                !motherboardPage &&
-                !storagePage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
+        <ComponentsFilter
+            v-if="!discountPage && !smartphonePage && !computerPage"
             :ram="ram"
             v-model:capacityRam="selectedFilters.memoria_ram"
             v-model:typeRam="selectedFilters.type_ram"
             v-model:frequencyRam="selectedFilters.frequecy_ram"
             v-model:latencyRam="selectedFilters.latency_ram"
-        ></MemoryRamFilter>
-
-        <ProcessorFilter
-            v-if="
-                !ramPage &&
-                !motherboardPage &&
-                !storagePage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :cpu="cpu"
             v-model:modelCPU="selectedFilters.cpu"
             v-model:socketCPU="selectedFilters.cpu_socket"
             v-model:tdpCPU="selectedFilters.cpu_tdp"
-        ></ProcessorFilter>
-
-        <StorageFilter
-            v-if="
-                !ramPage &&
-                !motherboardPage &&
-                !cpuPage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :armazenamento="armazenamento"
             v-model:capacityDrive="selectedFilters.storage"
             v-model:typeDrive="selectedFilters.storage_type"
             v-model:writingSpeedDrive="selectedFilters.writing_speed_storage"
             v-model:rotationSpeedDrive="selectedFilters.rotation_speed_storage"
-        ></StorageFilter>
-
-        <MotherboardFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :motherboard="motherboard"
             v-model:motherboardFormat="selectedFilters.motherboard_format"
             v-model:motherboardChipset="selectedFilters.motherboard_chipset"
@@ -100,82 +44,22 @@
             "
             v-model:motherboardBluetooth="selectedFilters.motherboard_bluetooth"
             v-model:motherboardWifi="selectedFilters.motherboard_wifi"
-        ></MotherboardFilter>
-
-        <GraphicsCardFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :gpu="gpu"
             v-model:modelGPU="selectedFilters.gpu_model"
             v-model:categoryGPU="selectedFilters.gpu_category"
             v-model:vramGPU="selectedFilters.gpu_vram"
             v-model:typeVramGPU="selectedFilters.gpu_type_vram"
             v-model:interfaceGPU="selectedFilters.gpu_interface"
-        ></GraphicsCardFilter>
-
-        <PowerSupplyFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !gpuPage &&
-                !cpuCoolerPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :powersupply="powersupply"
             v-model:psuFormat="selectedFilters.psu_format"
             v-model:psuWattage="selectedFilters.psu_wattage"
             v-model:psuEfficiency="selectedFilters.psu_efficiency"
             v-model:psuModular="selectedFilters.psu_modular"
-        ></PowerSupplyFilter>
-
-        <CpuCoolersFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !gpuPage &&
-                !psuPage &&
-                !pcCasesPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :cpuCooler="cpuCooler"
             v-model:socketCooler="selectedFilters.cooler_socket"
             v-model:typeCooler="selectedFilters.cooler_type"
             v-model:fanRPMCooler="selectedFilters.cooler_fan_rpm"
             v-model:rgbCooler="selectedFilters.cooler_rgb"
-        ></CpuCoolersFilter>
-
-        <ComputerCasesFilter
-            v-if="
-                !ramPage &&
-                !storagePage &&
-                !cpuPage &&
-                !motherboardPage &&
-                !gpuPage &&
-                !psuPage &&
-                !cpuCoolerPage &&
-                !discountPage &&
-                !smartphonePage &&
-                !computerPage
-            "
             :PCcases="PCcases"
             v-model:casesFormat="selectedFilters.case_format"
             v-model:casesNumberLowerFans="
@@ -191,7 +75,7 @@
             v-model:temperedGlass="selectedFilters.case_tempered_glass"
             v-model:casesGpuLength="selectedFilters.case_max_gpu_length"
             v-model:casesCoolerHeight="selectedFilters.case_max_cooler_height"
-        ></ComputerCasesFilter>
+        ></ComponentsFilter>
 
         <SmartphoneFilter
             v-if="smartphonePage"
@@ -244,31 +128,15 @@ import { router, usePage } from "@inertiajs/vue3";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
-import MemoryRamFilter from "./MemoryRamFilter.vue";
-import ProcessorFilter from "./ProcessorFilter.vue";
-import StorageFilter from "./StorageFilter.vue";
-import MotherboardFilter from "./MotherboardFilter.vue";
-import GraphicsCardFilter from "./GraphicsCardFilter.vue";
-import PowerSupplyFilter from "./PowerSupplyFilter.vue";
-import CpuCoolersFilter from "./CpuCoolersFilter.vue";
-import ComputerCasesFilter from "./ComputerCasesFilter.vue";
 import SmartphoneFilter from "./SmartphonesFilter.vue";
 import DefaultFilter from "./DefaultFilters.vue";
 import ComputersFilter from "./ComputersFilter.vue";
+import ComponentsFilter from "./ComponentsFilter.vue";
 
 const page = usePage();
 const currentPath = page.url;
 
 const discountPage = currentPath.includes("/promotions");
-
-const ramPage = currentPath.includes("/components/ram-memory");
-const cpuPage = currentPath.includes("/components/processors");
-const storagePage = currentPath.includes("/components/storage");
-const motherboardPage = currentPath.includes("/components/motherboards");
-const gpuPage = currentPath.includes("/components/graphic-cards");
-const psuPage = currentPath.includes("/components/power-supplies");
-const cpuCoolerPage = currentPath.includes("/components/cpu-coolers");
-const pcCasesPage = currentPath.includes("/components/computer-cases");
 
 const smartphonePage = currentPath.includes("/smartphones");
 const computerPage = currentPath.includes("/computers");
