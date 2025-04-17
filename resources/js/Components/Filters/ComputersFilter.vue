@@ -39,7 +39,7 @@
             </label>
         </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-4" v-if="!laptopsPage">
         <label class="block text-md font-semibold mb-1">{{
             t("motherboard-chipset")
         }}</label>
@@ -103,7 +103,7 @@
             </label>
         </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-4" v-if="!laptopsPage">
         <label class="block text-md font-semibold mb-1">{{
             t("psu-wattage")
         }}</label>
@@ -123,7 +123,7 @@
             </label>
         </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-4" v-if="!laptopsPage">
         <label class="block text-md font-semibold mb-1">{{
             t("case-format")
         }}</label>
@@ -147,7 +147,11 @@
 
 <script setup>
 import { useI18n } from "vue-i18n";
+import { usePage } from "@inertiajs/vue3";
+const page = usePage().url;
 const { t } = useI18n();
+
+const laptopsPage = page.includes("/computers/laptops");
 
 const props = defineProps({
     computers: Array,
