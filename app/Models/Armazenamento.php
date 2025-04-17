@@ -21,4 +21,9 @@ class Armazenamento extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function computers(): HasMany
+    {
+        return $this->hasMany(Computer::class, 'storage');
+    }
 }

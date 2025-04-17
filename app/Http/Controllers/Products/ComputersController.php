@@ -265,14 +265,33 @@ class ComputersController extends Controller
             $query->where('category_id', 1)->where('subcategory_id', 1);
         })->select('id', 'name')->get();
 
-        $cpu = Processor::select('id', 'model')->get();
-        $ram = Ram::select('id', 'size')->get();
-        $mobo = Motherboard::select('id', 'chipset')->get();
-        $storage = Armazenamento::select('id', 'size')->get();
-        $gpu = GPU::select('id', 'model')->get();
-        $psu = PowerSupply::select('id', 'wattage')->get();
-        $case = ComputerCase::select('id', 'format')->get();
+        $cpu = Processor::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'model')->get();
 
+        $ram = Ram::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'size')->get();
+
+        $mobo = Motherboard::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'chipset')->get();
+
+        $storage = Armazenamento::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'size')->get();
+
+        $gpu = GPU::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'model')->get();
+
+        $psu = PowerSupply::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'wattage')->get();
+
+        $case = ComputerCase::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'format')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -397,13 +416,33 @@ class ComputersController extends Controller
             $query->where('category_id', 1)->where('subcategory_id', 2);
         })->select('id', 'name')->get();
 
-        $cpu = Processor::select('id', 'model')->get();
-        $ram = Ram::select('id', 'size')->get();
-        $mobo = Motherboard::select('id', 'chipset')->get();
-        $storage = Armazenamento::select('id', 'size')->get();
-        $gpu = GPU::select('id', 'model')->get();
-        $psu = PowerSupply::select('id', 'wattage')->get();
-        $case = ComputerCase::select('id', 'format')->get();
+        $cpu = Processor::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'model')->get();
+
+        $ram = Ram::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'size')->get();
+
+        $mobo = Motherboard::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'chipset')->get();
+
+        $storage = Armazenamento::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'size')->get();
+
+        $gpu = GPU::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'model')->get();
+
+        $psu = PowerSupply::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'wattage')->get();
+
+        $case = ComputerCase::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('id', 'format')->get();
 
         return Inertia::render('Computadores/LaptopPage', [
             'buttons' => $buttons,
@@ -516,22 +555,42 @@ class ComputersController extends Controller
         ->allowedSorts([
             'price', '-price', 'created_at'
         ])
-        ->with('category', 'subcategory')->where('category_id', 1)->where('subcategory_id', 4)->paginate(12);
+        ->with('category', 'subcategory')->where('category_id', 1)->where('subcategory_id', 3)->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
-            $query->where('category_id', 1)->where('subcategory_id', 4);
+            $query->where('category_id', 1)->where('subcategory_id', 3);
         })->select('id', 'name')->get();
 
-        $cpu = Processor::select('id', 'model')->get();
-        $ram = Ram::select('id', 'size')->get();
-        $mobo = Motherboard::select('id', 'chipset')->get();
-        $storage = Armazenamento::select('id', 'size')->get();
-        $gpu = GPU::select('id', 'model')->get();
-        $psu = PowerSupply::select('id', 'wattage')->get();
-        $case = ComputerCase::select('id', 'format')->get();
+        $cpu = Processor::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'model')->get();
+
+        $ram = Ram::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'size')->get();
+
+        $mobo = Motherboard::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'chipset')->get();
+
+        $storage = Armazenamento::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'size')->get();
+
+        $gpu = GPU::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'model')->get();
+
+        $psu = PowerSupply::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'wattage')->get();
+
+        $case = ComputerCase::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 3);
+        })->select('id', 'format')->get();
 
         return Inertia::render('Computadores/workstationPage', [
             'buttons' => $buttons,

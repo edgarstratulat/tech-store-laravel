@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador Intel Core i5-10400F',
                 'manufacturer_id' => 7,
                 'price' => 129.99,
-                'cpu_id' => 1,
+                'processor_id' => 1,
                 'included_cooler' => true,
                 'image_path' => 'images/intel_i5_10400f.jpeg'
             ],
@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador Intel Core i5-14400F',
                 'manufacturer_id' => 7,
                 'price' => 329.99,
-                'cpu_id' => 1,
+                'processor_id' => 9,
                 'included_cooler' => true,
                 'image_path' => 'images/intel_i5_10400f.jpeg'
             ],
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador Intel Core i7-11700K',
                 'manufacturer_id' => 7,
                 'price' => 339.99,
-                'cpu_id' => 2,
+                'processor_id' => 2,
                 'included_cooler' => false,
                 'image_path' => 'images/intel_i7_11700k.jpeg'
             ],
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador AMD Ryzen 5 5600X',
                 'manufacturer_id' => 26,
                 'price' => 189.99,
-                'cpu_id' => 3,
+                'processor_id' => 3,
                 'included_cooler' => true,
                 'image_path' => 'images/ryzen_5_5600x.jpeg'
             ],
@@ -51,7 +51,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador AMD Ryzen 7 5800X',
                 'manufacturer_id' => 26,
                 'price' => 289.99,
-                'cpu_id' => 4,
+                'processor_id' => 4,
                 'included_cooler' => false,
                 'image_path' => 'images/ryzen_7_5800x.jpeg'
             ],
@@ -59,7 +59,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador Intel Core i9-12900K',
                 'manufacturer_id' => 7,
                 'price' => 549.99,
-                'cpu_id' => 5,
+                'processor_id' => 5,
                 'included_cooler' => false,
                 'image_path' => 'images/intel_i9_12900k.jpeg'
             ],
@@ -67,7 +67,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador AMD Ryzen 9 5950X',
                 'manufacturer_id' => 26,
                 'price' => 649.99,
-                'cpu_id' => 6,
+                'processor_id' => 6,
                 'included_cooler' => false,
                 'image_path' => 'images/ryzen_9_5950x.jpeg'
             ],
@@ -75,7 +75,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador Intel Core i3-12100F',
                 'manufacturer_id' => 7,
                 'price' => 99.99,
-                'cpu_id' => 7,
+                'processor_id' => 7,
                 'included_cooler' => false,
                 'image_path' => 'images/intel_i3_12100f.jpeg'
             ],
@@ -83,7 +83,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador AMD Ryzen 3 3100',
                 'manufacturer_id' => 26,
                 'price' => 89.99,
-                'cpu_id' => 8,
+                'processor_id' => 8,
                 'included_cooler' => true,
                 'image_path' => 'images/ryzen_3_3100.jpeg'
             ],
@@ -91,7 +91,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador Intel Core i5-13400F',
                 'manufacturer_id' => 7,
                 'price' => 209.99,
-                'cpu_id' => 9,
+                'processor_id' => 9,
                 'included_cooler' => true,
                 'image_path' => 'images/intel_i5_13400f.jpeg'
             ],
@@ -99,7 +99,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Processador AMD Ryzen 5 7600X',
                 'manufacturer_id' => 26,
                 'price' => 249.99,
-                'cpu_id' => 10,
+                'processor_id' => 10,
                 'included_cooler' => false,
                 'image_path' => 'images/ryzen_5_7600x.jpeg'
             ]
@@ -114,7 +114,7 @@ class ProductSeeder extends Seeder
                 'description' => $cpu['name'] . ' - Processador potente para gaming e produtividade.',
                 'category_id' => 4, 
                 'subcategory_id' => 10,
-                'cpu_id' => $cpu['cpu_id'],
+                'processor_id' => $cpu['processor_id'],
                 'included_cooler' => $cpu['included_cooler'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
