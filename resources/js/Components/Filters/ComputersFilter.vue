@@ -103,6 +103,26 @@
             </label>
         </div>
     </div>
+    <div class="mt-4">
+        <label class="block text-md font-semibold mb-1">{{
+            t("gpu-integrated")
+        }}</label>
+        <div
+            class="flex items-center space-x-4"
+            v-for="option in uniqueIntegratedGPU()"
+            :key="option.id"
+        >
+            <label class="inline-flex items-center">
+                <input
+                    type="checkbox"
+                    :value="option.integrated_gpu"
+                    class="form-checkbox size-4"
+                    @change="updateIntegratedGPU"
+                />
+                <span class="ml-2">{{ option.integrated_gpu }}</span>
+            </label>
+        </div>
+    </div>
     <div class="mt-4" v-if="!laptopsPage">
         <label class="block text-md font-semibold mb-1">{{
             t("psu-wattage")
@@ -167,6 +187,7 @@ const props = defineProps({
     motherboard_chipset: Array,
     storage_size: Array,
     gpu_model: Array,
+    gpu_integrated: Array,
     psu_wattage: Array,
     case_format: Array,
 });
@@ -179,6 +200,7 @@ const emit = defineEmits([
     "update:gpu_model",
     "update:psu_wattage",
     "update:case_format",
+    "update:gpu_integrated",
 ]);
 
 function updateProcessorFamily(event) {
@@ -286,6 +308,21 @@ function updateCase(event) {
     emit("update:case_format", updated);
 }
 
+function updateIntegratedGPU(event) {
+    const value = event.target.value;
+    let updated = [...props.gpu_integrated];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:gpu_integrated", updated);
+}
+
 const uniqueModelCPU = () => {
     const sizeRAM = new Set();
     return props.cpu.filter((ram) => {
@@ -352,6 +389,16 @@ const uniqueCase = () => {
     return props.PCcases.filter((ram) => {
         if (!sizeRAM.has(ram.format)) {
             sizeRAM.add(ram.format);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueIntegratedGPU = () => {
+    const sizeRAM = new Set();
+    return props.computers.filter((ram) => {
+        if (!sizeRAM.has(ram.integrated_gpu)) {
+            sizeRAM.add(ram.integrated_gpu);
             return true;
         }
         return false;

@@ -15,14 +15,11 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :subcategory="subcategory"
-                    :computer="computer"
+                    :computers="computers"
                     :cpu="cpu"
                     :ram="ram"
-                    :motherboard="motherboard"
                     :armazenamento="armazenamento"
                     :gpu="gpu"
-                    :powersupply="powersupply"
-                    :PCcases="PCcases"
                 />
             </div>
 
@@ -81,7 +78,7 @@ export default {
             type: Array,
             required: true,
         },
-        computer: {
+        computers: {
             type: Array,
             default: () => [],
         },
@@ -93,23 +90,11 @@ export default {
             type: Array,
             default: () => [],
         },
-        motherboard: {
-            type: Array,
-            default: () => [],
-        },
         armazenamento: {
             type: Array,
             default: () => [],
         },
         gpu: {
-            type: Array,
-            default: () => [],
-        },
-        powersupply: {
-            type: Array,
-            default: () => [],
-        },
-        PCcases: {
             type: Array,
             default: () => [],
         },

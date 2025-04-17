@@ -226,6 +226,7 @@
             v-model:gpu_model="selectedFilters.computer_gpu"
             v-model:psu_wattage="selectedFilters.computer_psu"
             v-model:case_format="selectedFilters.computer_case"
+            v-model:gpu_integrated="selectedFilters.computer_integrated_gpu"
         ></ComputersFilter>
 
         <button
@@ -360,6 +361,7 @@ const selectedFilters = ref({
     computer_motherboard: [],
     computer_storage: [],
     computer_gpu: [],
+    computer_integrated_gpu: [],
     computer_psu: [],
     computer_case: [],
 });
@@ -618,6 +620,10 @@ const applyFilters = () => {
     if (selectedFilters.value.computer_case.length > 0) {
         queryParams["filter[computer_case]"] =
             selectedFilters.value.computer_case;
+    }
+    if (selectedFilters.value.computer_integrated_gpu.length > 0) {
+        queryParams["filter[computer_integrated_gpu]"] =
+            selectedFilters.value.computer_integrated_gpu;
     }
 
     console.log(queryParams);

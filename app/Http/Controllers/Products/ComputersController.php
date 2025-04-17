@@ -111,6 +111,13 @@ class ComputersController extends Controller
                     $q->whereIn('case', $models);
                 });
             }),
+            AllowedFilter::callback('computer_integrated_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('computer', function($q) use ($models){
+                    $q->whereIn('integrated_gpu', $models);
+                });
+            }),
             
         ])
         ->defaultSorts('created_at')
@@ -138,13 +145,37 @@ class ComputersController extends Controller
             'powersupply'
         )->get();
 
-        $cpu = Processor::select('id', 'model')->get();
-        $ram = Ram::select('id', 'size')->get();
-        $mobo = Motherboard::select('id', 'chipset')->get();
-        $storage = Armazenamento::select('id', 'size')->get();
-        $gpu = GPU::select('id', 'model')->get();
-        $psu = PowerSupply::select('id', 'wattage')->get();
-        $case = ComputerCase::select('id', 'format')->get();
+        $cpu = Processor::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'model')->get();
+
+        $ram= Ram::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'size')->get();
+
+        $mobo= Motherboard::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'chipset')->get();
+
+        $storage = Armazenamento::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'size')->get();
+
+        $gpu = GPU::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'model')->get();
+
+        $psu = PowerSupply::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'wattage')->get();
+
+        $case = ComputerCase::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1);
+        })->select('id', 'format')->get();
+
+        $pc = Computer::whereHas('product', function($query) {
+            $query->where('category_id', 1);
+        })->select('integrated_gpu')->get();
 
         return Inertia::render('Computadores/computersPage', [
             'buttons' => $buttons,
@@ -161,7 +192,8 @@ class ComputersController extends Controller
             'armazenamento' => $storage,
             'gpu' => $gpu,
             'powersupply' => $psu,
-            'PCcases' => $case
+            'PCcases' => $case,
+            'computers' => $pc
         ]);
     }
 
@@ -253,6 +285,13 @@ class ComputersController extends Controller
                     $q->whereIn('case', $models);
                 });
             }),
+            AllowedFilter::callback('computer_integrated_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('computer', function($q) use ($models){
+                    $q->whereIn('integrated_gpu', $models);
+                });
+            }),
             
         ])
         ->defaultSorts('created_at')
@@ -296,6 +335,14 @@ class ComputersController extends Controller
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
+        $case = ComputerCase::whereHas('computers.product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('id', 'format')->get();
+
+        $pc = Computer::whereHas('product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 1);
+        })->select('integrated_gpu')->get();
+
         return Inertia::render('Computadores/DesktopPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
@@ -310,7 +357,8 @@ class ComputersController extends Controller
             'armazenamento' => $storage,
             'gpu' => $gpu,
             'powersupply' => $psu,
-            'PCcases' => $case
+            'PCcases' => $case,
+            'computers' => $pc
         ]);
     }
 
@@ -380,6 +428,13 @@ class ComputersController extends Controller
                     $q->whereIn('gpu', $models);
                 });
             }),
+            AllowedFilter::callback('computer_integrated_gpu', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('computer', function($q) use ($models){
+                    $q->whereIn('integrated_gpu', $models);
+                });
+            }),
             
         ])
         ->defaultSorts('created_at')
@@ -411,6 +466,11 @@ class ComputersController extends Controller
             $query->where('category_id', 1)->where('subcategory_id', 2);
         })->select('id', 'model')->get();
 
+        $pc = Computer::whereHas('product', function($query) {
+            $query->where('category_id', 1)->where('subcategory_id', 2);
+        })->select('integrated_gpu')->get();
+
+
         return Inertia::render('Computadores/LaptopPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
@@ -423,6 +483,7 @@ class ComputersController extends Controller
             'ram' => $ram,
             'armazenamento' => $storage,
             'gpu' => $gpu,
+            'computers' => $pc
         ]);
     }
 

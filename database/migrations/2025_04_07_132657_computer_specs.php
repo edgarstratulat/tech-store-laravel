@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('ram')->nullable()->constrained('ram_specs');
             $table->foreignId('storage')->nullable()->constrained('storage_specs');
             $table->foreignId('gpu')->nullable()->constrained('gpu_specs');
+            $table->string('integrated_gpu')->nullable();
             $table->foreignId('case')->nullable()->constrained('cases_specs');
             $table->foreignId('powersupply')->nullable()->constrained('powersupply_specs');
             $table->timestamps();

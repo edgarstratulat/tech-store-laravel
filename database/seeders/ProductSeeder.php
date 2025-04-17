@@ -102,6 +102,14 @@ class ProductSeeder extends Seeder
                 'processor_id' => 10,
                 'included_cooler' => false,
                 'image_path' => 'images/ryzen_5_7600x.jpeg'
+            ],
+            [
+                'name' => 'Processador Intel Core Ultra 9 285K',
+                'manufacturer_id' => 7,
+                'price' => 659.99,
+                'processor_id' => 12,
+                'included_cooler' => false,
+                'image_path' => 'images/ultra9.jpg'
             ]
         ];
         
@@ -465,6 +473,14 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 2,
                 'image_path' => "images/pc2.jpg"
             ],
+            [
+                'name' => 'Portátil MSI 18" Titan 18 HX AI A2XWJG-274PT Core Black + Rato MSI Gaming + Mochila Titan Gaming + MSI Dual Drive 256GB + Keychain',
+                'manufacturer_id' => 11,
+                'price' => 5399.99,
+                'computer_id' => 3,
+                'subcategory_id' => 2,
+                'image_path' => "images/pc3.jpg"
+            ],
         ];
         
         foreach ($pcProducts as $pc) {
@@ -472,7 +488,7 @@ class ProductSeeder extends Seeder
                 'name' => $pc['name'],
                 'manufacturer_id' => $pc['manufacturer_id'],
                 'price' => $pc['price'],
-                'sale_price' => 0,
+                'sale_price' => rand(1,15),
                 'description' => $pc['name'],
                 'category_id' => 1,
                 'subcategory_id' => $pc['subcategory_id'], 
