@@ -74,18 +74,6 @@ class ButtonSeeder extends Seeder
                 ]), 
             ],
             [
-                'button_name' => 'acessories',
-                'route' => '/acessorios',
-                'dropdown' => true,
-                'icon' => null,
-                "dropdownOptions" => json_encode([
-                    ["button_name" => "acessories","icon" => null,  "route" => "/acessorios"],
-                    ["button_name" => "acessories-pc","icon" => null, "route" => "/acessorios/acessorios-para-computador"],
-                    ["button_name" => "acessories-smartphones","icon" => null, "route" => "/acessorios/acessorios-para-telemovel"],
-                    ["button_name" => "acessories-home","icon" => null, "route" => "/acessorios/acessorios-para-casa"],
-                ]), 
-            ],
-            [
                 'button_name' => 'admin-panel',
                 'route' => '/dashboard',
                 'icon' => 'fa-chart-simple',
