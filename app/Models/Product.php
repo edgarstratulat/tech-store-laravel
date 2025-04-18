@@ -38,7 +38,7 @@ class Product extends Model
         'pc_case_id',
         'smartphone_id',
         'computer_id',
-        'mice_id'
+        'mouse_id'
     ];
 
     public function sluggable(): array
@@ -121,6 +121,6 @@ class Product extends Model
     }
     public function mouse()
     {
-        return $this->belongsTo(Mice::class, 'mice_id');
+        return $this->belongsTo(Mouse::class, 'mouse_id');
     }
 }

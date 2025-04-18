@@ -59,7 +59,7 @@ Route::prefix('components')->group(function () {
 //Perifericos
 Route::prefix('peripherals')->group(function () {
     Route::get('/', [PeripheralsController::class, 'showPeripherals'])->name('perifericos');
-    Route::get('mices-and-keyboards', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard'])->name('ratos-e-teclados');
+    Route::get('mouses-and-keyboards', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard'])->name('ratos-e-teclados');
     Route::get('audio', [PeripheralsController::class, 'showPeripheralsAudio'])->name('audio');
     Route::get('monitors', [PeripheralsController::class, 'showPeripheralsMonitor'])->name('monitores');
     Route::get('video', [PeripheralsController::class, 'showPeripheralsVideo'])->name('video');

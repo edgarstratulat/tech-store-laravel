@@ -32,7 +32,7 @@ return new class extends Migration
             $table->foreignId('pc_case_id')->nullable()->constrained('cases_specs');
             $table->foreignId('smartphone_id')->nullable()->constrained('smartphone_specs');
             $table->foreignId('computer_id')->nullable()->constrained('computer_specs');
-            $table->foreignId('mice_id')->nullable()->constrained('mice_specs');
+            $table->foreignId('mouse_id')->nullable()->constrained('mouse_specs');
             $table->boolean('included_cooler')->default(false);
             $table->boolean('bluetooth')->default(false);
             $table->boolean('wifi')->default(false);

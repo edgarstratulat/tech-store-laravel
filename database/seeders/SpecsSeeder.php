@@ -7,8 +7,8 @@ use App\Models\Computer;
 use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
-use App\Models\Mice;
 use App\Models\Motherboard;
+use App\Models\Mouse;
 use App\Models\PowerSupply;
 use App\Models\Processor;
 use App\Models\Ram;
@@ -344,11 +344,11 @@ class SpecsSeeder extends Seeder
                 'format' => 'righthand',
                 'interface' => 'Bluetooth',
                 'dpi' => 8000,
-                'response_time' =>  5
+                'response_time' => 5
             ],
         ] as $mice)
 
-        Mice::create($mice);
+        Mouse::create($mice);
 
     }
 }

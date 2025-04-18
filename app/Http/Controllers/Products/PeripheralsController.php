@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Button;
 use App\Models\Category;
 use App\Models\Manufacturer;
-use App\Models\Mice;
+use App\Models\Mouse;
 use App\Models\Product;
 use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
@@ -166,7 +166,7 @@ class PeripheralsController extends Controller
             $query->where('category_id', 2)->where('subcategory_id', 4)->orWhere('subcategory_id', 18);
         })->select('id', 'name')->get();
 
-        $mice = Mice::whereHas('product', function($query) {
+        $mice = Mouse::whereHas('product', function($query) {
             $query->where('category_id', 2)->where('subcategory_id', 4);
         })->select('format', 'interface', 'dpi', 'response_time')->get();
 
@@ -177,7 +177,7 @@ class PeripheralsController extends Controller
             'isAdmin' => $isAdmin,
             'category' => $category,
             'subcategory' => $subCategory,
-            'mice_keyboard' => $mice,
+            'mouse' => $mice,
             'manufacturer' => $manufacturer
         ]);
     }

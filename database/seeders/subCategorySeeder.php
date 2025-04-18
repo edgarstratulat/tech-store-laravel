@@ -18,7 +18,7 @@ class subCategorySeeder extends Seeder
             ['name' => 'desktop', 'category_id' => 1],  
             ['name' => 'laptops', 'category_id' => 1],  
             ['name' => 'workstation', 'category_id' => 1],  
-            ['name' => 'mice', 'category_id' => 2],  
+            ['name' => 'mouses', 'category_id' => 2],  
             ['name' => 'monitors', 'category_id' => 2],  
             ['name' => 'audio', 'category_id' => 2],  
             ['name' => 'video', 'category_id' => 2],
@@ -32,7 +32,7 @@ class subCategorySeeder extends Seeder
             ['name' => 'power-supplies', 'category_id' => 4],  
             ['name' => 'cpu-coolers', 'category_id' => 4],  
             ['name' => 'computer-cases', 'category_id' => 4],
-            ['name' => 'keyboard', 'category_id' => 2]
+            ['name' => 'keyboards', 'category_id' => 2]
         ] as $subCategory)
 
         subCategory::create($subCategory);

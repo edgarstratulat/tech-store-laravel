@@ -505,7 +505,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Rato Óptico Logitech MX Master 3s for Mac Wireless/Bluetooth 8000DPI White',
                 'manufacturer_id' => 5,
                 'price' => 99.99,
-                'mice_id' => 2,
+                'mouse_id' => 2,
                 'subcategory_id' => 4,
                 'image_path' => "images/mice1.jpg"
             ],
@@ -513,7 +513,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Rato Óptico Logitech G Pro X Superlight 2 Wireless 44000DPI Magenta',
                 'manufacturer_id' => 5,
                 'price' => 168.99,
-                'mice_id' => 1,
+                'mouse_id' => 1,
                 'subcategory_id' => 4,
                 'image_path' => "images/mice2.jpg"
             ],
@@ -528,7 +528,7 @@ class ProductSeeder extends Seeder
                 'description' => $peri['name'],
                 'category_id' => 2,
                 'subcategory_id' => $peri['subcategory_id'], 
-                'mice_id' => $peri['mice_id'],
+                'mouse_id' => $peri['mouse_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $peri['image_path'],

@@ -120,7 +120,7 @@
 
         <PeripheralsFilter
             v-if="peripheralsPage"
-            :mice_keyboard="mice_keyboard"
+            :mouse="mouse"
             v-model:mice_format="selectedFilters.mouse_format"
             v-model:mice_interface="selectedFilters.mouse_interface"
             v-model:mice_dpi="selectedFilters.mouse_dpi"
@@ -170,7 +170,7 @@ const props = defineProps({
     PCcases: Array,
     smartphone: Array,
     computers: Array,
-    mice_keyboard: Array,
+    mouse: Array,
 });
 
 const selectedFilters = ref({

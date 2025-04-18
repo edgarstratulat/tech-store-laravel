@@ -89,7 +89,7 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
 const props = defineProps({
-    mice_keyboard: Array,
+    mouse: Array,
     mice_format: Array,
     mice_interface: Array,
     mice_dpi: Array,
@@ -165,7 +165,7 @@ function updateMouseResponseTime(event) {
 
 const uniqueFormatMouse = () => {
     const sizeRAM = new Set();
-    return props.mice_keyboard.filter((ram) => {
+    return props.mouse.filter((ram) => {
         if (!sizeRAM.has(ram.format)) {
             sizeRAM.add(ram.format);
             return true;
@@ -175,7 +175,7 @@ const uniqueFormatMouse = () => {
 };
 const uniqueInterface = () => {
     const sizeRAM = new Set();
-    return props.mice_keyboard.filter((ram) => {
+    return props.mouse.filter((ram) => {
         if (!sizeRAM.has(ram.interface)) {
             sizeRAM.add(ram.interface);
             return true;
@@ -185,7 +185,7 @@ const uniqueInterface = () => {
 };
 const uniqueDPI = () => {
     const sizeRAM = new Set();
-    return props.mice_keyboard.filter((ram) => {
+    return props.mouse.filter((ram) => {
         if (!sizeRAM.has(ram.dpi)) {
             sizeRAM.add(ram.dpi);
             return true;
@@ -195,7 +195,7 @@ const uniqueDPI = () => {
 };
 const uniqueResponseTime = () => {
     const sizeRAM = new Set();
-    return props.mice_keyboard.filter((ram) => {
+    return props.mouse.filter((ram) => {
         if (!sizeRAM.has(ram.response_time)) {
             sizeRAM.add(ram.response_time);
             return true;

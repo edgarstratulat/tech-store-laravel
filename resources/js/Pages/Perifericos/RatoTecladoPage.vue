@@ -15,7 +15,7 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :subcategory="subcategory"
-                    :mice_keyboard="mice_keyboard"
+                    :mouse="mouse"
                 />
             </div>
 
@@ -74,7 +74,7 @@ export default {
             type: Array,
             required: true,
         },
-        mice_keyboard: {
+        mouse: {
             type: Array,
             default: () => [],
         },

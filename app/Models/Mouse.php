@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Mice extends Model
+class Mouse extends Model
 {
-    protected $table = 'mice_specs';
+    protected $table = 'mouse_specs';
 
     protected $fillable = [
         'format',
@@ -18,6 +18,6 @@ class Mice extends Model
 
     public function product(): HasMany
     {
-        return $this->hasMany(Product::class, 'mice_id');
+        return $this->hasMany(Product::class, 'mouse_id');
     }
 }
