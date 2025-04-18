@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 use App\Models\Button;
 use App\Models\Category;
+use App\Models\Keyboard;
 use App\Models\Manufacturer;
 use App\Models\Mouse;
 use App\Models\Product;
@@ -54,7 +55,67 @@ class PeripheralsController extends Controller
             }),
             AllowedFilter::callback('reconditioned', function($query) {
                 $query->where('reconditioned', '=', 1);
-            })
+            }),
+            AllowedFilter::callback('mouse_format', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('mouse', function($q) use ($models){
+                    $q->whereIn('format', $models);
+                });
+            }),
+            AllowedFilter::callback('mouse_interface', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('mouse', function($q) use ($models){
+                    $q->whereIn('interface', $models);
+                });
+            }),
+            AllowedFilter::callback('mouse_dpi', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('mouse', function($q) use ($models){
+                    $q->whereIn('dpi', $models);
+                });
+            }),
+            AllowedFilter::callback('mouse_response_time', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('mouse', function($q) use ($models){
+                    $q->whereIn('response_time', $models);
+                });
+            }),
+            AllowedFilter::callback('keyboard_interface', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('keyboard', function($q) use ($models){
+                    $q->whereIn('interface', $models);
+                });
+            }),
+            AllowedFilter::callback('keyboard_type', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('keyboard', function($q) use ($models){
+                    $q->whereIn('type', $models);
+                });
+            }),
+            AllowedFilter::callback('keyboard_light', function($query, $value){
+
+                $query->whereHas('keyboard', function($q) use ($value){
+                    $q->where('light', $value);
+                });
+            }),
+            AllowedFilter::callback('keyboard_numpad', function($query, $value){
+
+                $query->whereHas('keyboard', function($q) use ($value){
+                    $q->where('numpad', $value);
+                });
+            }),
+            AllowedFilter::callback('keyboard_layout', function($query, $value){
+
+                $query->whereHas('keyboard', function($q) use ($value){
+                    $q->where('layout', $value);
+                });
+            }),
         ])
         ->allowedSorts([
             'price', '-price', '-created_at'
@@ -67,11 +128,20 @@ class PeripheralsController extends Controller
             $query->where('category_id', 2);
         })->select('id', 'name')->get();
 
+        $mice = Mouse::whereHas('product', function($query) {
+            $query->where('category_id', 2)->where('subcategory_id', 4);
+        })->select('format', 'interface', 'dpi', 'response_time')->get();
+
+
+        $keyboard = Keyboard::whereHas('product', function($query) {
+            $query->where('category_id', 2);
+        })->select('interface','type','light','numpad','layout')->get();
+
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 2)->get();
 
 
-        return Inertia::render('Perifericos/perifericosPage', [
+        return Inertia::render('Peripherals/PeripheralsPage', [
             'buttons' => $buttons,
             'products' => $products,
             'manufacturer' => $manufacturer,
@@ -79,6 +149,8 @@ class PeripheralsController extends Controller
             'isAdmin' => $isAdmin,
             'category' => $category,
             'subcategory' => $subCategory,
+            'mouse' => $mice,
+            'keyboard' => $keyboard
         ]);
     }
 
@@ -155,7 +227,6 @@ class PeripheralsController extends Controller
         ->with('category', 'subcategory')
         ->where('category_id', 2)
         ->where('subcategory_id', 4)
-        ->orWhere('subcategory_id', 18)
         ->paginate(12)
         ->appends(request()->query());
 
@@ -170,7 +241,7 @@ class PeripheralsController extends Controller
             $query->where('category_id', 2)->where('subcategory_id', 4);
         })->select('format', 'interface', 'dpi', 'response_time')->get();
 
-        return Inertia::render('Perifericos/RatoTecladoPage', [
+        return Inertia::render('Peripherals/MousePage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
@@ -182,23 +253,106 @@ class PeripheralsController extends Controller
         ]);
     }
 
-    public function showPeripheralsAudio()
+    public function showPeripheralsKeyboard()
     {
-        $buttons = Button::all();
+        $buttons = Button::select(
+            'id',
+            'button_name',
+            'route',
+            'icon',
+            'dropdown',
+            'dropdownOptions'
+        )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 8)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function($query) {
+                $query->where('reconditioned', '=', 1);
+            }),
+            AllowedFilter::callback('keyboard_interface', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('keyboard', function($q) use ($models){
+                    $q->whereIn('interface', $models);
+                });
+            }),
+            AllowedFilter::callback('keyboard_type', function($query, $value){
+                $models = is_array($value) ? $value : [$value];
+
+                $query->whereHas('keyboard', function($q) use ($models){
+                    $q->whereIn('type', $models);
+                });
+            }),
+            AllowedFilter::callback('keyboard_light', function($query, $value){
+
+                $query->whereHas('keyboard', function($q) use ($value){
+                    $q->where('light', $value);
+                });
+            }),
+            AllowedFilter::callback('keyboard_numpad', function($query, $value){
+
+                $query->whereHas('keyboard', function($q) use ($value){
+                    $q->where('numpad', $value);
+                });
+            }),
+            AllowedFilter::callback('keyboard_layout', function($query, $value){
+
+                $query->whereHas('keyboard', function($q) use ($value){
+                    $q->where('layout', $value);
+                });
+            }),
+        ])
+        ->allowedSorts([
+            'price', '-price', '-created_at'
+        ])
+        ->with('category', 'subcategory')
+        ->where('category_id', 2)
+        ->where('subcategory_id', 18)
+        ->paginate(12)
+        ->appends(request()->query());
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
-        return Inertia::render('Perifericos/PCAudioPage', [
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 2)->where('subcategory_id', 18);
+        })->select('id', 'name')->get();
+
+        $keyboard = Keyboard::whereHas('product', function($query) {
+            $query->where('category_id', 2)->where('subcategory_id', 18);
+        })->select('interface','type','light','numpad','layout')->get();
+
+        return Inertia::render('Peripherals/KeyboardPage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'keyboard' => $keyboard,
+            'manufacturer' => $manufacturer
         ]);
     }
 
@@ -219,40 +373,19 @@ class PeripheralsController extends Controller
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
-        return Inertia::render('Perifericos/MonitorPage', [
+        $manufacturer = Manufacturer::whereHas('product', function($query) {
+            $query->where('category_id', 2)->where('subcategory_id', 5);
+        })->select('id', 'name')->get();
+
+        return Inertia::render('Peripherals/MonitorPage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
             'category' => $category,
-            'subcategory' => $subCategory
+            'subcategory' => $subCategory,
+            'manufacturer' => $manufacturer
         ]);
     }
 
-    public function showPeripheralsVideo()
-    {
-        $buttons = Button::select(
-            'id',
-            'button_name',
-            'route',
-            'icon',
-            'dropdown',
-            'dropdownOptions'
-        )->get();
-        $user = Auth::user();
-        $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 9)->paginate(12);
-
-        $category = Category::select('id', 'name')->get();
-        $subCategory = subCategory::select('id', 'name')->get();
-
-        return Inertia::render('Perifericos/VideoPage', [
-            'buttons' => $buttons,
-            'products' => $products,
-            'Utilizador' => $user,
-            'isAdmin' => $isAdmin,
-            'category' => $category,
-            'subcategory' => $subCategory
-        ]);
-    }
 }

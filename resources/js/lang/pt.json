@@ -57,7 +57,8 @@
         "micro-pc": "Micro-computadores",
 
         "peripherals": "Periféricos",
-        "mouse-keyboard": "Ratos e teclados",
+        "mouses": "Ratos",
+        "keyboards": "Teclados",
         "monitors": "Monitores",
         "audio": "Áudio",
         "video": "Vídeo",
@@ -102,6 +103,7 @@
     },
 
     "hi": "Olá",
+    "yes": "Sim",
     "guest": "Visitante",
     "looking-for": "O que procuras?",
     "search": "Pesquisar",
@@ -203,7 +205,6 @@
 
     "case-format": "Formato da caixa",
     "case-glass": "Vidro temperado",
-    "case-glass-option": "Sim",
     "case-top-fans": "N.º de ventoinhas superiores",
     "case-lower-fans": "N.º de ventoinhas inferiores",
     "case-front-fans": "N.º de ventoinhas frontais",
@@ -239,12 +240,25 @@
     "computers-workstation-page-title": "Computadores Workstations",
 
     "peripherals-page-title": "Periféricos",
-    "peripherals-mice-keyboard-page-title": "Ratos e teclados",
+    "peripherals-mouses-page-title": "Ratos",
     "peripherals-format": "Formato do rato",
     "peripherals-format-option": {
-        "righthand": "Mão direita"
+        "righthand": "Mão direita",
+        "lefthand": "Mão esquerda"
     },
-    "peripherals-interface": "Interface do dispositivo",
+    "peripherals-interface": "Interface do Rato",
     "peripherals-dpi": "Resolução de movimento",
-    "peripherals-response": "Tempo de resposta"
+    "peripherals-response": "Tempo de resposta",
+
+    "peripherals-keyboard-page-title": "Teclados",
+    "peripherals-keyboard-interface": "Interface do teclado",
+    "peripherals-keyboard-type": "Tipo de teclado",
+    "peripherals-keyboard-type-option": {
+        "mechanical": "Mecânico",
+        "membrane": "Membrana"
+    },
+    "peripherals-keyboard-light": "Luz de fundo",
+    "peripherals-keyboard-numpad": "Teclado númerico",
+    "peripherals-keyboard-layout": "Layout do teclado",
+    "peripherals-monitor-page-title": "Monitores"
 }

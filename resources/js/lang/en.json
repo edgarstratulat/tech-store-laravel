@@ -57,7 +57,8 @@
         "micro-pc": "Micro-computers",
 
         "peripherals": "Peripherals",
-        "mouse-keyboard": "Mouses and keyboards",
+        "mouses": "Mouses",
+        "keyboards": "Keyboards",
         "monitors": "Monitors",
         "audio": "Audio",
         "video": "Video",
@@ -102,6 +103,7 @@
     },
 
     "hi": "Hi",
+    "yes": "Yes",
     "guest": "Guest",
     "looking-for": "What are you looking for?",
     "search": "Search",
@@ -201,7 +203,6 @@
 
     "case-format": "Computer case format",
     "case-glass": "Tempered glass",
-    "case-glass-option": "Yes",
     "case-top-fans": "No. of top fans",
     "case-lower-fans": "No. of lower fans",
     "case-front-fans": "No. of front fans",
@@ -237,12 +238,26 @@
     "computers-workstation-page-title": "Workstations Computers",
 
     "peripherals-page-title": "Peripherals",
-    "peripherals-mice-keyboard-page-title": "Mouses and keyboards",
+    "peripherals-mouses-page-title": "Mouses",
+
     "peripherals-format": "Mouse format",
     "peripherals-format-option": {
-        "righthand": "Right hand"
+        "righthand": "Right hand",
+        "lefthand": "Left hand"
     },
-    "peripherals-interface": "Device interface",
+    "peripherals-interface": "Mouse interface",
     "peripherals-dpi": "Movement resolution",
-    "peripherals-response": "Response time"
+    "peripherals-response": "Response time",
+
+    "peripherals-keyboard-page-title": "Keyboards",
+    "peripherals-keyboard-interface": "Keyboard Interface",
+    "peripherals-keyboard-type": "Keyboard type",
+    "peripherals-keyboard-type-option": {
+        "mechanical": "Mechanical",
+        "membrane": "Membrane"
+    },
+    "peripherals-keyboard-light": "Backlight",
+    "peripherals-keyboard-numpad": "Numeric keypad",
+    "peripherals-keyboard-layout": "Keyboard layout",
+    "peripherals-monitor-page-title": "Monitors"
 }

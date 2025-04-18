@@ -39,10 +39,9 @@ class ButtonSeeder extends Seeder
                 'icon' => null,
                 "dropdownOptions" => json_encode([
                     ["button_name" => "peripherals","icon" => null, "route" => "/peripherals"],
-                    ["button_name" => "mouse-keyboard","icon" => null, "route" => "/peripherals/mouses-and-keyboards"],
+                    ["button_name" => "mouses","icon" => null, "route" => "/peripherals/mouses"],
+                    ["button_name" => "keyboards","icon" => null, "route" => "/peripherals/keyboards"],
                     ["button_name" => "monitors","icon" => null, "route" => "/peripherals/monitors"],
-                    ["button_name" => "audio","icon" => null, "route" => "/peripherals/audio"],
-                    ["button_name" => "video","icon" => null, "route" => "/peripherals/video"],
                 ]), 
             ],
             [

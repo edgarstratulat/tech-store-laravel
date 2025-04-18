@@ -347,6 +347,12 @@ class SpecsSeeder extends Seeder
                 'dpi' => 8000,
                 'response_time' => 5
             ],
+            [
+                'format' => 'lefthand',
+                'interface' => 'Bluetooth',
+                'dpi' => 4000,
+                'response_time' => 5
+            ],
         ] as $mice)
 
         Mouse::create($mice);
@@ -354,20 +360,17 @@ class SpecsSeeder extends Seeder
 
         foreach([
             [
-                'format' => 'USB',
-                'type' => 'Mecânico',
+                'interface' => 'USB',
+                'type' => 'mechanical',
                 'light' => true,
                 'numpad' =>  false,
-                'switch' => 'Cherry MX Blue',
-                'response_time' => 1,
                 'layout' => 'QWERTY PT-PT ISO'
             ],
             [
-                'format' => 'Bluetooth',
-                'type' => 'Membrana',
+                'interface' => 'Bluetooth',
+                'type' => 'membrane',
                 'light' => true,
                 'numpad' =>  false,
-                'response_time' => 5,
                 'layout' => 'QWERTY PT-PT ISO'
             ],
         ] as $keyboard)

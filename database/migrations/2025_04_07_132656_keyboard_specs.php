@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('keyboard_specs', function (Blueprint $table) {
             $table->id();
-            $table->string('format')->nullable();
+            $table->string('interface')->nullable();
             $table->string('type')->nullable();
             $table->boolean('light')->default(false);
             $table->boolean('numpad')->default(false);
-            $table->string('switch')->nullable();
-            $table->integer('response_time')->nullable();
             $table->string('layout')->nullable();
             $table->timestamps();
         });

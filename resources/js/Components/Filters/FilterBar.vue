@@ -125,6 +125,12 @@
             v-model:mice_interface="selectedFilters.mouse_interface"
             v-model:mice_dpi="selectedFilters.mouse_dpi"
             v-model:mice_response_time="selectedFilters.mouse_response_time"
+            :keyboard="keyboard"
+            v-model:keyboard_interface="selectedFilters.keyboard_interface"
+            v-model:keyboard_type="selectedFilters.keyboard_type"
+            v-model:keyboard_light="selectedFilters.keyboard_light"
+            v-model:keyboard_numpad="selectedFilters.keyboard_numpad"
+            v-model:keyboard_layout="selectedFilters.keyboard_layout"
         ></PeripheralsFilter>
 
         <button
@@ -171,6 +177,7 @@ const props = defineProps({
     smartphone: Array,
     computers: Array,
     mouse: Array,
+    keyboard: Array,
 });
 
 const selectedFilters = ref({
@@ -253,6 +260,12 @@ const selectedFilters = ref({
     mouse_interface: [],
     mouse_dpi: [],
     mouse_response_time: [],
+
+    keyboard_interface: [],
+    keyboard_type: [],
+    keyboard_light: [],
+    keyboard_numpad: [],
+    keyboard_layout: [],
 });
 
 const applyFilters = () => {
@@ -530,6 +543,28 @@ const applyFilters = () => {
     if (selectedFilters.value.mouse_response_time.length > 0) {
         queryParams["filter[mouse_response_time]"] =
             selectedFilters.value.mouse_response_time;
+    }
+
+    //keyboard
+    if (selectedFilters.value.keyboard_interface.length > 0) {
+        queryParams["filter[keyboard_interface]"] =
+            selectedFilters.value.keyboard_interface;
+    }
+    if (selectedFilters.value.keyboard_type.length > 0) {
+        queryParams["filter[keyboard_type]"] =
+            selectedFilters.value.keyboard_type;
+    }
+    if (selectedFilters.value.keyboard_light.length > 0) {
+        queryParams["filter[keyboard_light]"] =
+            selectedFilters.value.keyboard_light;
+    }
+    if (selectedFilters.value.keyboard_numpad.length > 0) {
+        queryParams["filter[keyboard_numpad]"] =
+            selectedFilters.value.keyboard_numpad;
+    }
+    if (selectedFilters.value.keyboard_layout.length > 0) {
+        queryParams["filter[keyboard_layout]"] =
+            selectedFilters.value.keyboard_layout;
     }
 
     console.log(queryParams);

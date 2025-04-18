@@ -354,7 +354,7 @@
                         class="form-checkbox size-4"
                         @change="updateMotherboardWifi"
                     />
-                    <span class="ml-2">Sim</span>
+                    <span class="ml-2">{{ t("yes") }}</span>
                 </label>
             </div>
         </div>
@@ -370,7 +370,7 @@
                         class="form-checkbox size-4"
                         @change="updateMotherboardBluetooth"
                     />
-                    <span class="ml-2">Sim</span>
+                    <span class="ml-2">{{ t("yes") }}</span>
                 </label>
             </div>
         </div>
@@ -661,7 +661,7 @@
                         class="form-checkbox size-4"
                         @change="updateRGBCooler"
                     />
-                    <span class="ml-2">Sim</span>
+                    <span class="ml-2">{{ t("yes") }}</span>
                 </label>
             </div>
         </div>
@@ -710,7 +710,7 @@
                             class="form-checkbox size-4"
                             @change="updateCasesGlass"
                         />
-                        <span class="ml-2">{{ t("case-glass-option") }}</span>
+                        <span class="ml-2">{{ t("yes") }}</span>
                     </label>
                 </div>
             </div>

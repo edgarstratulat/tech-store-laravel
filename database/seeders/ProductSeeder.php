@@ -517,6 +517,14 @@ class ProductSeeder extends Seeder
                 'subcategory_id' => 4,
                 'image_path' => "images/mice2.jpg"
             ],
+            [
+                'name' => 'Rato Laser Logitech Lift Left Vertical Ergonomic Wireless/Bluetooth 4000DPI Graphite',
+                'manufacturer_id' => 5,
+                'price' => 49.99,
+                'mouse_id' => 3,
+                'subcategory_id' => 4,
+                'image_path' => "images/mice3.jpg"
+            ],
         ];
         
         foreach ($miceProducts as $peri) {
