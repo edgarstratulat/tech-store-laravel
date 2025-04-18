@@ -7,6 +7,7 @@ use App\Models\Computer;
 use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
+use App\Models\Keyboard;
 use App\Models\Motherboard;
 use App\Models\Mouse;
 use App\Models\PowerSupply;
@@ -350,5 +351,27 @@ class SpecsSeeder extends Seeder
 
         Mouse::create($mice);
 
+
+        foreach([
+            [
+                'format' => 'USB',
+                'type' => 'Mecânico',
+                'light' => true,
+                'numpad' =>  false,
+                'switch' => 'Cherry MX Blue',
+                'response_time' => 1,
+                'layout' => 'QWERTY PT-PT ISO'
+            ],
+            [
+                'format' => 'Bluetooth',
+                'type' => 'Membrana',
+                'light' => true,
+                'numpad' =>  false,
+                'response_time' => 5,
+                'layout' => 'QWERTY PT-PT ISO'
+            ],
+        ] as $keyboard)
+
+        Keyboard::create($keyboard);
     }
 }

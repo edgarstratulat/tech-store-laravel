@@ -535,6 +535,42 @@ class ProductSeeder extends Seeder
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
+
+        $keyboardProducts = [
+            [
+                'name' => 'Teclado Mecânico Razer Blackwidow V3 PT Tenkeyless RGB Yellow Switch',
+                'manufacturer_id' => 19,
+                'price' => 119.99,
+                'keyboard_id' => 1,
+                'subcategory_id' => 18,
+                'image_path' => "images/key1.jpg"
+            ],
+            [
+                'name' => 'Teclado Apple Magic Keyboard Português',
+                'manufacturer_id' => 1,
+                'price' => 109.99,
+                'keyboard_id' => 2,
+                'subcategory_id' => 18,
+                'image_path' => "images/key2.jpg"
+            ],
+        ];
+        
+        foreach ($keyboardProducts as $peri) {
+            Product::create([
+                'name' => $peri['name'],
+                'manufacturer_id' => $peri['manufacturer_id'],
+                'price' => $peri['price'],
+                'sale_price' => rand(1,15),
+                'description' => $peri['name'],
+                'category_id' => 2,
+                'subcategory_id' => $peri['subcategory_id'], 
+                'keyboard_id' => $peri['keyboard_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $peri['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
         
             
     }

@@ -123,4 +123,8 @@ class Product extends Model
     {
         return $this->belongsTo(Mouse::class, 'mouse_id');
     }
+    public function keyboard()
+    {
+        return $this->belongsTo(Keyboard::class, 'keyboard_id');
+    }
 }
