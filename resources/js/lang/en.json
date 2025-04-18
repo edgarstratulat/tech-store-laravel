@@ -81,6 +81,10 @@
         "acessories-home": "For Home"
     },
 
+    "available_status": {
+        "notavailable": "Not available"
+    },
+
     "admin-buttons": {
         "dashboard": "Dashboard",
         "users": "Users",
@@ -179,6 +183,7 @@
 
     "gpu-category": "Category",
     "gpu-model": "Graphics card model",
+    "gpu-integrated": "Integrated graphics card model",
     "gpu-memory": "Graphics card memory",
     "gpu-type-memory": "Memory type",
     "gpu-interface": "Interface type",

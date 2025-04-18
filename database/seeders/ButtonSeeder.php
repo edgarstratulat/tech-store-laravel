@@ -29,8 +29,7 @@ class ButtonSeeder extends Seeder
                 "dropdownOptions" => json_encode([
                     ["button_name" => "computers", "icon" => null,  "route" => "/computers"],
                     ["button_name" => "desktop","icon" => null, "route" => "/computers/desktop"],
-                    ["button_name" => "laptops","icon" => null, "route" => "/computers/portateis"],
-                    ["button_name" => "workstation","icon" => null, "route" => "/computers/workstations"],
+                    ["button_name" => "laptops","icon" => null, "route" => "/computers/laptops"],
                 ]), 
             ],
             [
@@ -72,18 +71,6 @@ class ButtonSeeder extends Seeder
                     ["button_name" => "power-supplies","icon" => null, "route" => "/components/power-supplies"],
                     ["button_name" => "cpu-coolers","icon" => null, "route" => "/components/cpu-coolers"],
                     ["button_name" => "computers-cases","icon" => null, "route" => "/components/computer-cases"],
-                ]), 
-            ],
-            [
-                'button_name' => 'acessories',
-                'route' => '/acessorios',
-                'dropdown' => true,
-                'icon' => null,
-                "dropdownOptions" => json_encode([
-                    ["button_name" => "acessories","icon" => null,  "route" => "/acessorios"],
-                    ["button_name" => "acessories-pc","icon" => null, "route" => "/acessorios/acessorios-para-computador"],
-                    ["button_name" => "acessories-smartphones","icon" => null, "route" => "/acessorios/acessorios-para-telemovel"],
-                    ["button_name" => "acessories-home","icon" => null, "route" => "/acessorios/acessorios-para-casa"],
                 ]), 
             ],
             [

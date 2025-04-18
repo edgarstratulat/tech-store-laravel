@@ -65,19 +65,10 @@ Route::prefix('perifericos')->group(function () {
     Route::get('video', [PeripheralsController::class, 'showPeripheralsVideo'])->name('video');
 });
 
-//Acessorios
-Route::prefix('acessorios')->group(function () {
-    Route::get('/', [AccessoriesController::class, 'showAccessories'])->name('acessorios');
-    Route::get('acessorios-para-computador', [AccessoriesController::class, 'showAccessoriesForComputer'])->name('acessorios-para-computador');
-    Route::get('acessorios-para-casa', [AccessoriesController::class, 'showAccessoriesForHome'])->name('acessorios-para-casa');
-    Route::get('acessorios-para-telemovel', [AccessoriesController::class, 'showAccessoriesForSmartphone'])->name('acessorios-para-telemovel');
-});
-
 //Computador
 Route::prefix('computers')->group(function () {
     Route::get('/', [ComputersController::class, 'showComputers']);
-    Route::get('portateis', [ComputersController::class, 'showLaptopsComputers']);
-    Route::get('workstations', [ComputersController::class, 'showWorkStationComputers']);
+    Route::get('laptops', [ComputersController::class, 'showLaptopsComputers']);
     Route::get('desktop', [ComputersController::class, 'showDesktopComputers']);
 });
 

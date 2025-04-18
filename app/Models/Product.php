@@ -36,7 +36,8 @@ class Product extends Model
         'powersupply_id',
         'cpu_cooler_id',
         'pc_case_id',
-        'smartphone_id'
+        'smartphone_id',
+        'computer_id'
     ];
 
     public function sluggable(): array
@@ -83,7 +84,7 @@ class Product extends Model
 
     public function cpu()
     {
-        return $this->belongsTo(Processor::class, 'cpu_id');
+        return $this->belongsTo(Processor::class, 'processor_id');
     }
 
     public function motherboard()

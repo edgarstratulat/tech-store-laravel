@@ -18,6 +18,11 @@ class PowerSupply extends Model
 
     public function product():HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'powersupply_id');
+    }
+
+    public function computers(): HasMany
+    {
+        return $this->hasMany(Computer::class, 'powersupply');
     }
 }

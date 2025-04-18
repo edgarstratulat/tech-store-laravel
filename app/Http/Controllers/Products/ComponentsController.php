@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Armazenamento;
 use App\Models\Button;
 use App\Models\Category;
+use App\Models\Computer;
 use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
@@ -338,24 +339,37 @@ class ComponentsController extends Controller
             $query->where('category_id', 4);
         })->select('id', 'name')->get();
 
-        $ram = Ram::select('type','size','frequency','latency')->get();
-        $armazenamento = Armazenamento::select('size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get(); 
-        $cpu = Processor::select('model', 'tdp', 'socket')->get();
-        $gpu = GPU::select('category', 'model','vram','type_vram','interface','tdp')->get();
-        $motherboard = Motherboard::select('format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
-        $powersupply = PowerSupply::select('format', 'wattage','efficiency','modular')->get();
-        $cpucooler = cpuCooler::select('socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
+        $ram = Ram::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('type','size','frequency','latency')->get();
 
-        $case = ComputerCase::select(
-            'format',
-            'motherboard_supported',
-            'number_front_fans',
-            'number_lower_fans',
-            'number_upper_fans',
-            'number_rear_fans',
-            'max_gpu_length',
-            'max_cooler_height',
-            'tempered_glass')->get();
+        $armazenamento = Armazenamento::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get();
+
+        $cpu = Processor::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('model', 'tdp', 'socket')->get();
+
+        $gpu = GPU::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('category', 'model','vram','type_vram','interface','tdp')->get();
+
+        $motherboard = Motherboard::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
+
+        $powersupply = PowerSupply::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('format', 'wattage','efficiency','modular')->get();
+
+        $cpucooler = cpuCooler::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
+
+        $case = ComputerCase::whereHas('product', function($query) {
+            $query->where('category_id', 4);
+        })->select('format','motherboard_supported','number_front_fans','number_lower_fans', 'number_upper_fans','number_rear_fans','max_gpu_length','max_cooler_height','tempered_glass')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
@@ -454,8 +468,9 @@ class ComponentsController extends Controller
             'price', '-price', 'created_at'
         ])->with('category')->with('subcategory')->where('category_id', 4)->where('subcategory_id', 10)->paginate(12)->appends(request()->query());
 
-
-        $cpu = Processor::select('id', 'model', 'tdp', 'socket')->get();
+        $cpu = Processor::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 10);
+        })->select('id', 'model', 'tdp', 'socket')->get();
 
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 10);
@@ -555,13 +570,11 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 11);
         })->select('id', 'name')->get();
 
-        $ram = Ram::select(
-            'id',
-            'type',
-            'size',
-            'frequency',
-            'latency'
-        )->get();
+
+        $ram = Ram::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 11);
+        })->select('id', 'type','size', 'frequency', 'latency')->get();
+
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
@@ -653,8 +666,10 @@ class ComponentsController extends Controller
         $manufacturer = Manufacturer::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 12);
         })->select('id', 'name')->get();
-
-        $armazenamento = Armazenamento::select('id', 'size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get(); 
+ 
+        $armazenamento = Armazenamento::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 12);
+        })->select('id', 'size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -755,7 +770,11 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 13);
         })->select('id', 'name')->get();
 
-        $motherboard = Motherboard::select('id', 'format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
+
+        $motherboard = Motherboard::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 13);
+        })->select('id', 'format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
+
 
         return Inertia::render('ComponentesPC/motherboardsPage', [
             'buttons' => $buttons,
@@ -853,7 +872,10 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 14);
         })->select('id', 'name')->get();
 
-        $gpu = GPU::select('category', 'model','vram','type_vram','interface','tdp')->get();
+
+        $gpu = GPU::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 14);
+        })->select('category', 'model','vram','type_vram','interface','tdp')->get();
 
         return Inertia::render('ComponentesPC/gpuPage', [
             'buttons' => $buttons,
@@ -946,7 +968,9 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 15);
         })->select('id', 'name')->get();
 
-        $powersupply = PowerSupply::select('format', 'wattage','efficiency','modular')->get();
+        $powersupply = PowerSupply::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 15);
+        })->select('format', 'wattage','efficiency','modular')->get();
 
         return Inertia::render('ComponentesPC/fontePage', [
             'buttons' => $buttons,
@@ -1037,7 +1061,9 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 16);
         })->select('id', 'name')->get();
 
-        $cpucooler = cpuCooler::select('id', 'socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
+        $cpucooler = cpuCooler::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 16);
+        })->select('id', 'socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
 
         return Inertia::render('ComponentesPC/cpu-coolPage', [
             'buttons' => $buttons,
@@ -1160,6 +1186,21 @@ class ComponentsController extends Controller
         })->select('id', 'name')->get();
 
         $case = ComputerCase::select(
+            'id',
+            'format',
+            'motherboard_supported',
+            'number_front_fans',
+            'number_lower_fans',
+            'number_upper_fans',
+            'number_rear_fans',
+            'max_gpu_length',
+            'max_cooler_height',
+            'tempered_glass')
+        ->get();
+
+        $case = ComputerCase::whereHas('product', function($query) {
+            $query->where('category_id', 4)->where('subcategory_id', 17);
+        })->select(
             'id',
             'format',
             'motherboard_supported',

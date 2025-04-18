@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Processor extends Model
 {
+
+    use HasFactory;
+
     protected $table = 'processor_specs';
 
     protected $fillable = [
@@ -17,8 +21,13 @@ class Processor extends Model
         'socket'
     ];
 
-    public function product():HasMany
-    {
-        return $this->hasMany(Product::class, 'cpu_id');
+    public function product(): HasMany
+    {  
+        return $this->hasMany(Product::class); 
     }
+    public function computers(): HasMany
+    {
+        return $this->hasMany(Computer::class, 'processor');
+    }
+
 }

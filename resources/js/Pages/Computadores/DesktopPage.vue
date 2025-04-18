@@ -15,7 +15,7 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :subcategory="subcategory"
-                    :computer="computer"
+                    :computers="computers"
                     :cpu="cpu"
                     :motherboard="motherboard"
                     :ram="ram"
@@ -81,7 +81,7 @@ export default {
             type: Array,
             required: true,
         },
-        computer: {
+        computers: {
             type: Array,
             default: () => [],
         },

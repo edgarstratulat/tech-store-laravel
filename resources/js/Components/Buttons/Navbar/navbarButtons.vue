@@ -48,8 +48,16 @@ export default {
     },
     computed: {
         filterButtonsNavBar() {
-            const navbarButtons = [1, 2, 3, 4, 5, 6];
-            return this.Buttons.filter((btn) => navbarButtons.includes(btn.id));
+            const navbarButtons = [
+                "discount",
+                "computers",
+                "peripherals",
+                "smartphones",
+                "components",
+            ];
+            return this.Buttons.filter((btn) =>
+                navbarButtons.includes(btn.button_name)
+            );
         },
     },
     methods: {

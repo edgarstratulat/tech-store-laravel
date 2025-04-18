@@ -20,6 +20,11 @@ class GPU extends Model
 
     public function product(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'gpu_id');
+    }
+
+    public function computers(): HasMany
+    {
+        return $this->hasMany(Computer::class, 'gpu');
     }
 }
