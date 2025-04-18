@@ -13,7 +13,8 @@
         "laptops": "Portáteis",
         "workstation": "Workstations",
         "micro-pc": "Micro-computadores",
-        "mice-keyboard": "Ratos e teclados",
+        "mice": "Ratos",
+        "keyboard": "Teclados",
         "monitors": "Monitores",
         "audio": "Áudio",
         "video": "Vídeo",
@@ -235,5 +236,15 @@
     "computers-page-title": "Computadores",
     "computers-desktop-page-title": "Computadores Desktop",
     "computers-laptop-page-title": "Portáteis",
-    "computers-workstation-page-title": "Computadores Workstations"
+    "computers-workstation-page-title": "Computadores Workstations",
+
+    "peripherals-page-title": "Periféricos",
+    "peripherals-mice-keyboard-page-title": "Ratos e teclados",
+    "peripherals-format": "Formato do rato",
+    "peripherals-format-option": {
+        "righthand": "Mão direita"
+    },
+    "peripherals-interface": "Interface do dispositivo",
+    "peripherals-dpi": "Resolução de movimento",
+    "peripherals-response": "Tempo de resposta"
 }

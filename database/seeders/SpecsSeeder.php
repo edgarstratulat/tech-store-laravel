@@ -7,6 +7,7 @@ use App\Models\Computer;
 use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
+use App\Models\Mice;
 use App\Models\Motherboard;
 use App\Models\PowerSupply;
 use App\Models\Processor;
@@ -331,5 +332,23 @@ class SpecsSeeder extends Seeder
         ] as $pc)
 
         Computer::create($pc);
+
+        foreach([
+            [
+                'format' => 'righthand',
+                'interface' => 'Wireless',
+                'dpi' => 44000,
+                'response_time' =>  0.5
+            ],
+            [
+                'format' => 'righthand',
+                'interface' => 'Bluetooth',
+                'dpi' => 8000,
+                'response_time' =>  5
+            ],
+        ] as $mice)
+
+        Mice::create($mice);
+
     }
 }

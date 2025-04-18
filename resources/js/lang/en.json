@@ -13,7 +13,8 @@
         "laptops": "Laptops",
         "workstation": "Workstation",
         "micro-pc": "Micro-computers",
-        "mice-keyboard": "Mice and keyboards",
+        "mice": "Mouses",
+        "keyboard": "Keyboards",
         "monitors": "Monitors",
         "audio": "Audio",
         "video": "Video",
@@ -56,7 +57,7 @@
         "micro-pc": "Micro-computers",
 
         "peripherals": "Peripherals",
-        "mice-keyboard": "Mice and keyboards",
+        "mice-keyboard": "Mouses and keyboards",
         "monitors": "Monitors",
         "audio": "Audio",
         "video": "Video",
@@ -233,5 +234,15 @@
     "computers-page-title": "Computers",
     "computers-desktop-page-title": "Desktop Computers",
     "computers-laptop-page-title": "Laptops",
-    "computers-workstation-page-title": "Workstations Computers"
+    "computers-workstation-page-title": "Workstations Computers",
+
+    "peripherals-page-title": "Peripherals",
+    "peripherals-mice-keyboard-page-title": "Mouses and keyboards",
+    "peripherals-format": "Mouse format",
+    "peripherals-format-option": {
+        "righthand": "Right hand"
+    },
+    "peripherals-interface": "Device interface",
+    "peripherals-dpi": "Movement resolution",
+    "peripherals-response": "Response time"
 }

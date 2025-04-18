@@ -499,6 +499,42 @@ class ProductSeeder extends Seeder
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
+
+        $miceProducts = [
+            [
+                'name' => 'Rato Óptico Logitech MX Master 3s for Mac Wireless/Bluetooth 8000DPI White',
+                'manufacturer_id' => 5,
+                'price' => 99.99,
+                'mice_id' => 2,
+                'subcategory_id' => 4,
+                'image_path' => "images/mice1.jpg"
+            ],
+            [
+                'name' => 'Rato Óptico Logitech G Pro X Superlight 2 Wireless 44000DPI Magenta',
+                'manufacturer_id' => 5,
+                'price' => 168.99,
+                'mice_id' => 1,
+                'subcategory_id' => 4,
+                'image_path' => "images/mice2.jpg"
+            ],
+        ];
+        
+        foreach ($miceProducts as $peri) {
+            Product::create([
+                'name' => $peri['name'],
+                'manufacturer_id' => $peri['manufacturer_id'],
+                'price' => $peri['price'],
+                'sale_price' => rand(1,15),
+                'description' => $peri['name'],
+                'category_id' => 2,
+                'subcategory_id' => $peri['subcategory_id'], 
+                'mice_id' => $peri['mice_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $peri['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
         
             
     }

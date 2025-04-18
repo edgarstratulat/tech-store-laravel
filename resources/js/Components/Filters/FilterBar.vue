@@ -21,7 +21,12 @@
         <!--PC Components Filter-->
 
         <ComponentsFilter
-            v-if="!discountPage && !smartphonePage && !computerPage"
+            v-if="
+                !discountPage &&
+                !smartphonePage &&
+                !computerPage &&
+                !peripheralsPage
+            "
             :ram="ram"
             v-model:capacityRam="selectedFilters.memoria_ram"
             v-model:typeRam="selectedFilters.type_ram"
@@ -113,6 +118,15 @@
             v-model:gpu_integrated="selectedFilters.computer_integrated_gpu"
         ></ComputersFilter>
 
+        <PeripheralsFilter
+            v-if="peripheralsPage"
+            :mice_keyboard="mice_keyboard"
+            v-model:mice_format="selectedFilters.mouse_format"
+            v-model:mice_interface="selectedFilters.mouse_interface"
+            v-model:mice_dpi="selectedFilters.mouse_dpi"
+            v-model:mice_response_time="selectedFilters.mouse_response_time"
+        ></PeripheralsFilter>
+
         <button
             @click="applyFilters"
             class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
@@ -132,14 +146,15 @@ import SmartphoneFilter from "./SmartphonesFilter.vue";
 import DefaultFilter from "./DefaultFilters.vue";
 import ComputersFilter from "./ComputersFilter.vue";
 import ComponentsFilter from "./ComponentsFilter.vue";
+import PeripheralsFilter from "./PeripheralsFilter.vue";
 
-const page = usePage();
-const currentPath = page.url;
+const page = usePage().url;
 
-const discountPage = currentPath.includes("/promotions");
+const discountPage = page.includes("/promotions");
 
-const smartphonePage = currentPath.includes("/smartphones");
-const computerPage = currentPath.includes("/computers");
+const smartphonePage = page.includes("/smartphones");
+const computerPage = page.includes("/computers");
+const peripheralsPage = page.includes("/peripherals");
 
 const props = defineProps({
     manufacturer: Array,
@@ -155,6 +170,7 @@ const props = defineProps({
     PCcases: Array,
     smartphone: Array,
     computers: Array,
+    mice_keyboard: Array,
 });
 
 const selectedFilters = ref({
@@ -232,6 +248,11 @@ const selectedFilters = ref({
     computer_integrated_gpu: [],
     computer_psu: [],
     computer_case: [],
+
+    mouse_format: [],
+    mouse_interface: [],
+    mouse_dpi: [],
+    mouse_response_time: [],
 });
 
 const applyFilters = () => {
@@ -492,6 +513,23 @@ const applyFilters = () => {
     if (selectedFilters.value.computer_integrated_gpu.length > 0) {
         queryParams["filter[computer_integrated_gpu]"] =
             selectedFilters.value.computer_integrated_gpu;
+    }
+
+    //mouse
+    if (selectedFilters.value.mouse_format.length > 0) {
+        queryParams["filter[mouse_format]"] =
+            selectedFilters.value.mouse_format;
+    }
+    if (selectedFilters.value.mouse_interface.length > 0) {
+        queryParams["filter[mouse_interface]"] =
+            selectedFilters.value.mouse_interface;
+    }
+    if (selectedFilters.value.mouse_dpi.length > 0) {
+        queryParams["filter[mouse_dpi]"] = selectedFilters.value.mouse_dpi;
+    }
+    if (selectedFilters.value.mouse_response_time.length > 0) {
+        queryParams["filter[mouse_response_time]"] =
+            selectedFilters.value.mouse_response_time;
     }
 
     console.log(queryParams);
