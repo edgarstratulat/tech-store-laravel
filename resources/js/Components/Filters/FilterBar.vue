@@ -21,7 +21,12 @@
         <!--PC Components Filter-->
 
         <ComponentsFilter
-            v-if="!discountPage && !smartphonePage && !computerPage"
+            v-if="
+                !discountPage &&
+                !smartphonePage &&
+                !computerPage &&
+                !peripheralsPage
+            "
             :ram="ram"
             v-model:capacityRam="selectedFilters.memoria_ram"
             v-model:typeRam="selectedFilters.type_ram"
@@ -113,6 +118,32 @@
             v-model:gpu_integrated="selectedFilters.computer_integrated_gpu"
         ></ComputersFilter>
 
+        <PeripheralsFilter
+            v-if="peripheralsPage"
+            :mouse="mouse"
+            v-model:mice_format="selectedFilters.mouse_format"
+            v-model:mice_interface="selectedFilters.mouse_interface"
+            v-model:mice_dpi="selectedFilters.mouse_dpi"
+            v-model:mice_response_time="selectedFilters.mouse_response_time"
+            :keyboard="keyboard"
+            v-model:keyboard_interface="selectedFilters.keyboard_interface"
+            v-model:keyboard_type="selectedFilters.keyboard_type"
+            v-model:keyboard_light="selectedFilters.keyboard_light"
+            v-model:keyboard_numpad="selectedFilters.keyboard_numpad"
+            v-model:keyboard_layout="selectedFilters.keyboard_layout"
+            :monitor="monitor"
+            v-model:monitor_inclination="selectedFilters.monitor_inclination"
+            v-model:monitor_format="selectedFilters.monitor_format"
+            v-model:monitor_ratio="selectedFilters.monitor_ratio"
+            v-model:monitor_resolution="selectedFilters.monitor_resolution"
+            v-model:monitor_inches="selectedFilters.monitor_inches"
+            v-model:monitor_refresh_rate="selectedFilters.monitor_refresh_rate"
+            v-model:monitor_response_time="
+                selectedFilters.monitor_response_time
+            "
+            v-model:monitor_type_panel="selectedFilters.monitor_type_panel"
+        ></PeripheralsFilter>
+
         <button
             @click="applyFilters"
             class="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded"
@@ -132,14 +163,16 @@ import SmartphoneFilter from "./SmartphonesFilter.vue";
 import DefaultFilter from "./DefaultFilters.vue";
 import ComponentsFilter from "./ComponentsFilter.vue";
 import ComputersFilter from "./ComputersFilter.vue";
+import ComponentsFilter from "./ComponentsFilter.vue";
+import PeripheralsFilter from "./PeripheralsFilter.vue";
 
-const page = usePage();
-const currentPath = page.url;
+const page = usePage().url;
 
-const discountPage = currentPath.includes("/promotions");
+const discountPage = page.includes("/promotions");
 
-const smartphonePage = currentPath.includes("/smartphones");
-const computerPage = currentPath.includes("/computers");
+const smartphonePage = page.includes("/smartphones");
+const computerPage = page.includes("/computers");
+const peripheralsPage = page.includes("/peripherals");
 
 const props = defineProps({
     manufacturer: Array,
@@ -155,6 +188,9 @@ const props = defineProps({
     PCcases: Array,
     smartphone: Array,
     computers: Array,
+    mouse: Array,
+    keyboard: Array,
+    monitor: Array,
 });
 
 const selectedFilters = ref({
@@ -232,6 +268,26 @@ const selectedFilters = ref({
     computer_integrated_gpu: [],
     computer_psu: [],
     computer_case: [],
+
+    mouse_format: [],
+    mouse_interface: [],
+    mouse_dpi: [],
+    mouse_response_time: [],
+
+    keyboard_interface: [],
+    keyboard_type: [],
+    keyboard_light: [],
+    keyboard_numpad: [],
+    keyboard_layout: [],
+
+    monitor_inclination: [],
+    monitor_format: [],
+    monitor_ratio: [],
+    monitor_resolution: [],
+    monitor_inches: [],
+    monitor_refresh_rate: [],
+    monitor_response_time: [],
+    monitor_type_panel: [],
 });
 
 const applyFilters = () => {
@@ -492,6 +548,80 @@ const applyFilters = () => {
     if (selectedFilters.value.computer_integrated_gpu.length > 0) {
         queryParams["filter[computer_integrated_gpu]"] =
             selectedFilters.value.computer_integrated_gpu;
+    }
+
+    //mouse
+    if (selectedFilters.value.mouse_format.length > 0) {
+        queryParams["filter[mouse_format]"] =
+            selectedFilters.value.mouse_format;
+    }
+    if (selectedFilters.value.mouse_interface.length > 0) {
+        queryParams["filter[mouse_interface]"] =
+            selectedFilters.value.mouse_interface;
+    }
+    if (selectedFilters.value.mouse_dpi.length > 0) {
+        queryParams["filter[mouse_dpi]"] = selectedFilters.value.mouse_dpi;
+    }
+    if (selectedFilters.value.mouse_response_time.length > 0) {
+        queryParams["filter[mouse_response_time]"] =
+            selectedFilters.value.mouse_response_time;
+    }
+
+    //keyboard
+    if (selectedFilters.value.keyboard_interface.length > 0) {
+        queryParams["filter[keyboard_interface]"] =
+            selectedFilters.value.keyboard_interface;
+    }
+    if (selectedFilters.value.keyboard_type.length > 0) {
+        queryParams["filter[keyboard_type]"] =
+            selectedFilters.value.keyboard_type;
+    }
+    if (selectedFilters.value.keyboard_light.length > 0) {
+        queryParams["filter[keyboard_light]"] =
+            selectedFilters.value.keyboard_light;
+    }
+    if (selectedFilters.value.keyboard_numpad.length > 0) {
+        queryParams["filter[keyboard_numpad]"] =
+            selectedFilters.value.keyboard_numpad;
+    }
+    if (selectedFilters.value.keyboard_layout.length > 0) {
+        queryParams["filter[keyboard_layout]"] =
+            selectedFilters.value.keyboard_layout;
+    }
+
+    // Monitor
+
+    if (selectedFilters.value.monitor_inclination.length > 0) {
+        queryParams["filter[monitor_inclination]"] =
+            selectedFilters.value.monitor_inclination;
+    }
+    if (selectedFilters.value.monitor_format.length > 0) {
+        queryParams["filter[monitor_format]"] =
+            selectedFilters.value.monitor_format;
+    }
+    if (selectedFilters.value.monitor_ratio.length > 0) {
+        queryParams["filter[monitor_ratio]"] =
+            selectedFilters.value.monitor_ratio;
+    }
+    if (selectedFilters.value.monitor_resolution.length > 0) {
+        queryParams["filter[monitor_resolution]"] =
+            selectedFilters.value.monitor_resolution;
+    }
+    if (selectedFilters.value.monitor_inches.length > 0) {
+        queryParams["filter[monitor_inches]"] =
+            selectedFilters.value.monitor_inches;
+    }
+    if (selectedFilters.value.monitor_refresh_rate.length > 0) {
+        queryParams["filter[monitor_refresh_rate]"] =
+            selectedFilters.value.monitor_refresh_rate;
+    }
+    if (selectedFilters.value.monitor_response_time.length > 0) {
+        queryParams["filter[monitor_response_time]"] =
+            selectedFilters.value.monitor_response_time;
+    }
+    if (selectedFilters.value.monitor_type_panel.length > 0) {
+        queryParams["filter[monitor_type_panel]"] =
+            selectedFilters.value.monitor_type_panel;
     }
 
     console.log(queryParams);

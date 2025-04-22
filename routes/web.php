@@ -57,12 +57,11 @@ Route::prefix('components')->group(function () {
 });
 
 //Perifericos
-Route::prefix('perifericos')->group(function () {
+Route::prefix('peripherals')->group(function () {
     Route::get('/', [PeripheralsController::class, 'showPeripherals'])->name('perifericos');
-    Route::get('ratos-e-teclados', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard'])->name('ratos-e-teclados');
-    Route::get('audio', [PeripheralsController::class, 'showPeripheralsAudio'])->name('audio');
-    Route::get('monitores', [PeripheralsController::class, 'showPeripheralsMonitor'])->name('monitores');
-    Route::get('video', [PeripheralsController::class, 'showPeripheralsVideo'])->name('video');
+    Route::get('mouses', [PeripheralsController::class, 'showPeripheralsMouseAndKeyboard'])->name('mouses');
+    Route::get('keyboards', [PeripheralsController::class, 'showPeripheralsKeyboard'])->name('keyboards');
+    Route::get('monitors', [PeripheralsController::class, 'showPeripheralsMonitor'])->name('monitores');
 });
 
 //Computador

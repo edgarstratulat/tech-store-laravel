@@ -13,7 +13,8 @@
         "laptops": "Portáteis",
         "workstation": "Workstations",
         "micro-pc": "Micro-computadores",
-        "mice-keyboard": "Ratos e teclados",
+        "mouses": "Ratos",
+        "keyboards": "Teclados",
         "monitors": "Monitores",
         "audio": "Áudio",
         "video": "Vídeo",
@@ -56,7 +57,8 @@
         "micro-pc": "Micro-computadores",
 
         "peripherals": "Periféricos",
-        "mice-keyboard": "Ratos e teclados",
+        "mouses": "Ratos",
+        "keyboards": "Teclados",
         "monitors": "Monitores",
         "audio": "Áudio",
         "video": "Vídeo",
@@ -101,6 +103,7 @@
     },
 
     "hi": "Olá",
+    "yes": "Sim",
     "guest": "Visitante",
     "looking-for": "O que procuras?",
     "search": "Pesquisar",
@@ -117,7 +120,7 @@
     "home-pc-h2": "Desempenho extremo para jogadores exigentes",
     "home-pc-button": "Ver todos",
 
-    "promotions-page-title": "Produtos em Desconto",
+    "promotions-page-title": "Promoções",
 
     "product-reconditioned": "Recondicionado",
     "product-nostock": "Sem stock",
@@ -202,7 +205,6 @@
 
     "case-format": "Formato da caixa",
     "case-glass": "Vidro temperado",
-    "case-glass-option": "Sim",
     "case-top-fans": "N.º de ventoinhas superiores",
     "case-lower-fans": "N.º de ventoinhas inferiores",
     "case-front-fans": "N.º de ventoinhas frontais",
@@ -235,5 +237,41 @@
     "computers-page-title": "Computadores",
     "computers-desktop-page-title": "Computadores Desktop",
     "computers-laptop-page-title": "Portáteis",
-    "computers-workstation-page-title": "Computadores Workstations"
+    "computers-workstation-page-title": "Computadores Workstations",
+
+    "peripherals-page-title": "Periféricos",
+    "peripherals-mouses-page-title": "Ratos",
+    "peripherals-format": "Formato do rato",
+    "peripherals-format-option": {
+        "righthand": "Mão direita",
+        "lefthand": "Mão esquerda"
+    },
+    "peripherals-interface": "Interface do Rato",
+    "peripherals-dpi": "Resolução de movimento",
+    "peripherals-response": "Tempo de resposta",
+
+    "peripherals-keyboard-page-title": "Teclados",
+    "peripherals-keyboard-interface": "Interface do teclado",
+    "peripherals-keyboard-type": "Tipo de teclado",
+    "peripherals-keyboard-type-option": {
+        "mechanical": "Mecânico",
+        "membrane": "Membrana"
+    },
+    "peripherals-keyboard-light": "Luz de fundo",
+    "peripherals-keyboard-numpad": "Teclado númerico",
+    "peripherals-keyboard-layout": "Layout do teclado",
+
+    "peripherals-monitor-page-title": "Monitores",
+    "peripherals-monitor-inclination": "Ajuste de inclinação",
+    "peripherals-monitor-format": "Formato do ecrã",
+    "peripherals-monitor-format-option": {
+        "curve": "Curvo",
+        "flat": "Plano"
+    },
+    "peripherals-monitor-ratio": "Propoção da imagem",
+    "peripherals-monitor-resolution": "Resolução do monitor",
+    "peripherals-monitor-inches": "Polegadas do monitor",
+    "peripherals-monitor-hz": "Taxa máxima de atualização",
+    "peripherals-monitor-response": "Tempo de resposta",
+    "peripherals-monitor-panel": "Tipo de painel"
 }

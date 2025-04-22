@@ -37,7 +37,10 @@ class Product extends Model
         'cpu_cooler_id',
         'pc_case_id',
         'smartphone_id',
-        'computer_id'
+        'computer_id',
+        'mouse_id',
+        'keyboard_id',
+        'monitor_id'
     ];
 
     public function sluggable(): array
@@ -85,6 +88,7 @@ class Product extends Model
     public function cpu()
     {
         return $this->belongsTo(Processor::class, 'processor_id');
+        return $this->belongsTo(Processor::class, 'processor_id');
     }
 
     public function motherboard()
@@ -118,5 +122,16 @@ class Product extends Model
     {
         return $this->belongsTo(Computer::class, 'computer_id');
     }
-
+    public function mouse()
+    {
+        return $this->belongsTo(Mouse::class, 'mouse_id');
+    }
+    public function keyboard()
+    {
+        return $this->belongsTo(Keyboard::class, 'keyboard_id');
+    }
+    public function monitor()
+    {
+        return $this->belongsTo(Monitor::class, 'monitor_id');
+    }
 }

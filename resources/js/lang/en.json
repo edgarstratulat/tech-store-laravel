@@ -13,7 +13,8 @@
         "laptops": "Laptops",
         "workstation": "Workstation",
         "micro-pc": "Micro-computers",
-        "mice-keyboard": "Mice and keyboards",
+        "mouses": "Mouses",
+        "keyboards": "Keyboards",
         "monitors": "Monitors",
         "audio": "Audio",
         "video": "Video",
@@ -56,7 +57,8 @@
         "micro-pc": "Micro-computers",
 
         "peripherals": "Peripherals",
-        "mice-keyboard": "Mice and keyboards",
+        "mouses": "Mouses",
+        "keyboards": "Keyboards",
         "monitors": "Monitors",
         "audio": "Audio",
         "video": "Video",
@@ -101,6 +103,7 @@
     },
 
     "hi": "Hi",
+    "yes": "Yes",
     "guest": "Guest",
     "looking-for": "What are you looking for?",
     "search": "Search",
@@ -117,7 +120,7 @@
     "home-pc-h2": "Extreme performance for demanding gamers",
     "home-pc-button": "See all",
 
-    "promotions-page-title": "Discount Products",
+    "promotions-page-title": "Promotions",
 
     "product-reconditioned": "Reconditioned",
     "product-nostock": "Out of stock",
@@ -200,7 +203,6 @@
 
     "case-format": "Computer case format",
     "case-glass": "Tempered glass",
-    "case-glass-option": "Yes",
     "case-top-fans": "No. of top fans",
     "case-lower-fans": "No. of lower fans",
     "case-front-fans": "No. of front fans",
@@ -233,5 +235,42 @@
     "computers-page-title": "Computers",
     "computers-desktop-page-title": "Desktop Computers",
     "computers-laptop-page-title": "Laptops",
-    "computers-workstation-page-title": "Workstations Computers"
+    "computers-workstation-page-title": "Workstations Computers",
+
+    "peripherals-page-title": "Peripherals",
+    "peripherals-mouses-page-title": "Mouses",
+
+    "peripherals-format": "Mouse format",
+    "peripherals-format-option": {
+        "righthand": "Right hand",
+        "lefthand": "Left hand"
+    },
+    "peripherals-interface": "Mouse interface",
+    "peripherals-dpi": "Movement resolution",
+    "peripherals-response": "Response time",
+
+    "peripherals-keyboard-page-title": "Keyboards",
+    "peripherals-keyboard-interface": "Keyboard Interface",
+    "peripherals-keyboard-type": "Keyboard type",
+    "peripherals-keyboard-type-option": {
+        "mechanical": "Mechanical",
+        "membrane": "Membrane"
+    },
+    "peripherals-keyboard-light": "Backlight",
+    "peripherals-keyboard-numpad": "Numeric keypad",
+    "peripherals-keyboard-layout": "Keyboard layout",
+
+    "peripherals-monitor-page-title": "Monitors",
+    "peripherals-monitor-inclination": "Inclination adjustment",
+    "peripherals-monitor-format": "Screen format",
+    "peripherals-monitor-format-option": {
+        "curve": "Curve",
+        "flat": "Flat"
+    },
+    "peripherals-monitor-ratio": "Image proposition",
+    "peripherals-monitor-resolution": "Resolution",
+    "peripherals-monitor-inches": "Inches",
+    "peripherals-monitor-hz": "Maximum refresh rate",
+    "peripherals-monitor-response": "Response time",
+    "peripherals-monitor-panel": "Panel type"
 }

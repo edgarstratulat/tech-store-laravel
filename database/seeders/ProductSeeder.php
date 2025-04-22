@@ -499,6 +499,122 @@ class ProductSeeder extends Seeder
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
+
+        $miceProducts = [
+            [
+                'name' => 'Rato Óptico Logitech MX Master 3s for Mac Wireless/Bluetooth 8000DPI White',
+                'manufacturer_id' => 5,
+                'price' => 99.99,
+                'mouse_id' => 2,
+                'subcategory_id' => 4,
+                'image_path' => "images/mice1.jpg"
+            ],
+            [
+                'name' => 'Rato Óptico Logitech G Pro X Superlight 2 Wireless 44000DPI Magenta',
+                'manufacturer_id' => 5,
+                'price' => 168.99,
+                'mouse_id' => 1,
+                'subcategory_id' => 4,
+                'image_path' => "images/mice2.jpg"
+            ],
+            [
+                'name' => 'Rato Laser Logitech Lift Left Vertical Ergonomic Wireless/Bluetooth 4000DPI Graphite',
+                'manufacturer_id' => 5,
+                'price' => 49.99,
+                'mouse_id' => 3,
+                'subcategory_id' => 4,
+                'image_path' => "images/mice3.jpg"
+            ],
+        ];
+        
+        foreach ($miceProducts as $peri) {
+            Product::create([
+                'name' => $peri['name'],
+                'manufacturer_id' => $peri['manufacturer_id'],
+                'price' => $peri['price'],
+                'sale_price' => rand(1,15),
+                'description' => $peri['name'],
+                'category_id' => 2,
+                'subcategory_id' => $peri['subcategory_id'], 
+                'mouse_id' => $peri['mouse_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $peri['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
+
+        $keyboardProducts = [
+            [
+                'name' => 'Teclado Mecânico Razer Blackwidow V3 PT Tenkeyless RGB Yellow Switch',
+                'manufacturer_id' => 19,
+                'price' => 119.99,
+                'keyboard_id' => 1,
+                'subcategory_id' => 18,
+                'image_path' => "images/key1.jpg"
+            ],
+            [
+                'name' => 'Teclado Apple Magic Keyboard Português',
+                'manufacturer_id' => 1,
+                'price' => 109.99,
+                'keyboard_id' => 2,
+                'subcategory_id' => 18,
+                'image_path' => "images/key2.jpg"
+            ],
+        ];
+        
+        foreach ($keyboardProducts as $peri) {
+            Product::create([
+                'name' => $peri['name'],
+                'manufacturer_id' => $peri['manufacturer_id'],
+                'price' => $peri['price'],
+                'sale_price' => rand(1,15),
+                'description' => $peri['name'],
+                'category_id' => 2,
+                'subcategory_id' => $peri['subcategory_id'], 
+                'keyboard_id' => $peri['keyboard_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $peri['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
+
+        $monitorProdcuts = [
+            [
+                'name' => 'Monitor Curvo AOC Gaming C32G2ZE/BK VA 31.5" FHD 16:9 240Hz FreeSync',
+                'manufacturer_id' => 31,
+                'price' => 199.99,
+                'monitor_id' => 1,
+                'subcategory_id' => 5,
+                'image_path' => "images/monitor1.jpg"
+            ],
+            [
+                'name' => 'Monitor BenQ Zowie XL2540K TN 24.5" FHD 16:9 240Hz',
+                'manufacturer_id' => 32,
+                'price' => 349.99,
+                'monitor_id' => 2,
+                'subcategory_id' => 5,
+                'image_path' => "images/monitor2.jpg"
+            ],
+        ];
+        
+        foreach ($monitorProdcuts as $peri) {
+            Product::create([
+                'name' => $peri['name'],
+                'manufacturer_id' => $peri['manufacturer_id'],
+                'price' => $peri['price'],
+                'sale_price' => rand(1,15),
+                'description' => $peri['name'],
+                'category_id' => 2,
+                'subcategory_id' => $peri['subcategory_id'], 
+                'monitor_id' => $peri['monitor_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $peri['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
         
             
     }
