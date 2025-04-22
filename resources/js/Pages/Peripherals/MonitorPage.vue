@@ -15,6 +15,7 @@
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :subcategory="subcategory"
+                    :monitor="monitor"
                 />
             </div>
 
@@ -72,6 +73,10 @@ export default {
         manufacturer: {
             type: Array,
             required: true,
+        },
+        monitor: {
+            type: Array,
+            default: () => [],
         },
     },
     setup() {

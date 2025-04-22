@@ -19,6 +19,7 @@
                     :subcategory="subcategory"
                     :keyboard="keyboard"
                     :mouse="mouse"
+                    :monitor="monitor"
                 />
             </div>
 
@@ -80,6 +81,10 @@ export default {
             default: () => [],
         },
         mouse: {
+            type: Array,
+            default: () => [],
+        },
+        monitor: {
             type: Array,
             default: () => [],
         },

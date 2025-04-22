@@ -34,6 +34,7 @@ return new class extends Migration
             $table->foreignId('computer_id')->nullable()->constrained('computer_specs');
             $table->foreignId('mouse_id')->nullable()->constrained('mouse_specs');
             $table->foreignId('keyboard_id')->nullable()->constrained('keyboard_specs');
+            $table->foreignId('monitor_id')->nullable()->constrained('monitor_specs');
             $table->boolean('included_cooler')->default(false);
             $table->boolean('bluetooth')->default(false);
             $table->boolean('wifi')->default(false);

@@ -579,6 +579,42 @@ class ProductSeeder extends Seeder
                 'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
             ]);
         }
+
+        $monitorProdcuts = [
+            [
+                'name' => 'Monitor Curvo AOC Gaming C32G2ZE/BK VA 31.5" FHD 16:9 240Hz FreeSync',
+                'manufacturer_id' => 31,
+                'price' => 199.99,
+                'monitor_id' => 1,
+                'subcategory_id' => 5,
+                'image_path' => "images/monitor1.jpg"
+            ],
+            [
+                'name' => 'Monitor BenQ Zowie XL2540K TN 24.5" FHD 16:9 240Hz',
+                'manufacturer_id' => 32,
+                'price' => 349.99,
+                'monitor_id' => 2,
+                'subcategory_id' => 5,
+                'image_path' => "images/monitor2.jpg"
+            ],
+        ];
+        
+        foreach ($monitorProdcuts as $peri) {
+            Product::create([
+                'name' => $peri['name'],
+                'manufacturer_id' => $peri['manufacturer_id'],
+                'price' => $peri['price'],
+                'sale_price' => rand(1,15),
+                'description' => $peri['name'],
+                'category_id' => 2,
+                'subcategory_id' => $peri['subcategory_id'], 
+                'monitor_id' => $peri['monitor_id'],
+                'stock' => rand(0, 50),
+                'sku' => 'SKU' . rand(1000, 9999),
+                'image_path' => $peri['image_path'],
+                'created_at' => Carbon::now()->subMinutes(rand(1, 1440)),
+            ]);
+        }
         
             
     }

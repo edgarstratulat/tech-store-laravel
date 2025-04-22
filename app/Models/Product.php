@@ -38,7 +38,9 @@ class Product extends Model
         'pc_case_id',
         'smartphone_id',
         'computer_id',
-        'mouse_id'
+        'mouse_id',
+        'keyboard_id',
+        'monitor_id'
     ];
 
     public function sluggable(): array
@@ -126,5 +128,9 @@ class Product extends Model
     public function keyboard()
     {
         return $this->belongsTo(Keyboard::class, 'keyboard_id');
+    }
+    public function monitor()
+    {
+        return $this->belongsTo(Monitor::class, 'monitor_id');
     }
 }

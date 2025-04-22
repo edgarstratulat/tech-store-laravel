@@ -120,7 +120,7 @@
     "home-pc-h2": "Desempenho extremo para jogadores exigentes",
     "home-pc-button": "Ver todos",
 
-    "promotions-page-title": "Produtos em Desconto",
+    "promotions-page-title": "Promoções",
 
     "product-reconditioned": "Recondicionado",
     "product-nostock": "Sem stock",
@@ -260,5 +260,18 @@
     "peripherals-keyboard-light": "Luz de fundo",
     "peripherals-keyboard-numpad": "Teclado númerico",
     "peripherals-keyboard-layout": "Layout do teclado",
-    "peripherals-monitor-page-title": "Monitores"
+
+    "peripherals-monitor-page-title": "Monitores",
+    "peripherals-monitor-inclination": "Ajuste de inclinação",
+    "peripherals-monitor-format": "Formato do ecrã",
+    "peripherals-monitor-format-option": {
+        "curve": "Curvo",
+        "flat": "Plano"
+    },
+    "peripherals-monitor-ratio": "Propoção da imagem",
+    "peripherals-monitor-resolution": "Resolução do monitor",
+    "peripherals-monitor-inches": "Polegadas do monitor",
+    "peripherals-monitor-hz": "Taxa máxima de atualização",
+    "peripherals-monitor-response": "Tempo de resposta",
+    "peripherals-monitor-panel": "Tipo de painel"
 }

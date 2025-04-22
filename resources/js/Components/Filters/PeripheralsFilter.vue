@@ -195,6 +195,176 @@
             </div>
         </div>
     </div>
+    <div v-if="!keyboardPage && !mousePage">
+        <div class="mt-4">
+            <label class="block text-md font-medium mb-1">{{
+                t("peripherals-monitor-inclination")
+            }}</label>
+            <div class="flex items-center space-x-4">
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        value="true"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorInclination"
+                    />
+                    <span class="ml-2">{{ t("yes") }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-format")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueFormatMonitor()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.format"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorFormat"
+                    />
+                    <span
+                        class="ml-2"
+                        v-if="
+                            option.format === 'curve' ||
+                            option.format === 'flat'
+                        "
+                        >{{
+                            t(
+                                `peripherals-monitor-format-option.${option.format}`
+                            )
+                        }}</span
+                    >
+                    <span class="ml-2" v-else>{{ option.format }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-ratio")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueMonitorRatio()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.ratio"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorRatio"
+                    />
+                    <span class="ml-2">{{ option.ratio }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-resolution")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueMonitorResolution()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.resolution"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorResolution"
+                    />
+                    <span class="ml-2">{{ option.resolution }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-inches")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueMonitorInches()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.inches"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorInches"
+                    />
+                    <span class="ml-2">{{ option.inches + "''" }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-hz")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueMonitorHZ()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.refresh_rate"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorHZ"
+                    />
+                    <span class="ml-2">{{ option.refresh_rate + " Hz" }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-response")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniqueMS()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.response_time"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorMS"
+                    />
+                    <span class="ml-2">{{ option.response_time + " ms" }}</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-4">
+            <label class="block text-md font-semibold mb-1">{{
+                t("peripherals-monitor-panel")
+            }}</label>
+            <div
+                class="flex items-center space-x-4"
+                v-for="option in uniquePanelType()"
+                :key="option.id"
+            >
+                <label class="inline-flex items-center">
+                    <input
+                        type="checkbox"
+                        :value="option.type_panel"
+                        class="form-checkbox size-4"
+                        @change="updateMonitorPanel"
+                    />
+                    <span class="ml-2">{{ option.type_panel }}</span>
+                </label>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -211,6 +381,7 @@ const monitorPage = page.includes("/peripherals/monitors");
 const props = defineProps({
     mouse: Array,
     keyboard: Array,
+    monitor: Array,
 
     mice_format: Array,
     mice_interface: Array,
@@ -222,6 +393,15 @@ const props = defineProps({
     keyboard_light: Array,
     keyboard_numpad: Array,
     keyboard_layout: Array,
+
+    monitor_inclination: Array,
+    monitor_format: Array,
+    monitor_ratio: Array,
+    monitor_resolution: Array,
+    monitor_inches: Array,
+    monitor_refresh_rate: Array,
+    monitor_response_time: Array,
+    monitor_type_panel: Array,
 });
 
 const emit = defineEmits([
@@ -234,6 +414,14 @@ const emit = defineEmits([
     "update:keyboard_light",
     "update:keyboard_numpad",
     "update:keyboard_layout",
+    "update:monitor_inclination",
+    "update:monitor_format",
+    "update:monitor_ratio",
+    "update:monitor_resolution",
+    "update:monitor_inches",
+    "update:monitor_refresh_rate",
+    "update:monitor_response_time",
+    "update:monitor_type_panel",
 ]);
 
 function updateMouseFormat(event) {
@@ -370,6 +558,126 @@ function updateKeyboardLayout(event) {
     emit("update:keyboard_layout", updated);
 }
 
+function updateMonitorInclination(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_inclination];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_inclination", updated);
+}
+
+function updateMonitorFormat(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_format];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_format", updated);
+}
+
+function updateMonitorRatio(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_ratio];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_ratio", updated);
+}
+
+function updateMonitorResolution(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_resolution];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_resolution", updated);
+}
+
+function updateMonitorInches(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_inches];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_inches", updated);
+}
+
+function updateMonitorHZ(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_refresh_rate];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_refresh_rate", updated);
+}
+
+function updateMonitorMS(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_response_time];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_response_time", updated);
+}
+
+function updateMonitorPanel(event) {
+    const value = event.target.value;
+    let updated = [...props.monitor_type_panel];
+
+    if (event.target.checked) {
+        if (!updated.includes(value)) {
+            updated.push(value);
+        }
+    } else {
+        updated = updated.filter((v) => v !== value);
+    }
+
+    emit("update:monitor_type_panel", updated);
+}
+
 const uniqueFormatMouse = () => {
     const sizeRAM = new Set();
     return props.mouse.filter((ram) => {
@@ -435,6 +743,76 @@ const uniqueKeyboardLayout = () => {
     return props.keyboard.filter((ram) => {
         if (!sizeRAM.has(ram.layout)) {
             sizeRAM.add(ram.layout);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueFormatMonitor = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.format)) {
+            sizeRAM.add(ram.format);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueMonitorRatio = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.ratio)) {
+            sizeRAM.add(ram.ratio);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueMonitorResolution = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.resolution)) {
+            sizeRAM.add(ram.resolution);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueMonitorInches = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.inches)) {
+            sizeRAM.add(ram.inches);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueMonitorHZ = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.refresh_rate)) {
+            sizeRAM.add(ram.refresh_rate);
+            return true;
+        }
+        return false;
+    });
+};
+const uniqueMS = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.response_time)) {
+            sizeRAM.add(ram.response_time);
+            return true;
+        }
+        return false;
+    });
+};
+const uniquePanelType = () => {
+    const sizeRAM = new Set();
+    return props.monitor.filter((ram) => {
+        if (!sizeRAM.has(ram.type_panel)) {
+            sizeRAM.add(ram.type_panel);
             return true;
         }
         return false;

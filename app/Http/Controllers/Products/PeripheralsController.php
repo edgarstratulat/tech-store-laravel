@@ -7,6 +7,7 @@ use App\Models\Button;
 use App\Models\Category;
 use App\Models\Keyboard;
 use App\Models\Manufacturer;
+use App\Models\Monitor;
 use App\Models\Mouse;
 use App\Models\Product;
 use App\Models\subCategory;
@@ -116,6 +117,54 @@ class PeripheralsController extends Controller
                     $q->where('layout', $value);
                 });
             }),
+            AllowedFilter::callback('monitor_inclination', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('inclination', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_format', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('format', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_ratio', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('ratio', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_resolution', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('resolution', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_inches', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('inches', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_refresh_rate', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('refresh_rate', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_response_time', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('response_time', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_type_panel', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('type_panel', $value);
+                });
+            }),
         ])
         ->allowedSorts([
             'price', '-price', '-created_at'
@@ -132,10 +181,13 @@ class PeripheralsController extends Controller
             $query->where('category_id', 2)->where('subcategory_id', 4);
         })->select('format', 'interface', 'dpi', 'response_time')->get();
 
-
         $keyboard = Keyboard::whereHas('product', function($query) {
             $query->where('category_id', 2);
         })->select('interface','type','light','numpad','layout')->get();
+
+        $monitor = Monitor::whereHas('product', function($query) {
+            $query->where('category_id', 2)->where('subcategory_id', 5);
+        })->select('inclination','format','ratio','resolution','inches','refresh_rate','response_time','type_panel')->get();
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 2)->get();
@@ -150,7 +202,8 @@ class PeripheralsController extends Controller
             'category' => $category,
             'subcategory' => $subCategory,
             'mouse' => $mice,
-            'keyboard' => $keyboard
+            'keyboard' => $keyboard,
+            'monitor' => $monitor
         ]);
     }
 
@@ -368,7 +421,88 @@ class PeripheralsController extends Controller
         )->get();
         $user = Auth::user();
         $isAdmin = $user ? $user->hasRole('admin') : false;
-        $products = Product::with('category')->with('subcategory')->where('category_id', 2)->where('subcategory_id', 7)->paginate(12);
+        $products = QueryBuilder::for(Product::class)
+        ->allowedFilters([
+            AllowedFilter::callback('stock', function ($query) {
+                $query->where('stock', '>', 0);
+            }),
+            AllowedFilter::callback('nostock', function ($query) {
+                $query->where('stock', '=', 0);
+            }),
+            AllowedFilter::callback('manufacturer', function ($query, $value) {
+                $query->where('manufacturer_id', '=', $value);
+            }),
+            AllowedFilter::callback('min_price', function ($query, $value) {
+                $query->where('price', '>=', $value);
+            }),
+            AllowedFilter::callback('max_price', function ($query, $value) {
+                $query->where('price', '<=', $value);
+            }),
+            AllowedFilter::callback('subcategory', function ($query, $value) {
+                $query->where('subcategory_id', '=', $value);
+            }),
+            AllowedFilter::callback('promotion', function ($query) {
+                $query->where('sale_price', '>', 1);
+            }),
+            AllowedFilter::callback('reconditioned', function($query) {
+                $query->where('reconditioned', '=', 1);
+            }),
+            AllowedFilter::callback('monitor_inclination', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('inclination', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_format', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('format', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_ratio', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('ratio', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_resolution', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('resolution', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_inches', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('inches', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_refresh_rate', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('refresh_rate', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_response_time', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('response_time', $value);
+                });
+            }),
+            AllowedFilter::callback('monitor_type_panel', function($query, $value){
+
+                $query->whereHas('monitor', function($q) use ($value){
+                    $q->where('type_panel', $value);
+                });
+            }),
+        ])
+            ->allowedSorts([
+                'price', '-price', '-created_at'
+            ])
+            ->with('category', 'subcategory')
+                ->where('category_id', 2)
+                ->where('subcategory_id', 5)
+                ->paginate(12);
 
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
@@ -377,6 +511,10 @@ class PeripheralsController extends Controller
             $query->where('category_id', 2)->where('subcategory_id', 5);
         })->select('id', 'name')->get();
 
+        $monitor = Monitor::whereHas('product', function($query) {
+            $query->where('category_id', 2)->where('subcategory_id', 5);
+        })->select('inclination','format','ratio','resolution','inches','refresh_rate','response_time','type_panel')->get();
+
         return Inertia::render('Peripherals/MonitorPage', [
             'buttons' => $buttons,
             'products' => $products,
@@ -384,7 +522,8 @@ class PeripheralsController extends Controller
             'isAdmin' => $isAdmin,
             'category' => $category,
             'subcategory' => $subCategory,
-            'manufacturer' => $manufacturer
+            'manufacturer' => $manufacturer,
+            'monitor' => $monitor
         ]);
     }
 

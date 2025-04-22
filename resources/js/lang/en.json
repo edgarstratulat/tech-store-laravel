@@ -120,7 +120,7 @@
     "home-pc-h2": "Extreme performance for demanding gamers",
     "home-pc-button": "See all",
 
-    "promotions-page-title": "Discount Products",
+    "promotions-page-title": "Promotions",
 
     "product-reconditioned": "Reconditioned",
     "product-nostock": "Out of stock",
@@ -259,5 +259,18 @@
     "peripherals-keyboard-light": "Backlight",
     "peripherals-keyboard-numpad": "Numeric keypad",
     "peripherals-keyboard-layout": "Keyboard layout",
-    "peripherals-monitor-page-title": "Monitors"
+
+    "peripherals-monitor-page-title": "Monitors",
+    "peripherals-monitor-inclination": "Inclination adjustment",
+    "peripherals-monitor-format": "Screen format",
+    "peripherals-monitor-format-option": {
+        "curve": "Curve",
+        "flat": "Flat"
+    },
+    "peripherals-monitor-ratio": "Image proposition",
+    "peripherals-monitor-resolution": "Resolution",
+    "peripherals-monitor-inches": "Inches",
+    "peripherals-monitor-hz": "Maximum refresh rate",
+    "peripherals-monitor-response": "Response time",
+    "peripherals-monitor-panel": "Panel type"
 }

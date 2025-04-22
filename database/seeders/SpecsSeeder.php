@@ -8,6 +8,7 @@ use App\Models\ComputerCase;
 use App\Models\cpuCooler;
 use App\Models\GPU;
 use App\Models\Keyboard;
+use App\Models\Monitor;
 use App\Models\Motherboard;
 use App\Models\Mouse;
 use App\Models\PowerSupply;
@@ -376,5 +377,30 @@ class SpecsSeeder extends Seeder
         ] as $keyboard)
 
         Keyboard::create($keyboard);
+
+        foreach([
+            [
+                'inclination' => true,
+                'format' => 'curve',
+                'ratio' => '16:9',
+                'resolution' => '1920x1080',
+                'inches' => 27,
+                'refresh_rate' => 240,
+                'response_time' => 1,
+                'type_panel' => 'IPS'
+            ],
+            [
+                'inclination' => true,
+                'format' => 'flat',
+                'ratio' => '16:9',
+                'resolution' => '1920x1080',
+                'inches' => 24.5,
+                'refresh_rate' => 240,
+                'response_time' => 1,
+                'type_panel' => 'TN'
+            ],
+        ] as $monitor)
+
+        Monitor::create($monitor);
     }
 }

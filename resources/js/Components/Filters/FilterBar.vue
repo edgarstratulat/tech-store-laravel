@@ -131,6 +131,17 @@
             v-model:keyboard_light="selectedFilters.keyboard_light"
             v-model:keyboard_numpad="selectedFilters.keyboard_numpad"
             v-model:keyboard_layout="selectedFilters.keyboard_layout"
+            :monitor="monitor"
+            v-model:monitor_inclination="selectedFilters.monitor_inclination"
+            v-model:monitor_format="selectedFilters.monitor_format"
+            v-model:monitor_ratio="selectedFilters.monitor_ratio"
+            v-model:monitor_resolution="selectedFilters.monitor_resolution"
+            v-model:monitor_inches="selectedFilters.monitor_inches"
+            v-model:monitor_refresh_rate="selectedFilters.monitor_refresh_rate"
+            v-model:monitor_response_time="
+                selectedFilters.monitor_response_time
+            "
+            v-model:monitor_type_panel="selectedFilters.monitor_type_panel"
         ></PeripheralsFilter>
 
         <button
@@ -178,6 +189,7 @@ const props = defineProps({
     computers: Array,
     mouse: Array,
     keyboard: Array,
+    monitor: Array,
 });
 
 const selectedFilters = ref({
@@ -266,6 +278,15 @@ const selectedFilters = ref({
     keyboard_light: [],
     keyboard_numpad: [],
     keyboard_layout: [],
+
+    monitor_inclination: [],
+    monitor_format: [],
+    monitor_ratio: [],
+    monitor_resolution: [],
+    monitor_inches: [],
+    monitor_refresh_rate: [],
+    monitor_response_time: [],
+    monitor_type_panel: [],
 });
 
 const applyFilters = () => {
@@ -565,6 +586,41 @@ const applyFilters = () => {
     if (selectedFilters.value.keyboard_layout.length > 0) {
         queryParams["filter[keyboard_layout]"] =
             selectedFilters.value.keyboard_layout;
+    }
+
+    // Monitor
+
+    if (selectedFilters.value.monitor_inclination.length > 0) {
+        queryParams["filter[monitor_inclination]"] =
+            selectedFilters.value.monitor_inclination;
+    }
+    if (selectedFilters.value.monitor_format.length > 0) {
+        queryParams["filter[monitor_format]"] =
+            selectedFilters.value.monitor_format;
+    }
+    if (selectedFilters.value.monitor_ratio.length > 0) {
+        queryParams["filter[monitor_ratio]"] =
+            selectedFilters.value.monitor_ratio;
+    }
+    if (selectedFilters.value.monitor_resolution.length > 0) {
+        queryParams["filter[monitor_resolution]"] =
+            selectedFilters.value.monitor_resolution;
+    }
+    if (selectedFilters.value.monitor_inches.length > 0) {
+        queryParams["filter[monitor_inches]"] =
+            selectedFilters.value.monitor_inches;
+    }
+    if (selectedFilters.value.monitor_refresh_rate.length > 0) {
+        queryParams["filter[monitor_refresh_rate]"] =
+            selectedFilters.value.monitor_refresh_rate;
+    }
+    if (selectedFilters.value.monitor_response_time.length > 0) {
+        queryParams["filter[monitor_response_time]"] =
+            selectedFilters.value.monitor_response_time;
+    }
+    if (selectedFilters.value.monitor_type_panel.length > 0) {
+        queryParams["filter[monitor_type_panel]"] =
+            selectedFilters.value.monitor_type_panel;
     }
 
     console.log(queryParams);
