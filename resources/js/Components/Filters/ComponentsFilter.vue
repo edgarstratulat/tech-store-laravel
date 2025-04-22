@@ -857,7 +857,7 @@ const props = defineProps({
     //Props
     cpu: Array,
     ram: Array,
-    armazenamento: Array,
+    storage: Array,
     motherboard: Array,
     gpu: Array,
     powersupply: Array,
@@ -1189,7 +1189,7 @@ function updateRotationSpeedDrive(event) {
 
 const uniqueSizesDrive = () => {
     const sizeRAM = new Set();
-    return props.armazenamento.filter((ram) => {
+    return props.storage.filter((ram) => {
         if (!sizeRAM.has(ram.size)) {
             sizeRAM.add(ram.size);
             return true;
@@ -1199,7 +1199,7 @@ const uniqueSizesDrive = () => {
 };
 const uniqueTypeDrive = () => {
     const sizeRAM = new Set();
-    return props.armazenamento.filter((ram) => {
+    return props.storage.filter((ram) => {
         if (!sizeRAM.has(ram.type)) {
             sizeRAM.add(ram.type);
             return true;
@@ -1209,7 +1209,7 @@ const uniqueTypeDrive = () => {
 };
 const uniqueWritingSpeedDrive = () => {
     const sizeRAM = new Set();
-    return props.armazenamento.filter((ram) => {
+    return props.storage.filter((ram) => {
         if (
             ram.writing_speed &&
             ram.type !== "HDD" &&
@@ -1223,7 +1223,7 @@ const uniqueWritingSpeedDrive = () => {
 };
 const uniqueRotationArmazenamento = () => {
     const sizeRAM = new Set();
-    return props.armazenamento.filter((ram) => {
+    return props.storage.filter((ram) => {
         if (
             ram.rotation_speed &&
             ram.type === "HDD" &&

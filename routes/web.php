@@ -50,7 +50,7 @@ Route::prefix('components')->group(function () {
     Route::get('motherboards', [ComponentsController::class, 'showMotherboards'])->name('motherboards');
     Route::get('graphic-cards', [ComponentsController::class, 'showGPU'])->name('placas-graficas');
     Route::get('ram-memory', [ComponentsController::class, 'showRAM'])->name('memoria-ram');
-    Route::get('storage', [ComponentsController::class, 'showArmazenamento'])->name('armazenamento');
+    Route::get('storage', [ComponentsController::class, 'showStorage'])->name('storage');
     Route::get('power-supplies', [ComponentsController::class, 'showFontes'])->name('fontes-de-alimentacao');
     Route::get('computer-cases', [ComponentsController::class, 'showCaixas'])->name('caixas-para-computadores');
     Route::get('cpu-coolers', [ComponentsController::class, 'showCPUCoolers'])->name('cpu-coolers');

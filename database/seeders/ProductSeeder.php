@@ -179,35 +179,35 @@ class ProductSeeder extends Seeder
                 'name' => 'HDD 3.5" Seagate IronWolf 4TB 5400RPM 256MB Cache 202MB/s SATA 6Gb/s',
                 'manufacturer_id' => 25,
                 'price' => 121.99,
-                'armazenamento_id' => 1,
+                'storage_id' => 1,
                 'image_path' => "images/hdd.jpg"
             ],
             [
                 'name' => 'SSD M.2 Samsung 970 EVO 1TB',
                 'manufacturer_id' => 2,
                 'price' => 129.99,
-                'armazenamento_id' => 2,
+                'storage_id' => 2,
                 'image_path' => "images/samsung_970_evo.jpeg"
             ],
             [
                 'name' => 'SSD 2.5" Samsung 870 EVO 500GB MLC V-NAND SATA',
                 'manufacturer_id' => 2,
                 'price' => 64.99,
-                'armazenamento_id' => 3,
+                'storage_id' => 3,
                 'image_path' => "images/sata.jpeg"
             ],
             [
                 'name' => 'SSD 2.5" Samsung 870 EVO 1TB MLC V-NAND SATA',
                 'manufacturer_id' => 2,
                 'price' => 84.99,
-                'armazenamento_id' => 4,
+                'storage_id' => 4,
                 'image_path' => "images/sata.jpeg"
             ],
             [
                 'name' => 'SSD M.2 Samsung 970 EVO 2TB',
                 'manufacturer_id' => 2,
                 'price' => 149.99,
-                'armazenamento_id' => 5,
+                'storage_id' => 5,
                 'image_path' => "images/samsung_970_evo.jpeg"
             ],     
         ];
@@ -221,7 +221,7 @@ class ProductSeeder extends Seeder
                 'description' => $ssd['name'] . ' oferece frequências mais rápidas, maiores capacidades e melhor desempenho',
                 'category_id' => 4, 
                 'subcategory_id' => 12,
-                'armazenamento_id' => $ssd['armazenamento_id'],
+                'storage_id' => $ssd['storage_id'],
                 'stock' => rand(0, 50),
                 'sku' => 'SKU' . rand(1000, 9999),
                 'image_path' => $ssd['image_path'],

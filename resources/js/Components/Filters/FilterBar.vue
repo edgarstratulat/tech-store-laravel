@@ -63,7 +63,7 @@
                 v-model:modelCPU="selectedFilters.cpu"
                 v-model:socketCPU="selectedFilters.cpu_socket"
                 v-model:tdpCPU="selectedFilters.cpu_tdp"
-                :armazenamento="armazenamento"
+                :storage="storage"
                 v-model:capacityDrive="selectedFilters.storage"
                 v-model:typeDrive="selectedFilters.storage_type"
                 v-model:writingSpeedDrive="
@@ -248,7 +248,7 @@ const props = defineProps({
     category: Array,
     ram: Array,
     cpu: Array,
-    armazenamento: Array,
+    storage: Array,
     motherboard: Array,
     gpu: Array,
     powersupply: Array,

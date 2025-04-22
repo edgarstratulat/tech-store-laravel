@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
-use App\Models\Armazenamento;
+use App\Models\Storage;
 use App\Models\Button;
 use App\Models\Category;
 use App\Models\Computer;
@@ -95,28 +95,28 @@ class ComponentsController extends Controller
             AllowedFilter::callback('capacidade_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('size', $models);
                 });
             }),
             AllowedFilter::callback('tipo_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('type', $models);
                 });
             }),
             AllowedFilter::callback('velocidade_escrita_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('writing_speed', $models);
                 });
             }),
             AllowedFilter::callback('velocidade_rotacao_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('rotation_speed', $models);
                 });
             }),
@@ -343,7 +343,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4);
         })->select('type','size','frequency','latency')->get();
 
-        $armazenamento = Armazenamento::whereHas('product', function($query) {
+        $storage = Storage::whereHas('product', function($query) {
             $query->where('category_id', 4);
         })->select('size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get();
 
@@ -383,7 +383,7 @@ class ComponentsController extends Controller
             'category' => $category,
             'subcategory' => $subCategory,
             'ram' => $ram,
-            'armazenamento' => $armazenamento,
+            'storage' => $storage,
             'cpu' => $cpu,
             'gpu' => $gpu,
             'motherboard' => $motherboard,
@@ -590,7 +590,7 @@ class ComponentsController extends Controller
         ]);
     }
 
-    public function showArmazenamento()
+    public function showStorage()
     {
         $buttons = Button::select(
             'id',
@@ -631,28 +631,28 @@ class ComponentsController extends Controller
             AllowedFilter::callback('capacidade_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('size', $models);
                 });
             }),
             AllowedFilter::callback('tipo_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('type', $models);
                 });
             }),
             AllowedFilter::callback('velocidade_escrita_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('writing_speed', $models);
                 });
             }),
             AllowedFilter::callback('velocidade_rotacao_drive', function($query, $value){
                 $models = is_array($value) ? $value : [$value];
 
-                $query->whereHas('armazenamento', function($q) use ($models){
+                $query->whereHas('storage', function($q) use ($models){
                     $q->whereIn('rotation_speed', $models);
                 });
             }),
@@ -667,7 +667,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 12);
         })->select('id', 'name')->get();
  
-        $armazenamento = Armazenamento::whereHas('product', function($query) {
+        $storage = Storage::whereHas('product', function($query) {
             $query->where('category_id', 4)->where('subcategory_id', 12);
         })->select('id', 'size', 'type', 'rotation_speed', 'writing_speed', 'reading_speed')->get();
 
@@ -682,7 +682,7 @@ class ComponentsController extends Controller
             'category' => $category,
             'subcategory' => $subCategory,
             'manufacturer' => $manufacturer,
-            'armazenamento' => $armazenamento
+            'storage' => $storage
         ]);
     }
 

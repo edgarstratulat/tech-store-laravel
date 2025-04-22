@@ -31,7 +31,7 @@ class Product extends Model
         'image_path',
         'ram_id',
         'motherboard_id',
-        'armazenamento_id',
+        'storage_id',
         'cpu_id',
         'powersupply_id',
         'cpu_cooler_id',
@@ -80,9 +80,9 @@ class Product extends Model
         return $this->belongsTo(Ram::class, 'ram_id');
     }
 
-    public function armazenamento()
+    public function storage()
     {
-        return $this->belongsTo(Armazenamento::class, 'armazenamento_id');
+        return $this->belongsTo(Storage::class, 'storage_id');
     }
 
     public function cpu()

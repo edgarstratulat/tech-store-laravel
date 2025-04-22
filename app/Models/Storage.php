@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Armazenamento extends Model
+class Storage extends Model
 {
     protected $table = 'storage_specs';
 

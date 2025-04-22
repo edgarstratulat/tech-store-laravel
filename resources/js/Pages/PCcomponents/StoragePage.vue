@@ -16,7 +16,7 @@
                     :manufacturer="manufacturer"
                     :products="products.data"
                     :subcategory="subcategory"
-                    :armazenamento="armazenamento"
+                    :storage="storage"
                 />
             </div>
 
@@ -70,7 +70,7 @@ export default {
         isAdmin: {
             type: Boolean,
         },
-        armazenamento: {
+        storage: {
             type: Array,
             required: true,
         },

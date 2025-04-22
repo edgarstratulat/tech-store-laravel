@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('subcategory_id')->constrained('subCategories');
             $table->foreignId('ram_id')->nullable()->constrained('ram_specs');
-            $table->foreignId('armazenamento_id')->nullable()->constrained('storage_specs');
+            $table->foreignId('storage_id')->nullable()->constrained('storage_specs');
             $table->foreignId('processor_id')->nullable()->constrained('processor_specs');
             $table->foreignId('motherboard_id')->nullable()->constrained('motherboard_specs');
             $table->foreignId('gpu_id')->nullable()->constrained('gpu_specs');

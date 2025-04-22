@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Armazenamento;
+use App\Models\Storage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +21,6 @@ class StorageSeeder extends Seeder
             ['size' => 2000, 'type' => 'M.2', 'writing_speed' => 7000, 'reading_speed' => 7400],
         ] as $armazenamento)
 
-        Armazenamento::create($armazenamento);
+        Storage::create($armazenamento);
     }
 }
