@@ -273,5 +273,7 @@
     "peripherals-monitor-inches": "Polegadas do monitor",
     "peripherals-monitor-hz": "Taxa máxima de atualização",
     "peripherals-monitor-response": "Tempo de resposta",
-    "peripherals-monitor-panel": "Tipo de painel"
+    "peripherals-monitor-panel": "Tipo de painel",
+
+    "filters-show": "Filtros"
 }

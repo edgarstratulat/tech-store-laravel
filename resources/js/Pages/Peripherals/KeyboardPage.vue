@@ -10,16 +10,16 @@
         >
             {{ t("peripherals-keyboard-page-title") }}
         </h1>
-        <div class="flex gap-5 px-8">
-            <div class="w-1/4">
+        <div class="flex flex-col lg:flex-row gap-5 px-4 lg:px-8">
+            <div class="w-full lg:w-1/4">
                 <FilterSideBar
                     :manufacturer="manufacturer"
-                    :subcategory="subcategory"
+                    :products="products.data"
                     :keyboard="keyboard"
                 />
             </div>
 
-            <div class="w-3/4">
+            <div class="w-full lg:w-3/4">
                 <Product
                     :products="products.data"
                     :category="category"

@@ -1,6 +1,6 @@
 <template>
     <div class="bg-zinc-100">
-        <navbar
+        <Navbar
             :Utilizador="Utilizador"
             :Buttons="buttons"
             :isAdmin="isAdmin"
@@ -8,40 +8,41 @@
         <h1
             class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
-            {{ t("components-memory-ram-title") }}
+            {{ t("components-storage-title") }}
         </h1>
-        <div class="flex gap-5 px-8">
-            <div class="w-1/4">
+        <div class="flex flex-col lg:flex-row gap-5 px-4 lg:px-8">
+            <div class="w-full lg:w-1/4">
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :products="products.data"
-                    :ram="ram"
+                    :subcategory="subcategory"
+                    :armazenamento="armazenamento"
                 />
             </div>
 
-            <div class="w-3/4">
+            <div class="w-full lg:w-3/4">
                 <Product
                     :products="products.data"
                     :category="category"
                     :subcategory="subcategory"
                     :manufacturer="manufacturer"
                 />
+                <Pagination :links="products.links" />
             </div>
         </div>
-        <Pagination :links="products.links" />
     </div>
 </template>
 
 <script>
 import { useI18n } from "vue-i18n";
-import navbar from "../../Components/navbar.vue";
+import Navbar from "../../Components/navbar.vue";
 import Product from "../../Components/Categories/productComponent.vue";
 import Pagination from "../../Components/Inputs/Pagination/paginate.vue";
 import FilterSideBar from "../../Components/Filters/FilterBar.vue";
 
 export default {
     components: {
-        navbar,
+        Navbar,
         Product,
         Pagination,
         FilterSideBar,
@@ -49,7 +50,15 @@ export default {
     props: {
         products: {
             type: [Array, Object],
-            default: () => [],
+            required: true,
+        },
+        category: {
+            type: Array,
+            required: true,
+        },
+        subcategory: {
+            type: Array,
+            required: true,
         },
         Utilizador: {
             type: Object,
@@ -61,21 +70,13 @@ export default {
         isAdmin: {
             type: Boolean,
         },
-        category: {
-            type: Array,
-            required: true,
-        },
-        subcategory: {
+        armazenamento: {
             type: Array,
             required: true,
         },
         manufacturer: {
             type: Array,
             required: true,
-        },
-        ram: {
-            type: Array,
-            default: () => [],
         },
     },
     setup() {

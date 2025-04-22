@@ -8,18 +8,19 @@
         <h1
             class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
-            {{ t("components-psu-title") }}
+            {{ t("components-cpu-coolers-title") }}
         </h1>
-        <div class="flex gap-5 px-8">
-            <div class="w-1/4">
+        <div class="flex flex-col lg:flex-row gap-5 px-4 lg:px-8">
+            <div class="w-full lg:w-1/4">
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :products="products.data"
-                    :powersupply="powersupply"
+                    :subcategory="subcategory"
+                    :cpuCooler="cpuCooler"
                 />
             </div>
 
-            <div class="w-3/4">
+            <div class="w-full lg:w-3/4">
                 <Product
                     :products="products.data"
                     :category="category"
@@ -73,9 +74,9 @@ export default {
             type: Array,
             required: true,
         },
-        powersupply: {
+        cpuCooler: {
             type: Array,
-            required: true,
+            default: () => [],
         },
     },
     setup() {

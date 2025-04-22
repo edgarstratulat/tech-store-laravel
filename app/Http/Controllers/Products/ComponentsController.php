@@ -374,7 +374,7 @@ class ComponentsController extends Controller
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 4)->get();
 
-        return Inertia::render('ComponentesPC/componentePcPage', [
+        return Inertia::render('PCcomponents/PCcomponentsPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -480,7 +480,7 @@ class ComponentsController extends Controller
         $subCategory = subCategory::select('id', 'name')->get();
 
 
-        return Inertia::render('ComponentesPC/cpuPage', [
+        return Inertia::render('PCcomponents/ProcessorPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -578,7 +578,7 @@ class ComponentsController extends Controller
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
-        return Inertia::render('ComponentesPC/ramPage', [
+        return Inertia::render('PCcomponents/RamPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -674,7 +674,7 @@ class ComponentsController extends Controller
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->get();
 
-        return Inertia::render('ComponentesPC/armazenamentoPage', [
+        return Inertia::render('PCcomponents/StoragePage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -776,7 +776,7 @@ class ComponentsController extends Controller
         })->select('id', 'format', 'chipset', 'cpu_socket', 'ram_support', 'max_ram')->get();
 
 
-        return Inertia::render('ComponentesPC/motherboardsPage', [
+        return Inertia::render('PCcomponents/MotherboardsPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -877,7 +877,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 14);
         })->select('category', 'model','vram','type_vram','interface','tdp')->get();
 
-        return Inertia::render('ComponentesPC/gpuPage', [
+        return Inertia::render('PCcomponents/GpuPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -972,7 +972,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 15);
         })->select('format', 'wattage','efficiency','modular')->get();
 
-        return Inertia::render('ComponentesPC/fontePage', [
+        return Inertia::render('PCcomponents/PowerSupplyPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -1065,7 +1065,7 @@ class ComponentsController extends Controller
             $query->where('category_id', 4)->where('subcategory_id', 16);
         })->select('id', 'socket', 'type', 'fan_rpm', 'air_flow', 'rgb')->get();
 
-        return Inertia::render('ComponentesPC/cpu-coolPage', [
+        return Inertia::render('PCcomponents/CPUcoolersPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -1213,7 +1213,7 @@ class ComponentsController extends Controller
             'tempered_glass')
         ->get();
 
-        return Inertia::render('ComponentesPC/caixasPcPage', [
+        return Inertia::render('PCcomponents/PCcasesPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,

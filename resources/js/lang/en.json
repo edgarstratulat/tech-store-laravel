@@ -272,5 +272,7 @@
     "peripherals-monitor-inches": "Inches",
     "peripherals-monitor-hz": "Maximum refresh rate",
     "peripherals-monitor-response": "Response time",
-    "peripherals-monitor-panel": "Panel type"
+    "peripherals-monitor-panel": "Panel type",
+
+    "filters-show": "Filters"
 }

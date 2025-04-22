@@ -8,18 +8,19 @@
         <h1
             class="m-8 text-center text-3xl mb-5 lg:text-left md:text-center sm:text-center font-bold text-gray-800"
         >
-            {{ t("components-cpu-coolers-title") }}
+            {{ t("components-cases-title") }}
         </h1>
-        <div class="flex gap-5 px-8">
-            <div class="w-1/4">
+        <div class="flex flex-col lg:flex-row gap-5 px-4 lg:px-8">
+            <div class="w-full lg:w-1/4">
                 <FilterSideBar
                     :manufacturer="manufacturer"
                     :products="products.data"
-                    :cpuCooler="cpuCooler"
+                    :subcategory="subcategory"
+                    :PCcases="PCcases"
                 />
             </div>
 
-            <div class="w-3/4">
+            <div class="w-full lg:w-3/4">
                 <Product
                     :products="products.data"
                     :category="category"
@@ -73,7 +74,7 @@ export default {
             type: Array,
             required: true,
         },
-        cpuCooler: {
+        PCcases: {
             type: Array,
             default: () => [],
         },

@@ -177,7 +177,7 @@ class ComputersController extends Controller
             $query->where('category_id', 1);
         })->select('integrated_gpu')->get();
 
-        return Inertia::render('Computadores/computersPage', [
+        return Inertia::render('Computers/ComputersPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -343,7 +343,7 @@ class ComputersController extends Controller
             $query->where('category_id', 1)->where('subcategory_id', 1);
         })->select('integrated_gpu')->get();
 
-        return Inertia::render('Computadores/DesktopPage', [
+        return Inertia::render('Computers/DesktopPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,
@@ -471,7 +471,7 @@ class ComputersController extends Controller
         })->select('integrated_gpu')->get();
 
 
-        return Inertia::render('Computadores/LaptopPage', [
+        return Inertia::render('Computers/LaptopPage', [
             'buttons' => $buttons,
             'Utilizador' => $user,
             'isAdmin' => $isAdmin,

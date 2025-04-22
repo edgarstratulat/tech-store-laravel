@@ -137,7 +137,7 @@ class SmartphonesController extends Controller
         $category = Category::select('id', 'name')->get();
         $subCategory = subCategory::select('id', 'name')->where('category_id', 3)->get();
 
-        return Inertia::render('Smartphones/telemoveisPage', [
+        return Inertia::render('Smartphones/SmartphonesPage', [
             'buttons' => $buttons,
             'products' => $products,
             'manufacturer' => $manufacturer,
@@ -269,7 +269,7 @@ class SmartphonesController extends Controller
             $query->where('category_id', 3)->where('subcategory_id', 8);
         })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
-        return Inertia::render('Smartphones/iphonePage', [
+        return Inertia::render('Smartphones/IphonePage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
@@ -402,7 +402,7 @@ class SmartphonesController extends Controller
             $query->where('category_id', 3)->where('subcategory_id', 9);
         })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
-        return Inertia::render('Smartphones/androidPage', [
+        return Inertia::render('Smartphones/AndroidPage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
