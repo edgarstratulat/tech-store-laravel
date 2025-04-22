@@ -355,13 +355,13 @@ export default {
         };
 
         const updateProduct = () => {
-            router.put(`/dashboard/produtos/atualizar`, selectedProduct.value);
+            router.put(`/dashboard/products/update`, selectedProduct.value);
             closeModal();
         };
 
         const deleteProduct = () => {
             router.delete(
-                `/dashboard/produtos/eliminar/${selectedProduct.value.id}`
+                `/dashboard/products/delete/${selectedProduct.value.id}`
             );
             closeDeleteModal();
         };
