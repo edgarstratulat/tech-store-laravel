@@ -165,6 +165,7 @@
     "filters-product-status": "Estado do produto",
     "filters-discount": "Promoções",
     "filters-reconditioned": "Recondicionado",
+    "filters-show": "Filtros",
 
     "processor-family": "Família de processador",
     "processor-socket": "Socket do processador",
@@ -275,5 +276,14 @@
     "peripherals-monitor-response": "Tempo de resposta",
     "peripherals-monitor-panel": "Tipo de painel",
 
-    "filters-show": "Filtros"
+    "update-product": "Atualizar produto",
+    "update-name": "Nome",
+    "update-description": "Descrição",
+    "update-price": "Preço",
+    "update-stock": "Stock",
+    "update-cancel": "Cancelar",
+    "update-update": "Atualizar",
+
+    "delete-product": "Eliminar produto",
+    "delete-delete": "Eliminar"
 }

@@ -25,6 +25,7 @@ class ProductsController extends Controller
         )->get();
 
         $products = Product::select(
+            'id',
             'name',
             'price',
             'sale_price',

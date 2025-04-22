@@ -21,19 +21,21 @@ class UpdateProductController extends Controller
             'dropdown',
             'dropdownOptions'
         )->get();
-        $product = Product::select('id', 'name', 'price', 'stock')->get();
+        $product = Product::select('id', 'name', 'description', 'price', 'stock')->get();
 
         $user = Auth::user();
 
-        return Inertia::render('Admin/Products/updateProduto', [
+        return Inertia::render('Admin/Products/viewProducts', [
             'adminBtn' => $buttons,
-            'product' => $product,
+            'products' => $product,
             'Utilizador' => $user,
          ]);
     }
 
     public function updateProduct(Request $request){
         $request->validate([
+            'name' => 'required',
+            'description' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
         ]);
@@ -42,12 +44,14 @@ class UpdateProductController extends Controller
 
         if($prod){
             $prod->update([
-                    'price' => $request->price,
-                    'stock' => $request->stock,
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'stock' => $request->stock,
             ]);
-        }
+        } 
 
-        return Inertia::location('/dashboard');
+        return Inertia::location(route('dashboard.products'));
     }
 
 }

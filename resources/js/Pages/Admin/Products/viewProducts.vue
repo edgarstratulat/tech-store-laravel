@@ -5,11 +5,11 @@
             {{ t("view-products-page-title") }}
         </h1>
         <div class="overflow-x-auto shadow-md sm:rounded-lg">
-            <ViewProductsTable
+            <ProductTable
                 :products="products"
                 :category="category"
                 :subcategory="subcategory"
-            ></ViewProductsTable>
+            ></ProductTable>
         </div>
 
         <Pagination :links="products.links"></Pagination>
@@ -19,14 +19,14 @@
 <script>
 import Navbar from "../../../Components/Buttons/AdminNavbar/navbar.vue";
 import Pagination from "../../../Components/Inputs/Pagination/paginate.vue";
-import ViewProductsTable from "../../../Components/Tables/ViewProducts.vue";
+import ProductTable from "../../../Components/Tables/ProductTable.vue";
 import { useI18n } from "vue-i18n";
 
 export default {
     components: {
         Navbar,
         Pagination,
-        ViewProductsTable,
+        ProductTable,
     },
     props: {
         products: {

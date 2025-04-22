@@ -11,7 +11,7 @@ const form = reactive({
 });
 
 const submit = () => {
-    router.put("/dashboard/produto/atualizar", form);
+    router.put("/dashboard/produtos/atualizar", form);
 };
 </script>
 

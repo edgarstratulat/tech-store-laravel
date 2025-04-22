@@ -25,7 +25,7 @@ class DeleteProductController extends Controller
 
         $user = Auth::user();
         
-        return Inertia::render('Admin/Products/deleteProduto', [
+        return Inertia::render('Admin/Products/viewProducts', [
             'adminBtn' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
@@ -40,7 +40,8 @@ class DeleteProductController extends Controller
         if($products){
             $products->delete();
         }
-        
-        return Inertia::location('/dashboard');
+
+        return Inertia::location(route('dashboard.products'));
+
     }
 }

@@ -27,13 +27,13 @@ Route::get('/promotions', [DiscountProductsController::class, 'showDiscountProdu
 
 Route::middleware(['auth', 'permission:Manage Store'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'showAdminPanel']);
-    Route::get('dashboard/produtos', [ProductsController::class, 'showProducts']);
+    Route::get('dashboard/produtos', [ProductsController::class, 'showProducts'])->name('dashboard.products');
     Route::get('dashboard/produtos/adicionar', [CreateProductController::class, 'showProducts']);
     Route::post('dashboard/produtos/adicionar', [CreateProductController::class, 'createProducts']);
     Route::get('dashboard/produtos/atualizar', [UpdateProductController::class, 'showUpdateProductsForm']);
-    Route::put('dashboard/produtos/atualizar', [UpdateProductController::class, 'updateProduct']);
+    Route::put('dashboard/produtos/atualizar', [UpdateProductController::class, 'updateProduct'])->name('update-product');
     Route::get('dashboard/produtos/eliminar', [DeleteProductController::class, 'showDeleteForm']);
-    Route::delete('dashboard/produtos/eliminar', [DeleteProductController::class, 'DeleteProducts']);
+    Route::delete('dashboard/produtos/eliminar/{id}', [DeleteProductController::class, 'DeleteProducts']);
 });
 
 // Telemoveis
