@@ -183,7 +183,7 @@ const props = defineProps({
     cpu: Array,
     ram: Array,
     motherboard: Array,
-    armazenamento: Array,
+    storage: Array,
     gpu: Array,
     powersupply: Array,
     PCcases: Array,
@@ -361,7 +361,7 @@ const uniqueMotherboardChipset = () => {
 
 const uniqueStorage = () => {
     const sizeRAM = new Set();
-    return props.armazenamento.filter((ram) => {
+    return props.storage.filter((ram) => {
         if (!sizeRAM.has(ram.size)) {
             sizeRAM.add(ram.size);
             return true;

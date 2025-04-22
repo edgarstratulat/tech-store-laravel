@@ -143,7 +143,7 @@
                 :cpu="cpu"
                 :ram="ram"
                 :motherboard="motherboard"
-                :armazenamento="armazenamento"
+                :storage="storage"
                 :gpu="gpu"
                 :powersupply="powersupply"
                 :PCcases="PCcases"

@@ -19,7 +19,7 @@
                     :cpu="cpu"
                     :ram="ram"
                     :motherboard="motherboard"
-                    :armazenamento="armazenamento"
+                    :storage="storage"
                     :gpu="gpu"
                     :powersupply="powersupply"
                     :PCcases="PCcases"
@@ -97,7 +97,7 @@ export default {
             type: Array,
             default: () => [],
         },
-        armazenamento: {
+        storage: {
             type: Array,
             default: () => [],
         },

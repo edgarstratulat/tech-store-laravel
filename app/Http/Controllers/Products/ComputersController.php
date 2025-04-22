@@ -15,6 +15,7 @@ use App\Models\PowerSupply;
 use App\Models\Processor;
 use App\Models\Product;
 use App\Models\Ram;
+use App\Models\Storage;
 use App\Models\subCategory;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -157,7 +158,7 @@ class ComputersController extends Controller
             $query->where('category_id', 1);
         })->select('id', 'chipset')->get();
 
-        $storage = Armazenamento::whereHas('computers.product', function($query) {
+        $storage = Storage::whereHas('computers.product', function($query) {
             $query->where('category_id', 1);
         })->select('id', 'size')->get();
 
@@ -189,7 +190,7 @@ class ComputersController extends Controller
             'cpu' => $cpu,
             'ram' => $ram,
             'motherboard' => $mobo,
-            'armazenamento' => $storage,
+            'storage' => $storage,
             'gpu' => $gpu,
             'powersupply' => $psu,
             'PCcases' => $case,
@@ -316,7 +317,7 @@ class ComputersController extends Controller
             $query->where('category_id', 1)->where('subcategory_id', 1);
         })->select('id', 'chipset')->get();
 
-        $storage = Armazenamento::whereHas('computers.product', function($query) {
+        $storage = Storage::whereHas('computers.product', function($query) {
             $query->where('category_id', 1)->where('subcategory_id', 1);
         })->select('id', 'size')->get();
 
@@ -354,7 +355,7 @@ class ComputersController extends Controller
             'cpu' => $cpu,
             'ram' => $ram,
             'motherboard' => $mobo,
-            'armazenamento' => $storage,
+            'storage' => $storage,
             'gpu' => $gpu,
             'powersupply' => $psu,
             'PCcases' => $case,
@@ -458,7 +459,7 @@ class ComputersController extends Controller
             $query->where('category_id', 1)->where('subcategory_id', 2);
         })->select('id', 'size')->get();
 
-        $storage = Armazenamento::whereHas('computers.product', function($query) {
+        $storage = Storage::whereHas('computers.product', function($query) {
             $query->where('category_id', 1)->where('subcategory_id', 2);
         })->select('id', 'size')->get();
 
@@ -481,7 +482,7 @@ class ComputersController extends Controller
             'manufacturer' => $manufacturer,
             'cpu' => $cpu,
             'ram' => $ram,
-            'armazenamento' => $storage,
+            'storage' => $storage,
             'gpu' => $gpu,
             'computers' => $pc
         ]);

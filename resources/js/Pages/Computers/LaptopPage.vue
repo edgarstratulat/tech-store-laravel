@@ -18,7 +18,7 @@
                     :computers="computers"
                     :cpu="cpu"
                     :ram="ram"
-                    :armazenamento="armazenamento"
+                    :storage="storage"
                     :gpu="gpu"
                 />
             </div>
@@ -90,7 +90,7 @@ export default {
             type: Array,
             default: () => [],
         },
-        armazenamento: {
+        storage: {
             type: Array,
             default: () => [],
         },
