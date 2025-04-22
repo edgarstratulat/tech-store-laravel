@@ -21,7 +21,19 @@ class DatabaseSeeder extends Seeder
             ManufacturerSeeder::class,
             CategorySeeder::class,
             SubcategorySeeder::class,
-            SpecsSeeder::class,
+            RamSeeder::class,
+            StorageSeeder::class,
+            ProcessorSeeder::class,
+            MotherboardSeeder::class,
+            GPUSeeder::class,
+            PowerSupplySeeder::class,
+            cpuCoolerSeeder::class,
+            ComputerCaseSeeder::class,
+            SmartphoneSeeder::class,
+            ComputersSeeder::class,
+            MouseSeeder::class,
+            KeyboardSeeder::class,
+            MonitorSeeder::class,
             ProductSeeder::class
         ]);
     }
