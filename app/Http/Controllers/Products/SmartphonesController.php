@@ -269,7 +269,7 @@ class SmartphonesController extends Controller
             $query->where('category_id', 3)->where('subcategory_id', 8);
         })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
-        return Inertia::render('Smartphones/IphonePage', [
+        return Inertia::render('Smartphones/iphonePage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
@@ -402,7 +402,7 @@ class SmartphonesController extends Controller
             $query->where('category_id', 3)->where('subcategory_id', 9);
         })->select('model', 'ram', 'storage', 'family_processor', 'processor', 'SIM', 'operating_system', 'screen_resolution', 'screen_inches', 'screen_hz', 'screen_type', '5G', 'NFC')->get();
 
-        return Inertia::render('Smartphones/AndroidPage', [
+        return Inertia::render('Smartphones/androidPage', [
             'buttons' => $buttons,
             'products' => $products,
             'Utilizador' => $user,
