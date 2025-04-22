@@ -163,7 +163,6 @@ import SmartphoneFilter from "./SmartphonesFilter.vue";
 import DefaultFilter from "./DefaultFilters.vue";
 import ComponentsFilter from "./ComponentsFilter.vue";
 import ComputersFilter from "./ComputersFilter.vue";
-import ComponentsFilter from "./ComponentsFilter.vue";
 import PeripheralsFilter from "./PeripheralsFilter.vue";
 
 const page = usePage().url;
