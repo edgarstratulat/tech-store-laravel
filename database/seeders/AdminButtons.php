@@ -30,12 +30,11 @@ class AdminButtons extends Seeder
             ],
             [
                 'button_name' => 'products',
-                'route' => '/dashboard/produtos',
+                'route' => '/dashboard/productss',
                 'icon'=> 'fa-shopping-cart',
                 'dropdown' => true,
                 "dropdownOptions" => json_encode([
-                    ["button_name" => "view-products", "icon" => "fa-eye", "route" => "/dashboard/produtos"],
-                    ["button_name" => "add-products", "icon" => "fa-plus", "route" => "/dashboard/produtos/adicionar"],
+                    ["button_name" => "view-products", "icon" => "fa-eye", "route" => "/dashboard/products"],
                 ]), 
             ],
             [
