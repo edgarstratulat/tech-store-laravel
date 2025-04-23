@@ -13,7 +13,7 @@ use App\Http\Controllers\Products\SmartphonesController;
 use App\Http\Controllers\SearchController;
 
 //Home
-Route::get('/', [HomeController::class, 'showProductsHome']);
+Route::get('/', [HomeController::class, 'showProductsHome'])->name('home');
 Route::get('/search', [SearchController::class, 'SearchProduct']);
 
 Route::get('/{categorySlug}/{subcategorySlug}/{slug}', [ProductsController::class, 'ProductSlug']);
@@ -24,7 +24,7 @@ Route::get('/promotions', [DiscountProductsController::class, 'showDiscountProdu
 Route::middleware(['auth', 'permission:Manage Store'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'showAdminPanel']);
     Route::get('dashboard/products', [ProductsController::class, 'showProducts'])->name('dashboard.products');
-    Route::put('dashboard/products/update', [ProductsController::class, 'updateProduct'])->name('update-product');
+    Route::put('dashboard/products/update', [ProductsController::class, 'updateProduct'])->name('update.product');
     Route::delete('dashboard/products/delete/{id}', [ProductsController::class, 'DeleteProducts']);
 });
 

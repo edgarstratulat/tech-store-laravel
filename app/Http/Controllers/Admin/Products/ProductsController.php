@@ -8,6 +8,7 @@ use App\Models\Button;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\subCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -76,5 +77,40 @@ class ProductsController extends Controller
             'Utilizador' => $user,
             'isAdmin' => $isAdmin
         ]);
+    }
+
+    public function updateProduct(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ]);
+
+        $prod = Product::find($request->id);
+
+        if($prod){
+            $prod->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'stock' => $request->stock,
+            ]);
+        } 
+
+        return Inertia::location(route('dashboard.products'));
+    }
+
+    public function DeleteProducts(Request $request)
+    {
+
+        $products = Product::find($request->id);
+        
+        if($products){
+            $products->delete();
+        }
+
+        return Inertia::location(route('dashboard.products'));
+
     }
 }

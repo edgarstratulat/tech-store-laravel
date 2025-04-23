@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\alert;
 
 class LoginRegisterController extends Controller
 {
@@ -41,10 +42,13 @@ class LoginRegisterController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return Inertia::location('/');
+        if(Auth::attempt($request->only('email', 'password')) && Auth::user()->hasRole('admin')){
+            return Inertia::location(route('dashboard.products'));
+        } elseif(Auth::attempt($request->only('email', 'password')) && !Auth::user()->hasRole('admin')){
+            return Inertia::location(route('home'));
         } else {
-            return 'Dados Inválidos!';
+            echo 'Dados inválidos';
+            return Inertia::location(route('login'));
         }
     }
 
