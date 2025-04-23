@@ -18,7 +18,6 @@ class CategorySeeder extends Seeder
             ['name' => 'peripherals'],
             ['name' => 'smartphones'],
             ['name' => 'components'],
-            ['name' => 'acessories'],
         ] as $category)
 
         Category::create($category);
