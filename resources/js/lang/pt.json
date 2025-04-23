@@ -278,12 +278,42 @@
 
     "update-product": "Atualizar produto",
     "update-name": "Nome",
+    "update-sku": "Código de armazém",
     "update-description": "Descrição",
     "update-price": "Preço",
     "update-stock": "Stock",
     "update-cancel": "Cancelar",
     "update-update": "Atualizar",
+    "update-image": "Imagem",
 
     "delete-product": "Eliminar produto",
-    "delete-delete": "Eliminar"
+    "delete-delete": "Eliminar",
+
+    "table-categories": {
+        "components": "Componentes",
+        "peripherals": "Periféricos",
+        "smartphones": "Smartphones",
+        "computers": "Computadores"
+    },
+
+    "table-subcategories": {
+        "desktop": "Desktop",
+        "laptops": "Portáteis",
+        "workstation": "Workstation",
+        "mouses": "Ratos",
+        "monitors": "Monitores",
+        "audio": "Audio",
+        "video": "Video",
+        "android": "Android",
+        "iphone": "iPhone",
+        "processors": "Processadores",
+        "ram-memories": "Memórias RAM",
+        "storage": "Armazenamento",
+        "motherboards": "Motherboards",
+        "graphic-cards": "Placas Gráficas",
+        "power-supplies": "Fontes de Alimentação",
+        "cpu-coolers": "Coolers de CPU",
+        "computer-cases": "Caixas de computador",
+        "keyboards": "Teclados"
+    }
 }

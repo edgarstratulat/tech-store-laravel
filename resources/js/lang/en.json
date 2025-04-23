@@ -277,12 +277,42 @@
 
     "update-product": "Update product",
     "update-name": "Name",
+    "update-sku": "Stock keeping unit",
     "update-description": "Description",
     "update-price": "Price",
     "update-stock": "Stock",
     "update-cancel": "Cancel",
     "update-update": "Update",
+    "update-image": "Image",
 
     "delete-product": "Delete product",
-    "delete-delete": "Delete"
+    "delete-delete": "Delete",
+
+    "table-categories": {
+        "components": "Components",
+        "peripherals": "Peripherals",
+        "smartphones": "Smartphones",
+        "computers": "Computers"
+    },
+
+    "table-subcategories": {
+        "desktop": "Desktop",
+        "laptops": "Laptops",
+        "workstation": "Workstation",
+        "mouses": "Mouses",
+        "monitors": "Monitors",
+        "audio": "Audio",
+        "video": "Video",
+        "android": "Android",
+        "iphone": "iPhone",
+        "processors": "Processors",
+        "ram-memories": "RAM memories",
+        "storage": "Storage",
+        "motherboards": "Motherboards",
+        "graphic-cards": "Graphics cards",
+        "power-supplies": "Power Supplies",
+        "cpu-coolers": "CPU Coolers",
+        "computer-cases": "Computer cases",
+        "keyboards": "Keyboards"
+    }
 }

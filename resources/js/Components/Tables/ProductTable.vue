@@ -56,11 +56,81 @@
                         {{ product.description }}
                     </td>
                     <td class="px-4 py-4">
-                        {{ showCategories(product.category_id) }}
+                        <span
+                            class="ml-2"
+                            v-if="
+                                showCategories(product.category_id) ===
+                                    'components' ||
+                                showCategories(product.category_id) ===
+                                    'smartphones' ||
+                                showCategories(product.category_id) ===
+                                    'peripherals' ||
+                                showCategories(product.category_id) ===
+                                    'computers'
+                            "
+                        >
+                            {{
+                                t(
+                                    `table-categories.${showCategories(
+                                        product.category_id
+                                    )}`
+                                )
+                            }}
+                        </span>
                     </td>
+
                     <td class="px-4 py-4 hidden lg:table-cell">
-                        {{ showSubcategories(product.subcategory_id) }}
+                        <span
+                            class="ml-2"
+                            v-if="
+                                showSubcategories(product.subcategory_id) ===
+                                    'desktop' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'laptops' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'workstation' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'mouses' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'monitors' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'audio' ||
+                                showCategories(product.category_id) ===
+                                    'video' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'android' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'iphone' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'processors' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'ram-memories' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'storage' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'motherboards' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'graphic-cards' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'power-supplies' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'cpu-coolers' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'computer-cases' ||
+                                showSubcategories(product.subcategory_id) ===
+                                    'keyboards'
+                            "
+                        >
+                            {{
+                                t(
+                                    `table-subcategories.${showSubcategories(
+                                        product.subcategory_id
+                                    )}`
+                                )
+                            }}
+                        </span>
                     </td>
+
                     <td
                         v-if="product.stock <= 0"
                         class="px-4 py-4 text-red-600"
@@ -126,7 +196,7 @@
 
         <div
             v-if="isModalOpen"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-6"
         >
             <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
                 <div class="p-6">
@@ -175,6 +245,22 @@
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-1"
                             >
+                                {{ t("update-sku") }}
+                            </label>
+
+                            <input
+                                placeholder="{{ product.sku }}"
+                                v-model="selectedProduct.sku"
+                                type="text"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-1"
+                            >
                                 {{ t("update-price") }}
                             </label>
                             <input
@@ -211,6 +297,20 @@
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                             />
+                            <span
+                                v-if="selectedProduct.stock <= 0"
+                                class="text-red-600"
+                                >{{ t("product-nostock") }}</span
+                            >
+                            <span
+                                v-else-if="selectedProduct.stock <= 10"
+                                class="text-yellow-400"
+                            >
+                                {{ t("product-few-units") }}</span
+                            >
+                            <span v-else class="text-emerald-500">
+                                {{ t("product-stock") }}</span
+                            >
                         </div>
 
                         <div class="flex justify-end space-x-3 pt-4">
@@ -235,7 +335,7 @@
 
         <div
             v-if="isDeleteOpen"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-6 z-50"
         >
             <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
                 <div class="p-6">
@@ -331,9 +431,12 @@ export default {
         const selectedProduct = ref({
             id: null,
             name: "",
+            sku: "",
             price: "",
+            sale_price: "",
             description: "",
             stock: "",
+            image: null,
         });
 
         const openUpdateModal = (product) => {
@@ -357,6 +460,7 @@ export default {
         const updateProduct = () => {
             router.put(`/dashboard/products/update`, selectedProduct.value);
             closeModal();
+            console.log(`Produto atualizado: ${selectedProduct.value.name}`);
         };
 
         const deleteProduct = () => {

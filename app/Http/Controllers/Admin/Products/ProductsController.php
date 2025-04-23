@@ -28,6 +28,7 @@ class ProductsController extends Controller
         $products = Product::select(
             'id',
             'name',
+            'sku',
             'price',
             'sale_price',
             'description',
@@ -82,6 +83,7 @@ class ProductsController extends Controller
     public function updateProduct(Request $request){
         $request->validate([
             'name' => 'required',
+            'sku' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
@@ -92,12 +94,13 @@ class ProductsController extends Controller
         if($prod){
             $prod->update([
                 'name' => $request->name,
+                'sku' => $request->sku,
                 'description' => $request->description,
                 'price' => $request->price,
                 'stock' => $request->stock,
             ]);
-        } 
-
+        }
+                
         return Inertia::location(route('dashboard.products'));
     }
 
